@@ -1,0 +1,532 @@
+Framework,16 concurrency,32 concurrency,64 concurrency,128 concurrency,256 concurrency,512 concurrency,Best performance across all concurrency levels,500-series HTTP responses,Classification,Language,Platform,Front-end server / Web-server,Application operating system,Implementation approach
+0http,"36,468","67,131","77,377","76,175","95,662","117,479","117,479",100% success rate,Platform,JavaScript,nodejs,None,Linux,Realistic
+act,"26,172","62,046","888,508","1,253,682","1,578,981","2,018,596","2,018,596",100% success rate,Fullstack,Java,Undertow,None,Linux,Realistic
+activej,"38,162","648,724","1,068,699","1,501,740","2,004,691","2,627,329","2,627,329",100% success rate,Micro,Java,activej,None,Linux,Realistic
+aiohttp,"20,656","37,961","71,839","172,993","276,244","309,350","309,350",100% success rate,Micro,Python,asyncio,Gunicorn,Linux,Realistic
+aioworkers,"27,259","53,181","110,027","300,294","509,240","561,873","561,873",100% success rate,Platform,Python,None,aioworkers.net.web,Linux,Realistic
+aioworkers,"32,862","66,954","112,069","191,381","218,316","227,268","227,268",100% success rate,Platform,Python,None,aioworkers.net.web,Linux,Realistic
+akka-http,"30,717","92,135","200,642","180,257","201,196","216,409","216,409",100% success rate,Micro,Scala,Akka,None,Linux,Realistic
+akka-http-slick-postgres,"27,868","85,708","134,922","271,018","340,032","354,747","354,747",100% success rate,Micro,Scala,Akka,None,Linux,Realistic
+aleph,"26,063","65,153","379,240","449,472","505,987","539,014","539,014",100% success rate,Micro,Clojure,Netty,None,Linux,Realistic
+amber,"44,371","291,041","759,712","1,095,920","1,363,798","1,548,190","1,548,190",100% success rate,Fullstack,Crystal,None,None,Linux,Realistic
+amp,"25,744","47,395","112,037","432,595","567,409","610,543","610,543",100% success rate,Platform,PHP,amp,None,Linux,Realistic
+angel3_postgresql,"16,556","35,608","64,606","104,299","114,048","113,045","114,048",100% success rate,Fullstack,Dart,angel3,None,Linux,Realistic
+apidaora,"23,457","41,945","86,302","322,512","482,423","532,153","532,153",100% success rate,Micro,Python,None,None,Linux,Realistic
+apidaora-core,"24,451","45,487","91,225","347,368","593,208","669,640","669,640",100% success rate,Micro,Python,None,None,Linux,Realistic
+appmpower [aot-no-reflection],"22,315","97,153","277,599","1,028,657","1,632,967","1,955,131","1,955,131",100% success rate,Platform,C#,.NET,kestrel,Linux,Realistic
+archttp,781,"1,553","2,732","5,399","10,557","22,239","22,239",100% success rate,Platform,D,archttp,None,Linux,Realistic
+armeria,"23,994","49,787","405,728","695,393","817,801","837,645","837,645",100% success rate,Micro,Java,Netty,None,Linux,Realistic
+aspcore-mono,"27,509","59,166","634,545","918,686","1,081,050","1,083,492","1,083,492",100% success rate,Platform,C#,.NET,kestrel,Linux,Realistic
+aspcore-mono-mvc,"21,426","63,006","101,116","140,102","156,322","144,570","156,322",100% success rate,Fullstack,C#,.NET,kestrel,Linux,Realistic
+aspcore-mono-mw,"17,568","91,141","165,471","356,252","674,794","734,362","734,362",100% success rate,Micro,C#,.NET,kestrel,Linux,Realistic
+aspcore-vb-mw,"24,968","96,622","341,004","1,121,029","1,533,094","1,696,869","1,696,869",100% success rate,Micro,vb,.NET,kestrel,Linux,Realistic
+aspnetcore,"26,452","87,918","905,936","1,541,762","1,998,301","2,546,481","2,546,481",100% success rate,Platform,C#,.NET,kestrel,Linux,Realistic
+aspnetcore-aot,"26,507","80,332","951,436","1,540,524","1,994,135","2,556,896","2,556,896",100% success rate,Platform,C#,.NET,kestrel,Linux,Realistic
+"asp.net core [minimal apis, pg, dapper]","23,099","57,886","329,306","1,121,061","1,692,362","2,051,573","2,051,573",100% success rate,Micro,C#,.NET,kestrel,Linux,Realistic
+"asp.net core [mvc, pg, ef]","21,178","48,812","177,356","793,428","1,164,123","1,274,744","1,274,744",100% success rate,Fullstack,C#,.NET,kestrel,Linux,Realistic
+astra,"21,572","50,614","567,841","689,185","730,016","738,798","738,798",100% success rate,Micro,Rust,None,hyper,Linux,Realistic
+async-worker,"3,259","3,507","3,822","3,846","3,840","3,753","3,846",100% success rate,Micro,Python,asyncio,None,Linux,Realistic
+atreugo,"28,737","66,850","465,208","596,902","585,278","575,827","596,902",100% success rate,Platform,Go,None,None,Linux,Realistic
+atreugo-prefork,"64,706","565,583","757,673","1,289,054","1,849,626","2,521,175","2,521,175",100% success rate,Platform,Go,None,None,Linux,Realistic
+axum,"27,804","60,788","1,034,378","1,511,174","1,962,335","2,709,794","2,709,794",100% success rate,Platform,Rust,Rust,hyper,Linux,Realistic
+bareasgi,"15,996","29,357","43,344","74,326","84,768","85,148","85,148",100% success rate,Micro,Python,asyncio,hypercorn,Linux,Realistic
+beetlex,"23,055","50,157","42,678","56,673","57,635","57,852","57,852",100% success rate,Fullstack,C#,.NET,beetlex,Linux,Realistic
+beetlex-core,"27,991","563,622","965,003","1,478,495","1,896,480","2,316,553","2,316,553",100% success rate,Platform,C#,.NET,beetlex,Linux,Realistic
+ben [kestrel],"12,950","23,901","340,938","1,063,020","1,282,984","1,395,555","1,395,555",100% success rate,Micro,C#,.NET,kestrel,Linux,Realistic
+blacksheep,"24,170","44,167","93,884","363,380","550,782","611,593","611,593",100% success rate,Micro,Python,asgi,uvicorn,Linux,Realistic
+blade,"24,964","56,492","737,122","959,528","1,223,103","1,334,087","1,334,087",100% success rate,Fullstack,Java,None,None,Linux,Realistic
+blaze,"27,902","547,457","1,039,715","1,530,960","2,088,606","2,661,073","2,661,073",100% success rate,Micro,Scala,blaze,None,Linux,Realistic
+just-boost,"28,315","86,727","119,907","137,902","133,429","126,929","137,902",100% success rate,Micro,C++,None,None,Linux,Realistic
+bottle,"26,273","48,764","90,326","255,488","490,790","530,627","530,627",100% success rate,Micro,Python,Meinheld,None,Linux,Realistic
+cakephp,"7,403","13,497","18,521","19,204","18,856","18,480","19,204",100% success rate,Fullstack,PHP,fpm/fastcgi,nginx,Linux,Realistic
+cakephp-workerman,"3,844","5,273","5,692","5,064","4,692","4,510","5,692",100% success rate,Fullstack,PHP,workerman,None,Linux,Realistic
+carter,"11,318","21,736","159,993","672,208","805,932","823,881","823,881",100% success rate,Micro,C#,.NET,kestrel,Linux,Realistic
+cask,"18,404","37,449","67,364","86,461","96,158","110,014","110,014",100% success rate,Micro,Scala,Undertow,None,Linux,Realistic
+cfml-lucee,"27,746","66,900","144,187","282,763","268,951","219,084","282,763",100% success rate,Platform,cfml,None,None,Linux,Realistic
+cfml-adobe,"26,754","63,739","153,317","291,676","303,545","305,396","305,396",100% success rate,Platform,cfml,None,None,Linux,Realistic
+chi,"30,681","87,729","156,107","236,899","281,160","352,271","352,271",100% success rate,Micro,Go,None,None,Linux,Realistic
+chi-gojay,"28,140","66,743","137,577","328,182","391,428","491,323","491,323",100% success rate,Micro,Go,None,None,Linux,Realistic
+chi-gojay-prefork,"27,383","141,208","502,417","716,465","726,274","968,546","968,546",100% success rate,Micro,Go,None,None,Linux,Realistic
+chi-prefork,"31,326","152,206","361,485","376,591","376,635","401,513","401,513",100% success rate,Micro,Go,None,None,Linux,Realistic
+chi-scratch,"29,748","76,374","146,362","230,994","276,967","345,503","345,503",100% success rate,Micro,Go,None,None,Linux,Realistic
+chi-sjson,"27,876","67,636","138,408","330,522","398,643","501,595","501,595",100% success rate,Micro,Go,None,None,Linux,Realistic
+chi-sjson-prefork,"27,662","82,580","492,506","705,434","755,330","955,729","955,729",100% success rate,Micro,Go,None,None,Linux,Realistic
+clevergo,"27,836","71,242","101,385","234,695","366,038","517,471","517,471",100% success rate,Micro,Go,None,None,Linux,Realistic
+codeigniter,"7,486","13,373","18,657","19,901","19,766","19,382","19,901",100% success rate,Fullstack,PHP,fpm/fastcgi,nginx,Linux,Realistic
+coldbox-lucee,"10,278","16,822","22,386","22,453","21,557","21,175","22,453",100% success rate,Fullstack,cfml,None,None,Linux,Realistic
+coldbox-adobe,"8,370","14,960","24,226","25,545","25,624","25,307","25,624",100% success rate,Fullstack,cfml,None,None,Linux,Realistic
+collie,386,771,"1,341","2,651","5,125","10,438","10,438",100% success rate,Platform,D,Collie,None,Linux,Realistic
+collie-ldc,388,775,"1,356","2,678","5,258","11,028","11,028",100% success rate,Platform,D,Collie,None,Linux,Realistic
+comet,"24,941","43,316","96,293","363,254","376,285","415,799","415,799",100% success rate,Micro,PHP,workerman,None,Linux,Realistic
+compojure,"23,777","48,785","111,632","365,029","381,911","388,006","388,006",100% success rate,Micro,Clojure,Servlet,Resin,Linux,Realistic
+cpoll_cppsp,"28,353","66,518","1,061,837","1,540,881","2,056,712","2,759,162","2,759,162",100% success rate,Platform,C++,None,None,Linux,Realistic
+crax,"19,543","35,503","69,801","154,554","211,208","222,951","222,951",100% success rate,Micro,Python,None,None,Linux,Realistic
+curacao,"15,623","31,173","48,135","44,674","50,531","61,468","61,468",100% success rate,Micro,Java,Servlet,None,Linux,Realistic
+cutelyst,"41,162","75,421","122,217","207,158","346,664","595,035","595,035",100% success rate,Fullstack,C++,cutelystwsgi,None,Linux,Realistic
+cutelyst-thread,"26,861","61,483","868,058","1,270,835","1,637,711","1,988,829","1,988,829",100% success rate,Fullstack,C++,cutelystwsgi,None,Linux,Realistic
+cutelyst-thread-pico,"25,620","57,035","896,735","1,331,003","1,736,324","2,108,232","2,108,232",100% success rate,Fullstack,C++,cutelystwsgi,None,Linux,Realistic
+cyberphp,"30,311","66,982","137,413","196,150","194,255","186,470","196,150",100% success rate,Micro,PHP,workerman,None,Linux,Realistic
+dancer,"10,176","26,762","46,315","47,094","46,570","46,062","47,094",100% success rate,Fullstack,Perl,Plack,starman,Linux,Realistic
+dia,"18,102","24,938","19,263","22,961","25,033","19,752","25,033",100% success rate,Micro,Dart,None,None,Linux,Realistic
+ditsmod v3.0,"26,122","55,401","569,982","887,977","988,153","1,009,730","1,009,730",100% success rate,Micro,typescript,nodejs,None,Linux,Realistic
+ditsmod-bun v3.0,"28,298","76,960","506,394","907,228","1,093,769","1,240,463","1,240,463",100% success rate,Micro,typescript,bun,None,Linux,Realistic
+django,"19,784","37,704","65,357","126,410","167,280","164,869","167,280",100% success rate,Fullstack,Python,wsgi,Meinheld,Linux,Realistic
+django [socketify.py wsgi],"30,803","61,709","99,050","145,886","167,396","183,424","183,424",100% success rate,Fullstack,Python,wsgi,socketify.py,Linux,Realistic
+donkey,"25,986","62,172","916,915","1,382,235","1,818,307","2,071,538","2,071,538",100% success rate,Micro,Clojure,vert.x,None,Linux,Realistic
+dream,"29,775","39,577","53,816","34,749","36,945","46,909","53,816",100% success rate,Fullstack,ocaml,http/af,None,Linux,Realistic
+drogon,"26,576","61,551","968,675","1,434,345","1,886,622","2,474,349","2,474,349",100% success rate,Fullstack,C++,None,None,Linux,Realistic
+dropwizard,"35,940","89,232","232,154","383,242","428,164","431,324","431,324",100% success rate,Fullstack,Java,JAX-RS,Jetty,Linux,Realistic
+duckphp,"12,857","23,234","93,954","189,822","201,618","182,226","201,618",100% success rate,Fullstack,PHP,fpm/fastcgi,nginx,Linux,Realistic
+duct,"20,613","41,196","88,088","185,901","233,657","232,001","233,657",100% success rate,Micro,Clojure,Ring,None,Linux,Realistic
+duct-aleph,"15,966","76,313","122,913","126,207","131,007","133,882","133,882",100% success rate,Micro,Clojure,Netty,None,Linux,Realistic
+duct-httpkit,"22,425","48,261","80,821","91,647","91,449","95,101","95,101",100% success rate,Micro,Clojure,Ring,None,Linux,Realistic
+easyrpc,"10,792","20,987","136,710","751,994","1,106,148","1,169,270","1,169,270",100% success rate,Fullstack,C#,.NET,kestrel,Linux,Realistic
+echo,"30,975","82,664","445,420","796,726","855,437","815,997","855,437",100% success rate,Micro,Go,None,None,Linux,Realistic
+elysia,"30,066","165,691","775,140","1,188,047","1,523,360","1,837,294","1,837,294",100% success rate,Micro,typescript,bun,None,Linux,Realistic
+elysia [compiled],"30,951","156,308","787,287","1,171,372","1,515,414","1,815,583","1,815,583",100% success rate,Micro,typescript,bun,None,Linux,Realistic
+embedio,"10,802","12,658","12,380","12,078","12,092","11,086","12,658",100% success rate,Fullstack,C#,.NET,embedio,Linux,Realistic
+emmett,"16,843","43,561","134,517","291,118","425,456","566,594","566,594",100% success rate,Fullstack,Python,None,None,Linux,Realistic
+emmett55,"16,535","34,601","137,190","289,709","432,506","571,303","571,303",100% success rate,Micro,Python,rsgi,granian,Linux,Realistic
+es4x,"26,873","60,933","959,297","1,319,606","1,435,714","1,438,464","1,438,464",100% success rate,Micro,JavaScript,vert.x,None,Linux,Realistic
+express,"18,217","42,523","119,531","206,412","223,608","224,163","224,163",100% success rate,Micro,JavaScript,nodejs,None,Linux,Realistic
+express-postgresjs,"23,358","54,715","145,305","269,205","299,260","301,213","301,213",100% success rate,Micro,JavaScript,nodejs,None,Linux,Realistic
+facil.io,"39,589","126,794","605,167","1,191,994","1,755,633","2,127,477","2,127,477",100% success rate,Micro,C,None,None,Linux,Realistic
+"falco, donald","25,412","104,255","317,032","1,080,543","1,505,748","1,662,104","1,662,104",100% success rate,Micro,f#,.NET,kestrel,Linux,Realistic
+falcon,"28,429","53,567","97,289","319,552","660,122","714,694","714,694",100% success rate,Micro,Python,wsgi,Meinheld,Linux,Realistic
+falcon [asgi/tortoise],"24,712","42,351","91,163","333,356","436,376","490,998","490,998",100% success rate,Micro,Python,asgi,uvicorn,Linux,Realistic
+falcon [bjoern],"23,467","43,095","81,266","451,631","623,612","707,846","707,846",100% success rate,Micro,Python,wsgi,bjoern,Linux,Realistic
+falcon [fastwsgi],"24,491","48,430","99,473","702,615","923,443","980,597","980,597",100% success rate,Micro,Python,wsgi,fastwsgi,Linux,Realistic
+falcon [meinheld-orjson],"29,294","62,024","116,750","436,307","788,714","903,324","903,324",100% success rate,Micro,Python,wsgi,Meinheld,Linux,Realistic
+falcon [pypy3],"27,834","65,758","54,573","40,591","35,919","38,183","65,758",100% success rate,Micro,Python,wsgi,Gunicorn,Linux,Realistic
+falcon [socketify.py asgi],"44,679","110,705","209,826","363,810","480,711","533,822","533,822",100% success rate,Micro,Python,asgi,socketify.py,Linux,Realistic
+falcon [socketify.py asgi pypy3],"255,879","465,534","652,959","876,907","1,029,281","1,110,700","1,110,700",100% success rate,Micro,Python,asgi,socketify.py,Linux,Realistic
+falcon [socketify.py wsgi],"55,207","129,034","240,016","421,338","562,924","614,922","614,922",100% success rate,Micro,Python,wsgi,socketify.py,Linux,Realistic
+falcon [socketify.py wsgi pypy3],"325,235","606,705","869,217","1,124,888","1,422,525","1,644,135","1,644,135",100% success rate,Micro,Python,wsgi,socketify.py,Linux,Realistic
+falcon [waitress],"1,276","1,336","1,266","1,383","1,446","1,448","1,448",100% success rate,Micro,Python,wsgi,waitress,Linux,Realistic
+fastapi,"21,271","37,865","77,717","187,596","320,036","354,899","354,899",100% success rate,Micro,Python,asyncio,Gunicorn,Linux,Realistic
+fastapi-gunicorn-orjson,"21,779","39,322","78,510","214,130","333,556","364,059","364,059",100% success rate,Micro,Python,asyncio,Gunicorn,Linux,Realistic
+fastapi-hypercorn,374,749,"1,310","2,615","5,273","11,995","11,995",100% success rate,Micro,Python,asyncio,hypercorn,Linux,Realistic
+fastapi-hypercorn-orjson,374,749,"1,310","2,616","5,260","11,998","11,998",100% success rate,Micro,Python,asyncio,hypercorn,Linux,Realistic
+fastapi [socketify.py asgi],"38,558","82,695","139,486","210,224","270,780","296,308","296,308",100% success rate,Micro,Python,asyncio,socketify.py,Linux,Realistic
+fastapi [socketify.py asgi pypy3],"64,341","246,122","402,433","566,527","647,388","676,460","676,460",100% success rate,Micro,Python,asyncio,socketify.py,Linux,Realistic
+fastapi-uvicorn,"22,191","39,437","74,945","177,866","289,477","322,402","322,402",100% success rate,Micro,Python,asyncio,uvicorn,Linux,Realistic
+fastapi-uvicorn-orjson,"21,196","39,951","77,861","213,584","302,389","330,287","330,287",100% success rate,Micro,Python,asyncio,uvicorn,Linux,Realistic
+fastendpoints,"22,549","73,218","268,853","1,046,950","1,458,943","1,614,928","1,614,928",100% success rate,Micro,C#,.NET,kestrel,Linux,Realistic
+fastify,"26,099","53,970","556,539","781,188","830,543","844,960","844,960",100% success rate,Micro,JavaScript,nodejs,None,Linux,Realistic
+fat-free,"18,937","40,365","96,838","133,952","132,625","117,627","133,952",100% success rate,Fullstack,PHP,fpm/fastcgi,nginx,Linux,Realistic
+feathersjs,"19,378","42,663","90,649","136,695","144,519","144,258","144,519",100% success rate,Fullstack,typescript,None,None,Linux,Realistic
+feersum,"38,889","83,650","262,199","797,315","1,498,770","2,230,619","2,230,619",100% success rate,Platform,Perl,None,feersum,Linux,Realistic
+feersum,"38,447","83,396","257,514","879,146","1,494,323","2,232,452","2,232,452",100% success rate,Platform,Perl,None,feersum,Linux,Realistic
+ffead-cpp [v],"27,457","57,653","1,060,111","1,628,562","2,202,443","2,857,764","2,857,764",100% success rate,Fullstack,C++,None,picov,Linux,Realistic
+ffead-cpp [v-prof],"27,100","652,669","1,073,999","1,584,213","2,118,704","2,771,261","2,771,261",100% success rate,Fullstack,C++,None,picov,Linux,Realistic
+fiber,"28,058","67,742","301,665","542,699","534,028","523,610","542,699",100% success rate,Platform,Go,None,None,Linux,Realistic
+fiber-prefork,"30,447","607,411","966,839","1,384,470","1,839,327","2,479,768","2,479,768",100% success rate,Platform,Go,None,None,Linux,Realistic
+finagle,"26,240","60,435","809,402","1,017,878","1,143,375","1,169,575","1,169,575",100% success rate,Micro,Scala,Netty,None,Linux,Realistic
+finatra,"25,860","60,299","792,769","1,020,255","1,164,030","1,191,989","1,191,989",100% success rate,Micro,Scala,Netty,None,Linux,Realistic
+finch,"26,060","58,388","770,714","991,016","1,201,161","1,291,516","1,291,516",100% success rate,Micro,Scala,Netty,None,Linux,Realistic
+flight,"14,186","24,393","68,639","170,671","182,491","169,037","182,491",100% success rate,Micro,PHP,fpm/fastcgi,nginx,Linux,Realistic
+"frank, dapper","24,204","75,345","599,159","1,184,742","1,449,119","1,609,016","1,609,016",100% success rate,Micro,f#,.NET,kestrel,Linux,Realistic
+fuel,"14,116","27,559","42,288","47,187","47,786","45,986","47,786",100% success rate,Micro,PHP,fpm/fastcgi,nginx,Linux,Realistic
+gearbox,"27,626","66,730","465,653","581,454","575,954","566,596","581,454",100% success rate,Platform,Go,None,None,Linux,Realistic
+gearbox prefork,"29,063","640,144","966,686","1,368,661","1,845,790","2,441,834","2,441,834",100% success rate,Platform,Go,None,None,Linux,Realistic
+gemini,"27,371","104,891","921,980","1,190,893","1,218,895","1,154,680","1,218,895",100% success rate,Fullstack,Java,Servlet,Resin,Linux,Realistic
+genhttp,"26,311","61,324","307,371","951,612","1,363,730","1,524,065","1,524,065",100% success rate,Fullstack,C#,.NET,kestrel,Linux,Realistic
+gin,"27,028","70,368","173,791","312,216","400,792","498,192","498,192",100% success rate,Micro,Go,None,None,Linux,Realistic
+gin-scratch,"28,385","70,188","130,883","226,801","329,593","447,739","447,739",100% success rate,Micro,Go,None,None,Linux,Realistic
+giraffe,"24,757","106,812","325,012","1,121,839","1,516,266","1,688,357","1,688,357",100% success rate,Fullstack,f#,.NET,kestrel,Linux,Realistic
+giraffe-newtonsoft,"23,380","84,851","312,330","1,033,937","1,483,981","1,640,097","1,640,097",100% success rate,Micro,f#,.NET,kestrel,Linux,Realistic
+go,"24,054","32,823","41,821","73,289","161,652","388,484","388,484",100% success rate,Platform,Go,None,None,Linux,Realistic
+go-pgx-easyjson,"30,827","84,146","420,544","694,578","642,291","657,306","694,578",100% success rate,Platform,Go,None,None,Linux,Realistic
+go-pgx-prefork,"31,126","65,444","478,145","979,551","1,356,377","1,607,374","1,607,374",100% success rate,Platform,Go,None,None,Linux,Realistic
+go-pgx-prefork-easyjson,"29,925","67,869","573,513","997,096","1,347,158","1,594,674","1,594,674",100% success rate,Platform,Go,None,None,Linux,Realistic
+goframe,"28,759","105,621","582,800","863,983","1,028,553","1,187,255","1,187,255",100% success rate,Platform,Go,None,None,Linux,Realistic
+goji,"29,117","79,728","347,998","649,613","693,801","654,777","693,801",100% success rate,Micro,Go,None,None,Linux,Realistic
+goravel gin,"29,574","82,263","384,146","774,528","881,069","898,172","898,172",100% success rate,Fullstack,Go,None,None,Linux,Realistic
+goravel fiber,"29,036","559,064","939,317","1,332,854","1,767,387","2,361,155","2,361,155",100% success rate,Fullstack,Go,None,None,Linux,Realistic
+grails,382,763,"1,338","2,671","5,356","11,953","11,953",100% success rate,Fullstack,Groovy,Servlet,None,Linux,Realistic
+granian [asgi],"14,638","28,709","65,572","497,157","743,024","1,011,292","1,011,292",100% success rate,Platform,Python,None,granian,Linux,Realistic
+granian [rsgi],"14,908","42,411","68,056","640,612","899,795","1,212,765","1,212,765",100% success rate,Platform,Python,None,granian,Linux,Realistic
+granian [rsgi wrk],"14,993","31,648","84,507","562,561","893,810","1,211,032","1,211,032",100% success rate,Platform,Python,None,granian,Linux,Realistic
+granian [wsgi],"17,813","38,419","94,590","839,358","1,085,393","1,411,293","1,411,293",100% success rate,Platform,Python,None,granian,Linux,Realistic
+grape,"19,101","30,227","66,158","130,816","134,184","133,990","134,184",100% success rate,Micro,Ruby,Rack,Puma,Linux,Realistic
+grape-unicorn,"26,596","55,658","98,154","147,251","151,743","150,591","151,743",100% success rate,Micro,Ruby,Rack,Unicorn,Linux,Realistic
+greenlightning,"36,619","79,995","162,550","459,309","838,076","1,415,936","1,415,936",100% success rate,Micro,Java,None,None,Linux,Realistic
+grizzly,"25,729","59,986","934,022","1,244,683","1,648,018","1,991,263","1,991,263",100% success rate,Micro,Java,Servlet,grizzly,Linux,Realistic
+grizzly-jersey,"23,590","39,652","90,763","436,954","533,386","562,748","562,748",100% success rate,Micro,Java,JAX-RS,grizzly,Linux,Realistic
+hanami,"15,107","24,171","48,596","74,574","69,270","69,343","74,574",100% success rate,Fullstack,Ruby,Rack,Puma,Linux,Realistic
+hapi,"25,228","43,052","121,606","438,147","502,643","516,626","516,626",100% success rate,Micro,JavaScript,nodejs,None,Linux,Realistic
+hapi-nginx,54,"19,026",53,0,"15,906",404,"19,026",100% success rate,Micro,JavaScript,nodejs,nginx,Linux,Realistic
+heaven,"17,581","38,926","73,402","133,415","154,209","157,544","157,544",100% success rate,Micro,Python,None,None,Linux,Realistic
+helidon,"23,968","46,803","215,505","813,632","918,538","924,355","924,355",100% success rate,Micro,Java,Netty,None,Linux,Realistic
+helidon 4,"24,734","87,882","784,166","1,081,883","1,487,507","2,233,345","2,233,345",100% success rate,Micro,Java,None,None,Linux,Realistic
+hertz,"28,257","60,206","137,276","780,943","935,394","1,028,233","1,028,233",100% success rate,Micro,Go,None,None,Linux,Realistic
+hexagon,"44,509","158,343","420,222","639,034","800,531","942,034","942,034",100% success rate,Micro,Kotlin,Servlet,None,Linux,Realistic
+hexagon helidon postgresql,"24,032","91,669","690,345","923,261","1,397,743","1,071,869","1,397,743",100% success rate,Micro,Kotlin,helidon,None,Linux,Realistic
+hexagon helidon native pgclient,"21,135","62,322","462,805","704,487","714,431","684,347","714,431",100% success rate,Micro,Kotlin,helidon,None,Linux,Realistic
+hexagon helidon pgclient,"25,297","90,875","578,852","984,195","1,351,668","1,592,970","1,592,970",100% success rate,Micro,Kotlin,helidon,None,Linux,Realistic
+hexagon-jetty-native,"38,586","124,847","335,953","510,122","583,850","626,601","626,601",100% success rate,Micro,Kotlin,Servlet,None,Linux,Realistic
+hexagon-jettyloom,"31,564","67,521","123,282","318,113","511,250","638,996","638,996",100% success rate,Micro,Kotlin,Servlet,None,Linux,Realistic
+hexagon jetty loom pgclient,"30,265","55,619","95,898","145,641","397,733","594,607","594,607",100% success rate,Micro,Kotlin,Servlet,None,Linux,Realistic
+hexagon netty epoll postgresql,"17,940","39,558","638,081","854,607","1,198,080","1,472,088","1,472,088",100% success rate,Micro,Kotlin,Netty,None,Linux,Realistic
+hexagon netty epoll pgclient,"17,735","37,795","641,737","854,453","1,201,075","1,472,608","1,472,608",100% success rate,Micro,Kotlin,Netty,None,Linux,Realistic
+hexagon tomcat postgresql,"12,733","20,768","48,307","133,007","171,203","286,411","286,411",100% success rate,Micro,Kotlin,Servlet,tomcat,Linux,Realistic
+hono,"26,131","49,750","186,055","662,769","740,290","740,451","740,451",100% success rate,Micro,JavaScript,nodejs,None,Linux,Realistic
+hot,"6,953","18,498","42,803","52,986","59,713","47,463","59,713",100% success rate,Platform,Groovy,Jetty,Jetty,Linux,Realistic
+hserver,"60,605","317,541","844,265","1,115,758","1,481,108","1,820,270","1,820,270",100% success rate,Fullstack,Java,hserver,hserver,Linux,Realistic
+hserver-business,"48,019","88,432","523,091","774,957","1,053,723","1,272,960","1,272,960",100% success rate,Fullstack,Java,hserver-business,hserver-business,Linux,Realistic
+http.jl,"29,828","72,363","240,975","399,259","504,862","538,833","538,833",100% success rate,none,julia,None,http.jl,Linux,Realistic
+http4k,382,765,"1,340","2,675","10,490","10,677","10,677",32% success rate,Micro,Kotlin,sunhttp,None,Linux,Realistic
+http4k-apache4,"24,730","54,082","741,562","931,313","916,241","886,913","931,313",100% success rate,Micro,Kotlin,apache-httpcore,None,Linux,Realistic
+http4k-graalvm,382,764,"1,337","2,672","7,844","8,122","8,122",34% success rate,Micro,Kotlin,graalvm,None,Linux,Realistic
+http4k-helidon-graalvm,"18,491","42,149","63,629","57,626","35,298","29,290","63,629",100% success rate,Micro,Kotlin,graalvm,None,Linux,Realistic
+http4k-helidon-jdbc,"21,334","52,460","181,155","564,274","771,130","744,583","771,130",100% success rate,Micro,Kotlin,helidon,None,Linux,Realistic
+http4k-helidon-pgclient,"21,326","58,870","171,541","610,807","695,243","658,717","695,243",100% success rate,Micro,Kotlin,helidon-pgclient,None,Linux,Realistic
+http4k-jetty,"48,924","124,664","512,632","746,844","820,809","867,558","867,558",100% success rate,Micro,Kotlin,Jetty,None,Linux,Realistic
+http4k-jetty11,"45,664","131,292","511,744","766,489","817,576","858,760","858,760",100% success rate,Micro,Kotlin,jetty11,None,Linux,Realistic
+http4k-jetty11loom-jdbc,"38,712","103,607","478,594","758,910","870,144","897,137","897,137",100% success rate,Micro,Kotlin,jetty11-loom-jdbc,None,Linux,Realistic
+http4k-jetty11loom-pgclient,"38,574","104,433","506,107","787,181","896,254","927,592","927,592",100% success rate,Micro,Kotlin,jetty11-loom-pgclient,None,Linux,Realistic
+http4k-jettyloom-jdbc,"38,947","109,279","499,822","774,799","890,258","918,432","918,432",100% success rate,Micro,Kotlin,jetty-loom-jdbc,None,Linux,Realistic
+http4k-jettyloom-pgclient,"39,865","109,051","515,087","769,312","878,161","897,551","897,551",100% success rate,Micro,Kotlin,jetty-loom-pgclient,None,Linux,Realistic
+http4k-ktornetty,"36,957","71,353","120,430","191,329","249,962","316,415","316,415",100% success rate,Micro,Kotlin,ktor,None,Linux,Realistic
+http4k-netty,"24,679","51,604","648,397","890,878","1,088,795","1,164,019","1,164,019",100% success rate,Micro,Kotlin,Netty,None,Linux,Realistic
+http4k-ratpack,"23,450","51,407","582,821","903,808","1,058,173","1,084,925","1,084,925",100% success rate,Micro,Kotlin,Netty,None,Linux,Realistic
+http4k-sunhttploom,382,765,"1,339","2,684","10,275","10,724","10,724",32% success rate,Micro,Kotlin,sunhttp,None,Linux,Realistic
+http4k-undertow,"36,879","124,642","484,222","667,732","733,705","814,813","814,813",100% success rate,Micro,Kotlin,Undertow,None,Linux,Realistic
+http4s,"27,144","77,940","130,208","154,995","159,528","160,418","160,418",100% success rate,Micro,Scala,NIO2,blaze,Linux,Realistic
+httpz (zig),"27,143","81,602","158,724","279,550","407,488","799,434","799,434",100% success rate,Fullstack,zig,None,None,Linux,Realistic
+hummingbird,"24,674","47,785","162,535","544,272","569,017","570,403","570,403",100% success rate,Micro,Swift,None,None,Linux,Realistic
+hummingbird 2,"14,851","62,289","128,693","141,277","145,755","146,977","146,977",100% success rate,Micro,Swift,None,None,Linux,Realistic
+hummingbirdcore,"24,873","51,347","509,400","692,225","694,428","691,164","694,428",100% success rate,Micro,Swift,None,None,Linux,Realistic
+hyper,"27,635","64,841","1,071,874","1,539,382","2,106,113","2,885,610","2,885,610",100% success rate,Micro,Rust,Rust,hyper,Linux,Realistic
+hyperexpress,"26,682","60,063","926,095","1,333,305","1,763,644","2,254,278","2,254,278",100% success rate,Micro,JavaScript,nodejs,µws,Linux,Realistic
+integrated haskell platfrom (ihp),"10,162","7,404","7,394","7,341","7,413","8,538","10,162",100% success rate,Fullstack,Haskell,Wai,wai,Linux,Realistic
+imi,"26,526","52,192","103,246","686,269","900,454","913,201","913,201",100% success rate,Fullstack,PHP,swoole,None,Linux,Realistic
+imi-workerman,"24,246","44,469","105,393","542,814","644,166","668,321","668,321",100% success rate,Fullstack,PHP,workerman,None,Linux,Realistic
+inverno,"169,171","477,024","1,035,497","1,436,890","1,970,164","2,579,842","2,579,842",100% success rate,Micro,Java,inverno,None,Linux,Realistic
+isocket-nio,0,1,1,0,1,0,1,1% success rate,Platform,Java,isocket-nio,None,Linux,Realistic
+japronto,"26,592","64,024","139,969","940,894","1,605,693","2,087,286","2,087,286",100% success rate,Micro,Python,None,None,Linux,Realistic
+javalin,"52,382","255,426","744,278","1,023,571","1,166,157","1,269,832","1,269,832",100% success rate,Micro,Java,Jetty,None,Linux,Realistic
+jawn,"16,796","31,576","59,674","80,211","90,749","104,340","104,340",100% success rate,Fullstack,Java,Undertow,None,Linux,Realistic
+jester,"27,503","61,298","928,767","1,482,954","1,986,887","2,604,675","2,604,675",100% success rate,Micro,Nim,None,None,Linux,Realistic
+jewelia,"27,483","63,348","206,262","347,084","440,808","477,307","477,307",100% success rate,none,julia,None,http.jl,Linux,Realistic
+jooby,"27,788","64,671","448,061","425,413","185,224","426,142","448,061",100% success rate,Fullstack,Java,Undertow,None,Linux,Realistic
+jooby-jetty,"27,813","66,066","996,846","1,340,836","1,788,715","2,193,839","2,193,839",100% success rate,Fullstack,Java,Jetty,None,Linux,Realistic
+jooby-jaxrs,"27,706","68,829","1,045,651","1,522,192","2,031,510","2,687,394","2,687,394",100% success rate,Fullstack,Java,Undertow,None,Linux,Realistic
+jooby-netty,"27,617","649,774","1,078,192","1,523,329","2,039,617","2,705,638","2,705,638",100% success rate,Fullstack,Java,Netty,None,Linux,Realistic
+just-js,"30,341","640,235","1,075,111","1,542,491","2,122,177","2,868,204","2,868,204",100% success rate,Platform,JavaScript,just-js,None,Linux,Realistic
+kami,"30,388","89,326","444,772","816,398","871,624","855,955","871,624",100% success rate,Micro,Go,None,None,Linux,Realistic
+kelp,"15,987","40,347","56,496","57,346","56,424","54,548","57,346",100% success rate,Fullstack,Perl,Plack,gazelle,Linux,Realistic
+kelp-gazelle-mongodb,"15,543","39,895","59,294","64,959","56,556","54,472","64,959",100% success rate,Fullstack,Perl,Plack,gazelle,Linux,Realistic
+kelp-starlet-mongodb,"14,151","36,179","74,124","87,982","85,997","81,920","87,982",100% success rate,Fullstack,Perl,Plack,starlet,Linux,Realistic
+kelp-starlet-mysql,"14,384","37,353","75,650","85,681","85,203","80,912","85,681",100% success rate,Fullstack,Perl,Plack,starlet,Linux,Realistic
+kelp-starman-mongodb,"13,400","33,693","47,426","54,549","50,453","54,647","54,647",100% success rate,Fullstack,Perl,Plack,starman,Linux,Realistic
+kelp-starman-mysql,"13,757","33,883","52,438","45,103","54,321","51,538","54,321",100% success rate,Fullstack,Perl,Plack,starman,Linux,Realistic
+kelp-twiggy-mongodb,"23,150","34,208","35,282","4,642",0,0,"35,282",100% success rate,Fullstack,Perl,Plack,twiggy,Linux,Realistic
+kelp-twiggy-mysql,"23,535","6,106",0,0,0,0,"23,535",100% success rate,Fullstack,Perl,Plack,twiggy,Linux,Realistic
+kemal,"50,023","371,352","707,821","1,073,512","1,340,094","1,614,263","1,614,263",100% success rate,Fullstack,Crystal,None,None,Linux,Realistic
+kit,"31,571","107,008","347,144","403,337","385,264","388,916","403,337",100% success rate,Micro,Clojure,Undertow,None,Linux,Realistic
+koa,"24,670","43,730","134,315","484,083","559,098","572,932","572,932",100% success rate,Micro,JavaScript,nodejs,None,Linux,Realistic
+kooby,"27,534","61,999","1,073,902","1,498,346","2,003,553","2,647,071","2,647,071",100% success rate,Fullstack,Kotlin,Undertow,None,Linux,Realistic
+ktor,"16,848","39,773","391,485","599,077","680,165","706,644","706,644",100% success rate,Micro,Kotlin,Netty,None,Linux,Realistic
+ktor-cio,"39,706","84,054","93,230","95,957","94,559","91,128","95,957",100% success rate,Micro,Kotlin,ktor,None,Linux,Realistic
+ktor-jasync,"17,057","39,875","429,825","624,520","655,853","672,007","672,007",100% success rate,Fullstack,Kotlin,None,None,Linux,Realistic
+ktor-jetty,"40,437","31,423","30,662","30,559","30,921","31,086","40,437",100% success rate,Micro,Kotlin,Jetty,None,Linux,Realistic
+ktor-pgclient,"17,171","40,379","430,960","632,719","684,398","701,373","701,373",100% success rate,Micro,Kotlin,Netty,None,Linux,Realistic
+ktor-netty-r2dbc,"16,898","38,655","406,985","610,610","690,893","720,134","720,134",100% success rate,Micro,Kotlin,Netty,None,Linux,Realistic
+kumbiaphp,"13,920","32,753","103,783","282,705","313,484","311,450","313,484",100% success rate,Fullstack,PHP,fpm/fastcgi,nginx,Linux,Realistic
+kumbiaphp-workerman,"25,961","61,570","860,753","1,182,284","1,499,592","1,742,710","1,742,710",100% success rate,Fullstack,PHP,workerman,None,Linux,Realistic
+lapis,"47,497","104,143","249,148","570,676","897,216","962,299","962,299",100% success rate,Fullstack,Lua,OpenResty,nginx,Linux,Realistic
+laravel,"8,496","17,177","25,788","26,901","26,084","25,393","26,901",100% success rate,Fullstack,PHP,fpm/fastcgi,nginx,Linux,Realistic
+laravel-laravel-s,"10,618","21,146","41,767","58,769","84,908","93,603","93,603",100% success rate,Fullstack,PHP,swoole,None,Linux,Realistic
+laravel-octane [frankenphp],"10,316","19,090","35,811","49,916","53,965","56,624","56,624",100% success rate,Fullstack,PHP,frankenphp,caddy,Linux,Realistic
+laravel-roadrunner,"6,413","14,119","15,469","15,345","14,465","13,629","15,469",100% success rate,Fullstack,PHP,roadrunner,None,Linux,Realistic
+laravel-swoole,"10,282","17,084","58,146","76,475","82,415","83,940","83,940",100% success rate,Fullstack,PHP,swoole,None,Linux,Realistic
+laravel-workerman,"17,068","27,222","62,534","142,963","156,468","157,110","157,110",100% success rate,Fullstack,PHP,workerman,None,Linux,Realistic
+leaf,"16,688","29,844","89,243","187,008","199,161","176,909","199,161",100% success rate,Micro,PHP,fpm/fastcgi,nginx,Linux,Realistic
+leaf-workerman,"23,352","39,796","78,014","196,729","209,522","210,213","210,213",100% success rate,Micro,PHP,workerman,None,Linux,Realistic
+h2o,"28,981","617,963","1,111,429","1,649,879","2,221,666","2,923,581","2,923,581",100% success rate,Platform,C,None,h2o,Linux,Realistic
+libreactor,"502,789","861,839","1,215,955","1,760,611","2,412,542","3,098,626","3,098,626",100% success rate,Platform,C,None,None,Linux,Realistic
+libreactor,"28,670","684,773","1,149,271","1,755,156","2,376,311","3,118,330","3,118,330",100% success rate,Micro,C,libreactor,None,Linux,Realistic
+lithium,"369,744","638,311","1,035,633","1,634,428","2,274,463","3,041,049","3,041,049",100% success rate,Micro,C++,None,None,Linux,Realistic
+lucky,"47,285","214,335","614,724","973,595","1,179,799","1,328,289","1,328,289",100% success rate,Fullstack,Crystal,None,None,Linux,Realistic
+lumen,"9,109","16,796","33,761","39,370","39,700","38,539","39,700",100% success rate,Micro,PHP,fpm/fastcgi,nginx,Linux,Realistic
+lumen-laravel-s,"10,712","25,449","59,268","127,967","127,328","136,492","136,492",100% success rate,Micro,PHP,swoole,None,Linux,Realistic
+lumen-swoole,"11,419","18,717","67,632","104,513","111,301","112,627","112,627",100% success rate,Micro,PHP,swoole,None,Linux,Realistic
+lumen-workerman,"21,071","36,050","81,517","260,725","308,160","313,181","313,181",100% success rate,Micro,PHP,workerman,None,Linux,Realistic
+luminus,"23,271","47,510","96,616","319,926","385,698","391,717","391,717",100% success rate,Micro,Clojure,Ring,None,Linux,Realistic
+lwan,"215,664","74,385","573,426","1,145,169","1,749,575","2,423,414","2,423,414",100% success rate,Micro,C,Lwan,lwan,Linux,Realistic
+lwan-lua,"46,234","70,420","134,369","1,085,851","1,582,531","2,055,710","2,055,710",100% success rate,Micro,Lua,Lwan,lwan,Linux,Realistic
+magician-io,"17,786","32,778","48,433","63,884","75,489","85,879","85,879",100% success rate,Platform,Java,magician,None,Linux,Realistic
+mako,"16,259","33,374","75,636","127,780","128,998","118,194","128,998",100% success rate,Fullstack,PHP,fpm/fastcgi,nginx,Linux,Realistic
+mark-php8-jit,"27,613","67,139","976,403","1,455,708","1,955,795","2,589,951","2,589,951",100% success rate,Micro,PHP,workerman,None,Linux,Realistic
+martian-mvc,"9,735","8,401","9,089","8,184","7,741","7,914","9,735",100% success rate,Platform,Java,martian,None,Linux,Realistic
+martini,"27,368","49,859","62,627","64,352","63,480","91,367","91,367",100% success rate,Micro,Go,None,None,Linux,Realistic
+may-minihttp,"27,669","61,292","1,114,810","1,717,193","2,378,940","3,102,062","3,102,062",100% success rate,Micro,Rust,Rust,may-minihttp,Linux,Realistic
+mesh,"28,910","65,365","965,454","1,407,791","1,836,572","2,449,534","2,449,534",100% success rate,Platform,JavaScript,nodejs,None,Linux,Realistic
+microdot,"21,242","38,640","80,650","190,507","241,014","251,738","251,738",100% success rate,Micro,Python,None,uvicorn,Linux,Realistic
+microdot-raw,"20,421","36,744","71,661","160,032","240,166","252,899","252,899",100% success rate,Micro,Python,None,uvicorn,Linux,Realistic
+microhttp,"28,363","65,444","990,738","1,465,378","1,992,712","2,670,525","2,670,525",100% success rate,Platform,Java,microhttp,None,Linux,Realistic
+micronaut,"25,656","52,908","740,848","1,015,916","1,308,320","1,468,052","1,468,052",100% success rate,Micro,Java,Netty,netty,Linux,Realistic
+micronaut vertx pg client graalvm,"22,904","45,339","102,344","451,104","622,143","660,243","660,243",100% success rate,Micro,Java,Netty,netty,Linux,Realistic
+minijax,"15,248","29,102","51,214","104,718","109,577","116,243","116,243",100% success rate,Fullstack,Java,JAX-RS,Undertow,Linux,Realistic
+mixphp,"12,499","32,981","76,586","156,641","169,419","161,090","169,419",100% success rate,Fullstack,PHP,fpm/fastcgi,nginx,Linux,Realistic
+mixphp-swoole-mysql,"27,247","60,666","826,722","1,125,728","1,413,077","1,602,335","1,602,335",100% success rate,Fullstack,PHP,swoole,None,Linux,Realistic
+mixphp-workerman-pgsql,"25,648","53,894","787,894","1,082,778","1,311,707","1,432,503","1,432,503",100% success rate,Fullstack,PHP,workerman,None,Linux,Realistic
+mojolicious,"13,635","21,639","36,223","54,418","57,770","56,258","57,770",100% success rate,Fullstack,Perl,None,Hypnotoad,Linux,Realistic
+morepath,"24,679","47,805","89,002","215,512","383,969","399,856","399,856",100% success rate,Micro,Python,Meinheld,Gunicorn,Linux,Realistic
+mormot [orm],"29,891","507,061","878,714","1,384,002","1,906,884","2,666,665","2,666,665",100% success rate,Fullstack,pascal,None,None,Linux,Realistic
+mrhttp,"28,115","73,691","875,243","1,460,934","2,055,716","2,802,615","2,802,615",100% success rate,Micro,Python,None,None,Linux,Realistic
+nancy,"9,764","13,836","19,647","19,484","18,958","20,305","20,305",100% success rate,Micro,C#,.NET,kestrel,Linux,Realistic
+nancy-netcore,"20,458","52,080","136,120","367,446","432,574","448,326","448,326",100% success rate,Micro,C#,.NET,kestrel,Linux,Realistic
+nestjs,"18,479","41,746","101,696","178,691","192,830","192,742","192,830",100% success rate,Micro,typescript,nodejs,None,Linux,Realistic
+nestjs-fastify,"25,788","52,575","438,210","696,683","768,799","778,830","778,830",100% success rate,Micro,typescript,nodejs,None,Linux,Realistic
+netcoreserver,"30,012","70,390","414,914","1,031,381","1,380,507","1,500,709","1,500,709",100% success rate,Fullstack,C#,.NET,netcoreserver,Linux,Realistic
+nette,"11,239","24,591","40,265","40,703","36,666","33,839","40,703",100% success rate,Fullstack,PHP,fpm/fastcgi,nginx,Linux,Realistic
+netty,"283,995","614,974","1,016,939","1,476,390","2,030,791","2,709,586","2,709,586",100% success rate,Platform,Java,Netty,None,Linux,Realistic
+next.js,"1,219","1,217","1,210","1,202","1,206","1,211","1,219",100% success rate,Platform,typescript,nodejs,None,Linux,Realistic
+ninja-standalone,"26,191","28,346","16,706","15,501","15,915","16,936","28,346",100% success rate,Fullstack,Java,Jetty,None,Linux,Realistic
+nginx-njs,"25,673","62,913","860,524","1,290,142","1,720,200","2,096,981","2,096,981",100% success rate,Platform,C,None,nginx,Linux,Realistic
+nodejs,"25,718","58,153","658,547","974,747","1,127,281","1,147,305","1,147,305",100% success rate,Platform,JavaScript,nodejs,None,Linux,Realistic
+bayou,"25,728","31,406","33,321","41,967","49,104","57,559","57,559",100% success rate,Platform,Java,Bayou,None,Linux,Realistic
+bun,"30,195","167,408","817,635","1,304,002","1,689,740","2,097,129","2,097,129",100% success rate,Platform,typescript,bun,None,Linux,Realistic
+cherrypy-py3,289,283,281,281,281,282,289,100% success rate,Micro,Python,None,None,Linux,Realistic
+cppcms,"17,150","16,977","17,346","17,285","17,470","17,421","17,470",100% success rate,Platform,C++,None,None,Linux,Realistic
+crystal,"51,019","347,877","769,113","1,229,817","1,519,958","1,851,758","1,851,758",100% success rate,Platform,Crystal,None,None,Linux,Realistic
+crystal-radix,"50,437","388,383","758,856","1,170,047","1,439,382","1,780,679","1,780,679",100% success rate,Platform,Crystal,None,None,Linux,Realistic
+deno,"25,660","56,679","118,845","891,327","1,358,512","1,806,460","1,806,460",100% success rate,Platform,typescript,deno,None,Linux,Realistic
+edap-http,"31,960","618,166","1,120,477","1,651,136","2,265,797","3,002,791","3,002,791",100% success rate,Platform,Java,edap,None,Linux,Realistic
+edap-http-fast,"33,753","671,827","1,117,789","1,651,372","2,303,225","3,019,148","3,019,148",100% success rate,Platform,Java,edap,None,Linux,Realistic
+elide,"25,172","53,528","768,046","1,100,431","1,314,399","1,432,561","1,432,561",100% success rate,Platform,JavaScript,elide,None,Linux,Realistic
+fasthttp,"28,030","68,232","467,394","582,069","574,384","568,416","582,069",100% success rate,Platform,Go,None,None,Linux,Realistic
+fasthttp-prefork,"31,647","196,779","776,572","1,360,727","1,888,184","2,545,983","2,545,983",100% success rate,Platform,Go,None,None,Linux,Realistic
+fastwsgi,"25,756","478,037","919,262","1,322,087","1,798,601","2,349,504","2,349,504",100% success rate,Micro,Python,wsgi,fastwsgi,Linux,Realistic
+fastwsgi [asgi],"11,395","26,311","60,899","664,259","962,436","1,166,634","1,166,634",100% success rate,Micro,Python,asgi,fastwsgi,Linux,Realistic
+firenio,"27,530","64,783","1,080,825","1,599,584","2,154,434","2,866,762","2,866,762",100% success rate,Platform,Java,firenio,None,Linux,Realistic
+firenio-http-lite,"28,454","64,623","1,099,753","1,637,092","2,265,958","2,972,507","2,972,507",100% success rate,Platform,Java,firenio,None,Linux,Realistic
+h2o_mruby,"26,809","61,110","142,505","1,088,227","1,547,186","1,927,148","1,927,148",100% success rate,Platform,Ruby,None,h2o,Linux,Realistic
+http-kit,"8,795","9,073","8,810","9,061","9,171","9,275","9,275",100% success rate,Platform,Clojure,Ring,None,Linux,Realistic
+httpaf,"32,541","83,860","456,974","1,117,902","1,629,737","2,055,443","2,055,443",100% success rate,Platform,ocaml,httpaf,None,Linux,Realistic
+httpbeast,"29,307","65,668","1,020,101","1,562,268","2,098,265","2,808,169","2,808,169",100% success rate,Platform,Nim,None,None,Linux,Realistic
+httpserver,383,766,"1,348","2,701","6,427","6,310","6,427",33% success rate,Platform,Java,httpserver,None,Linux,Realistic
+httpserver-robaho,"22,548","71,431","409,932","789,269","786,837","766,473","789,269",100% success rate,Platform,Java,httpserver,None,Linux,Realistic
+jetty,"52,317","356,481","793,577","1,025,257","1,147,014","1,273,510","1,273,510",100% success rate,Platform,Java,Jetty,None,Linux,Realistic
+jetty-servlet,"50,694","240,143","740,816","985,090","1,094,061","1,204,904","1,204,904",100% success rate,Platform,Java,Jetty,None,Linux,Realistic
+jlhttp,"27,575","64,708","979,422","1,159,484","1,088,719","1,084,618","1,159,484",100% success rate,Platform,Java,JLHTTP,None,Linux,Realistic
+light-4j,"27,549","60,834","90,836","101,224","113,439","149,537","149,537",100% success rate,Platform,Java,light-4j,None,Linux,Realistic
+ltio,"26,485","58,108","735,967","1,249,681","1,592,099","1,910,603","1,910,603",100% success rate,Platform,C++,None,None,Linux,Realistic
+nanohttpd,389,780,"1,366","2,675","5,292","11,727","11,727",100% success rate,Platform,Java,None,None,Linux,Realistic
+peachpie,"21,536","65,426","221,569","721,281","927,610","992,185","992,185",100% success rate,Platform,PHP,.NET,kestrel,Linux,Realistic
+ringojs,"22,459","64,076","136,788","166,714","160,997","39,257","166,714",100% success rate,Platform,JavaScript,Jetty,None,Linux,Realistic
+servlet,"29,547","646,289","1,051,844","1,460,160","1,842,878","2,203,565","2,203,565",100% success rate,Platform,Java,Servlet,Resin,Linux,Realistic
+smart-socket,"28,877","65,106","1,110,227","1,629,092","2,255,724","2,948,084","2,948,084",100% success rate,Platform,Java,smartboot,None,Linux,Realistic
+smart-servlet,"28,598","70,248","1,041,063","1,515,772","2,056,985","2,634,539","2,634,539",100% success rate,Platform,Java,smartboot,None,Linux,Realistic
+socketify.py [pypy3],"448,736","744,267","1,118,448","1,560,149","2,032,181","2,711,566","2,711,566",100% success rate,Micro,Python,None,socketify.py,Linux,Realistic
+socketify.py [asgi pypy3],"268,241","536,760","845,923","1,127,368","1,404,864","1,595,362","1,595,362",100% success rate,Micro,Python,None,socketify.py-asgi,Linux,Realistic
+socketify.py [asgi],"72,111","211,672","430,098","607,750","750,886","834,503","834,503",100% success rate,Micro,Python,None,socketify.py-asgi,Linux,Realistic
+socketify.py,"336,253","634,071","926,439","1,267,727","1,640,433","2,114,135","2,114,135",100% success rate,Micro,Python,None,socketify.py-python3,Linux,Realistic
+socketify.py [wsgi pypy3],"362,429","638,650","962,494","1,283,195","1,640,310","1,968,495","1,968,495",100% success rate,Micro,Python,None,socketify.py-wsgi,Linux,Realistic
+socketify.py [wsgi],"153,689","350,249","533,469","755,099","895,301","1,020,954","1,020,954",100% success rate,Micro,Python,None,socketify.py-wsgi,Linux,Realistic
+swift-nio,"24,689","52,883","635,823","951,967","1,072,042","1,089,033","1,089,033",100% success rate,Platform,Swift,None,None,Linux,Realistic
+tornado,"18,840","39,814","65,744","89,483","93,798","92,762","93,798",100% success rate,Platform,Python,None,Tornado,Linux,Realistic
+tornado-py3,"17,468","35,720","59,911","93,435","98,136","100,139","100,139",100% success rate,Platform,Python,None,Tornado,Linux,Realistic
+undertow,"27,152","61,412","126,261","358,218","502,931","448,954","502,931",100% success rate,Platform,Java,Undertow,None,Linux,Realistic
+sprapp,— Did not complete —,—,Platform,Go,None,None,Linux,Realistic,,,,,,
+ntex [tokio],"26,476","61,122","1,027,664","1,537,223","2,124,569","2,767,355","2,767,355",100% success rate,Micro,Rust,None,ntex,Linux,Realistic
+ntex [compio],"264,990","605,171","1,037,502","1,520,086","2,055,167","2,653,891","2,653,891",100% success rate,Micro,Rust,None,ntex,Linux,Realistic
+"ntex [tokio,platform]","26,913","62,686","1,095,539","1,637,769","2,265,207","2,963,471","2,963,471",100% success rate,Platform,Rust,None,ntex,Linux,Realistic
+"ntex [compio,platform]","276,101","669,867","1,111,167","1,624,355","2,214,866","2,899,759","2,899,759",100% success rate,Platform,Rust,None,ntex,Linux,Realistic
+oatpp,"27,671","61,877","989,800","1,397,324","1,733,331","2,043,871","2,043,871",100% success rate,Micro,C++,None,None,Linux,Realistic
+oatpp-async,"33,511","375,844","709,610","974,980","1,270,771","1,623,354","1,623,354",100% success rate,Micro,C++,None,None,Linux,Realistic
+oatpp-async-no-mp,"34,247","403,163","714,679","993,162","1,306,006","1,718,121","1,718,121",100% success rate,Micro,C++,None,None,Linux,Realistic
+oatpp-no-mp,"26,910","59,752","991,464","1,417,365","1,821,496","2,245,087","2,245,087",100% success rate,Micro,C++,None,None,Linux,Realistic
+officefloor,"34,750","45,405","60,815","70,833","69,831","69,979","70,833",100% success rate,Fullstack,Java,officefloor,woof,Linux,Realistic
+officefloor-async,"24,781","33,169","34,524","34,367","34,657","34,363","34,657",100% success rate,Fullstack,Java,officefloor,woof,Linux,Realistic
+officefloor-micro,"34,259","45,417","59,936","70,128","68,396","68,769","70,128",100% success rate,Fullstack,Java,officefloor,woof,Linux,Realistic
+officefloor-netty,"4,736","4,682","4,781","4,736","6,051","7,543","7,543",100% success rate,Fullstack,Java,officefloor,netty,Linux,Realistic
+officefloor-r2dbc,"29,267","66,130","1,013,543","1,513,289","2,045,319","2,550,592","2,550,592",100% success rate,Platform,Java,officefloor,woof,Linux,Realistic
+officefloor-rawsqlclient,"36,134","66,221","998,728","1,498,766","2,025,726","2,521,419","2,521,419",100% success rate,Platform,Java,officefloor,woof,Linux,Realistic
+officefloor-spring_data,"31,239","34,822","48,959","46,189","55,138","54,953","55,138",100% success rate,Fullstack,Java,officefloor,woof,Linux,Realistic
+officefloor-sqlclient,"28,782","74,720","997,245","1,517,492","2,034,781","2,523,738","2,523,738",100% success rate,Platform,Java,officefloor,woof,Linux,Realistic
+officefloor-thread_affinity,"26,697","62,756","699,476","1,038,278","1,177,727","1,157,329","1,177,727",100% success rate,Fullstack,Java,officefloor,woof,Linux,Realistic
+officefloor-undertow,"3,634","3,859","4,415","5,546","7,065","10,300","10,300",100% success rate,Fullstack,Java,officefloor,Undertow,Linux,Realistic
+officefloor-vertx,"33,445","38,892","49,987","60,272","59,661","37,561","60,272",100% success rate,Fullstack,Java,officefloor,vertx,Linux,Realistic
+ohkami,"30,055","64,044","120,464","208,460","376,696","840,125","840,125",100% success rate,Micro,Rust,None,ohkami,Linux,Realistic
+one,"26,960","54,997","717,004","1,061,717","1,292,952","1,444,733","1,444,733",100% success rate,Fullstack,PHP,swoole,None,Linux,Realistic
+one-no-coroutine,"24,498","58,129","750,226","1,045,690","1,311,395","1,478,794","1,478,794",100% success rate,Fullstack,PHP,swoole,None,Linux,Realistic
+onyx,"38,303","61,340","67,256","73,450","60,408","63,902","73,450",100% success rate,Fullstack,Crystal,None,None,Linux,Realistic
+openresty,"26,120","64,683","959,414","1,470,644","1,957,837","2,599,008","2,599,008",100% success rate,Platform,Lua,OpenResty,nginx,Linux,Realistic
+openswoole,"28,769","510,339","899,542","1,266,963","1,664,617","2,049,653","2,049,653",100% success rate,Platform,PHP,openswoole,None,Linux,Realistic
+otavia,"29,595","586,168","1,056,785","1,575,362","2,164,767","2,845,223","2,845,223",100% success rate,Micro,Scala,otavia,None,Linux,Realistic
+otavia,"31,958","612,401","1,075,006","1,557,783","2,138,156","2,773,406","2,773,406",100% success rate,Micro,Scala,otavia,None,Linux,Realistic
+oxpecker,"23,711","81,868","310,556","1,094,535","1,740,309","2,120,258","2,120,258",100% success rate,Micro,f#,.NET,kestrel,Linux,Realistic
+oxygen.jl,"31,669","38,125","41,232","47,216","44,600","39,067","47,216",100% success rate,none,julia,None,oxygen.jl,Linux,Realistic
+padrino,"10,415","9,716","9,566","9,645","10,550","10,373","10,550",100% success rate,Micro,Ruby,Rack,Puma,Linux,Realistic
+padrino-unicorn,"19,956","38,556","62,885","68,480","73,052","74,943","74,943",100% success rate,Micro,Ruby,Rack,Unicorn,Linux,Realistic
+panther,"23,892","43,957","87,090","334,561","495,187","542,267","542,267",100% success rate,Micro,Python,asgi,uvicorn,Linux,Realistic
+paozhu,392,785,"1,374","2,744","5,486","12,301","12,301",100% success rate,Fullstack,C++,None,None,Linux,Realistic
+pedestal,"33,349","68,041","79,743","77,378","33,478","32,476","79,743",100% success rate,Micro,Clojure,Jetty,None,Linux,Realistic
+pekko-http,"30,875","108,663","213,541","216,478","246,530","246,500","246,530",100% success rate,Micro,Scala,pekko,None,Linux,Realistic
+pellet,"21,864","71,361","643,664","622,602","648,840","688,387","688,387",100% success rate,Micro,Kotlin,None,None,Linux,Realistic
+phalcon,"14,130","29,308","58,282","87,675","87,122","83,183","87,675",100% success rate,Fullstack,PHP,fpm/fastcgi,nginx,Linux,Realistic
+phalcon-micro,"17,831","43,715","92,991","184,199","189,936","157,991","189,936",100% success rate,Micro,PHP,fpm/fastcgi,nginx,Linux,Realistic
+phoenix,"33,897","76,666","178,748","436,345","455,652","536,573","536,573",100% success rate,Fullstack,Elixir,beam,bandit,Linux,Realistic
+php,"15,887","35,829","178,127","416,881","401,380","428,452","428,452",100% success rate,Platform,PHP,fpm/fastcgi,nginx,Linux,Realistic
+php-caddyserver,"16,919","33,499","54,392","69,582","79,719","94,253","94,253",100% success rate,Platform,PHP,fpm/fastcgi,caddy,Linux,Realistic
+php-frankenphp,"26,081","58,131","87,733","105,428","142,442","200,636","200,636",100% success rate,Platform,PHP,frankenphp,caddy,Linux,Realistic
+php-h2o,"23,918","79,999","216,667","373,126","408,320","412,565","412,565",100% success rate,Platform,PHP,fpm/fastcgi,h2o,Linux,Realistic
+php-pools,"14,958","35,009","189,451","419,514","403,074","427,494","427,494",100% success rate,Platform,PHP,fpm/fastcgi,nginx,Linux,Realistic
+php-raw7-tcp,"14,742","34,265","117,636","398,903","423,086","450,216","450,216",100% success rate,Platform,PHP,fpm/fastcgi,nginx,Linux,Realistic
+php-unit,"14,449","27,552","46,469","85,558","143,559","219,795","219,795",100% success rate,Platform,PHP,unit nginx,None,Linux,Realistic
+php-workerman,"27,055","58,999","886,617","1,241,513","1,598,169","1,961,137","1,961,137",100% success rate,Platform,PHP,workerman,None,Linux,Realistic
+php-ngx,"27,126","612,877","1,027,536","1,541,245","2,069,210","2,718,420","2,718,420",100% success rate,Platform,PHP,ngx_php,nginx,Linux,Realistic
+phpixie,"20,467","44,579","100,737","232,016","252,966","230,072","252,966",100% success rate,Fullstack,PHP,fpm/fastcgi,nginx,Linux,Realistic
+pico.v,"29,172","682,347","1,141,040","1,686,166","2,339,175","3,031,805","3,031,805",100% success rate,Micro,v,None,None,Linux,Realistic
+pine,"20,828","27,867","33,797","61,396","100,907","285,115","285,115",100% success rate,Micro,Go,None,None,Linux,Realistic
+pippo-jetty,"51,091","167,783","614,389","645,559","619,664","602,702","645,559",100% success rate,Micro,Java,Jetty,None,Linux,Realistic
+pippo-tomcat,"12,683","24,425","71,134","207,276","240,347","273,117","273,117",100% success rate,Micro,Java,tomcat,None,Linux,Realistic
+pippo-undertow,"20,455","39,199","70,459","123,580","128,142","133,867","133,867",100% success rate,Micro,Java,Undertow,None,Linux,Realistic
+plack,"33,672","76,258","155,232","375,749","496,405","614,980","614,980",100% success rate,Micro,Perl,Plack,nginx,Linux,Realistic
+plack-async,— Did not complete —,—,Micro,Perl,anyevent,nginx,Linux,Realistic,,,,,,
+play1,"6,969","12,027","18,807","46,013","33,511","32,639","46,013",100% success rate,Fullstack,Java,Netty,None,Linux,Realistic
+play2-java,"24,124","64,978","94,454","106,506","125,795","129,241","129,241",100% success rate,Fullstack,Java,Akka,None,Linux,Realistic
+play2-java-netty,"17,114","40,107","219,846","271,599","290,265","323,143","323,143",100% success rate,Fullstack,Java,Netty,None,Linux,Realistic
+play2-scala,"26,054","77,146","110,589","187,270","222,350","227,276","227,276",100% success rate,Fullstack,Scala,Akka,None,Linux,Realistic
+play2-scala-netty,"19,268","51,893","412,596","492,648","536,758","597,042","597,042",100% success rate,Fullstack,Scala,Netty,None,Linux,Realistic
+elixir-plug-ecto,"31,626","72,113","148,145","331,613","430,472","462,959","462,959",100% success rate,Micro,Elixir,beam,cowboy,Linux,Realistic
+plumber,358,733,885,847,820,826,885,100% success rate,Fullstack,r,None,None,Linux,Realistic
+postgrest,— Did not complete —,—,Micro,Haskell,None,None,Linux,Realistic,,,,,,
+prologue,"25,889","51,261","109,021","767,664","974,973","1,077,002","1,077,002",100% success rate,Fullstack,Nim,None,None,Linux,Realistic
+proteus,"29,502","64,671","1,041,147","1,552,789","2,004,638","2,601,174","2,601,174",100% success rate,Micro,Java,Undertow,None,Linux,Realistic
+pyramid,"23,657","44,844","85,072","192,632","314,969","311,357","314,969",100% success rate,Fullstack,Python,None,Meinheld,Linux,Realistic
+quarkus,"26,620","60,601","970,217","1,431,682","1,938,700","2,457,422","2,457,422",100% success rate,Fullstack,Java,resteasy reactive,vert.x,Linux,Realistic
+"quarkus, reactive","27,083","62,483","935,405","1,406,877","1,922,586","2,439,679","2,439,679",100% success rate,Fullstack,Java,resteasy reactive,vert.x,Linux,Realistic
+"quarkus, postgresql","26,752","59,405","976,749","1,435,036","1,968,335","2,505,229","2,505,229",100% success rate,Fullstack,Java,vert.x,vert.x,Linux,Realistic
+"quarkus, vert.x","27,583","66,191","1,025,286","1,518,140","2,069,559","2,756,818","2,756,818",100% success rate,Micro,Java,vert.x,vert.x,Linux,Realistic
+agoo,"18,429","44,701","201,206","623,424","897,957","1,056,748","1,056,748",100% success rate,Micro,Ruby,Rack,agoo,Linux,Realistic
+rack-puma-mri-sequel-raw,"23,343","44,616","125,078","389,126","410,526","410,586","410,586",100% success rate,Micro,Ruby,mri,Puma,Linux,Realistic
+rack-falcon-mri-sequel-raw,"34,705","72,470","134,770","254,006","361,207","371,467","371,467",100% success rate,Micro,Ruby,mri,falcon,Linux,Realistic
+rack-iodine-mri-sequel-raw,"28,842","58,293","452,741","971,702","1,240,547","1,401,095","1,401,095",100% success rate,Micro,Ruby,mri,iodine,Linux,Realistic
+rack-puma-jruby-sequel-raw,"35,005","86,121","68,092","69,012","69,014","70,132","86,121",100% success rate,Micro,Ruby,jruby,Puma,Linux,Realistic
+rack-unicorn-mri-sequel-raw,"29,834","110,025","193,228","153,396","153,108","152,826","193,228",100% success rate,Micro,Ruby,mri,Unicorn,Linux,Realistic
+racket,"33,789","86,364","154,659","223,495","262,650","271,814","271,814",100% success rate,Micro,racket,racket,racket,Linux,Realistic
+rage,"25,977","49,086","106,574","517,789","720,715","749,088","749,088",100% success rate,Micro,Ruby,Rack,rage-iodine,Linux,Realistic
+rails,"21,377","33,122","80,329","203,337","194,881","195,184","203,337",100% success rate,Fullstack,Ruby,Rack,Puma,Linux,Realistic
+rails-falcon,"20,610","37,129","60,273","130,056","143,399","142,255","143,399",100% success rate,Fullstack,Ruby,Rack,falcon,Linux,Realistic
+rails-iodine,"22,833","41,734","91,688","306,733","417,254","430,632","430,632",100% success rate,Fullstack,Ruby,Rack,iodine,Linux,Realistic
+rapidoid,"31,150","562,456","1,041,576","1,512,723","2,083,605","2,714,105","2,714,105",100% success rate,Platform,Java,Rapidoid,None,Linux,Realistic
+rapidoid-http-fast,"30,262","585,684","1,043,006","1,545,688","2,095,623","2,747,166","2,747,166",100% success rate,Platform,Java,Rapidoid,None,Linux,Realistic
+reactphp [libevent],"23,044","31,166","37,957","38,595","38,410","38,212","38,595",100% success rate,Platform,PHP,reactphp,None,Linux,Realistic
+reactphp [libuv],"19,712","29,638","34,382","34,934","26,192","30,630","34,934",100% success rate,Platform,PHP,reactphp,None,Linux,Realistic
+"reaper [aot,slim]","21,444","50,682","168,023","835,856","1,567,395","1,810,411","1,810,411",100% success rate,Micro,C#,.NET,kestrel,Linux,Realistic
+reitit,"27,813","61,888","1,001,076","1,433,891","1,924,678","2,523,363","2,523,363",100% success rate,Micro,Clojure,Undertow,None,Linux,Realistic
+restana,"27,907","63,861","339,551","841,483","1,024,063","1,148,940","1,148,940",100% success rate,Platform,JavaScript,nodejs,None,Linux,Realistic
+restify,"24,505","46,863","161,111","602,977","730,754","800,227","800,227",100% success rate,Platform,JavaScript,nodejs,None,Linux,Realistic
+revenj,"9,295","138,818","376,234","442,379","487,402","490,379","490,379",100% success rate,Fullstack,C#,None,None,Linux,Realistic
+revenj-jvm,"30,814","679,075","1,063,563","1,465,396","1,880,531","2,245,219","2,245,219",100% success rate,Fullstack,Java,Servlet,Resin,Linux,Realistic
+ringojs-convenient,"18,055","49,127","94,147","105,368","105,457","105,515","105,515",100% success rate,Micro,JavaScript,RingoJs,None,Linux,Realistic
+ripple,"31,339","56,000","602,080","1,006,670","1,316,565","1,492,628","1,492,628",100% success rate,Fullstack,PHP,ripple,None,Linux,Realistic
+roa,"23,943","46,185","88,084","180,954","343,481","619,718","619,718",100% success rate,Micro,Rust,None,hyper,Linux,Realistic
+roa-core,"24,549","47,271","89,465","183,849","361,253","685,018","685,018",100% success rate,Micro,Rust,None,hyper,Linux,Realistic
+roa-tokio,"28,426","58,919","111,303","200,219","304,130","579,366","579,366",100% success rate,Micro,Rust,None,hyper,Linux,Realistic
+robyn,"33,281","78,331","163,790","278,110","319,512","336,682","336,682",100% success rate,Micro,Python,None,None,Linux,Realistic
+robyn [const],"24,662","46,268","118,857","420,400","489,975","510,465","510,465",100% success rate,Micro,Python,None,None,Linux,Realistic
+rocket,"26,609","54,887","101,667","150,800","262,526","540,665","540,665",100% success rate,Fullstack,Rust,Rust,hyper,Linux,Realistic
+roda-sequel,"24,178","42,436","93,024","352,350","346,785","347,519","352,350",100% success rate,Micro,Ruby,Rack,Puma,Linux,Realistic
+roda-sequel-postgres-iodine-mri,"26,812","53,940","148,879","875,835","1,126,208","1,205,366","1,205,366",100% success rate,Micro,Ruby,Rack,iodine,Linux,Realistic
+ronykit,"29,163","69,188","412,460","1,101,653","1,371,154","1,639,333","1,639,333",100% success rate,Platform,Go,None,None,Linux,Realistic
+ronykit,"29,796","575,277","970,276","1,390,702","1,867,718","2,503,885","2,503,885",100% success rate,Platform,Go,None,None,Linux,Realistic
+salvo,"27,159","59,286","1,005,559","1,439,582","1,866,032","2,089,153","2,089,153",100% success rate,Micro,Rust,Rust,hyper,Linux,Realistic
+sanic,"22,657","39,057","72,312","213,331","381,290","417,311","417,311",100% success rate,Micro,Python,None,None,Linux,Realistic
+saphir,"28,320","60,796","112,798","175,162","289,373","880,698","880,698",100% success rate,Micro,Rust,None,None,Linux,Realistic
+scalene,"22,895","104,927","813,958","1,263,264","1,835,819","2,634,406","2,634,406",100% success rate,Micro,Scala,None,None,Linux,Realistic
+servicestack-v6,"17,740","23,938","125,962","551,655","612,156","636,919","636,919",100% success rate,Micro,C#,.NET,kestrel,Linux,Realistic
+servicetalk,"22,447","59,847","369,490","465,610","522,607","541,267","541,267",100% success rate,Micro,Java,servicetalk,None,Linux,Realistic
+silverlining,"30,262","70,883","393,323","1,175,650","1,467,748","1,759,583","1,759,583",100% success rate,Platform,Go,None,None,Linux,Realistic
+silverlining [prefork],"32,546","689,797","1,018,264","1,497,575","2,011,072","2,681,872","2,681,872",100% success rate,Platform,Go,None,None,Linux,Realistic
+simple-server,"26,092","58,902","844,526","1,049,666","1,146,867","1,154,016","1,154,016",100% success rate,Micro,Java,Netty,None,Linux,Realistic
+simps,"34,314","75,153","736,118","1,348,790","1,940,707","2,559,387","2,559,387",100% success rate,Micro,PHP,swoole,None,Linux,Realistic
+sinatra,"21,192","35,294","88,580","219,781","209,011","209,113","219,781",100% success rate,Micro,Ruby,Rack,Puma,Linux,Realistic
+sinatra-postgres-agoo-mri,— Did not complete —,—,Micro,Ruby,Rack,agoo,Linux,Realistic,,,,,,
+sisk framework,"37,481","135,990","115,709","90,603","46,316","18,528","135,990",100% success rate,Micro,C#,.NET,httplistener,Linux,Realistic
+sisk framework (cadente),"29,205","67,455","237,222","739,834","1,130,002","1,467,534","1,467,534",100% success rate,Platform,C#,.NET,cadente,Linux,Realistic
+slim,"8,087","13,281","32,531","83,202","87,348","79,422","87,348",100% success rate,Micro,PHP,fpm/fastcgi,nginx,Linux,Realistic
+slim-workerman,"21,211","35,117","77,085","219,136","239,691","237,336","239,691",100% success rate,Micro,PHP,workerman,None,Linux,Realistic
+snunit,"38,856","120,019","175,298","238,533","404,755","442,529","442,529",100% success rate,Micro,Scala,unit nginx,None,Linux,Realistic
+solon,"26,310","63,116","954,352","1,443,031","1,893,474","2,305,901","2,305,901",100% success rate,Fullstack,Java,solon,smarthttp,Linux,Realistic
+spark,"37,184","127,262","376,690","559,148","555,411","546,504","559,148",100% success rate,Micro,Java,Servlet,Jetty,Linux,Realistic
+spider-gazelle,391,783,"1,373","2,745","5,492","12,358","12,358",100% success rate,Fullstack,Crystal,None,None,Linux,Realistic
+spiral,"6,913","15,216","30,137","35,396","35,419","35,452","35,452",100% success rate,Fullstack,PHP,roadrunner,None,Linux,Realistic
+spliffy,"25,310","54,576","583,032","961,099","1,199,626","1,346,356","1,346,356",100% success rate,Micro,JavaScript,nodejs,µws,Linux,Realistic
+spring,"32,763","125,355","268,863","325,043","326,579","328,412","328,412",100% success rate,Fullstack,Java,Servlet,Undertow,Linux,Realistic
+spring-webflux,"24,485","48,638","654,032","1,089,792","1,268,359","1,286,695","1,286,695",100% success rate,Fullstack,Java,Netty,None,Linux,Realistic
+spring-webflux-mongo,"23,468","50,426","670,818","1,093,212","1,273,383","1,289,658","1,289,658",100% success rate,Fullstack,Java,Netty,None,Linux,Realistic
+starlette,"24,635","44,111","90,860","308,303","540,998","599,108","599,108",100% success rate,Micro,Python,None,None,Linux,Realistic
+starlite,"23,538","40,738","80,621","254,833","395,238","443,006","443,006",100% success rate,Micro,Python,None,uvicorn,Linux,Realistic
+suave,"22,691","55,562","158,161","446,011","506,399","485,981","506,399",100% success rate,Micro,f#,.NET,None,Linux,Realistic
+swi-prolog,382,764,"1,340","2,674","5,232","11,673","11,673",100% success rate,none,prolog,None,swi-prolog,Linux,Realistic
+swoole,"28,102","61,712","979,351","1,445,510","1,933,105","2,465,399","2,465,399",100% success rate,Platform,PHP,swoole,None,Linux,Realistic
+symfony,"10,018","19,728","48,046","63,237","62,725","58,364","63,237",100% success rate,Fullstack,PHP,fpm/fastcgi,nginx,Linux,Realistic
+symfony-frankenphp,"14,620","28,430","52,064","95,084","113,885","128,101","128,101",100% success rate,Fullstack,PHP,frankenphp,caddy,Linux,Realistic
+symfony-roadrunner,"9,671","25,219","59,490","71,213","70,621","70,558","71,213",100% success rate,Fullstack,PHP,roadrunner,None,Linux,Realistic
+symfony-swoole,"20,731","37,126","79,659","247,129","301,489","313,103","313,103",100% success rate,Fullstack,PHP,swoole,None,Linux,Realistic
+symfony-workerman,"20,392","32,831","75,695","239,004","279,910","281,748","281,748",100% success rate,Fullstack,PHP,workerman,None,Linux,Realistic
+tapestry,386,773,"1,349","2,706","5,412","12,248","12,248",100% success rate,Fullstack,Java,Servlet,Resin,Linux,Realistic
+tetsuweb,382,765,"1,341","2,689","5,422","12,192","12,192",100% success rate,Micro,C#,.NET,tetsu,Linux,Realistic
+tio-mvc,"5,081","7,552","17,891","34,438","40,038","50,115","50,115",100% success rate,Micro,Java,t-io,None,Linux,Realistic
+tio-server,"10,889","12,268","11,170","13,211","23,454","59,166","59,166",100% success rate,Micro,Java,t-io,None,Linux,Realistic
+today,"26,965","55,473","119,640","235,400","243,459","237,892","243,459",100% success rate,Fullstack,Java,Netty,None,Linux,Realistic
+toro,392,784,"1,373","2,745","5,491","12,345","12,345",100% success rate,Micro,Crystal,None,None,Linux,Realistic
+treefrog,"23,069","58,722","460,384","589,261","751,182","792,357","792,357",100% success rate,Fullstack,C++,None,None,Linux,Realistic
+treefrog-epoll,"26,426","51,014","91,539","758,537","1,002,114","1,191,674","1,191,674",100% success rate,Fullstack,C++,None,None,Linux,Realistic
+trillium [smol],"22,873","47,086","90,175","216,913","572,262","620,645","620,645",100% success rate,Micro,Rust,None,None,Linux,Realistic
+trillium [async-std],"23,263","58,843","118,848","617,764","644,907","646,532","646,532",100% success rate,Micro,Rust,None,None,Linux,Realistic
+trillium [tokio],"28,842","60,420","112,290","174,197","407,101","654,953","654,953",100% success rate,Micro,Rust,None,None,Linux,Realistic
+tuprolog,"23,660","24,896","31,998","32,038","31,740","31,697","32,038",100% success rate,none,prolog,None,vert.x,Linux,Realistic
+ubiquity,"13,629","31,739","115,012","301,105","337,855","292,826","337,855",100% success rate,Fullstack,PHP,fpm/fastcgi,nginx,Linux,Realistic
+ubiquity-ngx,"26,031","58,968","754,752","1,108,860","1,454,900","1,716,303","1,716,303",100% success rate,Fullstack,PHP,ngx_php,nginx,Linux,Realistic
+ubiquity-ngx-micro,"25,976","59,227","835,509","1,243,582","1,611,780","2,063,451","2,063,451",100% success rate,Micro,PHP,ngx_php,nginx,Linux,Realistic
+ubiquity-swoole,"25,214","56,150","843,991","1,162,233","1,506,275","1,764,692","1,764,692",100% success rate,Fullstack,PHP,swoole,None,Linux,Realistic
+ubiquity-workerman-raw,"24,716","55,711","824,029","1,129,033","1,408,471","1,608,469","1,608,469",100% success rate,Fullstack,PHP,workerman,None,Linux,Realistic
+ultimate-express,"26,073","55,817","691,630","1,097,063","1,400,201","1,672,898","1,672,898",100% success rate,Micro,JavaScript,nodejs,µws,Linux,Realistic
+urweb,"4,827","6,670","22,979","687,410","825,577","827,637","827,637",100% success rate,Fullstack,Ur,Ur/Web,None,Linux,Realistic
+userver,"33,797","275,524","328,326","333,807","335,421","345,470","345,470",100% success rate,Fullstack,C++,None,None,Linux,Realistic
+routerling,"17,573","30,598","57,294","110,329","130,959","134,533","134,533",100% success rate,Platform,Python,None,None,Linux,Realistic
+uvicorn,"26,800","48,431","98,801","508,392","759,303","850,173","850,173",100% success rate,Platform,Python,None,None,Linux,Realistic
+uwebsockets.js,"28,036","67,272","1,026,301","1,507,145","2,018,576","2,731,252","2,731,252",100% success rate,Platform,JavaScript,nodejs,None,Linux,Realistic
+valum,"7,719","7,575","7,047","7,179","7,028","6,836","7,719",100% success rate,Micro,vala,glib,soup,Linux,Realistic
+vapor,"13,017","28,627","133,847","211,761","243,233","263,364","263,364",100% success rate,Fullstack,Swift,None,None,Linux,Realistic
+vapor,"12,681","28,521","131,158","208,939","238,119","252,209","252,209",100% success rate,Fullstack,Swift,None,None,Linux,Realistic
+velocy,"26,134","58,172","672,135","1,032,753","1,206,985","1,246,916","1,246,916",100% success rate,Micro,JavaScript,nodejs,None,Linux,Realistic
+vertx,"28,495","68,651","1,080,496","1,595,948","2,190,381","2,889,592","2,889,592",100% success rate,Platform,Java,vert.x,None,Linux,Realistic
+vertx-web,"27,065","62,258","1,010,437","1,489,706","2,028,139","2,632,083","2,632,083",100% success rate,Micro,Java,vert.x,None,Linux,Realistic
+vertx-web-kotlin-dsljson,"28,066","64,594","1,036,803","1,583,603","2,153,794","2,836,665","2,836,665",100% success rate,Micro,Kotlin,vert.x,None,Linux,Realistic
+vertx-web-kotlinx,"140,569","609,356","963,893","1,414,889","1,924,601","2,509,823","2,509,823",100% success rate,Micro,Kotlin,vert.x,None,Linux,Realistic
+vertx-web-scala,"25,895","59,757","913,078","1,225,708","1,638,606","2,015,332","2,015,332",100% success rate,Micro,Scala,vert.x,None,Linux,Realistic
+vibora,"25,549","54,924","721,346","1,079,629","1,388,710","1,740,575","1,740,575",100% success rate,Platform,Python,None,None,Linux,Realistic
+viz,"29,305","61,959","110,767","196,834","303,751","884,917","884,917",100% success rate,Platform,Rust,Rust,hyper,Linux,Realistic
+voovan,"27,975","63,554","1,026,952","1,535,151","2,100,792","2,711,547","2,711,547",100% success rate,Platform,Java,voovan,None,Linux,Realistic
+vsgi,"7,726","8,099","8,318","8,139","8,047","7,617","8,318",100% success rate,Platform,vala,glib,soup,Linux,Realistic
+web-simple,"18,143","42,254","57,302","56,452","57,967","49,384","57,967",100% success rate,Micro,Perl,Plack,starman,Linux,Realistic
+webgo,"21,895","31,939","39,348","67,353","122,289","344,824","344,824",100% success rate,Micro,Go,None,None,Linux,Realistic
+webmachine,"26,107","53,044","103,368","231,600","247,327","231,338","247,327",100% success rate,Micro,ocaml,cohttp,None,Linux,Realistic
+webman,"33,931","74,925","923,213","1,385,214","1,923,496","2,616,793","2,616,793",100% success rate,Micro,PHP,workerman,None,Linux,Realistic
+wicket,"24,663","53,454","698,938","763,665","745,941","708,866","763,665",100% success rate,Fullstack,Java,Servlet,Resin,Linux,Realistic
+wizzardo-http,"28,107","69,429","1,092,052","1,622,974","2,225,330","2,972,955","2,972,955",100% success rate,Micro,Java,None,None,Linux,Realistic
+wizzardo-inline,"25,420","58,152","627,751","720,806","714,157","583,209","720,806",100% success rate,Micro,Haskell,None,None,Linux,Realistic
+wolff,"14,962","29,471","69,771","214,993","228,989","201,548","228,989",100% success rate,Fullstack,PHP,fpm/fastcgi,nginx,Linux,Realistic
+workerman,"28,033","66,847","1,035,661","1,521,387","2,068,288","2,754,243","2,754,243",100% success rate,Platform,PHP,workerman,None,Linux,Realistic
+workerman,"29,381","66,564","970,521","1,462,301","1,945,057","2,588,238","2,588,238",100% success rate,Platform,PHP,workerman,None,Linux,Realistic
+xitca-web,"31,126","638,543","995,083","1,464,203","1,992,477","2,720,330","2,720,330",100% success rate,Micro,Rust,None,xitca-server,Linux,Realistic
+xitca-web [orm],"27,279","640,069","992,772","1,466,444","1,985,681","2,692,567","2,692,567",100% success rate,Fullstack,Rust,None,xitca-server,Linux,Realistic
+xitca-web [sync],"46,734","557,329","1,016,555","1,491,582","1,997,899","2,697,697","2,697,697",100% success rate,Micro,Rust,None,xitca-server,Linux,Realistic
+xitca-web [wasm],"36,754","65,537","80,377","75,116","68,035","54,144","80,377",100% success rate,Micro,Rust,None,xitca-server,Linux,Realistic
+yii2,"12,818","23,757","67,730","129,304","131,434","112,777","131,434",100% success rate,Fullstack,PHP,fpm/fastcgi,nginx,Linux,Realistic
+yii2-workerman,"21,106","35,415","73,926","238,778","292,167","290,316","292,167",100% success rate,Fullstack,PHP,workerman,None,Linux,Realistic
+youi,"24,108","137,274","242,592","512,556","663,889","678,566","678,566",100% success rate,Micro,Scala,Undertow,None,Linux,Realistic
+zap (zig),"48,369","94,157","161,586","229,554","248,818","248,292","248,818",100% success rate,Fullstack,zig,None,None,Linux,Realistic
+zebra,"25,374","103,909","325,570","1,110,285","1,540,051","1,698,764","1,698,764",100% success rate,Fullstack,f#,.NET,kestrel,Linux,Realistic
+zebra-simple,"24,731","81,415","309,029","1,070,086","1,524,627","1,695,632","1,695,632",100% success rate,Micro,f#,.NET,kestrel,Linux,Realistic
+zend,"7,990","15,261","24,080","25,521","24,341","23,644","25,521",100% success rate,Fullstack,PHP,fpm/fastcgi,nginx,Linux,Realistic
+zinc,"24,131","45,325","66,887","47,832","46,543","46,573","66,887",100% success rate,Fullstack,zig,None,None,Linux,Realistic
+zio-http,"26,974","61,491","944,764","1,397,728","1,841,605","2,222,013","2,222,013",100% success rate,Micro,Scala,Netty,None,Linux,Realistic
+zysocket-v,"30,689","61,272","276,315","934,438","1,318,412","1,279,232","1,318,412",100% success rate,Fullstack,C#,.NET,zysocket-v,Linux,Realistic

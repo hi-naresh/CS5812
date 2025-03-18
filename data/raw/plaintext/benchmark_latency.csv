@@ -1,0 +1,499 @@
+Framework,Average latency (lower is better),Latency(%),Standard deviation,Maximum latency,500-series HTTP responses
+mormot [orm],0.2 ms,0.0%,0.1 ms,2.0 ms,0% success rate
+astra,0.2 ms,0.0%,0.1 ms,1.4 ms,100% success rate
+aspcore-mono,0.3 ms,0.0%,0.8 ms,25.6 ms,100% success rate
+pico.v,0.3 ms,0.0%,0.2 ms,8.2 ms,100% success rate
+mrhttp,0.3 ms,0.0%,0.2 ms,15.8 ms,100% success rate
+firenio-http-lite,0.3 ms,0.0%,0.2 ms,7.2 ms,100% success rate
+ultimate-express,0.3 ms,0.0%,0.2 ms,17.0 ms,100% success rate
+lithium,0.3 ms,0.0%,0.6 ms,69.9 ms,100% success rate
+"ntex [tokio,platform]",0.4 ms,0.0%,0.4 ms,27.8 ms,100% success rate
+silverlining [prefork],0.4 ms,0.0%,0.4 ms,15.3 ms,100% success rate
+elysia,0.4 ms,0.0%,0.3 ms,6.4 ms,100% success rate
+"ntex [compio,platform]",0.4 ms,0.0%,0.2 ms,20.8 ms,100% success rate
+solon,0.4 ms,0.0%,1.4 ms,59.8 ms,100% success rate
+gnet,0.4 ms,0.0%,0.3 ms,18.1 ms,100% success rate
+elysia [compiled],0.4 ms,0.0%,0.4 ms,28.8 ms,100% success rate
+libsniper,0.5 ms,0.0%,1.5 ms,42.6 ms,100% success rate
+rapidoid,0.5 ms,0.0%,1.2 ms,42.9 ms,100% success rate
+nginx,0.5 ms,0.0%,0.4 ms,8.4 ms,100% success rate
+hyper,0.5 ms,0.0%,0.4 ms,24.9 ms,100% success rate
+rapidoid-http-fast,0.6 ms,0.0%,1.6 ms,43.0 ms,100% success rate
+ffead-cpp [v],0.6 ms,0.0%,0.5 ms,27.4 ms,100% success rate
+httpbeast,0.6 ms,0.0%,0.5 ms,20.9 ms,100% success rate
+socketify.py [pypy3],0.6 ms,0.0%,0.5 ms,36.9 ms,100% success rate
+xitca-web,0.6 ms,0.0%,1.4 ms,43.4 ms,100% success rate
+xitca-web [orm],0.6 ms,0.0%,0.6 ms,41.6 ms,100% success rate
+cinatra,0.6 ms,0.0%,1.2 ms,75.0 ms,100% success rate
+xitca-web [sync],0.6 ms,0.0%,0.6 ms,42.0 ms,100% success rate
+ffead-cpp [v-prof],0.6 ms,0.0%,0.7 ms,54.9 ms,100% success rate
+vertx,0.6 ms,0.0%,0.5 ms,28.4 ms,100% success rate
+reitit,0.6 ms,0.0%,3.5 ms,105.5 ms,100% success rate
+firenio,0.7 ms,0.0%,1.1 ms,28.1 ms,100% success rate
+otavia,0.7 ms,0.0%,0.6 ms,42.3 ms,100% success rate
+ltio,0.7 ms,0.0%,0.5 ms,7.1 ms,100% success rate
+ntex [tokio],0.7 ms,0.0%,0.5 ms,26.6 ms,100% success rate
+vertx-web-kotlin-dsljson,0.7 ms,0.0%,0.6 ms,42.9 ms,100% success rate
+drogon,0.7 ms,0.0%,0.6 ms,59.4 ms,100% success rate
+"quarkus, vert.x",0.7 ms,0.0%,0.5 ms,19.9 ms,100% success rate
+cutelyst-thread,0.7 ms,0.0%,0.5 ms,41.7 ms,100% success rate
+greenlightning,0.7 ms,0.0%,0.5 ms,17.8 ms,100% success rate
+ntex [compio],0.7 ms,0.0%,0.4 ms,27.3 ms,100% success rate
+axum,0.8 ms,0.0%,0.5 ms,26.1 ms,100% success rate
+trillium [tokio],0.8 ms,0.0%,0.5 ms,11.4 ms,100% success rate
+fasthttp-prefork,0.8 ms,0.0%,0.6 ms,26.7 ms,100% success rate
+viz,0.8 ms,0.0%,0.5 ms,6.0 ms,100% success rate
+atreugo-prefork,0.9 ms,0.0%,0.7 ms,40.9 ms,100% success rate
+fiber-prefork,0.9 ms,0.0%,0.6 ms,20.6 ms,100% success rate
+trillium [smol],0.9 ms,0.0%,0.6 ms,12.2 ms,100% success rate
+smart-socket,0.9 ms,0.0%,0.7 ms,24.8 ms,100% success rate
+jester,0.9 ms,0.0%,0.6 ms,23.4 ms,100% success rate
+otavia,1.0 ms,0.0%,1.2 ms,42.3 ms,100% success rate
+gearbox prefork,1.0 ms,0.0%,0.8 ms,41.9 ms,100% success rate
+vertx-web,1.0 ms,0.0%,0.6 ms,27.0 ms,100% success rate
+faf,1.0 ms,0.0%,0.6 ms,21.3 ms,100% success rate
+vertx-web-kotlinx,1.0 ms,0.0%,0.6 ms,30.1 ms,100% success rate
+edap-http-fast,1.0 ms,0.0%,4.3 ms,74.7 ms,100% success rate
+ben [kestrel],1.1 ms,0.0%,1.1 ms,29.9 ms,100% success rate
+userver,1.1 ms,0.0%,0.6 ms,10.6 ms,100% success rate
+trillium [async-std],1.1 ms,0.0%,1.1 ms,22.8 ms,100% success rate
+smart-servlet,1.1 ms,0.0%,0.8 ms,30.9 ms,100% success rate
+mesh,1.1 ms,0.0%,0.8 ms,26.9 ms,100% success rate
+h2o,1.2 ms,0.0%,1.1 ms,53.4 ms,100% success rate
+"quarkus, postgresql",1.2 ms,0.0%,0.7 ms,25.0 ms,100% success rate
+hexagon netty epoll postgresql,1.2 ms,0.0%,1.2 ms,35.4 ms,100% success rate
+uwebsockets.js,1.2 ms,0.0%,0.8 ms,46.8 ms,100% success rate
+quarkus,1.2 ms,0.0%,0.7 ms,39.2 ms,100% success rate
+hexagon netty epoll pgclient,1.2 ms,0.0%,1.5 ms,37.2 ms,100% success rate
+hexagon helidon pgclient,1.2 ms,0.0%,1.2 ms,28.7 ms,100% success rate
+"quarkus, reactive",1.2 ms,0.0%,0.7 ms,24.9 ms,100% success rate
+cutelyst,1.3 ms,0.0%,0.8 ms,24.9 ms,100% success rate
+goravel fiber,1.3 ms,0.0%,1.0 ms,29.4 ms,100% success rate
+ripple,1.3 ms,0.0%,1.2 ms,31.7 ms,100% success rate
+treefrog,1.3 ms,0.0%,0.9 ms,22.9 ms,100% success rate
+pavex,1.3 ms,0.0%,0.9 ms,27.0 ms,100% success rate
+es4x,1.3 ms,0.0%,1.1 ms,25.4 ms,100% success rate
+socketify.py,1.4 ms,0.0%,0.9 ms,34.9 ms,100% success rate
+workerman,1.4 ms,0.0%,0.9 ms,58.2 ms,100% success rate
+scalene,1.4 ms,0.0%,7.4 ms,261.6 ms,100% success rate
+bun,1.4 ms,0.0%,1.0 ms,30.8 ms,100% success rate
+"frank, dapper",1.4 ms,0.0%,1.3 ms,30.6 ms,100% success rate
+beetlex-core,1.5 ms,0.0%,2.6 ms,112.7 ms,100% success rate
+go-pgx-prefork,1.5 ms,0.0%,1.5 ms,47.2 ms,100% success rate
+japronto,1.5 ms,0.0%,1.0 ms,25.3 ms,100% success rate
+act,1.6 ms,0.0%,5.0 ms,135.4 ms,100% success rate
+blaze,1.6 ms,0.0%,2.4 ms,216.6 ms,100% success rate
+officefloor-rawsqlclient,1.6 ms,0.0%,12.0 ms,374.2 ms,100% success rate
+rack-iodine-mri-sequel-raw,1.6 ms,0.0%,1.3 ms,21.9 ms,100% success rate
+donkey,1.6 ms,0.0%,1.1 ms,24.8 ms,100% success rate
+hertz,1.7 ms,0.0%,2.7 ms,111.9 ms,100% success rate
+openswoole,1.7 ms,0.0%,1.8 ms,63.1 ms,100% success rate
+aioworkers,1.8 ms,0.0%,1.8 ms,29.6 ms,100% success rate
+libhttpserver,1.8 ms,0.0%,1.0 ms,13.4 ms,100% success rate
+ubiquity-swoole,1.8 ms,0.0%,1.7 ms,38.1 ms,100% success rate
+wizzardo-http,1.8 ms,0.0%,1.6 ms,218.6 ms,100% success rate
+gemini,1.9 ms,0.0%,1.0 ms,27.6 ms,100% success rate
+hyperexpress,1.9 ms,0.0%,1.2 ms,27.5 ms,100% success rate
+oatpp-async-no-mp,1.9 ms,0.0%,1.1 ms,19.5 ms,100% success rate
+officefloor-thread_affinity,1.9 ms,0.0%,4.0 ms,179.8 ms,100% success rate
+roda-sequel-postgres-iodine-mri,1.9 ms,0.0%,1.5 ms,62.4 ms,100% success rate
+helidon,1.9 ms,0.0%,1.3 ms,22.6 ms,100% success rate
+bayou,1.9 ms,0.0%,2.1 ms,220.8 ms,100% success rate
+kumbiaphp-workerman,1.9 ms,0.0%,2.0 ms,26.5 ms,100% success rate
+php-workerman,2.0 ms,0.0%,2.3 ms,76.4 ms,100% success rate
+ubiquity-workerman-raw,2.0 ms,0.0%,2.0 ms,26.3 ms,100% success rate
+zap (zig),2.0 ms,0.1%,3.2 ms,106.4 ms,100% success rate
+mixphp-swoole-mysql,2.1 ms,0.1%,2.3 ms,32.6 ms,100% success rate
+nestjs-fastify,2.1 ms,0.1%,1.5 ms,39.0 ms,100% success rate
+zio-http,2.1 ms,0.1%,1.1 ms,27.4 ms,100% success rate
+one,2.1 ms,0.1%,2.0 ms,33.6 ms,100% success rate
+mixphp-workerman-pgsql,2.2 ms,0.1%,2.1 ms,30.4 ms,100% success rate
+officefloor-r2dbc,2.2 ms,0.1%,17.7 ms,486.8 ms,100% success rate
+rocket,2.3 ms,0.1%,1.5 ms,14.7 ms,100% success rate
+lapis,2.4 ms,0.1%,1.7 ms,18.7 ms,100% success rate
+aspcore-mono-mw,2.4 ms,0.1%,2.0 ms,51.6 ms,100% success rate
+elide,2.4 ms,0.1%,1.8 ms,80.8 ms,100% success rate
+ktor-jasync,2.4 ms,0.1%,1.7 ms,26.4 ms,100% success rate
+silverlining,2.4 ms,0.1%,9.3 ms,254.8 ms,100% success rate
+jlhttp,2.4 ms,0.1%,2.1 ms,35.3 ms,100% success rate
+just-js,2.4 ms,0.1%,15.1 ms,323.8 ms,100% success rate
+aspnetcore-aot,2.5 ms,0.1%,3.8 ms,223.6 ms,100% success rate
+rage,2.5 ms,0.1%,1.5 ms,11.9 ms,100% success rate
+jooby,2.5 ms,0.1%,2.1 ms,26.2 ms,100% success rate
+imi,2.6 ms,0.1%,2.1 ms,30.0 ms,100% success rate
+carter,2.6 ms,0.1%,4.2 ms,76.3 ms,100% success rate
+php-ngx,2.6 ms,0.1%,1.6 ms,46.5 ms,100% success rate
+socketify.py [wsgi pypy3],2.6 ms,0.1%,1.7 ms,52.0 ms,100% success rate
+vibora,2.7 ms,0.1%,1.6 ms,33.1 ms,100% success rate
+jooby-jetty,2.8 ms,0.1%,6.7 ms,117.7 ms,100% success rate
+vertx-web-scala,2.8 ms,0.1%,2.5 ms,26.8 ms,100% success rate
+netty,2.8 ms,0.1%,22.4 ms,583.1 ms,100% success rate
+ktor,2.8 ms,0.1%,3.8 ms,133.5 ms,100% success rate
+undertow,2.8 ms,0.1%,2.5 ms,34.3 ms,100% success rate
+workerman,2.8 ms,0.1%,2.1 ms,72.1 ms,100% success rate
+hapi,2.9 ms,0.1%,1.9 ms,61.0 ms,100% success rate
+peachpie,2.9 ms,0.1%,3.3 ms,50.4 ms,100% success rate
+http4k-undertow,3.0 ms,0.1%,4.6 ms,156.2 ms,100% success rate
+mark-php8-jit,3.0 ms,0.1%,2.3 ms,87.0 ms,100% success rate
+http4k-jetty11loom-pgclient,3.1 ms,0.1%,3.7 ms,71.9 ms,100% success rate
+openresty,3.1 ms,0.1%,2.4 ms,88.0 ms,100% success rate
+aspnetcore,3.1 ms,0.1%,5.6 ms,221.2 ms,100% success rate
+webman,3.1 ms,0.1%,2.2 ms,62.2 ms,100% success rate
+http4k-jettyloom-pgclient,3.2 ms,0.1%,3.6 ms,81.3 ms,100% success rate
+http4k-jetty11loom-jdbc,3.2 ms,0.1%,3.9 ms,206.0 ms,100% success rate
+swoole,3.2 ms,0.1%,2.5 ms,63.4 ms,100% success rate
+http4k-jettyloom-jdbc,3.2 ms,0.1%,3.9 ms,113.5 ms,100% success rate
+feersum,3.3 ms,0.1%,2.4 ms,26.8 ms,100% success rate
+feersum,3.3 ms,0.1%,2.5 ms,26.4 ms,100% success rate
+"reaper [aot,slim]",3.4 ms,0.1%,12.7 ms,161.4 ms,100% success rate
+facil.io,3.4 ms,0.1%,1.9 ms,11.1 ms,100% success rate
+phoenix,3.4 ms,0.1%,2.0 ms,30.4 ms,100% success rate
+falcon [socketify.py wsgi pypy3],3.5 ms,0.1%,2.3 ms,58.9 ms,100% success rate
+nginx-njs,3.5 ms,0.1%,2.3 ms,50.9 ms,100% success rate
+treefrog-epoll,3.5 ms,0.1%,3.3 ms,220.5 ms,100% success rate
+salvo,3.5 ms,0.1%,2.1 ms,32.5 ms,100% success rate
+hserver-business,3.6 ms,0.1%,2.4 ms,74.7 ms,100% success rate
+spring-webflux-mongo,3.6 ms,0.1%,1.9 ms,28.6 ms,100% success rate
+spring-webflux,3.6 ms,0.1%,1.9 ms,29.7 ms,100% success rate
+appmpower [aot-no-reflection],3.7 ms,0.1%,5.2 ms,218.4 ms,100% success rate
+aspcore-vb-mw,3.7 ms,0.1%,6.5 ms,234.7 ms,100% success rate
+rails-iodine,3.7 ms,0.1%,2.9 ms,37.5 ms,100% success rate
+ktor-cio,3.8 ms,0.1%,2.0 ms,28.9 ms,100% success rate
+spliffy,3.8 ms,0.1%,2.4 ms,40.4 ms,100% success rate
+ronykit,3.9 ms,0.1%,2.8 ms,60.6 ms,100% success rate
+http.jl,4.0 ms,0.1%,2.8 ms,24.8 ms,100% success rate
+elixir-plug-ecto,4.1 ms,0.1%,3.5 ms,119.3 ms,100% success rate
+oxpecker,4.1 ms,0.1%,6.3 ms,221.3 ms,100% success rate
+http4k-apache4,4.1 ms,0.1%,8.2 ms,233.8 ms,100% success rate
+falcon [asgi/tortoise],4.2 ms,0.1%,3.0 ms,34.0 ms,100% success rate
+ubiquity-ngx-micro,4.2 ms,0.1%,2.9 ms,91.5 ms,100% success rate
+aspcore-mono-mvc,4.2 ms,0.1%,3.7 ms,137.7 ms,100% success rate
+fiber,4.3 ms,0.1%,3.2 ms,34.6 ms,100% success rate
+php-h2o,4.4 ms,0.1%,2.2 ms,22.9 ms,100% success rate
+cpoll_cppsp,4.4 ms,0.1%,6.5 ms,100.1 ms,100% success rate
+php-raw7-tcp,4.5 ms,0.1%,2.7 ms,72.5 ms,100% success rate
+"falco, donald",4.5 ms,0.1%,7.4 ms,252.0 ms,100% success rate
+jewelia,4.5 ms,0.1%,3.9 ms,79.0 ms,100% success rate
+helidon 4,4.6 ms,0.1%,10.4 ms,102.5 ms,100% success rate
+jooby-jaxrs,4.6 ms,0.1%,10.3 ms,187.5 ms,100% success rate
+giraffe,4.7 ms,0.1%,5.7 ms,221.1 ms,100% success rate
+socketify.py [asgi pypy3],4.7 ms,0.1%,3.7 ms,109.6 ms,100% success rate
+atreugo,4.7 ms,0.1%,3.5 ms,42.8 ms,100% success rate
+bottle,4.7 ms,0.1%,4.3 ms,56.1 ms,100% success rate
+swift-nio,4.8 ms,0.1%,23.1 ms,552.3 ms,100% success rate
+zebra-simple,4.8 ms,0.1%,6.8 ms,244.0 ms,100% success rate
+apidaora-core,4.8 ms,0.1%,11.4 ms,173.5 ms,100% success rate
+"asp.net core [minimal apis, pg, dapper]",4.9 ms,0.1%,7.2 ms,240.2 ms,100% success rate
+easyrpc,5.0 ms,0.1%,5.7 ms,233.7 ms,100% success rate
+fasthttp,5.0 ms,0.1%,3.7 ms,46.0 ms,100% success rate
+jooby-netty,5.0 ms,0.1%,10.9 ms,154.4 ms,100% success rate
+php,5.0 ms,0.1%,3.2 ms,37.2 ms,100% success rate
+zebra,5.1 ms,0.1%,6.4 ms,228.7 ms,100% success rate
+apidaora,5.1 ms,0.1%,7.5 ms,127.4 ms,100% success rate
+granian [rsgi wrk],5.2 ms,0.1%,2.7 ms,28.5 ms,100% success rate
+gearbox,5.2 ms,0.1%,3.9 ms,42.0 ms,100% success rate
+rack-falcon-mri-sequel-raw,5.3 ms,0.1%,2.9 ms,23.0 ms,100% success rate
+granian [rsgi],5.3 ms,0.1%,3.0 ms,35.2 ms,100% success rate
+urweb,5.4 ms,0.1%,2.8 ms,26.8 ms,100% success rate
+racket,5.4 ms,0.1%,2.8 ms,48.7 ms,100% success rate
+suave,5.5 ms,0.1%,6.2 ms,133.0 ms,100% success rate
+morepath,5.7 ms,0.1%,4.9 ms,68.5 ms,100% success rate
+hexagon helidon native pgclient,5.7 ms,0.1%,3.3 ms,52.7 ms,100% success rate
+velocy,5.8 ms,0.1%,3.8 ms,101.3 ms,100% success rate
+ubiquity,5.8 ms,0.1%,3.6 ms,41.2 ms,100% success rate
+pyramid,6.0 ms,0.1%,5.4 ms,116.8 ms,100% success rate
+kumbiaphp,6.0 ms,0.1%,3.6 ms,30.0 ms,100% success rate
+nodejs,6.5 ms,0.2%,4.4 ms,120.5 ms,100% success rate
+falcon [socketify.py asgi pypy3],6.8 ms,0.2%,4.6 ms,143.5 ms,100% success rate
+ditsmod v3.0,6.9 ms,0.2%,4.6 ms,113.0 ms,100% success rate
+vapor,7.0 ms,0.2%,4.2 ms,38.9 ms,100% success rate
+granian [asgi],7.2 ms,0.2%,4.3 ms,40.8 ms,100% success rate
+genhttp,7.3 ms,0.2%,7.7 ms,242.4 ms,100% success rate
+fastendpoints,7.3 ms,0.2%,7.7 ms,229.9 ms,100% success rate
+today,7.3 ms,0.2%,3.7 ms,50.5 ms,100% success rate
+officefloor-sqlclient,7.4 ms,0.2%,57.3 ms,1030.0 ms,100% success rate
+lumen-workerman,7.8 ms,0.2%,5.9 ms,68.5 ms,100% success rate
+phpixie,7.9 ms,0.2%,4.2 ms,37.6 ms,100% success rate
+xitca-web [wasm],7.9 ms,0.2%,4.2 ms,31.4 ms,100% success rate
+microdot-raw,8.2 ms,0.2%,4.6 ms,42.7 ms,100% success rate
+microdot,8.2 ms,0.2%,5.1 ms,61.5 ms,100% success rate
+may-minihttp,8.2 ms,0.2%,12.3 ms,220.0 ms,100% success rate
+fastify,8.2 ms,0.2%,6.5 ms,180.9 ms,100% success rate
+hexagon,8.3 ms,0.2%,10.8 ms,246.4 ms,100% success rate
+symfony-workerman,8.5 ms,0.2%,6.6 ms,68.4 ms,100% success rate
+wolff,8.6 ms,0.2%,4.5 ms,30.6 ms,100% success rate
+grizzly,8.6 ms,0.2%,39.3 ms,830.0 ms,100% success rate
+hummingbird 2,8.7 ms,0.2%,5.8 ms,142.2 ms,100% success rate
+jetty-servlet,8.8 ms,0.2%,12.3 ms,278.1 ms,100% success rate
+oatpp-async,8.9 ms,0.2%,4.7 ms,38.3 ms,100% success rate
+hono,9.2 ms,0.2%,6.8 ms,186.6 ms,100% success rate
+duckphp,9.3 ms,0.2%,5.1 ms,43.2 ms,100% success rate
+uvicorn,9.4 ms,0.2%,5.8 ms,71.1 ms,100% success rate
+libreactor,9.8 ms,0.2%,12.9 ms,48.4 ms,100% success rate
+leaf,9.8 ms,0.2%,5.1 ms,34.4 ms,100% success rate
+hexagon jetty loom pgclient,10.0 ms,0.2%,13.2 ms,263.2 ms,100% success rate
+yii2-workerman,10.1 ms,0.3%,11.1 ms,134.3 ms,100% success rate
+finagle,10.2 ms,0.3%,11.2 ms,203.7 ms,100% success rate
+jawn,10.3 ms,0.3%,7.1 ms,74.2 ms,100% success rate
+cask,10.4 ms,0.3%,8.4 ms,128.6 ms,100% success rate
+falcon,10.5 ms,0.3%,8.6 ms,131.3 ms,100% success rate
+phalcon-micro,10.6 ms,0.3%,5.5 ms,37.9 ms,100% success rate
+pippo-tomcat,10.6 ms,0.3%,5.9 ms,231.4 ms,100% success rate
+flight,10.9 ms,0.3%,5.7 ms,43.9 ms,100% success rate
+pippo-undertow,11.0 ms,0.3%,7.6 ms,81.5 ms,100% success rate
+hexagon-jettyloom,11.3 ms,0.3%,19.2 ms,289.2 ms,100% success rate
+finatra,11.4 ms,0.3%,15.1 ms,175.8 ms,100% success rate
+youi,11.5 ms,0.3%,7.4 ms,161.9 ms,100% success rate
+finch,11.5 ms,0.3%,15.5 ms,188.3 ms,100% success rate
+blacksheep,11.6 ms,0.3%,6.6 ms,60.9 ms,100% success rate
+ktor-pgclient,11.8 ms,0.3%,11.3 ms,185.3 ms,100% success rate
+spring,11.9 ms,0.3%,7.7 ms,91.9 ms,100% success rate
+http4k-ratpack,11.9 ms,0.3%,15.4 ms,324.3 ms,100% success rate
+mixphp,12.1 ms,0.3%,6.9 ms,61.9 ms,100% success rate
+slim-workerman,12.5 ms,0.3%,11.1 ms,139.4 ms,100% success rate
+hexagon tomcat postgresql,12.5 ms,0.3%,7.5 ms,238.0 ms,100% success rate
+ktor-netty-r2dbc,12.6 ms,0.3%,11.9 ms,178.9 ms,100% success rate
+simple-server,12.8 ms,0.3%,18.0 ms,207.9 ms,100% success rate
+libreactor,13.4 ms,0.3%,13.6 ms,50.0 ms,100% success rate
+activej,13.6 ms,0.3%,19.3 ms,210.6 ms,100% success rate
+panther,13.8 ms,0.3%,7.1 ms,55.5 ms,100% success rate
+plack,13.9 ms,0.3%,8.6 ms,78.1 ms,100% success rate
+inverno,14.1 ms,0.3%,26.5 ms,323.2 ms,100% success rate
+yii2,14.2 ms,0.4%,7.4 ms,54.6 ms,100% success rate
+blade,14.3 ms,0.4%,18.6 ms,243.6 ms,100% success rate
+sanic,14.5 ms,0.4%,9.1 ms,250.4 ms,100% success rate
+ditsmod-bun v3.0,14.5 ms,0.4%,8.0 ms,94.3 ms,100% success rate
+fat-free,14.7 ms,0.4%,7.5 ms,53.3 ms,100% success rate
+mako,14.9 ms,0.4%,7.6 ms,53.0 ms,100% success rate
+"asp.net core [mvc, pg, ef]",14.9 ms,0.4%,11.2 ms,262.5 ms,100% success rate
+roa-tokio,15.1 ms,0.4%,15.2 ms,418.9 ms,100% success rate
+laravel-workerman,15.6 ms,0.4%,12.7 ms,149.3 ms,100% success rate
+minijax,15.6 ms,0.4%,11.8 ms,115.5 ms,100% success rate
+heaven,15.7 ms,0.4%,10.8 ms,89.1 ms,100% success rate
+nancy-netcore,15.8 ms,0.4%,10.6 ms,106.7 ms,100% success rate
+crystal,16.1 ms,0.4%,14.5 ms,66.3 ms,100% success rate
+play2-scala,16.3 ms,0.4%,20.3 ms,362.0 ms,100% success rate
+starlette,16.4 ms,0.4%,9.6 ms,81.0 ms,100% success rate
+play2-java,16.6 ms,0.4%,19.8 ms,377.0 ms,100% success rate
+wizzardo-inline,16.7 ms,0.4%,36.6 ms,175.7 ms,100% success rate
+crystal-radix,16.8 ms,0.4%,14.6 ms,67.0 ms,100% success rate
+slim,16.9 ms,0.4%,11.9 ms,62.6 ms,100% success rate
+javalin,17.0 ms,0.4%,30.2 ms,950.9 ms,100% success rate
+cfml-lucee,17.3 ms,0.4%,13.7 ms,175.0 ms,100% success rate
+starlite,17.6 ms,0.4%,9.3 ms,76.5 ms,100% success rate
+cfml-adobe,17.8 ms,0.4%,25.2 ms,193.5 ms,100% success rate
+imi-workerman,18.2 ms,0.5%,15.1 ms,367.6 ms,100% success rate
+lumen-swoole,18.5 ms,0.5%,11.1 ms,129.2 ms,100% success rate
+proteus,18.5 ms,0.5%,76.8 ms,1290.0 ms,100% success rate
+toro,18.9 ms,0.5%,13.8 ms,63.2 ms,100% success rate
+hexagon-jetty-native,18.9 ms,0.5%,55.2 ms,867.3 ms,100% success rate
+ronykit,19.0 ms,0.5%,19.1 ms,413.7 ms,100% success rate
+kelp-starlet-mongodb,19.2 ms,0.5%,14.5 ms,78.1 ms,100% success rate
+roa-core,19.2 ms,0.5%,14.2 ms,218.8 ms,100% success rate
+ubiquity-ngx,19.4 ms,0.5%,15.6 ms,642.2 ms,100% success rate
+spider-gazelle,19.6 ms,0.5%,13.3 ms,68.0 ms,100% success rate
+spark,19.7 ms,0.5%,23.6 ms,305.8 ms,100% success rate
+tornado,20.2 ms,0.5%,11.5 ms,77.1 ms,100% success rate
+microhttp,20.4 ms,0.5%,12.4 ms,68.0 ms,100% success rate
+tetsuweb,20.8 ms,0.5%,12.9 ms,78.9 ms,100% success rate
+phalcon,21.0 ms,0.5%,10.7 ms,82.8 ms,100% success rate
+granian [wsgi],21.4 ms,0.5%,13.7 ms,124.2 ms,100% success rate
+socketify.py [wsgi],21.5 ms,0.5%,12.0 ms,131.9 ms,100% success rate
+http4k-netty,21.5 ms,0.5%,32.8 ms,453.2 ms,100% success rate
+robyn [const],21.7 ms,0.5%,17.1 ms,179.0 ms,100% success rate
+micronaut vertx pg client graalvm,21.9 ms,0.5%,31.5 ms,389.8 ms,100% success rate
+rack-sequel-passenger-mri,22.0 ms,0.5%,11.1 ms,57.8 ms,100% success rate
+tio-mvc,22.3 ms,0.6%,33.8 ms,889.7 ms,100% success rate
+pellet,22.4 ms,0.6%,16.0 ms,222.8 ms,100% success rate
+officefloor-vertx,22.9 ms,0.6%,11.7 ms,86.7 ms,100% success rate
+kelp-twiggy-mysql,23.0 ms,0.6%,14.7 ms,105.8 ms,0% success rate
+comet,23.2 ms,0.6%,15.2 ms,95.8 ms,100% success rate
+luminus,23.2 ms,0.6%,15.2 ms,155.8 ms,100% success rate
+akka-http,23.6 ms,0.6%,138.9 ms,2030.0 ms,100% success rate
+kelp-gazelle-mongodb,23.8 ms,0.6%,17.6 ms,94.3 ms,100% success rate
+falcon [fastwsgi],24.3 ms,0.6%,12.9 ms,123.4 ms,100% success rate
+hanami,24.7 ms,0.6%,14.3 ms,117.1 ms,100% success rate
+kelp-twiggy-mongodb,25.1 ms,0.6%,17.4 ms,137.2 ms,0% success rate
+play2-java-netty,25.4 ms,0.6%,31.4 ms,481.1 ms,100% success rate
+kelp-starlet-mysql,25.4 ms,0.6%,13.5 ms,65.8 ms,100% success rate
+archttp,25.5 ms,0.6%,13.7 ms,92.3 ms,100% success rate
+aiohttp,25.6 ms,0.6%,14.4 ms,96.9 ms,100% success rate
+angel3_postgresql,25.7 ms,0.6%,15.2 ms,274.9 ms,100% success rate
+ringojs-convenient,25.8 ms,0.6%,18.8 ms,199.0 ms,100% success rate
+jetty,27.0 ms,0.7%,25.1 ms,543.6 ms,100% success rate
+fastapi,27.4 ms,0.7%,15.1 ms,108.7 ms,100% success rate
+restana,27.8 ms,0.7%,16.8 ms,340.3 ms,100% success rate
+webmachine,28.0 ms,0.7%,16.1 ms,259.0 ms,100% success rate
+socketify.py [asgi],29.0 ms,0.7%,16.3 ms,177.6 ms,100% success rate
+voovan,29.8 ms,0.7%,35.3 ms,363.5 ms,100% success rate
+kelp,30.1 ms,0.7%,19.4 ms,97.8 ms,100% success rate
+symfony,30.3 ms,0.8%,14.1 ms,103.5 ms,100% success rate
+hot,30.7 ms,0.8%,17.0 ms,132.8 ms,100% success rate
+fastapi-uvicorn,30.9 ms,0.8%,18.4 ms,118.3 ms,100% success rate
+http4k-jetty,32.0 ms,0.8%,40.8 ms,705.5 ms,100% success rate
+roa,32.1 ms,0.8%,22.9 ms,428.8 ms,100% success rate
+kelp-starman-mysql,32.3 ms,0.8%,21.7 ms,149.0 ms,100% success rate
+httpserver-robaho,33.1 ms,0.8%,18.5 ms,240.3 ms,100% success rate
+vapor,33.2 ms,0.8%,19.6 ms,291.9 ms,100% success rate
+falcon [socketify.py wsgi],33.4 ms,0.8%,18.6 ms,161.7 ms,100% success rate
+kelp-starman-mongodb,34.5 ms,0.9%,19.2 ms,141.3 ms,100% success rate
+http4k-helidon-pgclient,35.1 ms,0.9%,18.2 ms,234.3 ms,100% success rate
+http4k-helidon-jdbc,35.2 ms,0.9%,18.1 ms,229.1 ms,100% success rate
+0http,35.4 ms,0.9%,20.4 ms,365.2 ms,100% success rate
+aleph,35.4 ms,0.9%,43.6 ms,452.5 ms,100% success rate
+mojolicious,36.5 ms,0.9%,22.5 ms,146.6 ms,100% success rate
+fastwsgi,37.2 ms,0.9%,21.1 ms,203.4 ms,100% success rate
+php-unit,37.2 ms,0.9%,25.6 ms,193.1 ms,100% success rate
+http4k-jetty11,37.3 ms,0.9%,42.7 ms,702.7 ms,100% success rate
+oxygen.jl,37.5 ms,0.9%,25.6 ms,413.0 ms,100% success rate
+dropwizard,39.0 ms,1.0%,47.3 ms,563.8 ms,100% success rate
+duct-aleph,40.2 ms,1.0%,97.3 ms,948.1 ms,100% success rate
+grape,40.8 ms,1.0%,25.1 ms,127.1 ms,100% success rate
+koa,41.0 ms,1.0%,39.4 ms,866.8 ms,100% success rate
+onyx,41.0 ms,1.0%,22.7 ms,287.3 ms,100% success rate
+saphir,43.2 ms,1.1%,28.4 ms,284.8 ms,100% success rate
+crax,43.8 ms,1.1%,27.1 ms,162.8 ms,100% success rate
+revenj,43.9 ms,1.1%,46.5 ms,887.8 ms,100% success rate
+kit,45.7 ms,1.1%,69.1 ms,834.0 ms,100% success rate
+emmett,45.9 ms,1.1%,26.7 ms,199.8 ms,100% success rate
+emmett55,46.2 ms,1.1%,27.0 ms,219.6 ms,100% success rate
+lumen,47.0 ms,1.2%,21.6 ms,133.8 ms,100% success rate
+light-4j,48.8 ms,1.2%,28.8 ms,308.0 ms,100% success rate
+aioworkers,49.6 ms,1.2%,76.8 ms,524.6 ms,100% success rate
+kemal,50.8 ms,1.3%,30.4 ms,340.6 ms,100% success rate
+nette,52.4 ms,1.3%,24.3 ms,204.8 ms,100% success rate
+symfony-swoole,54.4 ms,1.3%,53.1 ms,572.0 ms,100% success rate
+amber,54.6 ms,1.4%,31.1 ms,211.2 ms,100% success rate
+play2-scala-netty,55.3 ms,1.4%,71.6 ms,1170.0 ms,100% success rate
+cppcms,57.1 ms,1.4%,71.1 ms,217.2 ms,100% success rate
+pekko-http,57.1 ms,1.4%,272.6 ms,2930.0 ms,100% success rate
+micronaut,57.7 ms,1.4%,39.5 ms,511.8 ms,100% success rate
+feathersjs,58.9 ms,1.5%,45.3 ms,756.7 ms,100% success rate
+grape-unicorn,64.0 ms,1.6%,35.9 ms,409.5 ms,100% success rate
+django,65.3 ms,1.6%,50.6 ms,566.1 ms,100% success rate
+async-worker,66.2 ms,1.6%,225.1 ms,938.8 ms,100% success rate
+lucky,66.9 ms,1.7%,35.6 ms,225.1 ms,100% success rate
+just-boost,67.2 ms,1.7%,42.8 ms,803.4 ms,100% success rate
+play1,67.2 ms,1.7%,36.3 ms,313.8 ms,100% success rate
+routerling,68.7 ms,1.7%,42.4 ms,246.3 ms,100% success rate
+restify,69.1 ms,1.7%,46.6 ms,824.9 ms,100% success rate
+deno,71.1 ms,1.8%,43.1 ms,477.7 ms,100% success rate
+laravel,71.8 ms,1.8%,32.9 ms,204.0 ms,100% success rate
+laravel-roadrunner,72.6 ms,1.8%,151.9 ms,495.0 ms,100% success rate
+duct-httpkit,73.5 ms,1.8%,38.4 ms,342.4 ms,100% success rate
+zinc,73.6 ms,1.8%,455.4 ms,6590.0 ms,100% success rate
+zend,75.3 ms,1.9%,34.5 ms,215.7 ms,100% success rate
+reactphp [libuv],79.2 ms,2.0%,240.8 ms,2780.0 ms,100% success rate
+tornado-py3,80.8 ms,2.0%,46.7 ms,236.3 ms,100% success rate
+codeigniter,86.9 ms,2.2%,43.1 ms,244.0 ms,100% success rate
+http4k-sunhttploom,87.3 ms,2.2%,150.7 ms,1740.0 ms,97% success rate
+hexagon helidon postgresql,88.4 ms,2.2%,48.8 ms,421.7 ms,100% success rate
+servicetalk,88.9 ms,2.2%,77.5 ms,432.4 ms,100% success rate
+fastapi-hypercorn,89.2 ms,2.2%,53.0 ms,279.1 ms,100% success rate
+padrino-unicorn,89.4 ms,2.2%,46.1 ms,438.8 ms,100% success rate
+http4s,90.6 ms,2.2%,40.1 ms,335.2 ms,100% success rate
+dream,91.5 ms,2.3%,50.1 ms,468.9 ms,100% success rate
+magician-io,92.2 ms,2.3%,52.9 ms,462.9 ms,100% success rate
+coldbox-adobe,92.5 ms,2.3%,59.8 ms,549.0 ms,100% success rate
+amp,93.3 ms,2.3%,258.4 ms,4000.0 ms,100% success rate
+bareasgi,93.6 ms,2.3%,52.6 ms,258.8 ms,100% success rate
+cakephp,100.2 ms,2.5%,45.6 ms,317.6 ms,100% success rate
+reactphp [libevent],103.9 ms,2.6%,323.4 ms,3230.0 ms,100% success rate
+laravel-swoole,104.4 ms,2.6%,58.5 ms,396.6 ms,100% success rate
+agoo,104.4 ms,2.6%,64.3 ms,554.2 ms,100% success rate
+h2o_mruby,109.7 ms,2.7%,127.2 ms,1530.0 ms,100% success rate
+one-no-coroutine,115.9 ms,2.9%,85.7 ms,1180.0 ms,100% success rate
+poco,121.4 ms,3.0%,659.4 ms,7980.0 ms,100% success rate
+coldbox-lucee,123.4 ms,3.1%,84.8 ms,762.1 ms,100% success rate
+pippo-jetty,124.7 ms,3.1%,101.6 ms,1280.0 ms,100% success rate
+servicestack-v6,129.7 ms,3.2%,70.6 ms,862.5 ms,100% success rate
+edap-http,136.3 ms,3.4%,330.7 ms,2760.0 ms,100% success rate
+duct,140.9 ms,3.5%,74.3 ms,650.9 ms,100% success rate
+fortran.io,141.8 ms,3.5%,264.1 ms,849.5 ms,100% success rate
+ninja-standalone,142.4 ms,3.5%,96.3 ms,1310.0 ms,100% success rate
+hserver,143.1 ms,3.6%,681.4 ms,7990.0 ms,100% success rate
+tuprolog,152.3 ms,3.8%,75.6 ms,550.1 ms,100% success rate
+robyn,157.3 ms,3.9%,188.5 ms,1430.0 ms,100% success rate
+evio,157.8 ms,3.9%,470.3 ms,3930.0 ms,100% success rate
+php-frankenphp,159.6 ms,4.0%,128.3 ms,1390.0 ms,100% success rate
+grizzly-jersey,161.2 ms,4.0%,671.0 ms,7990.0 ms,100% success rate
+falcon [socketify.py asgi],167.0 ms,4.1%,87.4 ms,898.8 ms,100% success rate
+django [socketify.py wsgi],171.8 ms,4.3%,96.1 ms,886.8 ms,100% success rate
+armeria,172.7 ms,4.3%,116.2 ms,1230.0 ms,100% success rate
+cuehttp,174.4 ms,4.3%,753.8 ms,7970.0 ms,100% success rate
+rack-puma-jruby-sequel-raw,175.3 ms,4.4%,511.6 ms,6940.0 ms,100% success rate
+pedestal,175.8 ms,4.4%,99.2 ms,980.0 ms,100% success rate
+vsgi,188.4 ms,4.7%,92.9 ms,789.4 ms,100% success rate
+fastapi [socketify.py asgi pypy3],194.6 ms,4.8%,104.0 ms,1060.0 ms,100% success rate
+http-kit,212.1 ms,5.3%,132.8 ms,998.9 ms,100% success rate
+rails-falcon,213.3 ms,5.3%,121.6 ms,1220.0 ms,100% success rate
+valum,214.0 ms,5.3%,103.8 ms,785.2 ms,100% success rate
+nanohttpd,221.8 ms,5.5%,197.8 ms,2500.0 ms,100% success rate
+leaf-workerman,227.0 ms,5.6%,248.5 ms,3440.0 ms,100% success rate
+chi-prefork,241.3 ms,6.0%,238.2 ms,3210.0 ms,100% success rate
+rack-puma-mri-sequel-raw,249.7 ms,6.2%,628.7 ms,6740.0 ms,100% success rate
+sinatra,267.9 ms,6.6%,722.5 ms,6690.0 ms,100% success rate
+roda-sequel,273.9 ms,6.8%,707.5 ms,6680.0 ms,100% success rate
+express-postgresjs,303.4 ms,7.5%,693.8 ms,5360.0 ms,100% success rate
+hummingbird,308.4 ms,7.7%,934.7 ms,7990.0 ms,100% success rate
+nancy,314.8 ms,7.8%,693.9 ms,7990.0 ms,100% success rate
+snunit,316.1 ms,7.8%,174.8 ms,1050.0 ms,100% success rate
+evio-stdlib,320.0 ms,7.9%,1040.0 ms,7990.0 ms,100% success rate
+http4k-helidon-graalvm,339.4 ms,8.4%,181.7 ms,1230.0 ms,100% success rate
+http4k,354.3 ms,8.8%,782.2 ms,6680.0 ms,96% success rate
+revenj-jvm,361.4 ms,9.0%,1080.0 ms,7960.0 ms,100% success rate
+martini,366.6 ms,9.1%,240.6 ms,2380.0 ms,100% success rate
+rails,373.3 ms,9.3%,795.8 ms,6710.0 ms,100% success rate
+tapestry,389.4 ms,9.7%,1070.0 ms,7940.0 ms,100% success rate
+hummingbirdcore,402.2 ms,10.0%,1120.0 ms,7990.0 ms,100% success rate
+servlet,406.1 ms,10.1%,1110.0 ms,7960.0 ms,100% success rate
+akka-http-slick-postgres,410.2 ms,10.2%,1030.0 ms,8000.0 ms,100% success rate
+fastapi [socketify.py asgi],415.2 ms,10.3%,225.7 ms,2600.0 ms,100% success rate
+wicket,420.8 ms,10.4%,1060.0 ms,7990.0 ms,100% success rate
+php-pools,430.1 ms,10.7%,536.8 ms,4380.0 ms,100% success rate
+swi-prolog,436.2 ms,10.8%,582.9 ms,7940.0 ms,100% success rate
+officefloor-spring_data,456.4 ms,11.3%,1180.0 ms,7990.0 ms,100% success rate
+cyberphp,456.6 ms,11.3%,1190.0 ms,7990.0 ms,100% success rate
+http4k-graalvm,457.4 ms,11.3%,756.9 ms,7130.0 ms,99% success rate
+dia,472.6 ms,11.7%,418.7 ms,7720.0 ms,100% success rate
+compojure,474.3 ms,11.8%,1150.0 ms,7980.0 ms,100% success rate
+officefloor,478.2 ms,11.9%,1210.0 ms,7930.0 ms,100% success rate
+officefloor-micro,482.4 ms,12.0%,1220.0 ms,7990.0 ms,100% success rate
+officefloor-async,486.2 ms,12.1%,1200.0 ms,7930.0 ms,100% success rate
+symfony-roadrunner,486.9 ms,12.1%,238.1 ms,919.7 ms,100% success rate
+express,551.3 ms,13.7%,1150.0 ms,8000.0 ms,100% success rate
+jersey,561.3 ms,13.9%,1080.0 ms,7920.0 ms,100% success rate
+nestjs,567.6 ms,14.1%,1160.0 ms,8000.0 ms,100% success rate
+next.js,697.2 ms,17.3%,1170.0 ms,7670.0 ms,100% success rate
+httpserver,706.1 ms,17.5%,364.1 ms,1500.0 ms,100% success rate
+grails,773.4 ms,19.2%,1130.0 ms,7990.0 ms,100% success rate
+symfony-frankenphp,774.8 ms,19.2%,396.1 ms,1840.0 ms,100% success rate
+php-caddyserver,793.2 ms,19.7%,654.3 ms,6950.0 ms,100% success rate
+falcon [waitress],835.2 ms,20.7%,802.7 ms,7610.0 ms,100% success rate
+spiral,893.6 ms,22.2%,415.4 ms,1830.0 ms,100% success rate
+laravel-laravel-s,915.7 ms,22.7%,1140.0 ms,6910.0 ms,100% success rate
+ringojs,973.0 ms,24.1%,567.7 ms,3920.0 ms,100% success rate
+ktor-jetty,1050.0 ms,26.1%,496.1 ms,2220.0 ms,100% success rate
+officefloor-undertow,1250.0 ms,31.0%,865.5 ms,6690.0 ms,100% success rate
+lumen-laravel-s,1310.0 ms,32.5%,1520.0 ms,8000.0 ms,100% success rate
+collie-ldc,1580.0 ms,39.2%,776.6 ms,7990.0 ms,100% success rate
+goravel gin,1630.0 ms,40.4%,1300.0 ms,7460.0 ms,100% success rate
+collie,1700.0 ms,42.2%,762.0 ms,7980.0 ms,100% success rate
+chi-scratch,1750.0 ms,43.4%,1330.0 ms,8000.0 ms,100% success rate
+gin,1760.0 ms,43.7%,1300.0 ms,7990.0 ms,100% success rate
+clevergo,1770.0 ms,43.9%,1320.0 ms,8000.0 ms,100% success rate
+gin-scratch,1780.0 ms,44.2%,1440.0 ms,7980.0 ms,100% success rate
+kami,1780.0 ms,44.2%,1500.0 ms,8000.0 ms,100% success rate
+chi,1790.0 ms,44.4%,1350.0 ms,8000.0 ms,100% success rate
+go,1800.0 ms,44.7%,1340.0 ms,7980.0 ms,100% success rate
+goframe,1820.0 ms,45.2%,1390.0 ms,7980.0 ms,100% success rate
+echo,1860.0 ms,46.2%,1580.0 ms,8000.0 ms,100% success rate
+hapi-nginx,1870.0 ms,46.4%,1420.0 ms,7340.0 ms,100% success rate
+pine,1880.0 ms,46.7%,1450.0 ms,8000.0 ms,100% success rate
+goji,2130.0 ms,52.9%,1620.0 ms,8000.0 ms,100% success rate
+laravel-octane [frankenphp],2230.0 ms,55.3%,1130.0 ms,4400.0 ms,100% success rate
+curacao,2290.0 ms,56.8%,1180.0 ms,5160.0 ms,100% success rate
+cakephp-workerman,2670.0 ms,66.3%,1650.0 ms,8000.0 ms,100% success rate
+officefloor-netty,3490.0 ms,86.6%,1890.0 ms,7930.0 ms,100% success rate
+cherrypy-py3,3680.0 ms,91.3%,2000.0 ms,7990.0 ms,95% success rate
+integrated haskell platfrom (ihp),4030.0 ms,100.0%,2060.0 ms,8000.0 ms,100% success rate

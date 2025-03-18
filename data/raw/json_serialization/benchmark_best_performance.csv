@@ -1,0 +1,532 @@
+Rnk,Framework,Best performance (higher is better),Performance(%),500-series HTTP responses,Classification,Language,Platform,Front-end server / Web-server,Application operating system,Implementation approach
+1,libreactor,"3,118,330",100.0%,100% success rate,Micro,C,libreactor,None,Linux,Realistic
+2,may-minihttp,"3,102,062",99.5%,100% success rate,Micro,Rust,Rust,may-minihttp,Linux,Realistic
+3,libreactor,"3,098,626",99.4%,100% success rate,Platform,C,None,None,Linux,Realistic
+4,lithium,"3,041,049",97.5%,100% success rate,Micro,C++,None,None,Linux,Realistic
+5,pico.v,"3,031,805",97.2%,100% success rate,Micro,v,None,None,Linux,Realistic
+6,edap-http-fast,"3,019,148",96.8%,100% success rate,Platform,Java,edap,None,Linux,Realistic
+7,edap-http,"3,002,791",96.3%,100% success rate,Platform,Java,edap,None,Linux,Realistic
+8,wizzardo-http,"2,972,955",95.3%,100% success rate,Micro,Java,None,None,Linux,Realistic
+9,firenio-http-lite,"2,972,507",95.3%,100% success rate,Platform,Java,firenio,None,Linux,Realistic
+10,"ntex [tokio,platform]","2,963,471",95.0%,100% success rate,Platform,Rust,None,ntex,Linux,Realistic
+11,smart-socket,"2,948,084",94.5%,100% success rate,Platform,Java,smartboot,None,Linux,Realistic
+12,h2o,"2,923,581",93.8%,100% success rate,Platform,C,None,h2o,Linux,Realistic
+13,"ntex [compio,platform]","2,899,759",93.0%,100% success rate,Platform,Rust,None,ntex,Linux,Realistic
+14,vertx,"2,889,592",92.7%,100% success rate,Platform,Java,vert.x,None,Linux,Realistic
+15,hyper,"2,885,610",92.5%,100% success rate,Micro,Rust,Rust,hyper,Linux,Realistic
+16,just-js,"2,868,204",92.0%,100% success rate,Platform,JavaScript,just-js,None,Linux,Realistic
+17,firenio,"2,866,762",91.9%,100% success rate,Platform,Java,firenio,None,Linux,Realistic
+18,ffead-cpp [v],"2,857,764",91.6%,100% success rate,Fullstack,C++,None,picov,Linux,Realistic
+19,otavia,"2,845,223",91.2%,100% success rate,Micro,Scala,otavia,None,Linux,Realistic
+20,vertx-web-kotlin-dsljson,"2,836,665",91.0%,100% success rate,Micro,Kotlin,vert.x,None,Linux,Realistic
+21,httpbeast,"2,808,169",90.1%,100% success rate,Platform,Nim,None,None,Linux,Realistic
+22,mrhttp,"2,802,615",89.9%,100% success rate,Micro,Python,None,None,Linux,Realistic
+23,otavia,"2,773,406",88.9%,100% success rate,Micro,Scala,otavia,None,Linux,Realistic
+24,ffead-cpp [v-prof],"2,771,261",88.9%,100% success rate,Fullstack,C++,None,picov,Linux,Realistic
+25,ntex [tokio],"2,767,355",88.7%,100% success rate,Micro,Rust,None,ntex,Linux,Realistic
+26,cpoll_cppsp,"2,759,162",88.5%,100% success rate,Platform,C++,None,None,Linux,Realistic
+27,"quarkus, vert.x","2,756,818",88.4%,100% success rate,Micro,Java,vert.x,vert.x,Linux,Realistic
+28,workerman,"2,754,243",88.3%,100% success rate,Platform,PHP,workerman,None,Linux,Realistic
+29,rapidoid-http-fast,"2,747,166",88.1%,100% success rate,Platform,Java,Rapidoid,None,Linux,Realistic
+30,uwebsockets.js,"2,731,252",87.6%,100% success rate,Platform,JavaScript,nodejs,None,Linux,Realistic
+31,xitca-web,"2,720,330",87.2%,100% success rate,Micro,Rust,None,xitca-server,Linux,Realistic
+32,php-ngx,"2,718,420",87.2%,100% success rate,Platform,PHP,ngx_php,nginx,Linux,Realistic
+33,rapidoid,"2,714,105",87.0%,100% success rate,Platform,Java,Rapidoid,None,Linux,Realistic
+34,socketify.py [pypy3],"2,711,566",87.0%,100% success rate,Micro,Python,None,socketify.py,Linux,Realistic
+35,voovan,"2,711,547",87.0%,100% success rate,Platform,Java,voovan,None,Linux,Realistic
+36,axum,"2,709,794",86.9%,100% success rate,Platform,Rust,Rust,hyper,Linux,Realistic
+37,netty,"2,709,586",86.9%,100% success rate,Platform,Java,Netty,None,Linux,Realistic
+38,jooby-netty,"2,705,638",86.8%,100% success rate,Fullstack,Java,Netty,None,Linux,Realistic
+39,xitca-web [sync],"2,697,697",86.5%,100% success rate,Micro,Rust,None,xitca-server,Linux,Realistic
+40,xitca-web [orm],"2,692,567",86.3%,100% success rate,Fullstack,Rust,None,xitca-server,Linux,Realistic
+41,jooby-jaxrs,"2,687,394",86.2%,100% success rate,Fullstack,Java,Undertow,None,Linux,Realistic
+42,silverlining [prefork],"2,681,872",86.0%,100% success rate,Platform,Go,None,None,Linux,Realistic
+43,microhttp,"2,670,525",85.6%,100% success rate,Platform,Java,microhttp,None,Linux,Realistic
+44,mormot [orm],"2,666,665",85.5%,100% success rate,Fullstack,pascal,None,None,Linux,Realistic
+45,blaze,"2,661,073",85.3%,100% success rate,Micro,Scala,blaze,None,Linux,Realistic
+46,ntex [compio],"2,653,891",85.1%,100% success rate,Micro,Rust,None,ntex,Linux,Realistic
+47,kooby,"2,647,071",84.9%,100% success rate,Fullstack,Kotlin,Undertow,None,Linux,Realistic
+48,smart-servlet,"2,634,539",84.5%,100% success rate,Platform,Java,smartboot,None,Linux,Realistic
+49,scalene,"2,634,406",84.5%,100% success rate,Micro,Scala,None,None,Linux,Realistic
+50,vertx-web,"2,632,083",84.4%,100% success rate,Micro,Java,vert.x,None,Linux,Realistic
+51,activej,"2,627,329",84.3%,100% success rate,Micro,Java,activej,None,Linux,Realistic
+52,webman,"2,616,793",83.9%,100% success rate,Micro,PHP,workerman,None,Linux,Realistic
+53,jester,"2,604,675",83.5%,100% success rate,Micro,Nim,None,None,Linux,Realistic
+54,proteus,"2,601,174",83.4%,100% success rate,Micro,Java,Undertow,None,Linux,Realistic
+55,openresty,"2,599,008",83.3%,100% success rate,Platform,Lua,OpenResty,nginx,Linux,Realistic
+56,mark-php8-jit,"2,589,951",83.1%,100% success rate,Micro,PHP,workerman,None,Linux,Realistic
+57,workerman,"2,588,238",83.0%,100% success rate,Platform,PHP,workerman,None,Linux,Realistic
+58,inverno,"2,579,842",82.7%,100% success rate,Micro,Java,inverno,None,Linux,Realistic
+59,simps,"2,559,387",82.1%,100% success rate,Micro,PHP,swoole,None,Linux,Realistic
+60,aspnetcore-aot,"2,556,896",82.0%,100% success rate,Platform,C#,.NET,kestrel,Linux,Realistic
+61,officefloor-r2dbc,"2,550,592",81.8%,100% success rate,Platform,Java,officefloor,woof,Linux,Realistic
+62,aspnetcore,"2,546,481",81.7%,100% success rate,Platform,C#,.NET,kestrel,Linux,Realistic
+63,fasthttp-prefork,"2,545,983",81.6%,100% success rate,Platform,Go,None,None,Linux,Realistic
+64,officefloor-sqlclient,"2,523,738",80.9%,100% success rate,Platform,Java,officefloor,woof,Linux,Realistic
+65,reitit,"2,523,363",80.9%,100% success rate,Micro,Clojure,Undertow,None,Linux,Realistic
+66,officefloor-rawsqlclient,"2,521,419",80.9%,100% success rate,Platform,Java,officefloor,woof,Linux,Realistic
+67,atreugo-prefork,"2,521,175",80.9%,100% success rate,Platform,Go,None,None,Linux,Realistic
+68,vertx-web-kotlinx,"2,509,823",80.5%,100% success rate,Micro,Kotlin,vert.x,None,Linux,Realistic
+69,"quarkus, postgresql","2,505,229",80.3%,100% success rate,Fullstack,Java,vert.x,vert.x,Linux,Realistic
+70,ronykit,"2,503,885",80.3%,100% success rate,Platform,Go,None,None,Linux,Realistic
+71,fiber-prefork,"2,479,768",79.5%,100% success rate,Platform,Go,None,None,Linux,Realistic
+72,drogon,"2,474,349",79.3%,100% success rate,Fullstack,C++,None,None,Linux,Realistic
+73,swoole,"2,465,399",79.1%,100% success rate,Platform,PHP,swoole,None,Linux,Realistic
+74,quarkus,"2,457,422",78.8%,100% success rate,Fullstack,Java,resteasy reactive,vert.x,Linux,Realistic
+75,mesh,"2,449,534",78.6%,100% success rate,Platform,JavaScript,nodejs,None,Linux,Realistic
+76,gearbox prefork,"2,441,834",78.3%,100% success rate,Platform,Go,None,None,Linux,Realistic
+77,"quarkus, reactive","2,439,679",78.2%,100% success rate,Fullstack,Java,resteasy reactive,vert.x,Linux,Realistic
+78,lwan,"2,423,414",77.7%,100% success rate,Micro,C,Lwan,lwan,Linux,Realistic
+79,goravel fiber,"2,361,155",75.7%,100% success rate,Fullstack,Go,None,None,Linux,Realistic
+80,fastwsgi,"2,349,504",75.3%,100% success rate,Micro,Python,wsgi,fastwsgi,Linux,Realistic
+81,beetlex-core,"2,316,553",74.3%,100% success rate,Platform,C#,.NET,beetlex,Linux,Realistic
+82,solon,"2,305,901",73.9%,100% success rate,Fullstack,Java,solon,smarthttp,Linux,Realistic
+83,hyperexpress,"2,254,278",72.3%,100% success rate,Micro,JavaScript,nodejs,µws,Linux,Realistic
+84,revenj-jvm,"2,245,219",72.0%,100% success rate,Fullstack,Java,Servlet,Resin,Linux,Realistic
+85,oatpp-no-mp,"2,245,087",72.0%,100% success rate,Micro,C++,None,None,Linux,Realistic
+86,helidon 4,"2,233,345",71.6%,100% success rate,Micro,Java,None,None,Linux,Realistic
+87,feersum,"2,232,452",71.6%,100% success rate,Platform,Perl,None,feersum,Linux,Realistic
+88,feersum,"2,230,619",71.5%,100% success rate,Platform,Perl,None,feersum,Linux,Realistic
+89,zio-http,"2,222,013",71.3%,100% success rate,Micro,Scala,Netty,None,Linux,Realistic
+90,servlet,"2,203,565",70.7%,100% success rate,Platform,Java,Servlet,Resin,Linux,Realistic
+91,jooby-jetty,"2,193,839",70.4%,100% success rate,Fullstack,Java,Jetty,None,Linux,Realistic
+92,facil.io,"2,127,477",68.2%,100% success rate,Micro,C,None,None,Linux,Realistic
+93,oxpecker,"2,120,258",68.0%,100% success rate,Micro,f#,.NET,kestrel,Linux,Realistic
+94,socketify.py,"2,114,135",67.8%,100% success rate,Micro,Python,None,socketify.py-python3,Linux,Realistic
+95,cutelyst-thread-pico,"2,108,232",67.6%,100% success rate,Fullstack,C++,cutelystwsgi,None,Linux,Realistic
+96,bun,"2,097,129",67.3%,100% success rate,Platform,typescript,bun,None,Linux,Realistic
+97,nginx-njs,"2,096,981",67.2%,100% success rate,Platform,C,None,nginx,Linux,Realistic
+98,salvo,"2,089,153",67.0%,100% success rate,Micro,Rust,Rust,hyper,Linux,Realistic
+99,japronto,"2,087,286",66.9%,100% success rate,Micro,Python,None,None,Linux,Realistic
+100,donkey,"2,071,538",66.4%,100% success rate,Micro,Clojure,vert.x,None,Linux,Realistic
+101,ubiquity-ngx-micro,"2,063,451",66.2%,100% success rate,Micro,PHP,ngx_php,nginx,Linux,Realistic
+102,lwan-lua,"2,055,710",65.9%,100% success rate,Micro,Lua,Lwan,lwan,Linux,Realistic
+103,httpaf,"2,055,443",65.9%,100% success rate,Platform,ocaml,httpaf,None,Linux,Realistic
+104,"asp.net core [minimal apis, pg, dapper]","2,051,573",65.8%,100% success rate,Micro,C#,.NET,kestrel,Linux,Realistic
+105,openswoole,"2,049,653",65.7%,100% success rate,Platform,PHP,openswoole,None,Linux,Realistic
+106,oatpp,"2,043,871",65.5%,100% success rate,Micro,C++,None,None,Linux,Realistic
+107,act,"2,018,596",64.7%,100% success rate,Fullstack,Java,Undertow,None,Linux,Realistic
+108,vertx-web-scala,"2,015,332",64.6%,100% success rate,Micro,Scala,vert.x,None,Linux,Realistic
+109,grizzly,"1,991,263",63.9%,100% success rate,Micro,Java,Servlet,grizzly,Linux,Realistic
+110,cutelyst-thread,"1,988,829",63.8%,100% success rate,Fullstack,C++,cutelystwsgi,None,Linux,Realistic
+111,socketify.py [wsgi pypy3],"1,968,495",63.1%,100% success rate,Micro,Python,None,socketify.py-wsgi,Linux,Realistic
+112,php-workerman,"1,961,137",62.9%,100% success rate,Platform,PHP,workerman,None,Linux,Realistic
+113,appmpower [aot-no-reflection],"1,955,131",62.7%,100% success rate,Platform,C#,.NET,kestrel,Linux,Realistic
+114,h2o_mruby,"1,927,148",61.8%,100% success rate,Platform,Ruby,None,h2o,Linux,Realistic
+115,ltio,"1,910,603",61.3%,100% success rate,Platform,C++,None,None,Linux,Realistic
+116,crystal,"1,851,758",59.4%,100% success rate,Platform,Crystal,None,None,Linux,Realistic
+117,elysia,"1,837,294",58.9%,100% success rate,Micro,typescript,bun,None,Linux,Realistic
+118,hserver,"1,820,270",58.4%,100% success rate,Fullstack,Java,hserver,hserver,Linux,Realistic
+119,elysia [compiled],"1,815,583",58.2%,100% success rate,Micro,typescript,bun,None,Linux,Realistic
+120,"reaper [aot,slim]","1,810,411",58.1%,100% success rate,Micro,C#,.NET,kestrel,Linux,Realistic
+121,deno,"1,806,460",57.9%,100% success rate,Platform,typescript,deno,None,Linux,Realistic
+122,crystal-radix,"1,780,679",57.1%,100% success rate,Platform,Crystal,None,None,Linux,Realistic
+123,ubiquity-swoole,"1,764,692",56.6%,100% success rate,Fullstack,PHP,swoole,None,Linux,Realistic
+124,silverlining,"1,759,583",56.4%,100% success rate,Platform,Go,None,None,Linux,Realistic
+125,kumbiaphp-workerman,"1,742,710",55.9%,100% success rate,Fullstack,PHP,workerman,None,Linux,Realistic
+126,vibora,"1,740,575",55.8%,100% success rate,Platform,Python,None,None,Linux,Realistic
+127,oatpp-async-no-mp,"1,718,121",55.1%,100% success rate,Micro,C++,None,None,Linux,Realistic
+128,ubiquity-ngx,"1,716,303",55.0%,100% success rate,Fullstack,PHP,ngx_php,nginx,Linux,Realistic
+129,zebra,"1,698,764",54.5%,100% success rate,Fullstack,f#,.NET,kestrel,Linux,Realistic
+130,aspcore-vb-mw,"1,696,869",54.4%,100% success rate,Micro,vb,.NET,kestrel,Linux,Realistic
+131,zebra-simple,"1,695,632",54.4%,100% success rate,Micro,f#,.NET,kestrel,Linux,Realistic
+132,giraffe,"1,688,357",54.1%,100% success rate,Fullstack,f#,.NET,kestrel,Linux,Realistic
+133,ultimate-express,"1,672,898",53.6%,100% success rate,Micro,JavaScript,nodejs,µws,Linux,Realistic
+134,"falco, donald","1,662,104",53.3%,100% success rate,Micro,f#,.NET,kestrel,Linux,Realistic
+135,falcon [socketify.py wsgi pypy3],"1,644,135",52.7%,100% success rate,Micro,Python,wsgi,socketify.py,Linux,Realistic
+136,giraffe-newtonsoft,"1,640,097",52.6%,100% success rate,Micro,f#,.NET,kestrel,Linux,Realistic
+137,ronykit,"1,639,333",52.6%,100% success rate,Platform,Go,None,None,Linux,Realistic
+138,oatpp-async,"1,623,354",52.1%,100% success rate,Micro,C++,None,None,Linux,Realistic
+139,fastendpoints,"1,614,928",51.8%,100% success rate,Micro,C#,.NET,kestrel,Linux,Realistic
+140,kemal,"1,614,263",51.8%,100% success rate,Fullstack,Crystal,None,None,Linux,Realistic
+141,"frank, dapper","1,609,016",51.6%,100% success rate,Micro,f#,.NET,kestrel,Linux,Realistic
+142,ubiquity-workerman-raw,"1,608,469",51.6%,100% success rate,Fullstack,PHP,workerman,None,Linux,Realistic
+143,go-pgx-prefork,"1,607,374",51.5%,100% success rate,Platform,Go,None,None,Linux,Realistic
+144,mixphp-swoole-mysql,"1,602,335",51.4%,100% success rate,Fullstack,PHP,swoole,None,Linux,Realistic
+145,socketify.py [asgi pypy3],"1,595,362",51.2%,100% success rate,Micro,Python,None,socketify.py-asgi,Linux,Realistic
+146,go-pgx-prefork-easyjson,"1,594,674",51.1%,100% success rate,Platform,Go,None,None,Linux,Realistic
+147,hexagon helidon pgclient,"1,592,970",51.1%,100% success rate,Micro,Kotlin,helidon,None,Linux,Realistic
+148,amber,"1,548,190",49.6%,100% success rate,Fullstack,Crystal,None,None,Linux,Realistic
+149,genhttp,"1,524,065",48.9%,100% success rate,Fullstack,C#,.NET,kestrel,Linux,Realistic
+150,netcoreserver,"1,500,709",48.1%,100% success rate,Fullstack,C#,.NET,netcoreserver,Linux,Realistic
+151,ripple,"1,492,628",47.9%,100% success rate,Fullstack,PHP,ripple,None,Linux,Realistic
+152,one-no-coroutine,"1,478,794",47.4%,100% success rate,Fullstack,PHP,swoole,None,Linux,Realistic
+153,hexagon netty epoll pgclient,"1,472,608",47.2%,100% success rate,Micro,Kotlin,Netty,None,Linux,Realistic
+154,hexagon netty epoll postgresql,"1,472,088",47.2%,100% success rate,Micro,Kotlin,Netty,None,Linux,Realistic
+155,micronaut,"1,468,052",47.1%,100% success rate,Micro,Java,Netty,netty,Linux,Realistic
+156,sisk framework (cadente),"1,467,534",47.1%,100% success rate,Platform,C#,.NET,cadente,Linux,Realistic
+157,one,"1,444,733",46.3%,100% success rate,Fullstack,PHP,swoole,None,Linux,Realistic
+158,es4x,"1,438,464",46.1%,100% success rate,Micro,JavaScript,vert.x,None,Linux,Realistic
+159,elide,"1,432,561",45.9%,100% success rate,Platform,JavaScript,elide,None,Linux,Realistic
+160,mixphp-workerman-pgsql,"1,432,503",45.9%,100% success rate,Fullstack,PHP,workerman,None,Linux,Realistic
+161,greenlightning,"1,415,936",45.4%,100% success rate,Micro,Java,None,None,Linux,Realistic
+162,granian [wsgi],"1,411,293",45.3%,100% success rate,Platform,Python,None,granian,Linux,Realistic
+163,rack-iodine-mri-sequel-raw,"1,401,095",44.9%,100% success rate,Micro,Ruby,mri,iodine,Linux,Realistic
+164,hexagon helidon postgresql,"1,397,743",44.8%,100% success rate,Micro,Kotlin,helidon,None,Linux,Realistic
+165,ben [kestrel],"1,395,555",44.8%,100% success rate,Micro,C#,.NET,kestrel,Linux,Realistic
+166,spliffy,"1,346,356",43.2%,100% success rate,Micro,JavaScript,nodejs,µws,Linux,Realistic
+167,blade,"1,334,087",42.8%,100% success rate,Fullstack,Java,None,None,Linux,Realistic
+168,lucky,"1,328,289",42.6%,100% success rate,Fullstack,Crystal,None,None,Linux,Realistic
+169,zysocket-v,"1,318,412",42.3%,100% success rate,Fullstack,C#,.NET,zysocket-v,Linux,Realistic
+170,finch,"1,291,516",41.4%,100% success rate,Micro,Scala,Netty,None,Linux,Realistic
+171,spring-webflux-mongo,"1,289,658",41.4%,100% success rate,Fullstack,Java,Netty,None,Linux,Realistic
+172,spring-webflux,"1,286,695",41.3%,100% success rate,Fullstack,Java,Netty,None,Linux,Realistic
+173,"asp.net core [mvc, pg, ef]","1,274,744",40.9%,100% success rate,Fullstack,C#,.NET,kestrel,Linux,Realistic
+174,jetty,"1,273,510",40.8%,100% success rate,Platform,Java,Jetty,None,Linux,Realistic
+175,hserver-business,"1,272,960",40.8%,100% success rate,Fullstack,Java,hserver-business,hserver-business,Linux,Realistic
+176,javalin,"1,269,832",40.7%,100% success rate,Micro,Java,Jetty,None,Linux,Realistic
+177,velocy,"1,246,916",40.0%,100% success rate,Micro,JavaScript,nodejs,None,Linux,Realistic
+178,ditsmod-bun v3.0,"1,240,463",39.8%,100% success rate,Micro,typescript,bun,None,Linux,Realistic
+179,gemini,"1,218,895",39.1%,100% success rate,Fullstack,Java,Servlet,Resin,Linux,Realistic
+180,granian [rsgi],"1,212,765",38.9%,100% success rate,Platform,Python,None,granian,Linux,Realistic
+181,granian [rsgi wrk],"1,211,032",38.8%,100% success rate,Platform,Python,None,granian,Linux,Realistic
+182,roda-sequel-postgres-iodine-mri,"1,205,366",38.7%,100% success rate,Micro,Ruby,Rack,iodine,Linux,Realistic
+183,jetty-servlet,"1,204,904",38.6%,100% success rate,Platform,Java,Jetty,None,Linux,Realistic
+184,finatra,"1,191,989",38.2%,100% success rate,Micro,Scala,Netty,None,Linux,Realistic
+185,treefrog-epoll,"1,191,674",38.2%,100% success rate,Fullstack,C++,None,None,Linux,Realistic
+186,goframe,"1,187,255",38.1%,100% success rate,Platform,Go,None,None,Linux,Realistic
+187,officefloor-thread_affinity,"1,177,727",37.8%,100% success rate,Fullstack,Java,officefloor,woof,Linux,Realistic
+188,finagle,"1,169,575",37.5%,100% success rate,Micro,Scala,Netty,None,Linux,Realistic
+189,easyrpc,"1,169,270",37.5%,100% success rate,Fullstack,C#,.NET,kestrel,Linux,Realistic
+190,fastwsgi [asgi],"1,166,634",37.4%,100% success rate,Micro,Python,asgi,fastwsgi,Linux,Realistic
+191,http4k-netty,"1,164,019",37.3%,100% success rate,Micro,Kotlin,Netty,None,Linux,Realistic
+192,jlhttp,"1,159,484",37.2%,100% success rate,Platform,Java,JLHTTP,None,Linux,Realistic
+193,simple-server,"1,154,016",37.0%,100% success rate,Micro,Java,Netty,None,Linux,Realistic
+194,restana,"1,148,940",36.8%,100% success rate,Platform,JavaScript,nodejs,None,Linux,Realistic
+195,nodejs,"1,147,305",36.8%,100% success rate,Platform,JavaScript,nodejs,None,Linux,Realistic
+196,falcon [socketify.py asgi pypy3],"1,110,700",35.6%,100% success rate,Micro,Python,asgi,socketify.py,Linux,Realistic
+197,swift-nio,"1,089,033",34.9%,100% success rate,Platform,Swift,None,None,Linux,Realistic
+198,http4k-ratpack,"1,084,925",34.8%,100% success rate,Micro,Kotlin,Netty,None,Linux,Realistic
+199,aspcore-mono,"1,083,492",34.7%,100% success rate,Platform,C#,.NET,kestrel,Linux,Realistic
+200,prologue,"1,077,002",34.5%,100% success rate,Fullstack,Nim,None,None,Linux,Realistic
+201,agoo,"1,056,748",33.9%,100% success rate,Micro,Ruby,Rack,agoo,Linux,Realistic
+202,hertz,"1,028,233",33.0%,100% success rate,Micro,Go,None,None,Linux,Realistic
+203,socketify.py [wsgi],"1,020,954",32.7%,100% success rate,Micro,Python,None,socketify.py-wsgi,Linux,Realistic
+204,granian [asgi],"1,011,292",32.4%,100% success rate,Platform,Python,None,granian,Linux,Realistic
+205,ditsmod v3.0,"1,009,730",32.4%,100% success rate,Micro,typescript,nodejs,None,Linux,Realistic
+206,peachpie,"992,185",31.8%,100% success rate,Platform,PHP,.NET,kestrel,Linux,Realistic
+207,falcon [fastwsgi],"980,597",31.4%,100% success rate,Micro,Python,wsgi,fastwsgi,Linux,Realistic
+208,chi-gojay-prefork,"968,546",31.1%,100% success rate,Micro,Go,None,None,Linux,Realistic
+209,lapis,"962,299",30.9%,100% success rate,Fullstack,Lua,OpenResty,nginx,Linux,Realistic
+210,chi-sjson-prefork,"955,729",30.6%,100% success rate,Micro,Go,None,None,Linux,Realistic
+211,hexagon,"942,034",30.2%,100% success rate,Micro,Kotlin,Servlet,None,Linux,Realistic
+212,http4k-apache4,"931,313",29.9%,100% success rate,Micro,Kotlin,apache-httpcore,None,Linux,Realistic
+213,http4k-jetty11loom-pgclient,"927,592",29.7%,100% success rate,Micro,Kotlin,jetty11-loom-pgclient,None,Linux,Realistic
+214,helidon,"924,355",29.6%,100% success rate,Micro,Java,Netty,None,Linux,Realistic
+215,http4k-jettyloom-jdbc,"918,432",29.5%,100% success rate,Micro,Kotlin,jetty-loom-jdbc,None,Linux,Realistic
+216,imi,"913,201",29.3%,100% success rate,Fullstack,PHP,swoole,None,Linux,Realistic
+217,falcon [meinheld-orjson],"903,324",29.0%,100% success rate,Micro,Python,wsgi,Meinheld,Linux,Realistic
+218,goravel gin,"898,172",28.8%,100% success rate,Fullstack,Go,None,None,Linux,Realistic
+219,http4k-jettyloom-pgclient,"897,551",28.8%,100% success rate,Micro,Kotlin,jetty-loom-pgclient,None,Linux,Realistic
+220,http4k-jetty11loom-jdbc,"897,137",28.8%,100% success rate,Micro,Kotlin,jetty11-loom-jdbc,None,Linux,Realistic
+221,viz,"884,917",28.4%,100% success rate,Platform,Rust,Rust,hyper,Linux,Realistic
+222,saphir,"880,698",28.2%,100% success rate,Micro,Rust,None,None,Linux,Realistic
+223,kami,"871,624",28.0%,100% success rate,Micro,Go,None,None,Linux,Realistic
+224,http4k-jetty,"867,558",27.8%,100% success rate,Micro,Kotlin,Jetty,None,Linux,Realistic
+225,http4k-jetty11,"858,760",27.5%,100% success rate,Micro,Kotlin,jetty11,None,Linux,Realistic
+226,echo,"855,437",27.4%,100% success rate,Micro,Go,None,None,Linux,Realistic
+227,uvicorn,"850,173",27.3%,100% success rate,Platform,Python,None,None,Linux,Realistic
+228,fastify,"844,960",27.1%,100% success rate,Micro,JavaScript,nodejs,None,Linux,Realistic
+229,ohkami,"840,125",26.9%,100% success rate,Micro,Rust,None,ohkami,Linux,Realistic
+230,armeria,"837,645",26.9%,100% success rate,Micro,Java,Netty,None,Linux,Realistic
+231,socketify.py [asgi],"834,503",26.8%,100% success rate,Micro,Python,None,socketify.py-asgi,Linux,Realistic
+232,urweb,"827,637",26.5%,100% success rate,Fullstack,Ur,Ur/Web,None,Linux,Realistic
+233,carter,"823,881",26.4%,100% success rate,Micro,C#,.NET,kestrel,Linux,Realistic
+234,http4k-undertow,"814,813",26.1%,100% success rate,Micro,Kotlin,Undertow,None,Linux,Realistic
+235,restify,"800,227",25.7%,100% success rate,Platform,JavaScript,nodejs,None,Linux,Realistic
+236,httpz (zig),"799,434",25.6%,100% success rate,Fullstack,zig,None,None,Linux,Realistic
+237,treefrog,"792,357",25.4%,100% success rate,Fullstack,C++,None,None,Linux,Realistic
+238,httpserver-robaho,"789,269",25.3%,100% success rate,Platform,Java,httpserver,None,Linux,Realistic
+239,nestjs-fastify,"778,830",25.0%,100% success rate,Micro,typescript,nodejs,None,Linux,Realistic
+240,http4k-helidon-jdbc,"771,130",24.7%,100% success rate,Micro,Kotlin,helidon,None,Linux,Realistic
+241,wicket,"763,665",24.5%,100% success rate,Fullstack,Java,Servlet,Resin,Linux,Realistic
+242,rage,"749,088",24.0%,100% success rate,Micro,Ruby,Rack,rage-iodine,Linux,Realistic
+243,hono,"740,451",23.7%,100% success rate,Micro,JavaScript,nodejs,None,Linux,Realistic
+244,astra,"738,798",23.7%,100% success rate,Micro,Rust,None,hyper,Linux,Realistic
+245,aspcore-mono-mw,"734,362",23.5%,100% success rate,Micro,C#,.NET,kestrel,Linux,Realistic
+246,wizzardo-inline,"720,806",23.1%,100% success rate,Micro,Haskell,None,None,Linux,Realistic
+247,ktor-netty-r2dbc,"720,134",23.1%,100% success rate,Micro,Kotlin,Netty,None,Linux,Realistic
+248,falcon,"714,694",22.9%,100% success rate,Micro,Python,wsgi,Meinheld,Linux,Realistic
+249,hexagon helidon native pgclient,"714,431",22.9%,100% success rate,Micro,Kotlin,helidon,None,Linux,Realistic
+250,falcon [bjoern],"707,846",22.7%,100% success rate,Micro,Python,wsgi,bjoern,Linux,Realistic
+251,ktor,"706,644",22.7%,100% success rate,Micro,Kotlin,Netty,None,Linux,Realistic
+252,ktor-pgclient,"701,373",22.5%,100% success rate,Micro,Kotlin,Netty,None,Linux,Realistic
+253,http4k-helidon-pgclient,"695,243",22.3%,100% success rate,Micro,Kotlin,helidon-pgclient,None,Linux,Realistic
+254,go-pgx-easyjson,"694,578",22.3%,100% success rate,Platform,Go,None,None,Linux,Realistic
+255,hummingbirdcore,"694,428",22.3%,100% success rate,Micro,Swift,None,None,Linux,Realistic
+256,goji,"693,801",22.2%,100% success rate,Micro,Go,None,None,Linux,Realistic
+257,pellet,"688,387",22.1%,100% success rate,Micro,Kotlin,None,None,Linux,Realistic
+258,roa-core,"685,018",22.0%,100% success rate,Micro,Rust,None,hyper,Linux,Realistic
+259,youi,"678,566",21.8%,100% success rate,Micro,Scala,Undertow,None,Linux,Realistic
+260,fastapi [socketify.py asgi pypy3],"676,460",21.7%,100% success rate,Micro,Python,asyncio,socketify.py,Linux,Realistic
+261,ktor-jasync,"672,007",21.6%,100% success rate,Fullstack,Kotlin,None,None,Linux,Realistic
+262,apidaora-core,"669,640",21.5%,100% success rate,Micro,Python,None,None,Linux,Realistic
+263,imi-workerman,"668,321",21.4%,100% success rate,Fullstack,PHP,workerman,None,Linux,Realistic
+264,micronaut vertx pg client graalvm,"660,243",21.2%,100% success rate,Micro,Java,Netty,netty,Linux,Realistic
+265,trillium [tokio],"654,953",21.0%,100% success rate,Micro,Rust,None,None,Linux,Realistic
+266,trillium [async-std],"646,532",20.7%,100% success rate,Micro,Rust,None,None,Linux,Realistic
+267,pippo-jetty,"645,559",20.7%,100% success rate,Micro,Java,Jetty,None,Linux,Realistic
+268,hexagon-jettyloom,"638,996",20.5%,100% success rate,Micro,Kotlin,Servlet,None,Linux,Realistic
+269,servicestack-v6,"636,919",20.4%,100% success rate,Micro,C#,.NET,kestrel,Linux,Realistic
+270,hexagon-jetty-native,"626,601",20.1%,100% success rate,Micro,Kotlin,Servlet,None,Linux,Realistic
+271,trillium [smol],"620,645",19.9%,100% success rate,Micro,Rust,None,None,Linux,Realistic
+272,roa,"619,718",19.9%,100% success rate,Micro,Rust,None,hyper,Linux,Realistic
+273,plack,"614,980",19.7%,100% success rate,Micro,Perl,Plack,nginx,Linux,Realistic
+274,falcon [socketify.py wsgi],"614,922",19.7%,100% success rate,Micro,Python,wsgi,socketify.py,Linux,Realistic
+275,blacksheep,"611,593",19.6%,100% success rate,Micro,Python,asgi,uvicorn,Linux,Realistic
+276,amp,"610,543",19.6%,100% success rate,Platform,PHP,amp,None,Linux,Realistic
+277,starlette,"599,108",19.2%,100% success rate,Micro,Python,None,None,Linux,Realistic
+278,play2-scala-netty,"597,042",19.1%,100% success rate,Fullstack,Scala,Netty,None,Linux,Realistic
+279,atreugo,"596,902",19.1%,100% success rate,Platform,Go,None,None,Linux,Realistic
+280,cutelyst,"595,035",19.1%,100% success rate,Fullstack,C++,cutelystwsgi,None,Linux,Realistic
+281,hexagon jetty loom pgclient,"594,607",19.1%,100% success rate,Micro,Kotlin,Servlet,None,Linux,Realistic
+282,fasthttp,"582,069",18.7%,100% success rate,Platform,Go,None,None,Linux,Realistic
+283,gearbox,"581,454",18.6%,100% success rate,Platform,Go,None,None,Linux,Realistic
+284,roa-tokio,"579,366",18.6%,100% success rate,Micro,Rust,None,hyper,Linux,Realistic
+285,koa,"572,932",18.4%,100% success rate,Micro,JavaScript,nodejs,None,Linux,Realistic
+286,emmett55,"571,303",18.3%,100% success rate,Micro,Python,rsgi,granian,Linux,Realistic
+287,hummingbird,"570,403",18.3%,100% success rate,Micro,Swift,None,None,Linux,Realistic
+288,emmett,"566,594",18.2%,100% success rate,Fullstack,Python,None,None,Linux,Realistic
+289,grizzly-jersey,"562,748",18.0%,100% success rate,Micro,Java,JAX-RS,grizzly,Linux,Realistic
+290,aioworkers,"561,873",18.0%,100% success rate,Platform,Python,None,aioworkers.net.web,Linux,Realistic
+291,spark,"559,148",17.9%,100% success rate,Micro,Java,Servlet,Jetty,Linux,Realistic
+292,fiber,"542,699",17.4%,100% success rate,Platform,Go,None,None,Linux,Realistic
+293,panther,"542,267",17.4%,100% success rate,Micro,Python,asgi,uvicorn,Linux,Realistic
+294,servicetalk,"541,267",17.4%,100% success rate,Micro,Java,servicetalk,None,Linux,Realistic
+295,rocket,"540,665",17.3%,100% success rate,Fullstack,Rust,Rust,hyper,Linux,Realistic
+296,aleph,"539,014",17.3%,100% success rate,Micro,Clojure,Netty,None,Linux,Realistic
+297,http.jl,"538,833",17.3%,100% success rate,none,julia,None,http.jl,Linux,Realistic
+298,phoenix,"536,573",17.2%,100% success rate,Fullstack,Elixir,beam,bandit,Linux,Realistic
+299,falcon [socketify.py asgi],"533,822",17.1%,100% success rate,Micro,Python,asgi,socketify.py,Linux,Realistic
+300,apidaora,"532,153",17.1%,100% success rate,Micro,Python,None,None,Linux,Realistic
+301,bottle,"530,627",17.0%,100% success rate,Micro,Python,Meinheld,None,Linux,Realistic
+302,clevergo,"517,471",16.6%,100% success rate,Micro,Go,None,None,Linux,Realistic
+303,hapi,"516,626",16.6%,100% success rate,Micro,JavaScript,nodejs,None,Linux,Realistic
+304,robyn [const],"510,465",16.4%,100% success rate,Micro,Python,None,None,Linux,Realistic
+305,suave,"506,399",16.2%,100% success rate,Micro,f#,.NET,None,Linux,Realistic
+306,undertow,"502,931",16.1%,100% success rate,Platform,Java,Undertow,None,Linux,Realistic
+307,chi-sjson,"501,595",16.1%,100% success rate,Micro,Go,None,None,Linux,Realistic
+308,gin,"498,192",16.0%,100% success rate,Micro,Go,None,None,Linux,Realistic
+309,chi-gojay,"491,323",15.8%,100% success rate,Micro,Go,None,None,Linux,Realistic
+310,falcon [asgi/tortoise],"490,998",15.7%,100% success rate,Micro,Python,asgi,uvicorn,Linux,Realistic
+311,revenj,"490,379",15.7%,100% success rate,Fullstack,C#,None,None,Linux,Realistic
+312,jewelia,"477,307",15.3%,100% success rate,none,julia,None,http.jl,Linux,Realistic
+313,elixir-plug-ecto,"462,959",14.8%,100% success rate,Micro,Elixir,beam,cowboy,Linux,Realistic
+314,php-raw7-tcp,"450,216",14.4%,100% success rate,Platform,PHP,fpm/fastcgi,nginx,Linux,Realistic
+315,nancy-netcore,"448,326",14.4%,100% success rate,Micro,C#,.NET,kestrel,Linux,Realistic
+316,jooby,"448,061",14.4%,100% success rate,Fullstack,Java,Undertow,None,Linux,Realistic
+317,gin-scratch,"447,739",14.4%,100% success rate,Micro,Go,None,None,Linux,Realistic
+318,starlite,"443,006",14.2%,100% success rate,Micro,Python,None,uvicorn,Linux,Realistic
+319,snunit,"442,529",14.2%,100% success rate,Micro,Scala,unit nginx,None,Linux,Realistic
+320,dropwizard,"431,324",13.8%,100% success rate,Fullstack,Java,JAX-RS,Jetty,Linux,Realistic
+321,rails-iodine,"430,632",13.8%,100% success rate,Fullstack,Ruby,Rack,iodine,Linux,Realistic
+322,php,"428,452",13.7%,100% success rate,Platform,PHP,fpm/fastcgi,nginx,Linux,Realistic
+323,php-pools,"427,494",13.7%,100% success rate,Platform,PHP,fpm/fastcgi,nginx,Linux,Realistic
+324,sanic,"417,311",13.4%,100% success rate,Micro,Python,None,None,Linux,Realistic
+325,comet,"415,799",13.3%,100% success rate,Micro,PHP,workerman,None,Linux,Realistic
+326,php-h2o,"412,565",13.2%,100% success rate,Platform,PHP,fpm/fastcgi,h2o,Linux,Realistic
+327,rack-puma-mri-sequel-raw,"410,586",13.2%,100% success rate,Micro,Ruby,mri,Puma,Linux,Realistic
+328,kit,"403,337",12.9%,100% success rate,Micro,Clojure,Undertow,None,Linux,Realistic
+329,chi-prefork,"401,513",12.9%,100% success rate,Micro,Go,None,None,Linux,Realistic
+330,morepath,"399,856",12.8%,100% success rate,Micro,Python,Meinheld,Gunicorn,Linux,Realistic
+331,luminus,"391,717",12.6%,100% success rate,Micro,Clojure,Ring,None,Linux,Realistic
+332,go,"388,484",12.5%,100% success rate,Platform,Go,None,None,Linux,Realistic
+333,compojure,"388,006",12.4%,100% success rate,Micro,Clojure,Servlet,Resin,Linux,Realistic
+334,rack-falcon-mri-sequel-raw,"371,467",11.9%,100% success rate,Micro,Ruby,mri,falcon,Linux,Realistic
+335,fastapi-gunicorn-orjson,"364,059",11.7%,100% success rate,Micro,Python,asyncio,Gunicorn,Linux,Realistic
+336,fastapi,"354,899",11.4%,100% success rate,Micro,Python,asyncio,Gunicorn,Linux,Realistic
+337,akka-http-slick-postgres,"354,747",11.4%,100% success rate,Micro,Scala,Akka,None,Linux,Realistic
+338,roda-sequel,"352,350",11.3%,100% success rate,Micro,Ruby,Rack,Puma,Linux,Realistic
+339,chi,"352,271",11.3%,100% success rate,Micro,Go,None,None,Linux,Realistic
+340,chi-scratch,"345,503",11.1%,100% success rate,Micro,Go,None,None,Linux,Realistic
+341,userver,"345,470",11.1%,100% success rate,Fullstack,C++,None,None,Linux,Realistic
+342,webgo,"344,824",11.1%,100% success rate,Micro,Go,None,None,Linux,Realistic
+343,ubiquity,"337,855",10.8%,100% success rate,Fullstack,PHP,fpm/fastcgi,nginx,Linux,Realistic
+344,robyn,"336,682",10.8%,100% success rate,Micro,Python,None,None,Linux,Realistic
+345,fastapi-uvicorn-orjson,"330,287",10.6%,100% success rate,Micro,Python,asyncio,uvicorn,Linux,Realistic
+346,spring,"328,412",10.5%,100% success rate,Fullstack,Java,Servlet,Undertow,Linux,Realistic
+347,play2-java-netty,"323,143",10.4%,100% success rate,Fullstack,Java,Netty,None,Linux,Realistic
+348,fastapi-uvicorn,"322,402",10.3%,100% success rate,Micro,Python,asyncio,uvicorn,Linux,Realistic
+349,http4k-ktornetty,"316,415",10.1%,100% success rate,Micro,Kotlin,ktor,None,Linux,Realistic
+350,pyramid,"314,969",10.1%,100% success rate,Fullstack,Python,None,Meinheld,Linux,Realistic
+351,kumbiaphp,"313,484",10.1%,100% success rate,Fullstack,PHP,fpm/fastcgi,nginx,Linux,Realistic
+352,lumen-workerman,"313,181",10.0%,100% success rate,Micro,PHP,workerman,None,Linux,Realistic
+353,symfony-swoole,"313,103",10.0%,100% success rate,Fullstack,PHP,swoole,None,Linux,Realistic
+354,aiohttp,"309,350",9.9%,100% success rate,Micro,Python,asyncio,Gunicorn,Linux,Realistic
+355,cfml-adobe,"305,396",9.8%,100% success rate,Platform,cfml,None,None,Linux,Realistic
+356,express-postgresjs,"301,213",9.7%,100% success rate,Micro,JavaScript,nodejs,None,Linux,Realistic
+357,fastapi [socketify.py asgi],"296,308",9.5%,100% success rate,Micro,Python,asyncio,socketify.py,Linux,Realistic
+358,yii2-workerman,"292,167",9.4%,100% success rate,Fullstack,PHP,workerman,None,Linux,Realistic
+359,hexagon tomcat postgresql,"286,411",9.2%,100% success rate,Micro,Kotlin,Servlet,tomcat,Linux,Realistic
+360,pine,"285,115",9.1%,100% success rate,Micro,Go,None,None,Linux,Realistic
+361,cfml-lucee,"282,763",9.1%,100% success rate,Platform,cfml,None,None,Linux,Realistic
+362,symfony-workerman,"281,748",9.0%,100% success rate,Fullstack,PHP,workerman,None,Linux,Realistic
+363,pippo-tomcat,"273,117",8.8%,100% success rate,Micro,Java,tomcat,None,Linux,Realistic
+364,racket,"271,814",8.7%,100% success rate,Micro,racket,racket,racket,Linux,Realistic
+365,vapor,"263,364",8.4%,100% success rate,Fullstack,Swift,None,None,Linux,Realistic
+366,phpixie,"252,966",8.1%,100% success rate,Fullstack,PHP,fpm/fastcgi,nginx,Linux,Realistic
+367,microdot-raw,"252,899",8.1%,100% success rate,Micro,Python,None,uvicorn,Linux,Realistic
+368,vapor,"252,209",8.1%,100% success rate,Fullstack,Swift,None,None,Linux,Realistic
+369,microdot,"251,738",8.1%,100% success rate,Micro,Python,None,uvicorn,Linux,Realistic
+370,zap (zig),"248,818",8.0%,100% success rate,Fullstack,zig,None,None,Linux,Realistic
+371,webmachine,"247,327",7.9%,100% success rate,Micro,ocaml,cohttp,None,Linux,Realistic
+372,pekko-http,"246,530",7.9%,100% success rate,Micro,Scala,pekko,None,Linux,Realistic
+373,today,"243,459",7.8%,100% success rate,Fullstack,Java,Netty,None,Linux,Realistic
+374,slim-workerman,"239,691",7.7%,100% success rate,Micro,PHP,workerman,None,Linux,Realistic
+375,duct,"233,657",7.5%,100% success rate,Micro,Clojure,Ring,None,Linux,Realistic
+376,wolff,"228,989",7.3%,100% success rate,Fullstack,PHP,fpm/fastcgi,nginx,Linux,Realistic
+377,play2-scala,"227,276",7.3%,100% success rate,Fullstack,Scala,Akka,None,Linux,Realistic
+378,aioworkers,"227,268",7.3%,100% success rate,Platform,Python,None,aioworkers.net.web,Linux,Realistic
+379,express,"224,163",7.2%,100% success rate,Micro,JavaScript,nodejs,None,Linux,Realistic
+380,crax,"222,951",7.1%,100% success rate,Micro,Python,None,None,Linux,Realistic
+381,php-unit,"219,795",7.0%,100% success rate,Platform,PHP,unit nginx,None,Linux,Realistic
+382,sinatra,"219,781",7.0%,100% success rate,Micro,Ruby,Rack,Puma,Linux,Realistic
+383,akka-http,"216,409",6.9%,100% success rate,Micro,Scala,Akka,None,Linux,Realistic
+384,leaf-workerman,"210,213",6.7%,100% success rate,Micro,PHP,workerman,None,Linux,Realistic
+385,rails,"203,337",6.5%,100% success rate,Fullstack,Ruby,Rack,Puma,Linux,Realistic
+386,duckphp,"201,618",6.5%,100% success rate,Fullstack,PHP,fpm/fastcgi,nginx,Linux,Realistic
+387,php-frankenphp,"200,636",6.4%,100% success rate,Platform,PHP,frankenphp,caddy,Linux,Realistic
+388,leaf,"199,161",6.4%,100% success rate,Micro,PHP,fpm/fastcgi,nginx,Linux,Realistic
+389,cyberphp,"196,150",6.3%,100% success rate,Micro,PHP,workerman,None,Linux,Realistic
+390,rack-unicorn-mri-sequel-raw,"193,228",6.2%,100% success rate,Micro,Ruby,mri,Unicorn,Linux,Realistic
+391,nestjs,"192,830",6.2%,100% success rate,Micro,typescript,nodejs,None,Linux,Realistic
+392,phalcon-micro,"189,936",6.1%,100% success rate,Micro,PHP,fpm/fastcgi,nginx,Linux,Realistic
+393,django [socketify.py wsgi],"183,424",5.9%,100% success rate,Fullstack,Python,wsgi,socketify.py,Linux,Realistic
+394,flight,"182,491",5.9%,100% success rate,Micro,PHP,fpm/fastcgi,nginx,Linux,Realistic
+395,mixphp,"169,419",5.4%,100% success rate,Fullstack,PHP,fpm/fastcgi,nginx,Linux,Realistic
+396,django,"167,280",5.4%,100% success rate,Fullstack,Python,wsgi,Meinheld,Linux,Realistic
+397,ringojs,"166,714",5.3%,100% success rate,Platform,JavaScript,Jetty,None,Linux,Realistic
+398,http4s,"160,418",5.1%,100% success rate,Micro,Scala,NIO2,blaze,Linux,Realistic
+399,heaven,"157,544",5.1%,100% success rate,Micro,Python,None,None,Linux,Realistic
+400,laravel-workerman,"157,110",5.0%,100% success rate,Fullstack,PHP,workerman,None,Linux,Realistic
+401,aspcore-mono-mvc,"156,322",5.0%,100% success rate,Fullstack,C#,.NET,kestrel,Linux,Realistic
+402,grape-unicorn,"151,743",4.9%,100% success rate,Micro,Ruby,Rack,Unicorn,Linux,Realistic
+403,light-4j,"149,537",4.8%,100% success rate,Platform,Java,light-4j,None,Linux,Realistic
+404,hummingbird 2,"146,977",4.7%,100% success rate,Micro,Swift,None,None,Linux,Realistic
+405,feathersjs,"144,519",4.6%,100% success rate,Fullstack,typescript,None,None,Linux,Realistic
+406,rails-falcon,"143,399",4.6%,100% success rate,Fullstack,Ruby,Rack,falcon,Linux,Realistic
+407,just-boost,"137,902",4.4%,100% success rate,Micro,C++,None,None,Linux,Realistic
+408,lumen-laravel-s,"136,492",4.4%,100% success rate,Micro,PHP,swoole,None,Linux,Realistic
+409,sisk framework,"135,990",4.4%,100% success rate,Micro,C#,.NET,httplistener,Linux,Realistic
+410,routerling,"134,533",4.3%,100% success rate,Platform,Python,None,None,Linux,Realistic
+411,grape,"134,184",4.3%,100% success rate,Micro,Ruby,Rack,Puma,Linux,Realistic
+412,fat-free,"133,952",4.3%,100% success rate,Fullstack,PHP,fpm/fastcgi,nginx,Linux,Realistic
+413,duct-aleph,"133,882",4.3%,100% success rate,Micro,Clojure,Netty,None,Linux,Realistic
+414,pippo-undertow,"133,867",4.3%,100% success rate,Micro,Java,Undertow,None,Linux,Realistic
+415,yii2,"131,434",4.2%,100% success rate,Fullstack,PHP,fpm/fastcgi,nginx,Linux,Realistic
+416,play2-java,"129,241",4.1%,100% success rate,Fullstack,Java,Akka,None,Linux,Realistic
+417,mako,"128,998",4.1%,100% success rate,Fullstack,PHP,fpm/fastcgi,nginx,Linux,Realistic
+418,symfony-frankenphp,"128,101",4.1%,100% success rate,Fullstack,PHP,frankenphp,caddy,Linux,Realistic
+419,0http,"117,479",3.8%,100% success rate,Platform,JavaScript,nodejs,None,Linux,Realistic
+420,minijax,"116,243",3.7%,100% success rate,Fullstack,Java,JAX-RS,Undertow,Linux,Realistic
+421,angel3_postgresql,"114,048",3.7%,100% success rate,Fullstack,Dart,angel3,None,Linux,Realistic
+422,lumen-swoole,"112,627",3.6%,100% success rate,Micro,PHP,swoole,None,Linux,Realistic
+423,cask,"110,014",3.5%,100% success rate,Micro,Scala,Undertow,None,Linux,Realistic
+424,ringojs-convenient,"105,515",3.4%,100% success rate,Micro,JavaScript,RingoJs,None,Linux,Realistic
+425,jawn,"104,340",3.3%,100% success rate,Fullstack,Java,Undertow,None,Linux,Realistic
+426,tornado-py3,"100,139",3.2%,100% success rate,Platform,Python,None,Tornado,Linux,Realistic
+427,ktor-cio,"95,957",3.1%,100% success rate,Micro,Kotlin,ktor,None,Linux,Realistic
+428,duct-httpkit,"95,101",3.0%,100% success rate,Micro,Clojure,Ring,None,Linux,Realistic
+429,php-caddyserver,"94,253",3.0%,100% success rate,Platform,PHP,fpm/fastcgi,caddy,Linux,Realistic
+430,tornado,"93,798",3.0%,100% success rate,Platform,Python,None,Tornado,Linux,Realistic
+431,laravel-laravel-s,"93,603",3.0%,100% success rate,Fullstack,PHP,swoole,None,Linux,Realistic
+432,martini,"91,367",2.9%,100% success rate,Micro,Go,None,None,Linux,Realistic
+433,kelp-starlet-mongodb,"87,982",2.8%,100% success rate,Fullstack,Perl,Plack,starlet,Linux,Realistic
+434,phalcon,"87,675",2.8%,100% success rate,Fullstack,PHP,fpm/fastcgi,nginx,Linux,Realistic
+435,slim,"87,348",2.8%,100% success rate,Micro,PHP,fpm/fastcgi,nginx,Linux,Realistic
+436,rack-puma-jruby-sequel-raw,"86,121",2.8%,100% success rate,Micro,Ruby,jruby,Puma,Linux,Realistic
+437,magician-io,"85,879",2.8%,100% success rate,Platform,Java,magician,None,Linux,Realistic
+438,kelp-starlet-mysql,"85,681",2.7%,100% success rate,Fullstack,Perl,Plack,starlet,Linux,Realistic
+439,bareasgi,"85,148",2.7%,100% success rate,Micro,Python,asyncio,hypercorn,Linux,Realistic
+440,laravel-swoole,"83,940",2.7%,100% success rate,Fullstack,PHP,swoole,None,Linux,Realistic
+441,xitca-web [wasm],"80,377",2.6%,100% success rate,Micro,Rust,None,xitca-server,Linux,Realistic
+442,pedestal,"79,743",2.6%,100% success rate,Micro,Clojure,Jetty,None,Linux,Realistic
+443,padrino-unicorn,"74,943",2.4%,100% success rate,Micro,Ruby,Rack,Unicorn,Linux,Realistic
+444,hanami,"74,574",2.4%,100% success rate,Fullstack,Ruby,Rack,Puma,Linux,Realistic
+445,onyx,"73,450",2.4%,100% success rate,Fullstack,Crystal,None,None,Linux,Realistic
+446,symfony-roadrunner,"71,213",2.3%,100% success rate,Fullstack,PHP,roadrunner,None,Linux,Realistic
+447,officefloor,"70,833",2.3%,100% success rate,Fullstack,Java,officefloor,woof,Linux,Realistic
+448,officefloor-micro,"70,128",2.2%,100% success rate,Fullstack,Java,officefloor,woof,Linux,Realistic
+449,zinc,"66,887",2.1%,100% success rate,Fullstack,zig,None,None,Linux,Realistic
+450,falcon [pypy3],"65,758",2.1%,100% success rate,Micro,Python,wsgi,Gunicorn,Linux,Realistic
+451,kelp-gazelle-mongodb,"64,959",2.1%,100% success rate,Fullstack,Perl,Plack,gazelle,Linux,Realistic
+452,http4k-helidon-graalvm,"63,629",2.0%,100% success rate,Micro,Kotlin,graalvm,None,Linux,Realistic
+453,symfony,"63,237",2.0%,100% success rate,Fullstack,PHP,fpm/fastcgi,nginx,Linux,Realistic
+454,curacao,"61,468",2.0%,100% success rate,Micro,Java,Servlet,None,Linux,Realistic
+455,officefloor-vertx,"60,272",1.9%,100% success rate,Fullstack,Java,officefloor,vertx,Linux,Realistic
+456,hot,"59,713",1.9%,100% success rate,Platform,Groovy,Jetty,Jetty,Linux,Realistic
+457,tio-server,"59,166",1.9%,100% success rate,Micro,Java,t-io,None,Linux,Realistic
+458,web-simple,"57,967",1.9%,100% success rate,Micro,Perl,Plack,starman,Linux,Realistic
+459,beetlex,"57,852",1.9%,100% success rate,Fullstack,C#,.NET,beetlex,Linux,Realistic
+460,mojolicious,"57,770",1.9%,100% success rate,Fullstack,Perl,None,Hypnotoad,Linux,Realistic
+461,bayou,"57,559",1.8%,100% success rate,Platform,Java,Bayou,None,Linux,Realistic
+462,kelp,"57,346",1.8%,100% success rate,Fullstack,Perl,Plack,gazelle,Linux,Realistic
+463,laravel-octane [frankenphp],"56,624",1.8%,100% success rate,Fullstack,PHP,frankenphp,caddy,Linux,Realistic
+464,officefloor-spring_data,"55,138",1.8%,100% success rate,Fullstack,Java,officefloor,woof,Linux,Realistic
+465,kelp-starman-mongodb,"54,647",1.8%,100% success rate,Fullstack,Perl,Plack,starman,Linux,Realistic
+466,kelp-starman-mysql,"54,321",1.7%,100% success rate,Fullstack,Perl,Plack,starman,Linux,Realistic
+467,dream,"53,816",1.7%,100% success rate,Fullstack,ocaml,http/af,None,Linux,Realistic
+468,tio-mvc,"50,115",1.6%,100% success rate,Micro,Java,t-io,None,Linux,Realistic
+469,fuel,"47,786",1.5%,100% success rate,Micro,PHP,fpm/fastcgi,nginx,Linux,Realistic
+470,oxygen.jl,"47,216",1.5%,100% success rate,none,julia,None,oxygen.jl,Linux,Realistic
+471,dancer,"47,094",1.5%,100% success rate,Fullstack,Perl,Plack,starman,Linux,Realistic
+472,play1,"46,013",1.5%,100% success rate,Fullstack,Java,Netty,None,Linux,Realistic
+473,nette,"40,703",1.3%,100% success rate,Fullstack,PHP,fpm/fastcgi,nginx,Linux,Realistic
+474,ktor-jetty,"40,437",1.3%,100% success rate,Micro,Kotlin,Jetty,None,Linux,Realistic
+475,lumen,"39,700",1.3%,100% success rate,Micro,PHP,fpm/fastcgi,nginx,Linux,Realistic
+476,reactphp [libevent],"38,595",1.2%,100% success rate,Platform,PHP,reactphp,None,Linux,Realistic
+477,spiral,"35,452",1.1%,100% success rate,Fullstack,PHP,roadrunner,None,Linux,Realistic
+478,kelp-twiggy-mongodb,"35,282",1.1%,100% success rate,Fullstack,Perl,Plack,twiggy,Linux,Realistic
+479,reactphp [libuv],"34,934",1.1%,100% success rate,Platform,PHP,reactphp,None,Linux,Realistic
+480,officefloor-async,"34,657",1.1%,100% success rate,Fullstack,Java,officefloor,woof,Linux,Realistic
+481,tuprolog,"32,038",1.0%,100% success rate,none,prolog,None,vert.x,Linux,Realistic
+482,ninja-standalone,"28,346",0.9%,100% success rate,Fullstack,Java,Jetty,None,Linux,Realistic
+483,laravel,"26,901",0.9%,100% success rate,Fullstack,PHP,fpm/fastcgi,nginx,Linux,Realistic
+484,coldbox-adobe,"25,624",0.8%,100% success rate,Fullstack,cfml,None,None,Linux,Realistic
+485,zend,"25,521",0.8%,100% success rate,Fullstack,PHP,fpm/fastcgi,nginx,Linux,Realistic
+486,dia,"25,033",0.8%,100% success rate,Micro,Dart,None,None,Linux,Realistic
+487,kelp-twiggy-mysql,"23,535",0.8%,100% success rate,Fullstack,Perl,Plack,twiggy,Linux,Realistic
+488,coldbox-lucee,"22,453",0.7%,100% success rate,Fullstack,cfml,None,None,Linux,Realistic
+489,archttp,"22,239",0.7%,100% success rate,Platform,D,archttp,None,Linux,Realistic
+490,nancy,"20,305",0.7%,100% success rate,Micro,C#,.NET,kestrel,Linux,Realistic
+491,codeigniter,"19,901",0.6%,100% success rate,Fullstack,PHP,fpm/fastcgi,nginx,Linux,Realistic
+492,cakephp,"19,204",0.6%,100% success rate,Fullstack,PHP,fpm/fastcgi,nginx,Linux,Realistic
+493,hapi-nginx,"19,026",0.6%,100% success rate,Micro,JavaScript,nodejs,nginx,Linux,Realistic
+494,cppcms,"17,470",0.6%,100% success rate,Platform,C++,None,None,Linux,Realistic
+495,laravel-roadrunner,"15,469",0.5%,100% success rate,Fullstack,PHP,roadrunner,None,Linux,Realistic
+496,embedio,"12,658",0.4%,100% success rate,Fullstack,C#,.NET,embedio,Linux,Realistic
+497,spider-gazelle,"12,358",0.4%,100% success rate,Fullstack,Crystal,None,None,Linux,Realistic
+498,toro,"12,345",0.4%,100% success rate,Micro,Crystal,None,None,Linux,Realistic
+499,paozhu,"12,301",0.4%,100% success rate,Fullstack,C++,None,None,Linux,Realistic
+500,tapestry,"12,248",0.4%,100% success rate,Fullstack,Java,Servlet,Resin,Linux,Realistic
+501,tetsuweb,"12,192",0.4%,100% success rate,Micro,C#,.NET,tetsu,Linux,Realistic
+502,fastapi-hypercorn-orjson,"11,998",0.4%,100% success rate,Micro,Python,asyncio,hypercorn,Linux,Realistic
+503,fastapi-hypercorn,"11,995",0.4%,100% success rate,Micro,Python,asyncio,hypercorn,Linux,Realistic
+504,grails,"11,953",0.4%,100% success rate,Fullstack,Groovy,Servlet,None,Linux,Realistic
+505,nanohttpd,"11,727",0.4%,100% success rate,Platform,Java,None,None,Linux,Realistic
+506,swi-prolog,"11,673",0.4%,100% success rate,none,prolog,None,swi-prolog,Linux,Realistic
+507,collie-ldc,"11,028",0.4%,100% success rate,Platform,D,Collie,None,Linux,Realistic
+508,http4k-sunhttploom,"10,724",0.3%,32% success rate,Micro,Kotlin,sunhttp,None,Linux,Realistic
+509,http4k,"10,677",0.3%,32% success rate,Micro,Kotlin,sunhttp,None,Linux,Realistic
+510,padrino,"10,550",0.3%,100% success rate,Micro,Ruby,Rack,Puma,Linux,Realistic
+511,collie,"10,438",0.3%,100% success rate,Platform,D,Collie,None,Linux,Realistic
+512,officefloor-undertow,"10,300",0.3%,100% success rate,Fullstack,Java,officefloor,Undertow,Linux,Realistic
+513,integrated haskell platfrom (ihp),"10,162",0.3%,100% success rate,Fullstack,Haskell,Wai,wai,Linux,Realistic
+514,martian-mvc,"9,735",0.3%,100% success rate,Platform,Java,martian,None,Linux,Realistic
+515,http-kit,"9,275",0.3%,100% success rate,Platform,Clojure,Ring,None,Linux,Realistic
+516,vsgi,"8,318",0.3%,100% success rate,Platform,vala,glib,soup,Linux,Realistic
+517,http4k-graalvm,"8,122",0.3%,34% success rate,Micro,Kotlin,graalvm,None,Linux,Realistic
+518,valum,"7,719",0.2%,100% success rate,Micro,vala,glib,soup,Linux,Realistic
+519,officefloor-netty,"7,543",0.2%,100% success rate,Fullstack,Java,officefloor,netty,Linux,Realistic
+520,httpserver,"6,427",0.2%,33% success rate,Platform,Java,httpserver,None,Linux,Realistic
+521,cakephp-workerman,"5,692",0.2%,100% success rate,Fullstack,PHP,workerman,None,Linux,Realistic
+522,async-worker,"3,846",0.1%,100% success rate,Micro,Python,asyncio,None,Linux,Realistic
+523,falcon [waitress],"1,448",0.0%,100% success rate,Micro,Python,wsgi,waitress,Linux,Realistic
+524,next.js,"1,219",0.0%,100% success rate,Platform,typescript,nodejs,None,Linux,Realistic
+525,plumber,885,0.0%,100% success rate,Fullstack,r,None,None,Linux,Realistic
+526,cherrypy-py3,289,0.0%,100% success rate,Micro,Python,None,None,Linux,Realistic
+527,isocket-nio,1,0.0%,1% success rate,Platform,Java,isocket-nio,None,Linux,Realistic
+528,sprapp,—,Did not complete,—,Platform,Go,None,None,Linux,Realistic
+529,plack-async,—,Did not complete,—,Micro,Perl,anyevent,nginx,Linux,Realistic
+530,postgrest,—,Did not complete,—,Micro,Haskell,None,None,Linux,Realistic
+531,sinatra-postgres-agoo-mri,—,Did not complete,—,Micro,Ruby,Rack,agoo,Linux,Realistic

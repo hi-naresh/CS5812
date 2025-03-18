@@ -1,0 +1,241 @@
+Framework best,Score,vs,Platform best,Score,Ratio (higher is better)
+tornado-py3-uvloop,"12,789",vs,tornado,"1,708",748.8%
+http-kit-raw,"2,907",vs,http-kit,689,421.9%
+php-ngx-pgsql,"36,801",vs,php-pgsql-raw,"11,887",309.6%
+workerman [pgsql],"36,261",vs,php-pgsql-raw,"11,887",305.0%
+slim-workerman-pgsql,"33,994",vs,php-pgsql-raw,"11,887",286.0%
+swoole-sync-postgres,"31,642",vs,php-pgsql-raw,"11,887",266.2%
+viz [postgresql],"59,374",vs,undertow-postgresql,"30,696",193.4%
+"appmpower [aot-no-reflection,pg,odbc]","26,383",vs,"asp.net core [minimal apis, pg, dapper]","13,664",193.1%
+inverno,"59,146",vs,undertow-postgresql,"30,696",192.7%
+salvo [postgres],"58,340",vs,undertow-postgresql,"30,696",190.1%
+axum [postgresql],"55,708",vs,undertow-postgresql,"30,696",181.5%
+userver,"45,783",vs,undertow-postgresql,"30,696",149.1%
+oxpecker,"19,751",vs,aspnetcore,"13,854",142.6%
+mormot [async],"43,476",vs,undertow-postgresql,"30,696",141.6%
+micronaut,"43,322",vs,undertow-postgresql,"30,696",141.1%
+workerman-pgsql,"16,763",vs,php-pgsql-raw,"11,887",141.0%
+micronaut vertx pg client graalvm,"40,870",vs,undertow-postgresql,"30,696",133.1%
+drogon-core,"39,418",vs,undertow-postgresql,"30,696",128.4%
+hyperexpress-postgres,"58,070",vs,nodejs-postgresjs-raw,"45,595",127.4%
+uwebsockets.js,"57,875",vs,nodejs-postgresjs-raw,"45,595",126.9%
+vertx-web-kotlin-dsljson-postgresql,"58,138",vs,vertx-web-postgres,"45,893",126.7%
+ultimate-express-postgres,"57,569",vs,nodejs-postgresjs-raw,"45,595",126.3%
+play2-java-ebean-hikaricp,"4,968",vs,akka-http,"3,980",124.8%
+fastify-postgres,"56,770",vs,nodejs-postgresjs-raw,"45,595",124.5%
+ditsmod v3.0 [postgres],"56,308",vs,nodejs-postgresjs-raw,"45,595",123.5%
+openswoole postgres,"14,650",vs,php-pgsql-raw,"11,887",123.2%
+hono,"55,713",vs,nodejs-postgresjs-raw,"45,595",122.2%
+play2-java-jpa-hikaricp,"4,854",vs,akka-http,"3,980",122.0%
+lithium-postgres,"37,229",vs,undertow-postgresql,"30,696",121.3%
+lithium-postgres-beta,"36,598",vs,undertow-postgresql,"30,696",119.2%
+ubiquity-swoole,"35,832",vs,swoole-sync-postgres,"31,642",113.2%
+express-postgresjs,"50,818",vs,nodejs-postgresjs-raw,"45,595",111.5%
+mormot [orm],"33,334",vs,undertow-postgresql,"30,696",108.6%
+axum [postgresql - deadpool],"32,685",vs,undertow-postgresql,"30,696",106.5%
+micronaut jdbc,"31,724",vs,undertow-postgresql,"30,696",103.3%
+pippo-tomcat-postgres,"31,503",vs,undertow-postgresql,"30,696",102.6%
+pippo-jetty-postgres,"31,473",vs,undertow-postgresql,"30,696",102.5%
+micronaut data jdbc,"31,257",vs,undertow-postgresql,"30,696",101.8%
+pippo-undertow-postgres,"31,233",vs,undertow-postgresql,"30,696",101.7%
+crystal-radix,"6,416",vs,crystal,"6,332",101.3%
+ubiquity-workerman-raw,"36,723",vs,workerman [pgsql],"36,261",101.3%
+sinatra-sequel-postgres-passenger-mri,"17,661",vs,rack-sequel-postgres-passenger-mri,"17,538",100.7%
+webman-pgsql,"36,095",vs,workerman [pgsql],"36,261",99.5%
+kumbiaphp-workerman,"36,061",vs,workerman [pgsql],"36,261",99.4%
+vertx-web-kotlin-coroutines-postgres,"45,501",vs,vertx-web-postgres,"45,893",99.1%
+"asp.net core [minimal apis, pg, dapper]","13,664",vs,aspnetcore,"13,854",98.6%
+kemal,"6,216",vs,crystal,"6,332",98.2%
+ubiquity-workerman,"35,039",vs,workerman [pgsql],"36,261",96.6%
+officefloor,"11,493",vs,officefloor-micro,"12,153",94.6%
+elysia [compiled],"42,772",vs,nodejs-postgresjs-raw,"45,595",93.8%
+elysia [smol] [postgresql],"42,760",vs,nodejs-postgresjs-raw,"45,595",93.8%
+micronaut jdbc graalvm,"28,761",vs,undertow-postgresql,"30,696",93.7%
+elysia [postgresql],"42,650",vs,nodejs-postgresjs-raw,"45,595",93.5%
+vertx-web-scala,"42,714",vs,vertx-web-postgres,"45,893",93.1%
+mormot [direct],"28,502",vs,undertow-postgresql,"30,696",92.9%
+ubiquity-workerman-mysql,"10,960",vs,php-pgsql-raw,"11,887",92.2%
+micronaut data jdbc graalvm,"28,266",vs,undertow-postgresql,"30,696",92.1%
+tornado-py3,"1,496",vs,tornado,"1,708",87.6%
+symfony-workerman,"10,408",vs,php-pgsql-raw,"11,887",87.6%
+roda-sequel-postgres-unicorn-mri,"20,276",vs,rack-sequel-postgres-unicorn-mri,"23,534",86.2%
+sinatra-sequel-postgres-unicorn-mri,"20,029",vs,rack-sequel-postgres-unicorn-mri,"23,534",85.1%
+symfony-frankenphp,"9,888",vs,php-pgsql-raw,"11,887",83.2%
+vibed-dmd-pgsql,"1,614",vs,vibed-ldc-pgsql,"1,942",83.1%
+greenlightning,"24,914",vs,undertow-postgresql,"30,696",81.2%
+vertx-web-kotlinx-postgresql,"46,364",vs,vertx-web-kotlin-dsljson-postgresql,"58,138",79.7%
+coldbox-adobe,"8,634",vs,cfml-adobe,"10,894",79.3%
+drogon,"24,033",vs,undertow-postgresql,"30,696",78.3%
+play2-java-jooq-hikaricp,"3,108",vs,akka-http,"3,980",78.1%
+ubiquity,"8,887",vs,php-pgsql-raw,"11,887",74.8%
+ubiquity-workerman-mongo,"8,855",vs,php-pgsql-raw,"11,887",74.5%
+symfony-raw,"8,566",vs,php-pgsql-raw,"11,887",72.1%
+symfony [mysql],"8,454",vs,php-pgsql-raw,"11,887",71.1%
+toro,"4,495",vs,crystal,"6,332",71.0%
+play2-scala-anorm,"2,555",vs,akka-http,"3,980",64.2%
+symfony,"7,420",vs,php-pgsql-raw,"11,887",62.4%
+es4x,"27,474",vs,nodejs-postgresjs-raw,"45,595",60.3%
+salvo [postgres-deadpool],"15,710",vs,undertow-postgresql,"30,696",51.2%
+rage,"15,473",vs,undertow-postgresql,"30,696",50.4%
+spring-webflux,"14,679",vs,spring,"29,320",50.1%
+kit,"15,163",vs,undertow-postgresql,"30,696",49.4%
+rocket,"15,074",vs,undertow-postgresql,"30,696",49.1%
+micronaut r2dbc,"14,987",vs,undertow-postgresql,"30,696",48.8%
+mixphp-workerman-pgsql,"17,316",vs,workerman [pgsql],"36,261",47.8%
+javalin-postgres,"14,578",vs,undertow-postgresql,"30,696",47.5%
+bareasgi,"14,565",vs,undertow-postgresql,"30,696",47.4%
+comet,"17,103",vs,workerman [pgsql],"36,261",47.2%
+micronaut r2dbc graalvm,"13,660",vs,undertow-postgresql,"30,696",44.5%
+panther,"13,657",vs,undertow-postgresql,"30,696",44.5%
+php-workerman,"5,203",vs,php-pgsql-raw,"11,887",43.8%
+fastapi,"13,297",vs,undertow-postgresql,"30,696",43.3%
+fastapi-uvicorn,"13,055",vs,undertow-postgresql,"30,696",42.5%
+slim-workerman,"5,030",vs,php-pgsql-raw,"11,887",42.3%
+fastapi-gunicorn-orjson,"12,951",vs,undertow-postgresql,"30,696",42.2%
+act-eclipselink-pgsql,"12,939",vs,undertow-postgresql,"30,696",42.2%
+php-h2o,"4,981",vs,php-pgsql-raw,"11,887",41.9%
+apidaora,"12,801",vs,undertow-postgresql,"30,696",41.7%
+apidaora-core,"12,788",vs,undertow-postgresql,"30,696",41.7%
+fastapi-uvicorn-orjson,"12,666",vs,undertow-postgresql,"30,696",41.3%
+codeigniter,"4,815",vs,php-pgsql-raw,"11,887",40.5%
+php-raw7-tcp,"4,762",vs,php-pgsql-raw,"11,887",40.1%
+php-ngx-mysql,"4,752",vs,php-pgsql-raw,"11,887",40.0%
+sanic,"12,252",vs,undertow-postgresql,"30,696",39.9%
+cfml-lucee,"12,071",vs,undertow-postgresql,"30,696",39.3%
+kumbiaphp-raw,"4,668",vs,php-pgsql-raw,"11,887",39.3%
+php-unit,"4,626",vs,php-pgsql-raw,"11,887",38.9%
+"workerman [jit, mysql]","4,584",vs,php-pgsql-raw,"11,887",38.6%
+php,"4,565",vs,php-pgsql-raw,"11,887",38.4%
+heaven,"11,755",vs,undertow-postgresql,"30,696",38.3%
+php-frankenphp,"4,543",vs,php-pgsql-raw,"11,887",38.2%
+zend,"4,534",vs,php-pgsql-raw,"11,887",38.1%
+microdot-raw,"11,697",vs,undertow-postgresql,"30,696",38.1%
+"workerman [jit, mysql, swow, async]","4,508",vs,php-pgsql-raw,"11,887",37.9%
+openswoole,"4,472",vs,php-pgsql-raw,"11,887",37.6%
+kumbiaphp,"4,468",vs,php-pgsql-raw,"11,887",37.6%
+yii2-raw,"4,455",vs,php-pgsql-raw,"11,887",37.5%
+"workerman [jit, mysql, swoole, async]","4,400",vs,php-pgsql-raw,"11,887",37.0%
+fat-free-raw,"4,385",vs,php-pgsql-raw,"11,887",36.9%
+nette,"4,384",vs,php-pgsql-raw,"11,887",36.9%
+blacksheep,"11,249",vs,undertow-postgresql,"30,696",36.6%
+php-caddyserver,"4,329",vs,php-pgsql-raw,"11,887",36.4%
+duckphp,"4,325",vs,php-pgsql-raw,"11,887",36.4%
+wolff,"4,309",vs,php-pgsql-raw,"11,887",36.2%
+flight,"4,307",vs,php-pgsql-raw,"11,887",36.2%
+swoole-no-async,"4,303",vs,php-pgsql-raw,"11,887",36.2%
+ubiquity-swoole-mysql,"11,342",vs,swoole-sync-postgres,"31,642",35.8%
+php-pools,"4,235",vs,php-pgsql-raw,"11,887",35.6%
+cfml-adobe,"10,894",vs,undertow-postgresql,"30,696",35.5%
+phpixie,"4,175",vs,php-pgsql-raw,"11,887",35.1%
+treefrog-mongodb,"7,848",vs,treefrog-epoll,"22,515",34.9%
+openswoole no-async,"4,125",vs,php-pgsql-raw,"11,887",34.7%
+yii2,"4,109",vs,php-pgsql-raw,"11,887",34.6%
+phalcon,"4,050",vs,php-pgsql-raw,"11,887",34.1%
+fat-free,"3,937",vs,php-pgsql-raw,"11,887",33.1%
+slim,"3,906",vs,php-pgsql-raw,"11,887",32.9%
+mixphp,"3,873",vs,php-pgsql-raw,"11,887",32.6%
+lithium,"9,970",vs,undertow-postgresql,"30,696",32.5%
+officefloor-undertow,"9,941",vs,undertow-postgresql,"30,696",32.4%
+fastapi-hypercorn,"9,935",vs,undertow-postgresql,"30,696",32.4%
+fastapi-hypercorn-orjson,"9,830",vs,undertow-postgresql,"30,696",32.0%
+micronaut data mongodb,"9,801",vs,undertow-postgresql,"30,696",31.9%
+symfony-swoole,"9,802",vs,swoole-sync-postgres,"31,642",31.0%
+mako,"3,604",vs,php-pgsql-raw,"11,887",30.3%
+laravel-octane [frankenphp],"3,484",vs,php-pgsql-raw,"11,887",29.3%
+laravel-workerman,"3,398",vs,php-pgsql-raw,"11,887",28.6%
+php-eloquent,"3,352",vs,php-pgsql-raw,"11,887",28.2%
+lumen,"3,309",vs,php-pgsql-raw,"11,887",27.8%
+laravel,"3,192",vs,php-pgsql-raw,"11,887",26.9%
+pippo-tomcat-mysql,"8,010",vs,undertow-postgresql,"30,696",26.1%
+pippo-undertow-mysql,"7,981",vs,undertow-postgresql,"30,696",26.0%
+pippo-jetty-mysql,"7,877",vs,undertow-postgresql,"30,696",25.7%
+vapor,"7,671",vs,undertow-postgresql,"30,696",25.0%
+micronaut data mongodb graalvm,"7,522",vs,undertow-postgresql,"30,696",24.5%
+"appmpower [aot-no-reflection,my,odbc]","3,197",vs,"asp.net core [minimal apis, pg, dapper]","13,664",23.4%
+salvo [mongodb-raw],"6,977",vs,undertow-postgresql,"30,696",22.7%
+salvo [mongodb],"6,847",vs,undertow-postgresql,"30,696",22.3%
+axum [mongodb],"6,844",vs,undertow-postgresql,"30,696",22.3%
+axum [mongodb raw],"6,778",vs,undertow-postgresql,"30,696",22.1%
+hummingbird,"6,776",vs,undertow-postgresql,"30,696",22.1%
+spliffy,"9,285",vs,nodejs-postgresjs-raw,"45,595",20.4%
+cakephp-workerman,"2,346",vs,php-pgsql-raw,"11,887",19.7%
+coldbox-lucee,"2,352",vs,cfml-lucee,"12,071",19.5%
+lucky,"5,972",vs,undertow-postgresql,"30,696",19.5%
+nestjs-fastify-mongo,"8,664",vs,nodejs-postgresjs-raw,"45,595",19.0%
+nestjs-mongo,"8,658",vs,nodejs-postgresjs-raw,"45,595",19.0%
+officefloor-vertx,"9,771",vs,vertx-postgres,"58,300",16.8%
+nodejs-mongodb-raw,"7,496",vs,nodejs-postgresjs-raw,"45,595",16.4%
+play2-scala-slick,631,vs,akka-http,"3,980",15.9%
+mesh,"7,115",vs,nodejs-postgresjs-raw,"45,595",15.6%
+spliffy,"7,111",vs,nodejs-postgresjs-raw,"45,595",15.6%
+cakephp,"1,794",vs,php-pgsql-raw,"11,887",15.1%
+nodejs-mongodb,"6,629",vs,nodejs-postgresjs-raw,"45,595",14.5%
+ktor-netty-exposed-dsl,"1,748",vs,ktor-netty-r2dbc,"12,467",14.0%
+simps,"4,427",vs,swoole-sync-postgres,"31,642",14.0%
+mixphp-swoole-mysql,"4,349",vs,swoole-sync-postgres,"31,642",13.7%
+simps-micro,"4,214",vs,swoole-sync-postgres,"31,642",13.3%
+symfony-roadrunner,"1,562",vs,php-pgsql-raw,"11,887",13.1%
+comet-mysql,"4,528",vs,workerman [pgsql],"36,261",12.5%
+pellet,"3,718",vs,undertow-postgresql,"30,696",12.1%
+kumbiaphp-workerman-mysql,"4,379",vs,workerman [pgsql],"36,261",12.1%
+nestjs-fastify,"5,482",vs,nodejs-postgresjs-raw,"45,595",12.0%
+mixphp-workerman-mysql,"4,347",vs,workerman [pgsql],"36,261",12.0%
+yii2-workerman,"4,345",vs,workerman [pgsql],"36,261",12.0%
+jewelia,"3,663",vs,undertow-postgresql,"30,696",11.9%
+nestjs,"5,384",vs,nodejs-postgresjs-raw,"45,595",11.8%
+mesh,"5,201",vs,nodejs-postgresjs-raw,"45,595",11.4%
+lumen-swoole,"3,477",vs,swoole-sync-postgres,"31,642",11.0%
+laravel-swoole,"3,472",vs,swoole-sync-postgres,"31,642",11.0%
+spliffy,"4,534",vs,nodejs-postgresjs-raw,"45,595",9.9%
+ripple,"1,147",vs,php-pgsql-raw,"11,887",9.6%
+lumen-workerman,"3,431",vs,workerman [pgsql],"36,261",9.5%
+peachpie,"1,108",vs,php-pgsql-raw,"11,887",9.3%
+swoole,"1,045",vs,php-pgsql-raw,"11,887",8.8%
+hapi-postgres,"3,887",vs,nodejs-postgresjs-raw,"45,595",8.5%
+vapor,"2,434",vs,undertow-postgresql,"30,696",7.9%
+koa-mysql,"3,569",vs,nodejs-postgresjs-raw,"45,595",7.8%
+express-mongodb,"3,532",vs,nodejs-postgresjs-raw,"45,595",7.7%
+viz [postgresql - sqlx],"2,239",vs,undertow-postgresql,"30,696",7.3%
+hapi-nginx,"3,296",vs,nodejs-postgresjs-raw,"45,595",7.2%
+ringojs-convenient,259,vs,ringojs,"3,895",6.6%
+laravel-roadrunner,"2,099",vs,swoole-sync-postgres,"31,642",6.6%
+feathersjs,"2,998",vs,nodejs-postgresjs-raw,"45,595",6.6%
+express-mysql,"2,917",vs,nodejs-postgresjs-raw,"45,595",6.4%
+nestjs-fastify-mysql,"2,901",vs,nodejs-postgresjs-raw,"45,595",6.4%
+nestjs-mysql,"2,891",vs,nodejs-postgresjs-raw,"45,595",6.3%
+hyperexpress-mysql,"2,711",vs,nodejs-postgresjs-raw,"45,595",5.9%
+ultimate-express-mysql,"2,670",vs,nodejs-postgresjs-raw,"45,595",5.9%
+hapi,"2,413",vs,nodejs-postgresjs-raw,"45,595",5.3%
+rack-sequel-unicorn-mri,"1,228",vs,rack-unicorn-mri-sequel-raw,"23,916",5.1%
+hapi-mysql,"2,315",vs,nodejs-postgresjs-raw,"45,595",5.1%
+onyx,"1,479",vs,undertow-postgresql,"30,696",4.8%
+fastify-mysql,"2,155",vs,nodejs-postgresjs-raw,"45,595",4.7%
+ditsmod v3.0 [mysql],"2,152",vs,nodejs-postgresjs-raw,"45,595",4.7%
+fastapi-gunicorn-orm,"1,439",vs,undertow-postgresql,"30,696",4.7%
+nodejs-mysql,"2,038",vs,nodejs-postgresjs-raw,"45,595",4.5%
+padrino-unicorn,"1,022",vs,rack-unicorn-mri-sequel-raw,"23,916",4.3%
+microdot,"1,301",vs,undertow-postgresql,"30,696",4.2%
+one-no-coroutine,"1,071",vs,swoole-sync-postgres,"31,642",3.4%
+ohkami,976,vs,undertow-postgresql,"30,696",3.2%
+angel3_postgresql,924,vs,undertow-postgresql,"30,696",3.0%
+spring-mongo,814,vs,spring,"29,320",2.8%
+nodejs-mysql-raw,"1,025",vs,nodejs-postgresjs-raw,"45,595",2.2%
+salvo [postgres-diesel],634,vs,undertow-postgresql,"30,696",2.1%
+lumen-laravel-s,456,vs,swoole-sync-postgres,"31,642",1.4%
+laravel-laravel-s,429,vs,swoole-sync-postgres,"31,642",1.4%
+pippo-jetty-mongodb,367,vs,undertow-postgresql,"30,696",1.2%
+pippo-tomcat-mongodb,346,vs,undertow-postgresql,"30,696",1.1%
+act-hibernate-pgsql,332,vs,undertow-postgresql,"30,696",1.1%
+pippo-undertow-mongodb,328,vs,undertow-postgresql,"30,696",1.1%
+today,244,vs,undertow-postgresql,"30,696",0.8%
+cyberphp,288,vs,workerman [pgsql],"36,261",0.8%
+rage-sequel,241,vs,undertow-postgresql,"30,696",0.8%
+integrated haskell platfrom (ihp),235,vs,undertow-postgresql,"30,696",0.8%
+elixir-plug-ecto,201,vs,undertow-postgresql,"30,696",0.7%
+next.js,227,vs,nodejs-postgresjs-raw,"45,595",0.5%
+officefloor-spring_data,128,vs,spring,"29,320",0.4%
+trillium [tokio],134,vs,undertow-postgresql,"30,696",0.4%
+trillium [smol],100,vs,undertow-postgresql,"30,696",0.3%
+trillium [async-std],100,vs,undertow-postgresql,"30,696",0.3%
+viz [postgresql - diesel],37,vs,undertow-postgresql,"30,696",0.1%
+swoole-async-postgres,3,vs,php-pgsql-raw,"11,887",0.0%

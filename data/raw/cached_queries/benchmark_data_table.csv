@@ -1,0 +1,129 @@
+Framework,1 queries/request,5 queries/request,10 queries/request,15 queries/request,20 queries/request,500-series HTTP responses,Classification,Language,Platform,Front-end server / Web-server,Application operating system,Database server,Database operating system,Object-relation mapper,Implementation approach
+"appmpower [aot-no-reflection,my,odbc]","1,946,236","1,236,481","719,496","339,465","234,257",100% success rate,Platform,C#,.NET,kestrel,Linux,MySQL,Linux,Raw,Realistic
+"appmpower [aot-no-reflection,pg,odbc]","1,946,159","1,225,967","720,294","342,723","197,685",100% success rate,Platform,C#,.NET,kestrel,Linux,Postgres,Linux,Raw,Realistic
+aspnetcore,"2,494,859","2,247,593","1,969,363","1,458,571","1,038,559",100% success rate,Platform,C#,.NET,kestrel,Linux,Postgres,Linux,Raw,Realistic
+aspnetcore-aot,"2,516,665","2,255,328","1,847,282","1,331,749","986,998",100% success rate,Platform,C#,.NET,kestrel,Linux,Postgres,Linux,Raw,Realistic
+aspnetcore-mysql,"2,521,133","2,230,584","1,949,988","1,448,158","1,033,202",100% success rate,Platform,C#,.NET,kestrel,Linux,MySQL,Linux,Raw,Realistic
+atreugo,"607,954","354,509","102,961","47,252","25,257",100% success rate,Platform,Go,None,None,Linux,Postgres,Linux,Raw,Realistic
+atreugo-prefork,"2,464,191","2,292,631","2,124,180","1,509,120","1,045,162",100% success rate,Platform,Go,None,None,Linux,Postgres,Linux,Raw,Realistic
+axum [postgresql - sqlx],"1,112,889","1,001,413","920,699","765,720","657,832",100% success rate,Fullstack,Rust,Rust,hyper,Linux,Postgres,Linux,Raw,Realistic
+beetlex-core,"2,246,718","1,924,348","1,711,218","1,221,495","855,821",100% success rate,Platform,C#,.NET,beetlex,Linux,Postgres,Linux,Raw,Realistic
+cfml-lucee,"121,320","48,882","26,171","2,382","1,122",100% success rate,Platform,cfml,None,None,Linux,Postgres,Linux,Raw,Realistic
+cfml-adobe,"111,422","4,947","2,421",950,461,100% success rate,Platform,cfml,None,None,Linux,Postgres,Linux,Raw,Realistic
+coldbox-lucee,"20,438","16,127","12,955","8,018","1,334",100% success rate,Fullstack,cfml,None,None,Linux,Postgres,Linux,Raw,Realistic
+coldbox-adobe,"24,003","15,054","7,588","1,286",524,100% success rate,Fullstack,cfml,None,None,Linux,Postgres,Linux,Raw,Realistic
+cutelyst-pf-apg,"182,310","54,685","30,658","13,460","7,040",100% success rate,Fullstack,C++,cutelystwsgi,None,Linux,Postgres,Linux,Raw,Realistic
+cutelyst-thread-apg,"750,886","87,338","44,203","17,701","8,825",100% success rate,Fullstack,C++,cutelystwsgi,None,Linux,Postgres,Linux,Raw,Realistic
+ditsmod v3.0 [mysql],"746,221","630,188","554,017","406,966","288,935",100% success rate,Micro,typescript,nodejs,None,Linux,MySQL,Linux,Raw,Realistic
+ditsmod v3.0 [postgres],"774,276","646,660","570,106","416,902","283,948",100% success rate,Micro,typescript,nodejs,None,Linux,Postgres,Linux,Raw,Realistic
+ditsmod-bun v3.0 [mysql],"1,016,335","816,097","683,393","454,386","300,121",100% success rate,Micro,typescript,bun,None,Linux,MySQL,Linux,Raw,Realistic
+ditsmod-bun v3.0 [postgres],"773,694","600,992","487,030","318,247","211,754",100% success rate,Micro,typescript,bun,None,Linux,Postgres,Linux,Raw,Realistic
+easyrpc,"1,162,260","1,224,200","1,128,683","868,992","592,065",100% success rate,Fullstack,C#,.NET,kestrel,Linux,Postgres,Linux,Raw,Realistic
+feersum,"1,811,916","819,823","521,932","248,258","134,195",100% success rate,Platform,Perl,None,feersum,Linux,Postgres,Linux,Raw,Realistic
+feersum,"1,801,660","818,350","519,822","248,118","133,790",100% success rate,Platform,Perl,None,feersum,Linux,MySQL,Linux,Raw,Realistic
+ffead-cpp [v],"2,584,140","1,672,590","1,182,654","621,883","347,526",100% success rate,Fullstack,C++,None,picov,Linux,Postgres,Linux,Raw,Realistic
+ffead-cpp [v-prof],"2,486,978","1,426,662","975,828","488,836","268,808",100% success rate,Fullstack,C++,None,picov,Linux,Postgres,Linux,Raw,Realistic
+fiber,"546,362","537,238","526,532","478,874","450,392",100% success rate,Platform,Go,None,None,Linux,Postgres,Linux,Raw,Realistic
+fiber-prefork,"2,458,870","2,299,116","2,173,280","1,711,874","1,333,450",100% success rate,Platform,Go,None,None,Linux,Postgres,Linux,Raw,Realistic
+gearbox,"595,687","360,916","102,686","47,527","25,411",100% success rate,Platform,Go,None,None,Linux,Postgres,Linux,Raw,Realistic
+gearbox prefork,"2,350,287","2,178,754","1,983,926","1,459,551","1,017,575",100% success rate,Platform,Go,None,None,Linux,Postgres,Linux,Raw,Realistic
+gemini-mysql,"1,258,441","1,136,683","1,002,516","848,543","632,207",100% success rate,Fullstack,Java,Servlet,Resin,Linux,MySQL,Linux,Micro,Realistic
+gemini-postgres,"1,230,505","1,083,175","1,011,010","861,308","633,410",100% success rate,Fullstack,Java,Servlet,Resin,Linux,Postgres,Linux,Micro,Realistic
+genhttp,"1,072,193","902,784","616,993","295,214","161,123",100% success rate,Fullstack,C#,.NET,kestrel,Linux,Postgres,Linux,Raw,Realistic
+goframe,"910,882","268,394","101,246","43,012","23,572",100% success rate,Platform,Go,None,None,Linux,Postgres,Linux,Raw,Realistic
+goravel gin,"917,311","855,085","789,671","664,697","568,987",100% success rate,Fullstack,Go,None,None,Linux,Postgres,Linux,Full,Realistic
+goravel fiber,"2,232,430","2,143,203","2,020,210","1,727,885","1,390,458",100% success rate,Fullstack,Go,None,None,Linux,Postgres,Linux,Full,Realistic
+hexagon,"878,681","807,822","740,625","587,359","433,489",100% success rate,Micro,Kotlin,Servlet,None,Linux,Postgres,Linux,Raw,Realistic
+hexagon helidon postgresql,"928,667","1,181,288","750,804","657,669","385,719",100% success rate,Micro,Kotlin,helidon,None,Linux,Postgres,Linux,Raw,Realistic
+hexagon helidon native pgclient,"700,912","663,763","628,142","419,542","270,689",100% success rate,Micro,Kotlin,helidon,None,Linux,Postgres,Linux,Raw,Realistic
+hexagon helidon pgclient,"1,007,427","1,261,033","929,166","625,988","389,174",100% success rate,Micro,Kotlin,helidon,None,Linux,Postgres,Linux,Raw,Realistic
+hexagon-jetty-native,"559,610","507,471","459,761","357,900","259,174",100% success rate,Micro,Kotlin,Servlet,None,Linux,Postgres,Linux,Raw,Realistic
+hexagon-jettyloom,"608,059","595,019","574,645","502,634","379,240",100% success rate,Micro,Kotlin,Servlet,None,Linux,Postgres,Linux,Raw,Realistic
+hexagon jetty loom pgclient,"555,390","557,186","544,215","479,528","375,245",100% success rate,Micro,Kotlin,Servlet,None,Linux,Postgres,Linux,Raw,Realistic
+hexagon netty epoll postgresql,"1,388,412","1,185,424","1,032,154","707,876","462,497",100% success rate,Micro,Kotlin,Netty,None,Linux,Postgres,Linux,Raw,Realistic
+hexagon netty epoll pgclient,"1,394,704","1,191,376","1,034,697","709,437","463,503",100% success rate,Micro,Kotlin,Netty,None,Linux,Postgres,Linux,Raw,Realistic
+hexagon tomcat postgresql,"351,341","347,093","338,244","278,752","264,000",100% success rate,Micro,Kotlin,Servlet,tomcat,Linux,Postgres,Linux,Raw,Realistic
+http4k,"10,613","10,540","10,823","114,924","72,413",89% success rate,Micro,Kotlin,sunhttp,None,Linux,Postgres,Linux,Raw,Realistic
+http4k-apache4,"885,136","720,787","449,953","185,012","96,865",100% success rate,Micro,Kotlin,apache-httpcore,None,Linux,Postgres,Linux,Raw,Realistic
+http4k-graalvm,"9,080","8,944","8,277","37,009","25,534",91% success rate,Micro,Kotlin,graalvm,None,Linux,Postgres,Linux,Raw,Realistic
+http4k-helidon-graalvm,"43,894","23,405","20,707","17,083","17,529",100% success rate,Micro,Kotlin,graalvm,None,Linux,Postgres,Linux,Raw,Realistic
+http4k-helidon-jdbc,"658,048","609,126","471,893","206,984","108,518",100% success rate,Micro,Kotlin,helidon,None,Linux,Postgres,Linux,Raw,Realistic
+http4k-helidon-pgclient,"649,587","611,948","459,409","209,071","109,617",100% success rate,Micro,Kotlin,helidon-pgclient,None,Linux,Postgres,Linux,Raw,Realistic
+http4k-jetty11,"764,504","633,332","452,121","184,103","97,635",100% success rate,Micro,Kotlin,jetty11,None,Linux,Postgres,Linux,Raw,Realistic
+http4k-jetty11loom-jdbc,"684,935","577,204","455,655","203,687","104,144",100% success rate,Micro,Kotlin,jetty11-loom-jdbc,None,Linux,Postgres,Linux,Raw,Realistic
+http4k-jetty11loom-pgclient,"747,070","610,438","482,917","220,203","112,169",100% success rate,Micro,Kotlin,jetty11-loom-pgclient,None,Linux,Postgres,Linux,Raw,Realistic
+http4k-jettyloom-jdbc,"883,181","668,807","425,767","175,897","91,745",100% success rate,Micro,Kotlin,jetty-loom-jdbc,None,Linux,Postgres,Linux,Raw,Realistic
+http4k-jettyloom-pgclient,"411,746","401,442","403,464","218,624","109,965",100% success rate,Micro,Kotlin,jetty-loom-pgclient,None,Linux,Postgres,Linux,Raw,Realistic
+http4k-ktornetty,"305,724","278,548","253,399","156,924","78,657",100% success rate,Micro,Kotlin,ktor,None,Linux,Postgres,Linux,Raw,Realistic
+http4k-netty,"1,087,224","805,992","544,405","213,939","109,717",100% success rate,Micro,Kotlin,Netty,None,Linux,Postgres,Linux,Raw,Realistic
+http4k-ratpack,"1,019,710","805,283","570,507","222,276","114,283",100% success rate,Micro,Kotlin,Netty,None,Linux,Postgres,Linux,Raw,Realistic
+http4k-sunhttploom,"10,697","10,988","10,472","134,206","81,196",88% success rate,Micro,Kotlin,sunhttp,None,Linux,Postgres,Linux,Raw,Realistic
+http4k-undertow,"787,006","623,999","423,817","169,616","89,424",100% success rate,Micro,Kotlin,Undertow,None,Linux,Postgres,Linux,Raw,Realistic
+http4k-jetty,— Did not complete —,—,Micro,Kotlin,Jetty,None,Linux,Postgres,Linux,Raw,Realistic,,,,
+hyperexpress-mysql,"2,039,207","1,531,491","1,232,971","814,944","533,206",100% success rate,Micro,JavaScript,nodejs,µws,Linux,MySQL,Linux,Raw,Realistic
+hyperexpress-postgres,"2,015,044","1,523,138","1,252,495","810,967","528,432",100% success rate,Micro,JavaScript,nodejs,µws,Linux,Postgres,Linux,Raw,Realistic
+imi,"769,381","505,839","486,142","426,395","365,951",100% success rate,Fullstack,PHP,swoole,None,Linux,MySQL,Linux,Full,Realistic
+imi-workerman,"608,457","417,154","397,883","350,124","302,263",100% success rate,Fullstack,PHP,workerman,None,Linux,MySQL,Linux,Full,Realistic
+just-js,"2,408,900","1,777,937","1,357,422","809,651","494,551",100% success rate,Platform,JavaScript,just-js,None,Linux,Postgres,Linux,Raw,Realistic
+kit,"393,124","391,117","317,473","124,785","66,866",100% success rate,Micro,Clojure,Undertow,None,Linux,Postgres,Linux,Raw,Realistic
+h2o,"2,847,013","2,609,548","2,327,183","1,600,431","1,056,212",100% success rate,Platform,C,None,h2o,Linux,Postgres,Linux,Raw,Realistic
+lithium,"2,986,486","1,796,724","1,058,240","501,792","283,216",100% success rate,Micro,C++,None,None,Linux,MySQL,Linux,Full,Realistic
+lithium-postgres,"2,941,218","1,819,878","1,074,590","509,488","288,666",100% success rate,Micro,C++,None,None,Linux,Postgres,Linux,Full,Realistic
+lithium-postgres-beta,"2,937,049","1,700,899","1,008,308","480,216","272,744",100% success rate,Micro,C++,None,None,Linux,Postgres,Linux,Full,Realistic
+lwan,"1,629,050","233,486","120,827","49,346","24,991",100% success rate,Micro,C,Lwan,lwan,Linux,MySQL,Linux,Raw,Realistic
+microdot,"114,652","116,594","98,337","68,004","45,732",100% success rate,Micro,Python,None,uvicorn,Linux,Postgres,Linux,Full,Realistic
+microdot-raw,"97,236","84,595","74,775","55,991","39,790",100% success rate,Micro,Python,None,uvicorn,Linux,Postgres,Linux,Full,Realistic
+mormot [direct],"2,596,703","2,496,545","2,385,897","1,930,425","1,411,733",100% success rate,Fullstack,pascal,None,None,Linux,Postgres,Linux,Raw,Realistic
+mormot [orm],— Did not complete —,—,Fullstack,pascal,None,None,Linux,Postgres,Linux,Full,Realistic,,,,
+nestjs,"173,195","167,925","163,291","148,907","133,112",100% success rate,Micro,typescript,nodejs,None,Linux,Postgres,Linux,Full,Realistic
+nestjs-fastify,"614,804","571,160","541,485","450,590","360,797",100% success rate,Micro,typescript,nodejs,None,Linux,Postgres,Linux,Full,Realistic
+nestjs-fastify-mongo,"641,992","596,016","560,406","460,851","353,609",100% success rate,Micro,typescript,nodejs,None,Linux,MongoDB,Linux,Full,Realistic
+nestjs-fastify-mysql,"642,171","594,955","558,967","465,212","367,691",100% success rate,Micro,typescript,nodejs,None,Linux,MySQL,Linux,Full,Realistic
+nestjs-mongo,"170,524","166,233","162,224","148,299","133,425",100% success rate,Micro,typescript,nodejs,None,Linux,MongoDB,Linux,Full,Realistic
+nestjs-mysql,"173,586","168,701","164,222","149,362","135,007",100% success rate,Micro,typescript,nodejs,None,Linux,MySQL,Linux,Full,Realistic
+next.js,"1,028",917,825,630,455,100% success rate,Platform,typescript,nodejs,None,Linux,Postgres,Linux,Micro,Realistic
+nodejs-mysql-raw,"771,296","576,982","462,881","285,775","176,800",100% success rate,Platform,JavaScript,nodejs,None,Linux,MySQL,Linux,Raw,Realistic
+cppcms,"15,262","11,843","10,356","7,780","4,603",100% success rate,Platform,C++,None,None,Linux,MySQL,Linux,Raw,Realistic
+cppcms-postgres,"15,196","11,918","10,563","7,438","4,545",100% success rate,Platform,C++,None,None,Linux,Postgres,Linux,Raw,Realistic
+fasthttp,"599,045","361,922","97,395","47,524","25,955",100% success rate,Platform,Go,None,None,Linux,Postgres,Linux,Raw,Realistic
+fasthttp-prefork,"2,497,778","2,337,956","2,146,859","1,538,241","1,052,481",100% success rate,Platform,Go,None,None,Linux,Postgres,Linux,Raw,Realistic
+fastwsgi [asgi],"166,950","143,551","126,462","93,563","66,076",100% success rate,Micro,Python,asgi,fastwsgi,Linux,Postgres,Linux,Raw,Realistic
+servlet-postgresql,"2,056,862","1,886,775","1,708,190","1,323,683","993,474",100% success rate,Platform,Java,Servlet,Resin,Linux,Postgres,Linux,Raw,Realistic
+officefloor,"58,069","53,375","49,128","40,370","32,190",100% success rate,Fullstack,Java,officefloor,woof,Linux,Postgres,Linux,Full,Realistic
+officefloor-micro,"60,126","54,120","50,206","36,841","25,610",100% success rate,Fullstack,Java,officefloor,woof,Linux,Postgres,Linux,Raw,Realistic
+officefloor-netty,"6,640","6,120","5,843","5,203","4,593",100% success rate,Fullstack,Java,officefloor,netty,Linux,Postgres,Linux,Full,Realistic
+officefloor-r2dbc,"2,324,122","2,025,396","1,796,646","1,369,005","976,603",100% success rate,Platform,Java,officefloor,woof,Linux,Postgres,Linux,Raw,Realistic
+officefloor-spring_data,"37,470","39,294","37,245","32,219","26,729",100% success rate,Fullstack,Java,officefloor,woof,Linux,Postgres,Linux,Full,Realistic
+officefloor-thread_affinity,"1,008,712","964,602","918,299","808,145","665,035",100% success rate,Fullstack,Java,officefloor,woof,Linux,Postgres,Linux,Raw,Realistic
+officefloor-undertow,"8,078","7,655","7,440","5,877","4,798",100% success rate,Fullstack,Java,officefloor,Undertow,Linux,Postgres,Linux,Full,Realistic
+officefloor-vertx,"51,374","45,217","41,832","34,964","28,117",100% success rate,Fullstack,Java,officefloor,vertx,Linux,Postgres,Linux,Full,Realistic
+paozhu,"12,223","12,227","12,207","14,603","14,468",100% success rate,Fullstack,C++,None,None,Linux,MySQL,Linux,Micro,Realistic
+phoenix,"437,199","320,147","262,001","148,046","87,976",100% success rate,Fullstack,Elixir,beam,bandit,Linux,Postgres,Linux,Full,Realistic
+elixir-plug-ecto,"54,715","20,867","13,870","6,075","2,679",100% success rate,Micro,Elixir,beam,cowboy,Linux,Postgres,Linux,Full,Realistic
+racket,"5,935","4,196","3,618","3,083","4,963",100% success rate,Micro,racket,racket,racket,Linux,Postgres,Linux,Raw,Realistic
+rails,"70,235","50,751","40,370","27,015","18,228",100% success rate,Fullstack,Ruby,Rack,Puma,Linux,Postgres,Linux,Full,Realistic
+rails-falcon,"67,206","45,439","36,081","23,647","16,019",100% success rate,Fullstack,Ruby,Rack,falcon,Linux,Postgres,Linux,Full,Realistic
+rails-iodine,"80,404","54,222","42,282","28,714","18,176",100% success rate,Fullstack,Ruby,Rack,iodine,Linux,Postgres,Linux,Full,Realistic
+rails-mysql,"70,827","50,612","40,188","26,826","18,261",100% success rate,Fullstack,Ruby,Rack,Puma,Linux,MySQL,Linux,Full,Realistic
+salvo [lru],"2,391,161","2,262,248","2,168,165","1,821,933","1,410,294",100% success rate,Micro,Rust,Rust,hyper,Linux,Postgres,Linux,Raw,Realistic
+saphir,"69,904","28,502","17,450","7,891","4,257",100% success rate,Micro,Rust,None,None,Linux,MongoDB,Linux,Raw,Realistic
+spliffy,"1,111,010","723,471","542,729","308,878","183,615",100% success rate,Micro,JavaScript,nodejs,µws,Linux,MongoDB,Linux,Raw,Realistic
+spliffy,"1,115,357","732,112","549,135","311,806","184,607",100% success rate,Micro,JavaScript,nodejs,µws,Linux,MySQL,Linux,Raw,Realistic
+spliffy,"1,128,792","738,651","551,103","313,053","185,891",100% success rate,Micro,JavaScript,nodejs,µws,Linux,Postgres,Linux,Raw,Realistic
+swi-prolog,"8,516","7,405","4,429","2,981","1,561",100% success rate,none,prolog,None,swi-prolog,Linux,Postgres,Linux,Raw,Realistic
+tio-server,"65,869","57,513","62,461","57,283","54,554",100% success rate,Micro,Java,t-io,None,Linux,MySQL,Linux,Raw,Realistic
+treefrog,"565,864","325,236","223,187","112,219","61,474",100% success rate,Fullstack,C++,None,None,Linux,Postgres,Linux,Micro,Realistic
+treefrog-epoll,"817,634","402,870","261,797","123,764","65,355",100% success rate,Fullstack,C++,None,None,Linux,Postgres,Linux,Micro,Realistic
+treefrog-mongodb,"587,787","329,943","225,111","107,426","59,272",100% success rate,Fullstack,C++,None,None,Linux,MongoDB,Linux,Micro,Realistic
+treefrog-mysql,"574,160","326,354","224,239","101,184","59,699",100% success rate,Fullstack,C++,None,None,Linux,MySQL,Linux,Micro,Realistic
+trillium [smol],"610,433","470,605","337,392","158,829","82,552",100% success rate,Micro,Rust,None,None,Linux,Postgres,Linux,Full,Realistic
+trillium [async-std],"638,283","540,520","360,539","160,846","83,760",100% success rate,Micro,Rust,None,None,Linux,Postgres,Linux,Full,Realistic
+trillium [tokio],"660,762","510,203","359,215","162,613","84,112",100% success rate,Micro,Rust,None,None,Linux,Postgres,Linux,Full,Realistic
+ubiquity-workerman,"1,512,453","1,258,243","1,077,823","722,442","489,591",100% success rate,Fullstack,PHP,workerman,None,Linux,Postgres,Linux,Full,Realistic
+ultimate-express-mysql,"1,573,744","1,320,062","1,162,820","850,703","609,601",100% success rate,Micro,JavaScript,nodejs,µws,Linux,MySQL,Linux,Raw,Realistic
+ultimate-express-postgres,"1,576,081","1,321,982","1,177,403","864,372","615,604",100% success rate,Micro,JavaScript,nodejs,µws,Linux,Postgres,Linux,Raw,Realistic
+urweb-cache,"652,403","41,799","18,416","6,975","3,299",100% success rate,Fullstack,Ur,Ur/Web,None,Linux,Postgres,Linux,Micro,Realistic
+urweb-mysql-cache,"644,318","42,282","18,842","7,115","3,460",100% success rate,Fullstack,Ur,Ur/Web,None,Linux,MySQL,Linux,Micro,Realistic
+userver,"373,339","1,117,944","1,238,220","1,083,344","896,489",100% success rate,Fullstack,C++,None,None,Linux,Postgres,Linux,Micro,Realistic
+vertx-postgres,"2,576,900","1,692,986","1,373,396","1,097,918","836,816",100% success rate,Platform,Java,vert.x,None,Linux,Postgres,Linux,Raw,Realistic
+wizzardo-http,"2,813,323","1,847,232","1,028,525","467,123","254,491",100% success rate,Micro,Java,None,None,Linux,Postgres,Linux,Raw,Realistic
