@@ -15,6 +15,30 @@ data_table <- read_csv(file.path(processed_path, "benchmark_data_table.csv"), sh
 overhead <- read_csv(file.path(processed_path, "benchmark_framework_overhead.csv"), show_col_types = FALSE)
 latency <- read_csv(file.path(processed_path, "benchmark_latency.csv"), show_col_types = FALSE)
 
+# Ensure correct column names (Update these if they are different in your dataset)
+col1 <- "Performance (higher is better)"
+col2 <- "Best performance (higher is better)"
+
+# Merge the two columns
+# best_perf <- best_perf %>%
+#   mutate(best_performance = ifelse(is.na(`Performance (higher is better)`), `Best performance (higher is better)`, `Performance (higher is better)`))
+
+# rename best_performance column to performance
+best_perf <- best_perf %>% rename(performance = `best_performance`)
+
+#move performance column to the third column
+
+best_perf <- best_perf %>% select(1, 2, performance, 3:ncol(best_perf))
+
+# Drop the original columns
+best_perf <- best_perf %>% select(-all_of(c(col1, col2)))
+
+# Save the updated dataset as a new CSV file
+write_csv(best_perf, file.path(processed_path, "cleaned_best_performance.csv"))
+
+# print("Data processing complete. New file saved as 'benchmark_combined_performance.csv'.")
+
+
 # 🔹 Standardize Column Names (convert to snake_case)
 clean_colnames <- function(df) {
   colnames(df) <- colnames(df) %>%

@@ -71,16 +71,3 @@ write_csv(combined_latency, "data/processed/benchmark_latency.csv")
 
 ## Print Summary
 message("✅ Data successfully loaded and saved to `data/processed/`.")
-
-
-
-## merge performance and best performance column in combined_best_perf$Performance (higher is better) and combined_best_perf$`Best Performance (higher is better)` and rename it to only performance
-df = pd.read_csv("benchmark_best_performance.csv")
-
-df["performance"] = df[["performance (higher is better)", "best performance"]].max(axis=1)
-
-# 3. (Optional) Drop the original two columns if you no longer need them
-df.drop(columns=["performance (higher is better)", "best performance"], inplace=True)
-
-# 4. Save the updated DataFrame to a new CSV (or overwrite the original)
-df.to_csv("benchmark_combined_performance.csv", index=False)

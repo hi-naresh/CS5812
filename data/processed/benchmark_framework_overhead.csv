@@ -1,0 +1,1713 @@
+Framework best,Score...2,vs,Platform best,Score...5,Ratio (higher is better),test_type
+ultimate-express-postgres,615604,vs,nodejs-mysql-raw,176800,348.2%,cached_queries
+ultimate-express-mysql,609601,vs,nodejs-mysql-raw,176800,344.8%,cached_queries
+hyperexpress-mysql,533206,vs,nodejs-mysql-raw,176800,301.6%,cached_queries
+hyperexpress-postgres,528432,vs,nodejs-mysql-raw,176800,298.9%,cached_queries
+nestjs-fastify-mysql,367691,vs,nodejs-mysql-raw,176800,208.0%,cached_queries
+nestjs-fastify,360797,vs,nodejs-mysql-raw,176800,204.1%,cached_queries
+nestjs-fastify-mongo,353609,vs,nodejs-mysql-raw,176800,200.0%,cached_queries
+ditsmod v3.0 [mysql],288935,vs,nodejs-mysql-raw,176800,163.4%,cached_queries
+ditsmod v3.0 [postgres],283948,vs,nodejs-mysql-raw,176800,160.6%,cached_queries
+mormot [direct],1411733,vs,fasthttp-prefork,1052481,134.1%,cached_queries
+salvo [lru],1410294,vs,fasthttp-prefork,1052481,134.0%,cached_queries
+officefloor,32190,vs,officefloor-micro,25610,125.7%,cached_queries
+coldbox-lucee,1334,vs,cfml-lucee,1122,118.9%,cached_queries
+coldbox-adobe,524,vs,cfml-adobe,461,113.7%,cached_queries
+spliffy,185891,vs,nodejs-mysql-raw,176800,105.1%,cached_queries
+spliffy,184607,vs,nodejs-mysql-raw,176800,104.4%,cached_queries
+spliffy,183615,vs,nodejs-mysql-raw,176800,103.9%,cached_queries
+treefrog-mongodb,59272,vs,treefrog-epoll,65355,90.7%,cached_queries
+userver,896489,vs,fasthttp-prefork,1052481,85.2%,cached_queries
+nestjs-mysql,135007,vs,nodejs-mysql-raw,176800,76.4%,cached_queries
+nestjs-mongo,133425,vs,nodejs-mysql-raw,176800,75.5%,cached_queries
+nestjs,133112,vs,nodejs-mysql-raw,176800,75.3%,cached_queries
+axum [postgresql - sqlx],657832,vs,fasthttp-prefork,1052481,62.5%,cached_queries
+lithium-postgres,288666,vs,fasthttp-prefork,1052481,27.4%,cached_queries
+lithium,283216,vs,fasthttp-prefork,1052481,26.9%,cached_queries
+lithium-postgres-beta,272744,vs,fasthttp-prefork,1052481,25.9%,cached_queries
+trillium [tokio],84112,vs,fasthttp-prefork,1052481,8.0%,cached_queries
+trillium [async-std],83760,vs,fasthttp-prefork,1052481,8.0%,cached_queries
+trillium [smol],82552,vs,fasthttp-prefork,1052481,7.8%,cached_queries
+kit,66866,vs,fasthttp-prefork,1052481,6.4%,cached_queries
+microdot,45732,vs,fasthttp-prefork,1052481,4.3%,cached_queries
+microdot-raw,39790,vs,fasthttp-prefork,1052481,3.8%,cached_queries
+officefloor-vertx,28117,vs,vertx-postgres,836816,3.4%,cached_queries
+lwan,24991,vs,fasthttp-prefork,1052481,2.4%,cached_queries
+paozhu,14468,vs,fasthttp-prefork,1052481,1.4%,cached_queries
+next.js,455,vs,nodejs-mysql-raw,176800,0.3%,cached_queries
+elixir-plug-ecto,2679,vs,fasthttp-prefork,1052481,0.3%,cached_queries
+cfml-lucee,1122,vs,fasthttp-prefork,1052481,0.1%,cached_queries
+cfml-adobe,461,vs,fasthttp-prefork,1052481,0.0%,cached_queries
+mormot [orm],0,vs,fasthttp-prefork,1052481,0.0%,cached_queries
+php-ngx-pgsql,977237,vs,php-workerman,314886,310.3%,database
+workerman [pgsql],939199,vs,php-workerman,314886,298.3%,database
+swoole-sync-postgres,935998,vs,php-workerman,314886,297.2%,database
+workerman-pgsql,934250,vs,php-workerman,314886,296.7%,database
+tornado-py3-uvloop,67164,vs,tornado,24264,276.8%,database
+"workerman [jit, mysql]",827554,vs,php-workerman,314886,262.8%,database
+php-ngx-mysql,820264,vs,php-workerman,314886,260.5%,database
+swoole-no-async,673130,vs,php-workerman,314886,213.8%,database
+openswoole no-async,669515,vs,php-workerman,314886,212.6%,database
+"workerman [jit, mysql, swoole, async]",669202,vs,php-workerman,314886,212.5%,database
+"workerman [jit, mysql, swow, async]",660487,vs,php-workerman,314886,209.8%,database
+ubiquity-workerman-mysql,644148,vs,php-workerman,314886,204.6%,database
+uwebsockets.js,711561,vs,nodejs-postgresjs-raw,371703,191.4%,database
+hyperexpress-postgres,655887,vs,nodejs-postgresjs-raw,371703,176.5%,database
+es4x,631892,vs,nodejs-postgresjs-raw,371703,170.0%,database
+act-eclipselink-pgsql,509824,vs,undertow-postgresql,303667,167.9%,database
+elysia [compiled],609417,vs,nodejs-postgresjs-raw,371703,164.0%,database
+elysia [postgresql],608944,vs,nodejs-postgresjs-raw,371703,163.8%,database
+elysia [smol] [postgresql],607083,vs,nodejs-postgresjs-raw,371703,163.3%,database
+act-hibernate-pgsql,485786,vs,undertow-postgresql,303667,160.0%,database
+swoole,483702,vs,php-workerman,314886,153.6%,database
+ultimate-express-postgres,559376,vs,nodejs-postgresjs-raw,371703,150.5%,database
+hyperexpress-mysql,548229,vs,nodejs-postgresjs-raw,371703,147.5%,database
+tornado-py3,35267,vs,tornado,24264,145.3%,database
+ripple,443404,vs,php-workerman,314886,140.8%,database
+ultimate-express-mysql,505968,vs,nodejs-postgresjs-raw,371703,136.1%,database
+axum [postgresql],1270151,vs,fasthttp-prefork,1060854,119.7%,database
+ubiquity-workerman-mongo,375156,vs,php-workerman,314886,119.1%,database
+ditsmod v3.0 [postgres],441472,vs,nodejs-postgresjs-raw,371703,118.8%,database
+viz [postgresql],1259172,vs,fasthttp-prefork,1060854,118.7%,database
+fastify-postgres,437129,vs,nodejs-postgresjs-raw,371703,117.6%,database
+salvo [postgres],1239261,vs,fasthttp-prefork,1060854,116.8%,database
+inverno,1134919,vs,fasthttp-prefork,1060854,107.0%,database
+vertx-web-kotlin-dsljson-postgresql,1313163,vs,vertx-web-postgres,1262001,104.1%,database
+hono,381826,vs,nodejs-postgresjs-raw,371703,102.7%,database
+crystal-radix,360329,vs,crystal,351702,102.5%,database
+webman-pgsql,958205,vs,workerman [pgsql],939199,102.0%,database
+roda-sequel-postgres-unicorn-mri,143844,vs,rack-sequel-postgres-unicorn-mri,142169,101.2%,database
+openswoole,317755,vs,php-workerman,314886,100.9%,database
+officefloor,48419,vs,officefloor-micro,48418,100.0%,database
+kemal,346324,vs,crystal,351702,98.5%,database
+mormot [direct],1042816,vs,fasthttp-prefork,1060854,98.3%,database
+lithium-postgres,1040675,vs,fasthttp-prefork,1060854,98.1%,database
+lithium-postgres-beta,1034693,vs,fasthttp-prefork,1060854,97.5%,database
+drogon-core,1033970,vs,fasthttp-prefork,1060854,97.5%,database
+mormot [orm],1027916,vs,fasthttp-prefork,1060854,96.9%,database
+rack-sequel-unicorn-mri,137955,vs,rack-unicorn-mri-sequel-raw,143765,96.0%,database
+granian [rsgi],245831,vs,uvicorn,256512,95.8%,database
+drogon,1014115,vs,fasthttp-prefork,1060854,95.6%,database
+vertx-web-kotlinx-postgresql,1210776,vs,vertx-web-kotlin-dsljson-postgresql,1313163,92.2%,database
+granian [asgi],235833,vs,uvicorn,256512,91.9%,database
+vertx-web-kotlin-coroutines-postgres,1153566,vs,vertx-web-postgres,1262001,91.4%,database
+oxpecker,768682,vs,aspnetcore,844156,91.1%,database
+sinatra-sequel-postgres-passenger-mri,68798,vs,rack-sequel-postgres-passenger-mri,76188,90.3%,database
+fastwsgi [asgi],231555,vs,uvicorn,256512,90.3%,database
+swoole-async-postgres,283258,vs,php-workerman,314886,90.0%,database
+"asp.net core [minimal apis, pg, dapper]",738196,vs,aspnetcore,844156,87.4%,database
+sinatra-sequel-postgres-unicorn-mri,122717,vs,rack-sequel-postgres-unicorn-mri,142169,86.3%,database
+vibed-dmd-pgsql,56675,vs,vibed-ldc-pgsql,65848,86.1%,database
+kumbiaphp-workerman,807849,vs,workerman [pgsql],939199,86.0%,database
+vertx-web-scala,1080764,vs,vertx-web-postgres,1262001,85.6%,database
+lithium,861888,vs,fasthttp-prefork,1060854,81.2%,database
+ubiquity-workerman-raw,762399,vs,workerman [pgsql],939199,81.2%,database
+micronaut,836808,vs,fasthttp-prefork,1060854,78.9%,database
+treefrog-mongodb,275924,vs,treefrog,352201,78.3%,database
+mesh,289201,vs,nodejs-postgresjs-raw,371703,77.8%,database
+mixphp-workerman-pgsql,728302,vs,workerman [pgsql],939199,77.5%,database
+simps,709254,vs,swoole-sync-postgres,935998,75.8%,database
+ubiquity-workerman,701020,vs,workerman [pgsql],939199,74.6%,database
+mesh,275681,vs,nodejs-postgresjs-raw,371703,74.2%,database
+nodejs-mysql-raw,272196,vs,nodejs-postgresjs-raw,371703,73.2%,database
+nodejs-mongodb-raw,259816,vs,nodejs-postgresjs-raw,371703,69.9%,database
+ubiquity-swoole,653197,vs,swoole-sync-postgres,935998,69.8%,database
+spliffy,254406,vs,nodejs-postgresjs-raw,371703,68.4%,database
+ktor-netty-exposed-dao,225398,vs,ktor,333599,67.6%,database
+kumbiaphp-workerman-mysql,632231,vs,workerman [pgsql],939199,67.3%,database
+ktor-netty-exposed-dsl,223854,vs,ktor,333599,67.1%,database
+emmett55,171116,vs,uvicorn,256512,66.7%,database
+ubiquity-swoole-mysql,608548,vs,swoole-sync-postgres,935998,65.0%,database
+micronaut jdbc,689533,vs,fasthttp-prefork,1060854,65.0%,database
+userver,667597,vs,fasthttp-prefork,1060854,62.9%,database
+lapis,451377,vs,openresty,725972,62.2%,database
+openswoole postgres,194189,vs,php-workerman,314886,61.7%,database
+mixphp-swoole-mysql,575144,vs,swoole-sync-postgres,935998,61.4%,database
+slim-workerman-pgsql,193022,vs,php-workerman,314886,61.3%,database
+mixphp-workerman-mysql,573621,vs,workerman [pgsql],939199,61.1%,database
+greenlightning,645701,vs,fasthttp-prefork,1060854,60.9%,database
+micronaut data jdbc,642934,vs,fasthttp-prefork,1060854,60.6%,database
+spliffy,217546,vs,nodejs-postgresjs-raw,371703,58.5%,database
+spring-mongo,186039,vs,spring-webflux,322865,57.6%,database
+express-postgresjs,214177,vs,nodejs-postgresjs-raw,371703,57.6%,database
+nestjs-fastify-mongo,213212,vs,nodejs-postgresjs-raw,371703,57.4%,database
+http-kit-raw,13772,vs,http-kit,24043,57.3%,database
+"appmpower [aot-no-reflection,pg,odbc]",411562,vs,"asp.net core [minimal apis, pg, dapper]",738196,55.8%,database
+php-h2o,172243,vs,php-workerman,314886,54.7%,database
+php,171650,vs,php-workerman,314886,54.5%,database
+one,508888,vs,swoole-sync-postgres,935998,54.4%,database
+php-raw7-tcp,168461,vs,php-workerman,314886,53.5%,database
+php-pools,166945,vs,php-workerman,314886,53.0%,database
+symfony-workerman,162939,vs,php-workerman,314886,51.7%,database
+pippo-jetty-postgres,541368,vs,fasthttp-prefork,1060854,51.0%,database
+php-pgsql-raw,160505,vs,php-workerman,314886,51.0%,database
+slim-workerman,159172,vs,php-workerman,314886,50.5%,database
+nestjs-fastify-mysql,186669,vs,nodejs-postgresjs-raw,371703,50.2%,database
+one-no-coroutine,464351,vs,swoole-sync-postgres,935998,49.6%,database
+microhttp,524025,vs,fasthttp-prefork,1060854,49.4%,database
+"asp.net core [mvc, pg, ef]",409255,vs,aspnetcore,844156,48.5%,database
+pippo-undertow-postgres,500424,vs,fasthttp-prefork,1060854,47.2%,database
+simps-micro,441435,vs,swoole-sync-postgres,935998,47.2%,database
+ringojs-convenient,56881,vs,ringojs,121918,46.7%,database
+kumbiaphp-raw,145737,vs,php-workerman,314886,46.3%,database
+kumbiaphp,141488,vs,php-workerman,314886,44.9%,database
+nestjs-fastify,164571,vs,nodejs-postgresjs-raw,371703,44.3%,database
+pippo-tomcat-postgres,467946,vs,fasthttp-prefork,1060854,44.1%,database
+ubiquity,138713,vs,php-workerman,314886,44.1%,database
+javalin-postgres,462994,vs,fasthttp-prefork,1060854,43.6%,database
+play2-java-jooq-hikaricp,109995,vs,akka-http,252248,43.6%,database
+play2-scala-anorm,109247,vs,akka-http,252248,43.3%,database
+axum [mongodb],458312,vs,fasthttp-prefork,1060854,43.2%,database
+salvo [mongodb],458061,vs,fasthttp-prefork,1060854,43.2%,database
+salvo [mongodb-raw],456920,vs,fasthttp-prefork,1060854,43.1%,database
+"appmpower [aot-no-reflection,my,odbc]",317153,vs,"asp.net core [minimal apis, pg, dapper]",738196,43.0%,database
+php-frankenphp,134523,vs,php-workerman,314886,42.7%,database
+axum [mongodb raw],452123,vs,fasthttp-prefork,1060854,42.6%,database
+rage-sequel,447993,vs,fasthttp-prefork,1060854,42.2%,database
+nodejs-mongodb,154794,vs,nodejs-postgresjs-raw,371703,41.6%,database
+play2-java-jpa-hikaricp,104089,vs,akka-http,252248,41.3%,database
+pippo-undertow-mysql,430907,vs,fasthttp-prefork,1060854,40.6%,database
+pippo-jetty-mysql,427524,vs,fasthttp-prefork,1060854,40.3%,database
+pippo-tomcat-mysql,424303,vs,fasthttp-prefork,1060854,40.0%,database
+mormot [async],413449,vs,fasthttp-prefork,1060854,39.0%,database
+nodejs-mysql,144465,vs,nodejs-postgresjs-raw,371703,38.9%,database
+duckphp,121835,vs,php-workerman,314886,38.7%,database
+play2-java-ebean-hikaricp,97317,vs,akka-http,252248,38.6%,database
+micronaut vertx pg client graalvm,405340,vs,fasthttp-prefork,1060854,38.2%,database
+micronaut r2dbc,404498,vs,fasthttp-prefork,1060854,38.1%,database
+phalcon-micro,118481,vs,php-workerman,314886,37.6%,database
+nodejs-postgres,138985,vs,nodejs-postgresjs-raw,371703,37.4%,database
+flight,117483,vs,php-workerman,314886,37.3%,database
+koa-postgres,137325,vs,nodejs-postgresjs-raw,371703,36.9%,database
+peachpie,115998,vs,php-workerman,314886,36.8%,database
+lucky,388760,vs,fasthttp-prefork,1060854,36.6%,database
+spliffy,135231,vs,nodejs-postgresjs-raw,371703,36.4%,database
+comet,331056,vs,workerman [pgsql],939199,35.2%,database
+amp,110428,vs,php-workerman,314886,35.1%,database
+mixphp,108573,vs,php-workerman,314886,34.5%,database
+hapi-postgres,126539,vs,nodejs-postgresjs-raw,371703,34.0%,database
+comet-mysql,315858,vs,workerman [pgsql],939199,33.6%,database
+koa,123285,vs,nodejs-postgresjs-raw,371703,33.2%,database
+micronaut jdbc graalvm,346673,vs,fasthttp-prefork,1060854,32.7%,database
+php-unit,99516,vs,php-workerman,314886,31.6%,database
+koa-mysql,115672,vs,nodejs-postgresjs-raw,371703,31.1%,database
+symfony-frankenphp,96131,vs,php-workerman,314886,30.5%,database
+kit,319071,vs,fasthttp-prefork,1060854,30.1%,database
+php-laravel-query-builder,93415,vs,php-workerman,314886,29.7%,database
+hapi-mysql,106681,vs,nodejs-postgresjs-raw,371703,28.7%,database
+fat-free-raw,88079,vs,php-workerman,314886,28.0%,database
+micronaut data jdbc graalvm,292662,vs,fasthttp-prefork,1060854,27.6%,database
+nestjs-mongo,98395,vs,nodejs-postgresjs-raw,371703,26.5%,database
+pippo-jetty-mongodb,271079,vs,fasthttp-prefork,1060854,25.6%,database
+nestjs-mysql,93329,vs,nodejs-postgresjs-raw,371703,25.1%,database
+laravel-workerman,78432,vs,php-workerman,314886,24.9%,database
+slim,77863,vs,php-workerman,314886,24.7%,database
+fat-free,76718,vs,php-workerman,314886,24.4%,database
+fastify-mysql,89381,vs,nodejs-postgresjs-raw,371703,24.0%,database
+php-caddyserver,74220,vs,php-workerman,314886,23.6%,database
+php-eloquent,72673,vs,php-workerman,314886,23.1%,database
+ditsmod v3.0 [mysql],84372,vs,nodejs-postgresjs-raw,371703,22.7%,database
+nestjs,84218,vs,nodejs-postgresjs-raw,371703,22.7%,database
+express-postgres,84189,vs,nodejs-postgresjs-raw,371703,22.6%,database
+mako,70833,vs,php-workerman,314886,22.5%,database
+padrino-unicorn,30940,vs,rack-unicorn-mri-sequel-raw,143765,21.5%,database
+blacksheep,222590,vs,fasthttp-prefork,1060854,21.0%,database
+officefloor-undertow,62851,vs,undertow-postgresql,303667,20.7%,database
+express-mysql,75617,vs,nodejs-postgresjs-raw,371703,20.3%,database
+falcon [asgi/tortoise],51793,vs,uvicorn,256512,20.2%,database
+panther,211719,vs,fasthttp-prefork,1060854,20.0%,database
+apidaora-core,203986,vs,fasthttp-prefork,1060854,19.2%,database
+rage,200896,vs,fasthttp-prefork,1060854,18.9%,database
+micronaut r2dbc graalvm,199065,vs,fasthttp-prefork,1060854,18.8%,database
+hummingbird,197800,vs,fasthttp-prefork,1060854,18.6%,database
+emmett,47550,vs,uvicorn,256512,18.5%,database
+coldbox-adobe,23577,vs,cfml-adobe,133674,17.6%,database
+apidaora,186082,vs,fasthttp-prefork,1060854,17.5%,database
+symfony-swoole,163181,vs,swoole-sync-postgres,935998,17.4%,database
+yii2,54084,vs,php-workerman,314886,17.2%,database
+starlite,175508,vs,fasthttp-prefork,1060854,16.5%,database
+spring-webflux-mongo,52857,vs,spring-webflux,322865,16.4%,database
+pellet,169824,vs,fasthttp-prefork,1060854,16.0%,database
+hapi,59317,vs,nodejs-postgresjs-raw,371703,16.0%,database
+webmachine,168644,vs,fasthttp-prefork,1060854,15.9%,database
+phalcon-mongodb,49647,vs,php-workerman,314886,15.8%,database
+fastapi-gunicorn-orjson,166904,vs,fasthttp-prefork,1060854,15.7%,database
+fastapi,163894,vs,fasthttp-prefork,1060854,15.4%,database
+express-mongodb,56435,vs,nodejs-postgresjs-raw,371703,15.2%,database
+sanic,157218,vs,fasthttp-prefork,1060854,14.8%,database
+cfml-lucee,155676,vs,fasthttp-prefork,1060854,14.7%,database
+feathersjs,54129,vs,nodejs-postgresjs-raw,371703,14.6%,database
+akka-http-slick-postgres,35570,vs,akka-http,252248,14.1%,database
+fastapi-uvicorn-orjson,148825,vs,fasthttp-prefork,1060854,14.0%,database
+phalcon,43939,vs,php-workerman,314886,14.0%,database
+fastapi-uvicorn,146486,vs,fasthttp-prefork,1060854,13.8%,database
+coldbox-lucee,21489,vs,cfml-lucee,155676,13.8%,database
+symfony-raw,42991,vs,php-workerman,314886,13.7%,database
+laravel-octane [frankenphp],42871,vs,php-workerman,314886,13.6%,database
+symfony-roadrunner,41839,vs,php-workerman,314886,13.3%,database
+micronaut data mongodb graalvm,139952,vs,fasthttp-prefork,1060854,13.2%,database
+vapor,137776,vs,fasthttp-prefork,1060854,13.0%,database
+cfml-adobe,133674,vs,fasthttp-prefork,1060854,12.6%,database
+lumen-workerman,117776,vs,workerman [pgsql],939199,12.5%,database
+microdot-raw,126601,vs,fasthttp-prefork,1060854,11.9%,database
+vapor,126227,vs,fasthttp-prefork,1060854,11.9%,database
+micronaut data mongodb,121061,vs,fasthttp-prefork,1060854,11.4%,database
+fuel,31689,vs,php-workerman,314886,10.1%,database
+yii2-workerman,92647,vs,workerman [pgsql],939199,9.9%,database
+rocket,103366,vs,fasthttp-prefork,1060854,9.7%,database
+pippo-undertow-mongodb,103058,vs,fasthttp-prefork,1060854,9.7%,database
+symfony,30371,vs,php-workerman,314886,9.6%,database
+symfony [mysql],29584,vs,php-workerman,314886,9.4%,database
+wolff,29092,vs,php-workerman,314886,9.2%,database
+heaven,96630,vs,fasthttp-prefork,1060854,9.1%,database
+phpixie,28585,vs,php-workerman,314886,9.1%,database
+spiral,25244,vs,php-workerman,314886,8.0%,database
+lumen,23257,vs,php-workerman,314886,7.4%,database
+vapor,75146,vs,fasthttp-prefork,1060854,7.1%,database
+zend,21685,vs,php-workerman,314886,6.9%,database
+axum [postgresql - deadpool],70384,vs,fasthttp-prefork,1060854,6.6%,database
+nette,19904,vs,php-workerman,314886,6.3%,database
+lumen-swoole,58539,vs,swoole-sync-postgres,935998,6.3%,database
+bareasgi,61205,vs,fasthttp-prefork,1060854,5.8%,database
+laravel,17837,vs,php-workerman,314886,5.7%,database
+pippo-tomcat-mongodb,59239,vs,fasthttp-prefork,1060854,5.6%,database
+codeigniter,16700,vs,php-workerman,314886,5.3%,database
+hapi-nginx,19389,vs,nodejs-postgresjs-raw,371703,5.2%,database
+play2-scala-slick,12594,vs,akka-http,252248,5.0%,database
+laravel-swoole,45007,vs,swoole-sync-postgres,935998,4.8%,database
+duct-aleph,49999,vs,fasthttp-prefork,1060854,4.7%,database
+lwan,48905,vs,fasthttp-prefork,1060854,4.6%,database
+axum [postgresql - sqlx],41105,vs,fasthttp-prefork,1060854,3.9%,database
+fastapi-gunicorn-orm,40033,vs,fasthttp-prefork,1060854,3.8%,database
+viz [postgresql - diesel],39655,vs,fasthttp-prefork,1060854,3.7%,database
+cakephp,11626,vs,php-workerman,314886,3.7%,database
+vapor,39144,vs,fasthttp-prefork,1060854,3.7%,database
+toro,11989,vs,crystal,351702,3.4%,database
+elixir-plug-ecto,35745,vs,fasthttp-prefork,1060854,3.4%,database
+salvo [postgres-sqlx],34256,vs,fasthttp-prefork,1060854,3.2%,database
+salvo [postgres-diesel],34231,vs,fasthttp-prefork,1060854,3.2%,database
+microdot,33193,vs,fasthttp-prefork,1060854,3.1%,database
+officefloor-vertx,40380,vs,vertx-postgres,1315264,3.1%,database
+ohkami,32471,vs,fasthttp-prefork,1060854,3.1%,database
+viz [postgresql - sqlx],30940,vs,fasthttp-prefork,1060854,2.9%,database
+angel3_postgresql,30884,vs,fasthttp-prefork,1060854,2.9%,database
+cakephp-workerman,8888,vs,php-workerman,314886,2.8%,database
+salvo [postgres-deadpool],28162,vs,fasthttp-prefork,1060854,2.7%,database
+onyx,27735,vs,fasthttp-prefork,1060854,2.6%,database
+vapor,27560,vs,fasthttp-prefork,1060854,2.6%,database
+jewelia,27558,vs,fasthttp-prefork,1060854,2.6%,database
+duct,27369,vs,fasthttp-prefork,1060854,2.6%,database
+postgrest,24545,vs,fasthttp-prefork,1060854,2.3%,database
+officefloor-spring_data,6650,vs,spring-webflux,322865,2.1%,database
+laravel-roadrunner,18391,vs,swoole-sync-postgres,935998,2.0%,database
+lumen-laravel-s,16143,vs,swoole-sync-postgres,935998,1.7%,database
+laravel-laravel-s,13342,vs,swoole-sync-postgres,935998,1.4%,database
+integrated haskell platfrom (ihp),12162,vs,fasthttp-prefork,1060854,1.1%,database
+fastapi-hypercorn-orjson,11575,vs,fasthttp-prefork,1060854,1.1%,database
+fastapi-hypercorn,11574,vs,fasthttp-prefork,1060854,1.1%,database
+today,10614,vs,fasthttp-prefork,1060854,1.0%,database
+cyberphp,6307,vs,workerman [pgsql],939199,0.7%,database
+trillium [tokio],6435,vs,fasthttp-prefork,1060854,0.6%,database
+trillium [async-std],5578,vs,fasthttp-prefork,1060854,0.5%,database
+trillium [smol],5467,vs,fasthttp-prefork,1060854,0.5%,database
+duct-httpkit,5130,vs,fasthttp-prefork,1060854,0.5%,database
+angel3_mysql,4800,vs,fasthttp-prefork,1060854,0.5%,database
+next.js,1105,vs,nodejs-postgresjs-raw,371703,0.3%,database
+paozhu,373,vs,fasthttp-prefork,1060854,0.0%,database
+plumber,256,vs,fasthttp-prefork,1060854,0.0%,database
+php-ngx-pgsql,785961,vs,php-workerman,272246,288.7%,fortune
+workerman-pgsql,742577,vs,php-workerman,272246,272.8%,fortune
+workerman [pgsql],741477,vs,php-workerman,272246,272.4%,fortune
+swoole-sync-postgres,735139,vs,php-workerman,272246,270.0%,fortune
+tornado-py3-uvloop,47629,vs,tornado,19389,245.6%,fortune
+uwebsockets.js,483035,vs,nodejs-postgresjs-raw,283445,170.4%,fortune
+tornado-py3,26849,vs,tornado,19389,138.5%,fortune
+hyperexpress-postgres,382212,vs,nodejs-postgresjs-raw,283445,134.8%,fortune
+ultimate-express-postgres,352482,vs,nodejs-postgresjs-raw,283445,124.4%,fortune
+ubiquity-workerman-mysql,332328,vs,php-workerman,272246,122.1%,fortune
+swoole-no-async,326804,vs,php-workerman,272246,120.0%,fortune
+openswoole no-async,322119,vs,php-workerman,272246,118.3%,fortune
+axum [postgresql],1114265,vs,fasthttp-prefork,959399,116.1%,fortune
+officefloor,52749,vs,officefloor-micro,45435,116.1%,fortune
+"workerman [jit, mysql]",313973,vs,php-workerman,272246,115.3%,fortune
+mesh,326198,vs,nodejs-postgresjs-raw,283445,115.1%,fortune
+"workerman [jit, mysql, swow, async]",307568,vs,php-workerman,272246,113.0%,fortune
+"workerman [jit, mysql, swoole, async]",307058,vs,php-workerman,272246,112.8%,fortune
+rack-sequel-unicorn-mri,120721,vs,rack-unicorn-mri-sequel-raw,107051,112.8%,fortune
+lithium-postgres,1073846,vs,fasthttp-prefork,959399,111.9%,fortune
+php-ngx-mysql,303608,vs,php-workerman,272246,111.5%,fortune
+lithium-postgres-beta,1068560,vs,fasthttp-prefork,959399,111.4%,fortune
+hyperexpress-mysql,315618,vs,nodejs-postgresjs-raw,283445,111.4%,fortune
+viz [postgresql],1060105,vs,fasthttp-prefork,959399,110.5%,fortune
+ultimate-express-mysql,310093,vs,nodejs-postgresjs-raw,283445,109.4%,fortune
+drogon-core,1042653,vs,fasthttp-prefork,959399,108.7%,fortune
+openswoole,282634,vs,php-workerman,272246,103.8%,fortune
+swoole-async-postgres,278863,vs,php-workerman,272246,102.4%,fortune
+salvo [postgres],969747,vs,fasthttp-prefork,959399,101.1%,fortune
+elysia [postgresql],284990,vs,nodejs-postgresjs-raw,283445,100.5%,fortune
+elysia [compiled],284973,vs,nodejs-postgresjs-raw,283445,100.5%,fortune
+crystal-radix,429637,vs,crystal,427816,100.4%,fortune
+elysia [smol] [postgresql],284536,vs,nodejs-postgresjs-raw,283445,100.4%,fortune
+mormot [direct],953865,vs,fasthttp-prefork,959399,99.4%,fortune
+webman-pgsql,733134,vs,workerman-pgsql,742577,98.7%,fortune
+drogon,947069,vs,fasthttp-prefork,959399,98.7%,fortune
+kemal,420873,vs,crystal,427816,98.4%,fortune
+mesh,277627,vs,nodejs-postgresjs-raw,283445,97.9%,fortune
+ubiquity-workerman-mongo,263324,vs,php-workerman,272246,96.7%,fortune
+vertx-web-kotlin-coroutines-postgres,826011,vs,vertx-web-postgres,856756,96.4%,fortune
+vibed-dmd-pgsql,25390,vs,vibed-ldc-pgsql,26484,95.9%,fortune
+fastify-postgres,265826,vs,nodejs-postgresjs-raw,283445,93.8%,fortune
+roda-sequel-postgres-unicorn-mri,113531,vs,rack-sequel-postgres-unicorn-mri,122204,92.9%,fortune
+treefrog-mongodb,212172,vs,treefrog,233651,90.8%,fortune
+ditsmod v3.0 [postgres],253447,vs,nodejs-postgresjs-raw,283445,89.4%,fortune
+oxpecker,662119,vs,aspnetcore,741878,89.2%,fortune
+hono,251848,vs,nodejs-postgresjs-raw,283445,88.9%,fortune
+spliffy,251321,vs,nodejs-postgresjs-raw,283445,88.7%,fortune
+ubiquity-workerman-raw,643975,vs,workerman-pgsql,742577,86.7%,fortune
+vertx-web-kotlinx-postgresql,742614,vs,vertx-web-postgres,856756,86.7%,fortune
+inverno,798618,vs,fasthttp-prefork,959399,83.2%,fortune
+"asp.net core [minimal apis, pg, dapper]",609966,vs,aspnetcore,741878,82.2%,fortune
+mormot [orm],785792,vs,fasthttp-prefork,959399,81.9%,fortune
+act-eclipselink-pgsql,229702,vs,undertow-postgresql,282318,81.4%,fortune
+mixphp-workerman-pgsql,602492,vs,workerman-pgsql,742577,81.1%,fortune
+kumbiaphp-workerman,589998,vs,workerman-pgsql,742577,79.5%,fortune
+sinatra-sequel-postgres-passenger-mri,57287,vs,rack-sequel-postgres-passenger-mri,72732,78.8%,fortune
+sinatra-sequel-postgres-unicorn-mri,92471,vs,rack-sequel-postgres-unicorn-mri,122204,75.7%,fortune
+act-hibernate-pgsql,210190,vs,undertow-postgresql,282318,74.5%,fortune
+nodejs-mysql-raw,206546,vs,nodejs-postgresjs-raw,283445,72.9%,fortune
+helidon 4,696144,vs,fasthttp-prefork,959399,72.6%,fortune
+openswoole postgres,197258,vs,php-workerman,272246,72.5%,fortune
+spliffy,202017,vs,nodejs-postgresjs-raw,283445,71.3%,fortune
+ktor-netty-exposed-dsl,176292,vs,ktor,247406,71.3%,fortune
+ripple,192245,vs,php-workerman,272246,70.6%,fortune
+ktor-netty-exposed-dao,170856,vs,ktor,247406,69.1%,fortune
+micronaut,660238,vs,fasthttp-prefork,959399,68.8%,fortune
+nodejs-mongodb-raw,189238,vs,nodejs-postgresjs-raw,283445,66.8%,fortune
+userver,626406,vs,fasthttp-prefork,959399,65.3%,fortune
+spring-mongo,158978,vs,spring-webflux,245588,64.7%,fortune
+slim-workerman-pgsql,173682,vs,php-workerman,272246,63.8%,fortune
+express-postgresjs,172523,vs,nodejs-postgresjs-raw,283445,60.9%,fortune
+micronaut jdbc,560026,vs,fasthttp-prefork,959399,58.4%,fortune
+php-pgsql-raw,157461,vs,php-workerman,272246,57.8%,fortune
+ubiquity-workerman,427931,vs,workerman-pgsql,742577,57.6%,fortune
+nestjs-fastify,160502,vs,nodejs-postgresjs-raw,283445,56.6%,fortune
+lapis,169518,vs,openresty,304355,55.7%,fortune
+greenlightning,533164,vs,fasthttp-prefork,959399,55.6%,fortune
+ubiquity-swoole,404780,vs,swoole-sync-postgres,735139,55.1%,fortune
+nestjs-fastify-mysql,155180,vs,nodejs-postgresjs-raw,283445,54.7%,fortune
+nestjs-fastify-mongo,154313,vs,nodejs-postgresjs-raw,283445,54.4%,fortune
+vertx-web-scala,462234,vs,vertx-web-postgres,856756,54.0%,fortune
+php-pools,146431,vs,php-workerman,272246,53.8%,fortune
+php,146187,vs,php-workerman,272246,53.7%,fortune
+slim-workerman,145675,vs,php-workerman,272246,53.5%,fortune
+php-h2o,145560,vs,php-workerman,272246,53.5%,fortune
+php-raw7-tcp,144954,vs,php-workerman,272246,53.2%,fortune
+http-kit-raw,16281,vs,http-kit,30963,52.6%,fortune
+micronaut data jdbc,487588,vs,fasthttp-prefork,959399,50.8%,fortune
+amp,136630,vs,php-workerman,272246,50.2%,fortune
+ubiquity,135015,vs,php-workerman,272246,49.6%,fortune
+kumbiaphp,134987,vs,php-workerman,272246,49.6%,fortune
+es4x,139973,vs,nodejs-postgresjs-raw,283445,49.4%,fortune
+php-frankenphp,129068,vs,php-workerman,272246,47.4%,fortune
+kumbiaphp-raw,128095,vs,php-workerman,272246,47.1%,fortune
+ubiquity-swoole-mysql,337477,vs,swoole-sync-postgres,735139,45.9%,fortune
+nodejs-mysql,126700,vs,nodejs-postgresjs-raw,283445,44.7%,fortune
+"asp.net core [mvc, pg, ef]",322802,vs,aspnetcore,741878,43.5%,fortune
+lucky,405144,vs,fasthttp-prefork,959399,42.2%,fortune
+duckphp,114817,vs,php-workerman,272246,42.2%,fortune
+simps,308361,vs,swoole-sync-postgres,735139,41.9%,fortune
+mixphp-workerman-mysql,309919,vs,workerman-pgsql,742577,41.7%,fortune
+kumbiaphp-workerman-mysql,308804,vs,workerman-pgsql,742577,41.6%,fortune
+mormot [async],395326,vs,fasthttp-prefork,959399,41.2%,fortune
+mixphp-swoole-mysql,299652,vs,swoole-sync-postgres,735139,40.8%,fortune
+"appmpower [aot-no-reflection,pg,odbc]",244245,vs,"asp.net core [minimal apis, pg, dapper]",609966,40.0%,fortune
+symfony-workerman,108017,vs,php-workerman,272246,39.7%,fortune
+flight,106000,vs,php-workerman,272246,38.9%,fortune
+comet-mysql,283268,vs,workerman-pgsql,742577,38.1%,fortune
+spliffy,107475,vs,nodejs-postgresjs-raw,283445,37.9%,fortune
+mixphp,103088,vs,php-workerman,272246,37.9%,fortune
+one,277187,vs,swoole-sync-postgres,735139,37.7%,fortune
+play2-java-jooq-hikaricp,70080,vs,akka-http,186763,37.5%,fortune
+koa-postgres,106354,vs,nodejs-postgresjs-raw,283445,37.5%,fortune
+comet,276773,vs,workerman-pgsql,742577,37.3%,fortune
+javalin-postgres,346831,vs,fasthttp-prefork,959399,36.2%,fortune
+play2-java-jpa-hikaricp,67052,vs,akka-http,186763,35.9%,fortune
+php-unit,97131,vs,php-workerman,272246,35.7%,fortune
+spring-webflux-mongo,87257,vs,spring-webflux,245588,35.5%,fortune
+micronaut r2dbc,340377,vs,fasthttp-prefork,959399,35.5%,fortune
+axum [mongodb],335954,vs,fasthttp-prefork,959399,35.0%,fortune
+toro,146094,vs,crystal,427816,34.1%,fortune
+one-no-coroutine,249704,vs,swoole-sync-postgres,735139,34.0%,fortune
+lithium,313786,vs,fasthttp-prefork,959399,32.7%,fortune
+salvo [mongodb],310057,vs,fasthttp-prefork,959399,32.3%,fortune
+koa-mysql,91079,vs,nodejs-postgresjs-raw,283445,32.1%,fortune
+hapi-postgres,90407,vs,nodejs-postgresjs-raw,283445,31.9%,fortune
+micronaut vertx pg client graalvm,304829,vs,fasthttp-prefork,959399,31.8%,fortune
+swoole,85114,vs,php-workerman,272246,31.3%,fortune
+"appmpower [aot-no-reflection,my,odbc]",183258,vs,"asp.net core [minimal apis, pg, dapper]",609966,30.0%,fortune
+play2-java-ebean-hikaricp,55503,vs,akka-http,186763,29.7%,fortune
+phalcon-micro,80066,vs,php-workerman,272246,29.4%,fortune
+nestjs,82444,vs,nodejs-postgresjs-raw,283445,29.1%,fortune
+micronaut jdbc graalvm,275938,vs,fasthttp-prefork,959399,28.8%,fortune
+play2-scala-anorm,53388,vs,akka-http,186763,28.6%,fortune
+nestjs-mysql,80741,vs,nodejs-postgresjs-raw,283445,28.5%,fortune
+hapi-mysql,80651,vs,nodejs-postgresjs-raw,283445,28.5%,fortune
+officefloor-undertow,79541,vs,undertow-postgresql,282318,28.2%,fortune
+yii2-raw,76066,vs,php-workerman,272246,27.9%,fortune
+express-postgres,78136,vs,nodejs-postgresjs-raw,283445,27.6%,fortune
+symfony-frankenphp,73999,vs,php-workerman,272246,27.2%,fortune
+slim,73619,vs,php-workerman,272246,27.0%,fortune
+akka-http-slick-postgres,50070,vs,akka-http,186763,26.8%,fortune
+ditsmod v3.0 [mysql],72680,vs,nodejs-postgresjs-raw,283445,25.6%,fortune
+fastify-mysql,72585,vs,nodejs-postgresjs-raw,283445,25.6%,fortune
+php-caddyserver,69082,vs,php-workerman,272246,25.4%,fortune
+nestjs-mongo,71774,vs,nodejs-postgresjs-raw,283445,25.3%,fortune
+express-mysql,71371,vs,nodejs-postgresjs-raw,283445,25.2%,fortune
+peachpie,67419,vs,php-workerman,272246,24.8%,fortune
+micronaut data jdbc graalvm,227166,vs,fasthttp-prefork,959399,23.7%,fortune
+rocket,220494,vs,fasthttp-prefork,959399,23.0%,fortune
+play2-scala-slick,42832,vs,akka-http,186763,22.9%,fortune
+php-eloquent,61412,vs,php-workerman,272246,22.6%,fortune
+mako,59580,vs,php-workerman,272246,21.9%,fortune
+micronaut data mongodb,190806,vs,fasthttp-prefork,959399,19.9%,fortune
+fat-free-raw,52349,vs,php-workerman,272246,19.2%,fortune
+laravel-workerman,49568,vs,php-workerman,272246,18.2%,fortune
+coldbox-lucee,18013,vs,cfml-adobe,99101,18.2%,fortune
+rage-sequel,170255,vs,fasthttp-prefork,959399,17.7%,fortune
+yii2,47848,vs,php-workerman,272246,17.6%,fortune
+coldbox-adobe,16801,vs,cfml-adobe,99101,17.0%,fortune
+blacksheep,162523,vs,fasthttp-prefork,959399,16.9%,fortune
+phalcon-mongodb,45846,vs,php-workerman,272246,16.8%,fortune
+padrino-unicorn,17416,vs,rack-unicorn-mri-sequel-raw,107051,16.3%,fortune
+panther,155130,vs,fasthttp-prefork,959399,16.2%,fortune
+pellet,154280,vs,fasthttp-prefork,959399,16.1%,fortune
+micronaut r2dbc graalvm,153698,vs,fasthttp-prefork,959399,16.0%,fortune
+express-mongodb,44090,vs,nodejs-postgresjs-raw,283445,15.6%,fortune
+phalcon,41986,vs,php-workerman,272246,15.4%,fortune
+symfony-swoole,110757,vs,swoole-sync-postgres,735139,15.1%,fortune
+apidaora-core,141430,vs,fasthttp-prefork,959399,14.7%,fortune
+fat-free,39922,vs,php-workerman,272246,14.7%,fortune
+apidaora,129031,vs,fasthttp-prefork,959399,13.4%,fortune
+starlite,128665,vs,fasthttp-prefork,959399,13.4%,fortune
+symfony-roadrunner,36035,vs,php-workerman,272246,13.2%,fortune
+micronaut data mongodb graalvm,126340,vs,fasthttp-prefork,959399,13.2%,fortune
+laravel-octane [frankenphp],33824,vs,php-workerman,272246,12.4%,fortune
+sanic,114838,vs,fasthttp-prefork,959399,12.0%,fortune
+fastapi,109166,vs,fasthttp-prefork,959399,11.4%,fortune
+rage,104074,vs,fasthttp-prefork,959399,10.8%,fortune
+vertx-web-kotlin-dsljson-postgresql,91922,vs,vertx-web-postgres,856756,10.7%,fortune
+cfml-adobe,99101,vs,fasthttp-prefork,959399,10.3%,fortune
+phpixie,28060,vs,php-workerman,272246,10.3%,fortune
+fastapi-uvicorn,97221,vs,fasthttp-prefork,959399,10.1%,fortune
+yii2-workerman,73784,vs,workerman-pgsql,742577,9.9%,fortune
+symfony,25864,vs,php-workerman,272246,9.5%,fortune
+fuel,25861,vs,php-workerman,272246,9.5%,fortune
+integrated haskell platfrom (ihp),90447,vs,fasthttp-prefork,959399,9.4%,fortune
+symfony [mysql],25390,vs,php-workerman,272246,9.3%,fortune
+cfml-lucee,88058,vs,fasthttp-prefork,959399,9.2%,fortune
+spiral,23834,vs,php-workerman,272246,8.8%,fortune
+lumen-workerman,64346,vs,workerman-pgsql,742577,8.7%,fortune
+kit,83014,vs,fasthttp-prefork,959399,8.7%,fortune
+microdot-raw,79200,vs,fasthttp-prefork,959399,8.3%,fortune
+hapi,23197,vs,nodejs-postgresjs-raw,283445,8.2%,fortune
+elixir-plug-ecto,78286,vs,fasthttp-prefork,959399,8.2%,fortune
+lumen,19938,vs,php-workerman,272246,7.3%,fortune
+heaven,68218,vs,fasthttp-prefork,959399,7.1%,fortune
+axum [postgresql - deadpool],67449,vs,fasthttp-prefork,959399,7.0%,fortune
+nette,18035,vs,php-workerman,272246,6.6%,fortune
+wolff,18019,vs,php-workerman,272246,6.6%,fortune
+lwan,61707,vs,fasthttp-prefork,959399,6.4%,fortune
+koa,17936,vs,nodejs-postgresjs-raw,283445,6.3%,fortune
+laravel,16492,vs,php-workerman,272246,6.1%,fortune
+hummingbird,57038,vs,fasthttp-prefork,959399,5.9%,fortune
+codeigniter,15903,vs,php-workerman,272246,5.8%,fortune
+lumen-swoole,39847,vs,swoole-sync-postgres,735139,5.4%,fortune
+hapi-nginx,15342,vs,nodejs-postgresjs-raw,283445,5.4%,fortune
+bareasgi,46571,vs,fasthttp-prefork,959399,4.9%,fortune
+laravel-swoole,34294,vs,swoole-sync-postgres,735139,4.7%,fortune
+feathersjs,12998,vs,nodejs-postgresjs-raw,283445,4.6%,fortune
+duct-aleph,39834,vs,fasthttp-prefork,959399,4.2%,fortune
+viz [postgresql - diesel],39766,vs,fasthttp-prefork,959399,4.1%,fortune
+axum [postgresql - sqlx],38712,vs,fasthttp-prefork,959399,4.0%,fortune
+fastapi-gunicorn-orm,37797,vs,fasthttp-prefork,959399,3.9%,fortune
+officefloor-vertx,38372,vs,vertx-postgres,1040599,3.7%,fortune
+cakephp,9701,vs,php-workerman,272246,3.6%,fortune
+salvo [postgres-diesel],34005,vs,fasthttp-prefork,959399,3.5%,fortune
+pippo-tomcat-postgres,32714,vs,fasthttp-prefork,959399,3.4%,fortune
+salvo [postgres-sqlx],32289,vs,fasthttp-prefork,959399,3.4%,fortune
+pippo-undertow-postgres,32226,vs,fasthttp-prefork,959399,3.4%,fortune
+pippo-jetty-mongodb,31409,vs,fasthttp-prefork,959399,3.3%,fortune
+ohkami,31256,vs,fasthttp-prefork,959399,3.3%,fortune
+pippo-jetty-postgres,31140,vs,fasthttp-prefork,959399,3.2%,fortune
+pippo-undertow-mysql,31067,vs,fasthttp-prefork,959399,3.2%,fortune
+pippo-tomcat-mongodb,30833,vs,fasthttp-prefork,959399,3.2%,fortune
+pippo-undertow-mongodb,30665,vs,fasthttp-prefork,959399,3.2%,fortune
+pippo-tomcat-mysql,30152,vs,fasthttp-prefork,959399,3.1%,fortune
+microdot,29471,vs,fasthttp-prefork,959399,3.1%,fortune
+pippo-jetty-mysql,29467,vs,fasthttp-prefork,959399,3.1%,fortune
+duct,29461,vs,fasthttp-prefork,959399,3.1%,fortune
+viz [postgresql - sqlx],28075,vs,fasthttp-prefork,959399,2.9%,fortune
+jewelia,27184,vs,fasthttp-prefork,959399,2.8%,fortune
+salvo [postgres-deadpool],26782,vs,fasthttp-prefork,959399,2.8%,fortune
+lumen-laravel-s,16927,vs,swoole-sync-postgres,735139,2.3%,fortune
+laravel-laravel-s,14547,vs,swoole-sync-postgres,735139,2.0%,fortune
+vapor,14800,vs,fasthttp-prefork,959399,1.5%,fortune
+fastapi-hypercorn,11543,vs,fasthttp-prefork,959399,1.2%,fortune
+today,10785,vs,fasthttp-prefork,959399,1.1%,fortune
+laravel-roadrunner,7856,vs,swoole-sync-postgres,735139,1.1%,fortune
+cakephp-workerman,2323,vs,php-workerman,272246,0.9%,fortune
+cyberphp,6216,vs,workerman-pgsql,742577,0.8%,fortune
+trillium [tokio],6830,vs,fasthttp-prefork,959399,0.7%,fortune
+angel3_postgresql,5927,vs,fasthttp-prefork,959399,0.6%,fortune
+angel3_mysql,5577,vs,fasthttp-prefork,959399,0.6%,fortune
+trillium [async-std],5530,vs,fasthttp-prefork,959399,0.6%,fortune
+trillium [smol],5521,vs,fasthttp-prefork,959399,0.6%,fortune
+duct-httpkit,5341,vs,fasthttp-prefork,959399,0.6%,fortune
+officefloor-spring_data,621,vs,spring-webflux,245588,0.3%,fortune
+silverlining [prefork],2681872,vs,go,388484,690.3%,json_serialization
+fasthttp-prefork,2545983,vs,go,388484,655.4%,json_serialization
+atreugo-prefork,2521175,vs,go,388484,649.0%,json_serialization
+ronykit,2503885,vs,go,388484,644.5%,json_serialization
+fiber-prefork,2479768,vs,go,388484,638.3%,json_serialization
+gearbox prefork,2441834,vs,go,388484,628.6%,json_serialization
+goravel fiber,2361155,vs,go,388484,607.8%,json_serialization
+jooby-jaxrs,2687394,vs,undertow,502931,534.3%,json_serialization
+kooby,2647071,vs,undertow,502931,526.3%,json_serialization
+reitit,2523363,vs,undertow,502931,501.7%,json_serialization
+silverlining,1759583,vs,go,388484,452.9%,json_serialization
+ronykit,1639333,vs,go,388484,422.0%,json_serialization
+go-pgx-prefork,1607374,vs,go,388484,413.8%,json_serialization
+go-pgx-prefork-easyjson,1594674,vs,go,388484,410.5%,json_serialization
+act,2018596,vs,undertow,502931,401.4%,json_serialization
+goframe,1187255,vs,go,388484,305.6%,json_serialization
+hertz,1028233,vs,go,388484,264.7%,json_serialization
+chi-gojay-prefork,968546,vs,go,388484,249.3%,json_serialization
+chi-sjson-prefork,955729,vs,go,388484,246.0%,json_serialization
+uwebsockets.js,2731252,vs,nodejs,1147305,238.1%,json_serialization
+goravel gin,898172,vs,go,388484,231.2%,json_serialization
+kami,871624,vs,go,388484,224.4%,json_serialization
+echo,855437,vs,go,388484,220.2%,json_serialization
+mesh,2449534,vs,nodejs,1147305,213.5%,json_serialization
+hyperexpress,2254278,vs,nodejs,1147305,196.5%,json_serialization
+bun,2097129,vs,nodejs,1147305,182.8%,json_serialization
+go-pgx-easyjson,694578,vs,go,388484,178.8%,json_serialization
+goji,693801,vs,go,388484,178.6%,json_serialization
+jooby-jetty,2193839,vs,jetty,1273510,172.3%,json_serialization
+granian [wsgi],1411293,vs,uvicorn,850173,166.0%,json_serialization
+http4k-undertow,814813,vs,undertow,502931,162.0%,json_serialization
+elysia,1837294,vs,nodejs,1147305,160.1%,json_serialization
+elysia [compiled],1815583,vs,nodejs,1147305,158.2%,json_serialization
+deno,1806460,vs,nodejs,1147305,157.5%,json_serialization
+atreugo,596902,vs,go,388484,153.6%,json_serialization
+fastwsgi,2349504,vs,wsgi,1558397,150.8%,json_serialization
+fasthttp,582069,vs,go,388484,149.8%,json_serialization
+gearbox,581454,vs,go,388484,149.7%,json_serialization
+ultimate-express,1672898,vs,nodejs,1147305,145.8%,json_serialization
+granian [rsgi],1212765,vs,uvicorn,850173,142.6%,json_serialization
+granian [rsgi wrk],1211032,vs,uvicorn,850173,142.4%,json_serialization
+workerman,2754243,vs,php-workerman,1961137,140.4%,json_serialization
+fiber,542699,vs,go,388484,139.7%,json_serialization
+php-ngx,2718420,vs,php-workerman,1961137,138.6%,json_serialization
+fastwsgi [asgi],1166634,vs,uvicorn,850173,137.2%,json_serialization
+clevergo,517471,vs,go,388484,133.2%,json_serialization
+workerman,2588238,vs,php-workerman,1961137,132.0%,json_serialization
+chi-sjson,501595,vs,go,388484,129.1%,json_serialization
+gin,498192,vs,go,388484,128.2%,json_serialization
+chi-gojay,491323,vs,go,388484,126.5%,json_serialization
+swoole,2465399,vs,php-workerman,1961137,125.7%,json_serialization
+es4x,1438464,vs,nodejs,1147305,125.4%,json_serialization
+elide,1432561,vs,nodejs,1147305,124.9%,json_serialization
+granian [asgi],1011292,vs,uvicorn,850173,119.0%,json_serialization
+spliffy,1346356,vs,nodejs,1147305,117.3%,json_serialization
+gin-scratch,447739,vs,go,388484,115.3%,json_serialization
+finch,1291516,vs,finagle,1169575,110.4%,json_serialization
+velocy,1246916,vs,nodejs,1147305,108.7%,json_serialization
+tornado-py3,100139,vs,tornado,93798,106.8%,json_serialization
+falcon [socketify.py wsgi pypy3],1644135,vs,wsgi,1558397,105.5%,json_serialization
+openswoole,2049653,vs,php-workerman,1961137,104.5%,json_serialization
+simps,2559387,vs,swoole,2465399,103.8%,json_serialization
+chi-prefork,401513,vs,go,388484,103.4%,json_serialization
+libreactor,3118330,vs,edap-http-fast,3019148,103.3%,json_serialization
+libreactor,3098626,vs,edap-http-fast,3019148,102.6%,json_serialization
+finatra,1191989,vs,finagle,1169575,101.9%,json_serialization
+revenj-jvm,2245219,vs,servlet,2203565,101.9%,json_serialization
+officefloor,70833,vs,officefloor-micro,70128,101.0%,json_serialization
+lithium,3041049,vs,edap-http-fast,3019148,100.7%,json_serialization
+pico.v,3031805,vs,edap-http-fast,3019148,100.4%,json_serialization
+restana,1148940,vs,nodejs,1147305,100.1%,json_serialization
+jooby-netty,2705638,vs,netty,2709586,99.9%,json_serialization
+spring-webflux,1286695,vs,spring-webflux-mongo,1289658,99.8%,json_serialization
+crystal-radix,1780679,vs,crystal,1851758,96.2%,json_serialization
+amber,1548190,vs,kemal,1614263,95.9%,json_serialization
+appmpower [aot-no-reflection],1955131,vs,"asp.net core [minimal apis, pg, dapper]",2051573,95.3%,json_serialization
+webman,2616793,vs,workerman,2754243,95.0%,json_serialization
+collie,10438,vs,collie-ldc,11028,94.6%,json_serialization
+mark-php8-jit,2589951,vs,workerman,2754243,94.0%,json_serialization
+httpbeast,2808169,vs,edap-http-fast,3019148,93.0%,json_serialization
+valum,7719,vs,vsgi,8318,92.8%,json_serialization
+jester,2604675,vs,httpbeast,2808169,92.8%,json_serialization
+vertx-web,2632083,vs,vertx,2889592,91.1%,json_serialization
+chi,352271,vs,go,388484,90.7%,json_serialization
+reactphp [libuv],34934,vs,reactphp [libevent],38595,90.5%,json_serialization
+axum,2709794,vs,edap-http-fast,3019148,89.8%,json_serialization
+jooby,448061,vs,undertow,502931,89.1%,json_serialization
+chi-scratch,345503,vs,go,388484,88.9%,json_serialization
+webgo,344824,vs,go,388484,88.8%,json_serialization
+vertx-web-kotlinx,2509823,vs,vertx-web-kotlin-dsljson,2836665,88.5%,json_serialization
+microhttp,2670525,vs,edap-http-fast,3019148,88.5%,json_serialization
+mormot [orm],2666665,vs,edap-http-fast,3019148,88.3%,json_serialization
+"reaper [aot,slim]",1810411,vs,"asp.net core [minimal apis, pg, dapper]",2051573,88.2%,json_serialization
+ditsmod v3.0,1009730,vs,nodejs,1147305,88.0%,json_serialization
+kemal,1614263,vs,crystal,1851758,87.2%,json_serialization
+activej,2627329,vs,edap-http-fast,3019148,87.0%,json_serialization
+inverno,2579842,vs,edap-http-fast,3019148,85.4%,json_serialization
+oxpecker,2120258,vs,aspnetcore,2546481,83.3%,json_serialization
+drogon,2474349,vs,edap-http-fast,3019148,82.0%,json_serialization
+"asp.net core [minimal apis, pg, dapper]",2051573,vs,aspnetcore,2546481,80.6%,json_serialization
+lwan,2423414,vs,edap-http-fast,3019148,80.3%,json_serialization
+luminus,391717,vs,undertow,502931,77.9%,json_serialization
+solon,2305901,vs,edap-http-fast,3019148,76.4%,json_serialization
+ripple,1492628,vs,php-workerman,1961137,76.1%,json_serialization
+oatpp-no-mp,2245087,vs,edap-http-fast,3019148,74.4%,json_serialization
+helidon 4,2233345,vs,edap-http-fast,3019148,74.0%,json_serialization
+fastify,844960,vs,nodejs,1147305,73.6%,json_serialization
+zio-http,2222013,vs,edap-http-fast,3019148,73.6%,json_serialization
+pine,285115,vs,go,388484,73.4%,json_serialization
+donkey,2071538,vs,vertx-web-kotlin-dsljson,2836665,73.0%,json_serialization
+http4k-jettyloom-jdbc,918432,vs,jetty,1273510,72.1%,json_serialization
+ubiquity-swoole,1764692,vs,swoole,2465399,71.6%,json_serialization
+http4k-jettyloom-pgclient,897551,vs,jetty,1273510,70.5%,json_serialization
+facil.io,2127477,vs,edap-http-fast,3019148,70.5%,json_serialization
+restify,800227,vs,nodejs,1147305,69.7%,json_serialization
+salvo,2089153,vs,edap-http-fast,3019148,69.2%,json_serialization
+http4k-jetty,867558,vs,jetty,1273510,68.1%,json_serialization
+lwan-lua,2055710,vs,edap-http-fast,3019148,68.1%,json_serialization
+httpaf,2055443,vs,edap-http-fast,3019148,68.1%,json_serialization
+nestjs-fastify,778830,vs,nodejs,1147305,67.9%,json_serialization
+aspcore-mono-mw,734362,vs,aspcore-mono,1083492,67.8%,json_serialization
+oatpp,2043871,vs,edap-http-fast,3019148,67.7%,json_serialization
+http4k-jetty11,858760,vs,jetty,1273510,67.4%,json_serialization
+emmett55,571303,vs,uvicorn,850173,67.2%,json_serialization
+emmett,566594,vs,uvicorn,850173,66.6%,json_serialization
+mixphp-swoole-mysql,1602335,vs,swoole,2465399,65.0%,json_serialization
+hono,740451,vs,nodejs,1147305,64.5%,json_serialization
+play2-scala,227276,vs,akka-http-slick-postgres,354747,64.1%,json_serialization
+hummingbirdcore,694428,vs,swift-nio,1089033,63.8%,json_serialization
+ringojs-convenient,105515,vs,ringojs,166714,63.3%,json_serialization
+ltio,1910603,vs,edap-http-fast,3019148,63.3%,json_serialization
+kumbiaphp-workerman,1742710,vs,workerman,2754243,63.3%,json_serialization
+falcon [fastwsgi],980597,vs,wsgi,1558397,62.9%,json_serialization
+one-no-coroutine,1478794,vs,swoole,2465399,60.0%,json_serialization
+ditsmod-bun v3.0,1240463,vs,bun,2097129,59.2%,json_serialization
+one,1444733,vs,swoole,2465399,58.6%,json_serialization
+ubiquity-workerman-raw,1608469,vs,workerman,2754243,58.4%,json_serialization
+falcon [meinheld-orjson],903324,vs,wsgi,1558397,58.0%,json_serialization
+jetty,1273510,vs,servlet,2203565,57.8%,json_serialization
+falcon [asgi/tortoise],490998,vs,uvicorn,850173,57.8%,json_serialization
+oatpp-async-no-mp,1718121,vs,edap-http-fast,3019148,56.9%,json_serialization
+gemini,1218895,vs,servlet,2203565,55.3%,json_serialization
+jetty-servlet,1204904,vs,servlet,2203565,54.7%,json_serialization
+hexagon netty epoll pgclient,1472608,vs,netty,2709586,54.3%,json_serialization
+hexagon netty epoll postgresql,1472088,vs,netty,2709586,54.3%,json_serialization
+oatpp-async,1623354,vs,edap-http-fast,3019148,53.8%,json_serialization
+hummingbird,570403,vs,swift-nio,1089033,52.4%,json_serialization
+mixphp-workerman-pgsql,1432503,vs,workerman,2754243,52.0%,json_serialization
+peachpie,992185,vs,php-workerman,1961137,50.6%,json_serialization
+"asp.net core [mvc, pg, ef]",1274744,vs,aspnetcore,2546481,50.1%,json_serialization
+koa,572932,vs,nodejs,1147305,49.9%,json_serialization
+micronaut,1468052,vs,edap-http-fast,3019148,48.6%,json_serialization
+greenlightning,1415936,vs,edap-http-fast,3019148,46.9%,json_serialization
+falcon,714694,vs,wsgi,1558397,45.9%,json_serialization
+falcon [bjoern],707846,vs,wsgi,1558397,45.4%,json_serialization
+hapi,516626,vs,nodejs,1147305,45.0%,json_serialization
+lucky,1328289,vs,edap-http-fast,3019148,44.0%,json_serialization
+finagle,1169575,vs,netty,2709586,43.2%,json_serialization
+http4k-netty,1164019,vs,netty,2709586,43.0%,json_serialization
+hexagon,942034,vs,servlet,2203565,42.8%,json_serialization
+http4k-apache4,931313,vs,servlet,2203565,42.3%,json_serialization
+javalin,1269832,vs,edap-http-fast,3019148,42.1%,json_serialization
+falcon [socketify.py wsgi],614922,vs,wsgi,1558397,39.5%,json_serialization
+padrino-unicorn,74943,vs,rack-unicorn-mri-sequel-raw,193228,38.8%,json_serialization
+prologue,1077002,vs,httpbeast,2808169,38.4%,json_serialization
+simple-server,1154016,vs,edap-http-fast,3019148,38.2%,json_serialization
+lapis,962299,vs,openresty,2599008,37.0%,json_serialization
+play2-java,129241,vs,akka-http-slick-postgres,354747,36.4%,json_serialization
+wicket,763665,vs,servlet,2203565,34.7%,json_serialization
+bottle,530627,vs,wsgi,1558397,34.0%,json_serialization
+amp,610543,vs,php-workerman,1961137,31.1%,json_serialization
+armeria,837645,vs,netty,2709586,30.9%,json_serialization
+viz,884917,vs,edap-http-fast,3019148,29.3%,json_serialization
+hexagon-jettyloom,638996,vs,servlet,2203565,29.0%,json_serialization
+hexagon-jetty-native,626601,vs,servlet,2203565,28.4%,json_serialization
+ohkami,840125,vs,edap-http-fast,3019148,27.8%,json_serialization
+hexagon jetty loom pgclient,594607,vs,servlet,2203565,27.0%,json_serialization
+ktor-netty-r2dbc,720134,vs,netty,2709586,26.6%,json_serialization
+express-postgresjs,301213,vs,nodejs,1147305,26.3%,json_serialization
+ktor,706644,vs,netty,2709586,26.1%,json_serialization
+ktor-pgclient,701373,vs,netty,2709586,25.9%,json_serialization
+spark,559148,vs,servlet,2203565,25.4%,json_serialization
+rage,749088,vs,edap-http-fast,3019148,24.8%,json_serialization
+ktor-jasync,672007,vs,netty,2709586,24.8%,json_serialization
+vapor,263364,vs,swift-nio,1089033,24.2%,json_serialization
+martini,91367,vs,go,388484,23.5%,json_serialization
+php-raw7-tcp,450216,vs,php-workerman,1961137,23.0%,json_serialization
+pellet,688387,vs,edap-http-fast,3019148,22.8%,json_serialization
+fastapi [socketify.py asgi pypy3],676460,vs,edap-http-fast,3019148,22.4%,json_serialization
+apidaora-core,669640,vs,edap-http-fast,3019148,22.2%,json_serialization
+play2-scala-netty,597042,vs,netty,2709586,22.0%,json_serialization
+micronaut vertx pg client graalvm,660243,vs,edap-http-fast,3019148,21.9%,json_serialization
+php,428452,vs,php-workerman,1961137,21.8%,json_serialization
+php-pools,427494,vs,php-workerman,1961137,21.8%,json_serialization
+trillium [tokio],654953,vs,edap-http-fast,3019148,21.7%,json_serialization
+trillium [async-std],646532,vs,edap-http-fast,3019148,21.4%,json_serialization
+pippo-jetty,645559,vs,edap-http-fast,3019148,21.4%,json_serialization
+php-h2o,412565,vs,php-workerman,1961137,21.0%,json_serialization
+jawn,104340,vs,undertow,502931,20.7%,json_serialization
+trillium [smol],620645,vs,edap-http-fast,3019148,20.6%,json_serialization
+blacksheep,611593,vs,edap-http-fast,3019148,20.3%,json_serialization
+pyramid,314969,vs,wsgi,1558397,20.2%,json_serialization
+aleph,539014,vs,netty,2709586,19.9%,json_serialization
+express,224163,vs,nodejs,1147305,19.5%,json_serialization
+panther,542267,vs,edap-http-fast,3019148,18.0%,json_serialization
+rocket,540665,vs,edap-http-fast,3019148,17.9%,json_serialization
+apidaora,532153,vs,edap-http-fast,3019148,17.6%,json_serialization
+compojure,388006,vs,servlet,2203565,17.6%,json_serialization
+ubiquity,337855,vs,php-workerman,1961137,17.2%,json_serialization
+robyn [const],510465,vs,edap-http-fast,3019148,16.9%,json_serialization
+nestjs,192830,vs,nodejs,1147305,16.8%,json_serialization
+suave,506399,vs,edap-http-fast,3019148,16.8%,json_serialization
+kumbiaphp,313484,vs,php-workerman,1961137,16.0%,json_serialization
+jewelia,477307,vs,edap-http-fast,3019148,15.8%,json_serialization
+elixir-plug-ecto,462959,vs,edap-http-fast,3019148,15.3%,json_serialization
+comet,415799,vs,workerman,2754243,15.1%,json_serialization
+starlite,443006,vs,edap-http-fast,3019148,14.7%,json_serialization
+aspcore-mono-mvc,156322,vs,aspcore-mono,1083492,14.4%,json_serialization
+symfony-workerman,281748,vs,php-workerman,1961137,14.4%,json_serialization
+sanic,417311,vs,edap-http-fast,3019148,13.8%,json_serialization
+hummingbird 2,146977,vs,swift-nio,1089033,13.5%,json_serialization
+kit,403337,vs,edap-http-fast,3019148,13.4%,json_serialization
+hexagon tomcat postgresql,286411,vs,servlet,2203565,13.0%,json_serialization
+phpixie,252966,vs,php-workerman,1961137,12.9%,json_serialization
+symfony-swoole,313103,vs,swoole,2465399,12.7%,json_serialization
+feathersjs,144519,vs,nodejs,1147305,12.6%,json_serialization
+slim-workerman,239691,vs,php-workerman,1961137,12.2%,json_serialization
+fastapi-gunicorn-orjson,364059,vs,edap-http-fast,3019148,12.1%,json_serialization
+play2-java-netty,323143,vs,netty,2709586,11.9%,json_serialization
+django [socketify.py wsgi],183424,vs,wsgi,1558397,11.8%,json_serialization
+fastapi,354899,vs,edap-http-fast,3019148,11.8%,json_serialization
+wolff,228989,vs,php-workerman,1961137,11.7%,json_serialization
+userver,345470,vs,edap-http-fast,3019148,11.4%,json_serialization
+lumen-workerman,313181,vs,workerman,2754243,11.4%,json_serialization
+php-unit,219795,vs,php-workerman,1961137,11.2%,json_serialization
+robyn,336682,vs,edap-http-fast,3019148,11.2%,json_serialization
+fastapi-uvicorn-orjson,330287,vs,edap-http-fast,3019148,10.9%,json_serialization
+django,167280,vs,wsgi,1558397,10.7%,json_serialization
+leaf-workerman,210213,vs,php-workerman,1961137,10.7%,json_serialization
+fastapi-uvicorn,322402,vs,edap-http-fast,3019148,10.7%,json_serialization
+yii2-workerman,292167,vs,workerman,2754243,10.6%,json_serialization
+duckphp,201618,vs,php-workerman,1961137,10.3%,json_serialization
+0http,117479,vs,nodejs,1147305,10.2%,json_serialization
+php-frankenphp,200636,vs,php-workerman,1961137,10.2%,json_serialization
+leaf,199161,vs,php-workerman,1961137,10.2%,json_serialization
+cfml-adobe,305396,vs,edap-http-fast,3019148,10.1%,json_serialization
+fastapi [socketify.py asgi],296308,vs,edap-http-fast,3019148,9.8%,json_serialization
+phalcon-micro,189936,vs,php-workerman,1961137,9.7%,json_serialization
+cfml-lucee,282763,vs,edap-http-fast,3019148,9.4%,json_serialization
+flight,182491,vs,php-workerman,1961137,9.3%,json_serialization
+pippo-tomcat,273117,vs,edap-http-fast,3019148,9.0%,json_serialization
+mixphp,169419,vs,php-workerman,1961137,8.6%,json_serialization
+coldbox-adobe,25624,vs,cfml-adobe,305396,8.4%,json_serialization
+microdot-raw,252899,vs,edap-http-fast,3019148,8.4%,json_serialization
+vapor,252209,vs,edap-http-fast,3019148,8.4%,json_serialization
+microdot,251738,vs,edap-http-fast,3019148,8.3%,json_serialization
+webmachine,247327,vs,edap-http-fast,3019148,8.2%,json_serialization
+today,243459,vs,edap-http-fast,3019148,8.1%,json_serialization
+laravel-workerman,157110,vs,php-workerman,1961137,8.0%,json_serialization
+duct,233657,vs,edap-http-fast,3019148,7.7%,json_serialization
+coldbox-lucee,22453,vs,cfml-adobe,305396,7.4%,json_serialization
+cyberphp,196150,vs,workerman,2754243,7.1%,json_serialization
+fat-free,133952,vs,php-workerman,1961137,6.8%,json_serialization
+yii2,131434,vs,php-workerman,1961137,6.7%,json_serialization
+mako,128998,vs,php-workerman,1961137,6.6%,json_serialization
+symfony-frankenphp,128101,vs,php-workerman,1961137,6.5%,json_serialization
+lumen-laravel-s,136492,vs,swoole,2465399,5.5%,json_serialization
+heaven,157544,vs,edap-http-fast,3019148,5.2%,json_serialization
+php-caddyserver,94253,vs,php-workerman,1961137,4.8%,json_serialization
+lumen-swoole,112627,vs,swoole,2465399,4.6%,json_serialization
+phalcon,87675,vs,php-workerman,1961137,4.5%,json_serialization
+slim,87348,vs,php-workerman,1961137,4.5%,json_serialization
+duct-aleph,133882,vs,edap-http-fast,3019148,4.4%,json_serialization
+pippo-undertow,133867,vs,edap-http-fast,3019148,4.4%,json_serialization
+officefloor-spring_data,55138,vs,spring-webflux-mongo,1289658,4.3%,json_serialization
+falcon [pypy3],65758,vs,wsgi,1558397,4.2%,json_serialization
+laravel-laravel-s,93603,vs,swoole,2465399,3.8%,json_serialization
+angel3_postgresql,114048,vs,edap-http-fast,3019148,3.8%,json_serialization
+symfony-roadrunner,71213,vs,php-workerman,1961137,3.6%,json_serialization
+laravel-swoole,83940,vs,swoole,2465399,3.4%,json_serialization
+symfony,63237,vs,php-workerman,1961137,3.2%,json_serialization
+duct-httpkit,95101,vs,edap-http-fast,3019148,3.1%,json_serialization
+laravel-octane [frankenphp],56624,vs,php-workerman,1961137,2.9%,json_serialization
+bareasgi,85148,vs,edap-http-fast,3019148,2.8%,json_serialization
+curacao,61468,vs,servlet,2203565,2.8%,json_serialization
+dream,53816,vs,httpaf,2055443,2.6%,json_serialization
+fuel,47786,vs,php-workerman,1961137,2.4%,json_serialization
+onyx,73450,vs,edap-http-fast,3019148,2.4%,json_serialization
+ninja-standalone,28346,vs,jetty,1273510,2.2%,json_serialization
+zinc,66887,vs,edap-http-fast,3019148,2.2%,json_serialization
+nette,40703,vs,php-workerman,1961137,2.1%,json_serialization
+lumen,39700,vs,php-workerman,1961137,2.0%,json_serialization
+reactphp [libevent],38595,vs,php-workerman,1961137,2.0%,json_serialization
+nancy,20305,vs,aspcore-mono,1083492,1.9%,json_serialization
+ktor-jetty,40437,vs,servlet,2203565,1.8%,json_serialization
+spiral,35452,vs,php-workerman,1961137,1.8%,json_serialization
+play1,46013,vs,netty,2709586,1.7%,json_serialization
+hapi-nginx,19026,vs,nodejs,1147305,1.7%,json_serialization
+laravel,26901,vs,php-workerman,1961137,1.4%,json_serialization
+zend,25521,vs,php-workerman,1961137,1.3%,json_serialization
+async-worker,3846,vs,aiohttp,309350,1.2%,json_serialization
+codeigniter,19901,vs,php-workerman,1961137,1.0%,json_serialization
+cakephp,19204,vs,php-workerman,1961137,1.0%,json_serialization
+dia,25033,vs,edap-http-fast,3019148,0.8%,json_serialization
+spider-gazelle,12358,vs,amber,1548190,0.8%,json_serialization
+toro,12345,vs,crystal,1851758,0.7%,json_serialization
+laravel-roadrunner,15469,vs,swoole,2465399,0.6%,json_serialization
+tapestry,12248,vs,servlet,2203565,0.6%,json_serialization
+grails,11953,vs,servlet,2203565,0.5%,json_serialization
+http4k-sunhttploom,10724,vs,servlet,2203565,0.5%,json_serialization
+http4k,10677,vs,servlet,2203565,0.5%,json_serialization
+paozhu,12301,vs,edap-http-fast,3019148,0.4%,json_serialization
+fastapi-hypercorn-orjson,11998,vs,edap-http-fast,3019148,0.4%,json_serialization
+fastapi-hypercorn,11995,vs,edap-http-fast,3019148,0.4%,json_serialization
+http4k-graalvm,8122,vs,servlet,2203565,0.4%,json_serialization
+integrated haskell platfrom (ihp),10162,vs,edap-http-fast,3019148,0.3%,json_serialization
+cakephp-workerman,5692,vs,php-workerman,1961137,0.3%,json_serialization
+next.js,1219,vs,nodejs,1147305,0.1%,json_serialization
+falcon [waitress],1448,vs,wsgi,1558397,0.1%,json_serialization
+plumber,885,vs,edap-http-fast,3019148,0.0%,json_serialization
+plack,614980,vs,plack-async,0,0.0%,json_serialization
+plack-async,0,vs,plack,614980,0.0%,json_serialization
+dream,98584,vs,httpaf,928,10623.3%,plaintext
+uwebsockets.js,27991649,vs,nodejs,1460301,1916.8%,plaintext
+ultimate-express,27324164,vs,nodejs,1460301,1871.1%,plaintext
+elysia,26060081,vs,nodejs,1460301,1784.6%,plaintext
+elysia [compiled],26054652,vs,nodejs,1460301,1784.2%,plaintext
+silverlining [prefork],27962675,vs,go,1612144,1734.5%,plaintext
+gnet,24924048,vs,go,1612144,1546.0%,plaintext
+silverlining,24704100,vs,go,1612144,1532.4%,plaintext
+fasthttp-prefork,14566665,vs,go,1612144,903.6%,plaintext
+atreugo-prefork,13950201,vs,go,1612144,865.3%,plaintext
+fiber-prefork,13509592,vs,go,1612144,838.0%,plaintext
+gearbox prefork,12690872,vs,go,1612144,787.2%,plaintext
+ronykit,12072588,vs,go,1612144,748.9%,plaintext
+goravel fiber,9769830,vs,go,1612144,606.0%,plaintext
+mesh,8666129,vs,nodejs,1460301,593.4%,plaintext
+ronykit,8777024,vs,go,1612144,544.4%,plaintext
+es4x,7268195,vs,nodejs,1460301,497.7%,plaintext
+bun,7046989,vs,nodejs,1460301,482.6%,plaintext
+hertz,6935931,vs,go,1612144,430.2%,plaintext
+hyperexpress,5340722,vs,nodejs,1460301,365.7%,plaintext
+evio-stdlib,5124570,vs,go,1612144,317.9%,plaintext
+workerman,7438285,vs,php-workerman,2389569,311.3%,plaintext
+elide,4089078,vs,nodejs,1460301,280.0%,plaintext
+evio,3894855,vs,go,1612144,241.6%,plaintext
+jooby-jaxrs,13471017,vs,undertow,5659809,238.0%,plaintext
+fastwsgi,4010093,vs,wsgi,1778998,225.4%,plaintext
+spider-gazelle,5383439,vs,amber,2780132,193.6%,plaintext
+granian [wsgi],1901253,vs,uvicorn,1014344,187.4%,plaintext
+spliffy,2586736,vs,nodejs,1460301,177.1%,plaintext
+granian [rsgi wrk],1771380,vs,uvicorn,1014344,174.6%,plaintext
+granian [rsgi],1762477,vs,uvicorn,1014344,173.8%,plaintext
+falcon [socketify.py wsgi pypy3],2869384,vs,wsgi,1778998,161.3%,plaintext
+workerman,3823887,vs,php-workerman,2389569,160.0%,plaintext
+php-ngx,3725830,vs,php-workerman,2389569,155.9%,plaintext
+reitit,8779316,vs,undertow,5659809,155.1%,plaintext
+swoole,3519409,vs,php-workerman,2389569,147.3%,plaintext
+deno,2102285,vs,nodejs,1460301,144.0%,plaintext
+granian [asgi],1377497,vs,uvicorn,1014344,135.8%,plaintext
+appmpower [aot-no-reflection],11701671,vs,"asp.net core [minimal apis, pg, dapper]",9274496,126.2%,plaintext
+go-pgx-prefork,2005430,vs,go,1612144,124.4%,plaintext
+jooby-jetty,2883908,vs,jetty,2340938,123.2%,plaintext
+tornado-py3,117634,vs,tornado,98995,118.8%,plaintext
+toro,5592643,vs,crystal,4792834,116.7%,plaintext
+act,6564801,vs,undertow,5659809,116.0%,plaintext
+velocy,1647179,vs,nodejs,1460301,112.8%,plaintext
+finch,1400706,vs,finagle,1242029,112.8%,plaintext
+jooby-netty,13795851,vs,netty,12242035,112.7%,plaintext
+goframe,1642051,vs,go,1612144,101.9%,plaintext
+gin,1639754,vs,go,1612144,101.7%,plaintext
+clevergo,1635094,vs,go,1612144,101.4%,plaintext
+gin-scratch,1633642,vs,go,1612144,101.3%,plaintext
+faf,28034705,vs,firenio-http-lite,27755180,101.0%,plaintext
+libreactor,28025992,vs,firenio-http-lite,27755180,101.0%,plaintext
+pico.v,28025837,vs,firenio-http-lite,27755180,101.0%,plaintext
+lithium,27953333,vs,firenio-http-lite,27755180,100.7%,plaintext
+libreactor,27943940,vs,firenio-http-lite,27755180,100.7%,plaintext
+finatra,1249822,vs,finagle,1242029,100.6%,plaintext
+echo,1609824,vs,go,1612144,99.9%,plaintext
+jooby,5637207,vs,undertow,5659809,99.6%,plaintext
+kami,1587804,vs,go,1612144,98.5%,plaintext
+spring-webflux,2464711,vs,spring-webflux-mongo,2512829,98.1%,plaintext
+officefloor,111133,vs,officefloor-micro,113605,97.8%,plaintext
+openswoole,2336289,vs,php-workerman,2389569,97.8%,plaintext
+reactphp [libuv],59793,vs,reactphp [libevent],61248,97.6%,plaintext
+chi-prefork,1550531,vs,go,1612144,96.2%,plaintext
+chi,1539426,vs,go,1612144,95.5%,plaintext
+chi-scratch,1538810,vs,go,1612144,95.5%,plaintext
+ripple,2276885,vs,php-workerman,2389569,95.3%,plaintext
+ditsmod v3.0,1377258,vs,nodejs,1460301,94.3%,plaintext
+restana,1330725,vs,nodejs,1460301,91.1%,plaintext
+crystal-radix,4326096,vs,crystal,4792834,90.3%,plaintext
+pine,1453947,vs,go,1612144,90.2%,plaintext
+ringojs-convenient,102819,vs,ringojs,114558,89.8%,plaintext
+amber,2780132,vs,kemal,3111473,89.4%,plaintext
+goravel gin,1433455,vs,go,1612144,88.9%,plaintext
+revenj-jvm,3813352,vs,servlet,4322921,88.2%,plaintext
+collie,14612,vs,collie-ldc,16608,88.0%,plaintext
+valum,8660,vs,vsgi,9904,87.4%,plaintext
+libsniper,24120587,vs,firenio-http-lite,27755180,86.9%,plaintext
+falcon [fastwsgi],1505103,vs,wsgi,1778998,84.6%,plaintext
+emmett,834334,vs,uvicorn,1014344,82.3%,plaintext
+emmett55,831539,vs,uvicorn,1014344,82.0%,plaintext
+fastify,1175038,vs,nodejs,1460301,80.5%,plaintext
+nestjs-fastify,1110028,vs,nodejs,1460301,76.0%,plaintext
+hono,1080092,vs,nodejs,1460301,74.0%,plaintext
+goji,1186346,vs,go,1612144,73.6%,plaintext
+"reaper [aot,slim]",6532731,vs,"asp.net core [minimal apis, pg, dapper]",9274496,70.4%,plaintext
+activej,19171625,vs,firenio-http-lite,27755180,69.1%,plaintext
+vertx-web-kotlinx,8864348,vs,vertx-web-kotlin-dsljson,13010230,68.1%,plaintext
+koa,953808,vs,nodejs,1460301,65.3%,plaintext
+kemal,3111473,vs,crystal,4792834,64.9%,plaintext
+padrino-unicorn,101178,vs,rack-unicorn-mri-sequel-raw,156079,64.8%,plaintext
+falcon,1150949,vs,wsgi,1778998,64.7%,plaintext
+httpbeast,17955351,vs,firenio-http-lite,27755180,64.7%,plaintext
+vertx-web,9029986,vs,vertx,14340940,63.0%,plaintext
+falcon [socketify.py wsgi],1109834,vs,wsgi,1778998,62.4%,plaintext
+peachpie,1461276,vs,php-workerman,2389569,61.2%,plaintext
+nginx-njs,2920487,vs,nginx,4852267,60.2%,plaintext
+jester,10556414,vs,httpbeast,17955351,58.8%,plaintext
+falcon [asgi/tortoise],576310,vs,uvicorn,1014344,56.8%,plaintext
+jetty,2340938,vs,servlet,4322921,54.2%,plaintext
+hapi,790398,vs,nodejs,1460301,54.1%,plaintext
+ubiquity-swoole,1897411,vs,swoole,3519409,53.9%,plaintext
+mixphp-swoole-mysql,1870738,vs,swoole,3519409,53.2%,plaintext
+drogon,14655006,vs,firenio-http-lite,27755180,52.8%,plaintext
+jetty-servlet,2152555,vs,servlet,4322921,49.8%,plaintext
+http4k-jetty11,1129854,vs,jetty,2340938,48.3%,plaintext
+http4k-jettyloom-jdbc,1110080,vs,jetty,2340938,47.4%,plaintext
+http4k-jetty,1108146,vs,jetty,2340938,47.3%,plaintext
+http4k-jettyloom-pgclient,1099332,vs,jetty,2340938,47.0%,plaintext
+mark-php8-jit,3486031,vs,workerman,7438285,46.9%,plaintext
+one-no-coroutine,1631276,vs,swoole,3519409,46.4%,plaintext
+one,1615268,vs,swoole,3519409,45.9%,plaintext
+axum,12392330,vs,firenio-http-lite,27755180,44.6%,plaintext
+viz,12354890,vs,firenio-http-lite,27755180,44.5%,plaintext
+donkey,5731494,vs,vertx-web-kotlin-dsljson,13010230,44.1%,plaintext
+webman,3210900,vs,workerman,7438285,43.2%,plaintext
+hexagon,1750966,vs,servlet,4322921,40.5%,plaintext
+fiber,646197,vs,go,1612144,40.1%,plaintext
+oxpecker,10935401,vs,aspnetcore,27530836,39.7%,plaintext
+hexagon jetty loom pgclient,1702593,vs,servlet,4322921,39.4%,plaintext
+hexagon-jettyloom,1691346,vs,servlet,4322921,39.1%,plaintext
+atreugo,601907,vs,go,1612144,37.3%,plaintext
+restify,545133,vs,nodejs,1460301,37.3%,plaintext
+inverno,10274217,vs,firenio-http-lite,27755180,37.0%,plaintext
+gemini,1586604,vs,servlet,4322921,36.7%,plaintext
+bottle,645601,vs,wsgi,1778998,36.3%,plaintext
+ditsmod-bun v3.0,2549317,vs,bun,7046989,36.2%,plaintext
+fasthttp,569793,vs,go,1612144,35.3%,plaintext
+aspcore-mono-mw,4667242,vs,aspcore-mono,13266460,35.2%,plaintext
+"asp.net core [minimal apis, pg, dapper]",9274496,vs,aspnetcore,27530836,33.7%,plaintext
+gearbox,532649,vs,go,1612144,33.0%,plaintext
+amp,763554,vs,php-workerman,2389569,32.0%,plaintext
+helidon 4,8418021,vs,firenio-http-lite,27755180,30.3%,plaintext
+lapis,1028056,vs,openresty,3572411,28.8%,plaintext
+pavex,7954974,vs,firenio-http-lite,27755180,28.7%,plaintext
+solon,7884421,vs,firenio-http-lite,27755180,28.4%,plaintext
+spark,1226332,vs,servlet,4322921,28.4%,plaintext
+pyramid,497457,vs,wsgi,1778998,28.0%,plaintext
+http4k-apache4,1130502,vs,servlet,4322921,26.2%,plaintext
+kumbiaphp-workerman,1913423,vs,workerman,7438285,25.7%,plaintext
+express-postgresjs,368656,vs,nodejs,1460301,25.2%,plaintext
+ubiquity-workerman-raw,1826273,vs,workerman,7438285,24.6%,plaintext
+mixphp-workerman-pgsql,1609505,vs,workerman,7438285,21.6%,plaintext
+hexagon-jetty-native,907986,vs,servlet,4322921,21.0%,plaintext
+greenlightning,5723659,vs,firenio-http-lite,27755180,20.6%,plaintext
+php-raw7-tcp,490599,vs,php-workerman,2389569,20.5%,plaintext
+php-pools,474488,vs,php-workerman,2389569,19.9%,plaintext
+microhttp,5444295,vs,firenio-http-lite,27755180,19.6%,plaintext
+hummingbird,644858,vs,swift-nio,3312290,19.5%,plaintext
+php-h2o,465135,vs,php-workerman,2389569,19.5%,plaintext
+express,279922,vs,nodejs,1460301,19.2%,plaintext
+hummingbirdcore,634344,vs,swift-nio,3312290,19.2%,plaintext
+http4k-undertow,1075645,vs,undertow,5659809,19.0%,plaintext
+php,449566,vs,php-workerman,2389569,18.8%,plaintext
+tapestry,791309,vs,servlet,4322921,18.3%,plaintext
+nestjs,259647,vs,nodejs,1460301,17.8%,plaintext
+hexagon netty epoll postgresql,2173163,vs,netty,12242035,17.8%,plaintext
+hexagon netty epoll pgclient,2164132,vs,netty,12242035,17.7%,plaintext
+oatpp-async-no-mp,4889069,vs,firenio-http-lite,27755180,17.6%,plaintext
+0http,254491,vs,nodejs,1460301,17.4%,plaintext
+hexagon tomcat postgresql,708892,vs,servlet,4322921,16.4%,plaintext
+ubiquity,387041,vs,php-workerman,2389569,16.2%,plaintext
+akka-http-slick-postgres,713933,vs,akka-http,4441341,16.1%,plaintext
+zio-http,4264760,vs,firenio-http-lite,27755180,15.4%,plaintext
+kumbiaphp,365811,vs,php-workerman,2389569,15.3%,plaintext
+oatpp-async,4096969,vs,firenio-http-lite,27755180,14.8%,plaintext
+wicket,610609,vs,servlet,4322921,14.1%,plaintext
+compojure,610232,vs,servlet,4322921,14.1%,plaintext
+php-frankenphp,312473,vs,php-workerman,2389569,13.1%,plaintext
+symfony-workerman,305007,vs,php-workerman,2389569,12.8%,plaintext
+ltio,3474467,vs,firenio-http-lite,27755180,12.5%,plaintext
+feathersjs,177420,vs,nodejs,1460301,12.1%,plaintext
+django [socketify.py wsgi],216050,vs,wsgi,1778998,12.1%,plaintext
+php-unit,285167,vs,php-workerman,2389569,11.9%,plaintext
+phpixie,267744,vs,php-workerman,2389569,11.2%,plaintext
+"asp.net core [mvc, pg, ef]",3043963,vs,aspnetcore,27530836,11.1%,plaintext
+play2-scala,488016,vs,akka-http,4441341,11.0%,plaintext
+http4k-netty,1317763,vs,netty,12242035,10.8%,plaintext
+slim-workerman,251876,vs,php-workerman,2389569,10.5%,plaintext
+micronaut,2884144,vs,firenio-http-lite,27755180,10.4%,plaintext
+trillium [smol],2850770,vs,firenio-http-lite,27755180,10.3%,plaintext
+wolff,243329,vs,php-workerman,2389569,10.2%,plaintext
+finagle,1242029,vs,netty,12242035,10.1%,plaintext
+django,179696,vs,wsgi,1778998,10.1%,plaintext
+trillium [tokio],2757392,vs,firenio-http-lite,27755180,9.9%,plaintext
+facil.io,2712410,vs,firenio-http-lite,27755180,9.8%,plaintext
+trillium [async-std],2709809,vs,firenio-http-lite,27755180,9.8%,plaintext
+salvo,2692195,vs,firenio-http-lite,27755180,9.7%,plaintext
+duckphp,226405,vs,php-workerman,2389569,9.5%,plaintext
+symfony-swoole,333294,vs,swoole,3519409,9.5%,plaintext
+vapor,310441,vs,swift-nio,3312290,9.4%,plaintext
+leaf-workerman,213825,vs,php-workerman,2389569,8.9%,plaintext
+leaf,210073,vs,php-workerman,2389569,8.8%,plaintext
+pellet,2420812,vs,firenio-http-lite,27755180,8.7%,plaintext
+ktor-pgclient,1024120,vs,netty,12242035,8.4%,plaintext
+ktor-jasync,1023762,vs,netty,12242035,8.4%,plaintext
+phalcon-micro,195400,vs,php-workerman,2389569,8.2%,plaintext
+flight,190421,vs,php-workerman,2389569,8.0%,plaintext
+ktor-netty-r2dbc,974215,vs,netty,12242035,8.0%,plaintext
+armeria,970299,vs,netty,12242035,7.9%,plaintext
+lucky,2180815,vs,firenio-http-lite,27755180,7.9%,plaintext
+ktor,960849,vs,netty,12242035,7.8%,plaintext
+symfony-frankenphp,185218,vs,php-workerman,2389569,7.8%,plaintext
+http4k,332342,vs,servlet,4322921,7.7%,plaintext
+http4k-sunhttploom,330586,vs,servlet,4322921,7.6%,plaintext
+mixphp,179974,vs,php-workerman,2389569,7.5%,plaintext
+luminus,426263,vs,undertow,5659809,7.5%,plaintext
+hummingbird 2,244952,vs,swift-nio,3312290,7.4%,plaintext
+userver,1985222,vs,firenio-http-lite,27755180,7.2%,plaintext
+martini,115228,vs,go,1612144,7.1%,plaintext
+play2-scala-netty,874301,vs,netty,12242035,7.1%,plaintext
+coldbox-adobe,25810,vs,cfml-adobe,365550,7.1%,plaintext
+laravel-workerman,166557,vs,php-workerman,2389569,7.0%,plaintext
+play2-java,295169,vs,akka-http,4441341,6.6%,plaintext
+javalin,1817737,vs,firenio-http-lite,27755180,6.5%,plaintext
+pippo-jetty,1792812,vs,firenio-http-lite,27755180,6.5%,plaintext
+jersey,264277,vs,servlet,4322921,6.1%,plaintext
+yii2,145749,vs,php-workerman,2389569,6.1%,plaintext
+coldbox-lucee,21670,vs,cfml-adobe,365550,5.9%,plaintext
+comet,437046,vs,workerman,7438285,5.9%,plaintext
+fat-free,139238,vs,php-workerman,2389569,5.8%,plaintext
+mako,137971,vs,php-workerman,2389569,5.8%,plaintext
+lumen-laravel-s,187100,vs,swoole,3519409,5.3%,plaintext
+php-caddyserver,123779,vs,php-workerman,2389569,5.2%,plaintext
+cyberphp,370208,vs,workerman,7438285,5.0%,plaintext
+lumen-workerman,331005,vs,workerman,7438285,4.5%,plaintext
+yii2-workerman,328790,vs,workerman,7438285,4.4%,plaintext
+simple-server,1225438,vs,firenio-http-lite,27755180,4.4%,plaintext
+libhttpserver,1218448,vs,firenio-http-lite,27755180,4.4%,plaintext
+jawn,245549,vs,undertow,5659809,4.3%,plaintext
+micronaut vertx pg client graalvm,1170743,vs,firenio-http-lite,27755180,4.2%,plaintext
+aspcore-mono-mvc,554340,vs,aspcore-mono,13266460,4.2%,plaintext
+phalcon,95911,vs,php-workerman,2389569,4.0%,plaintext
+aleph,465773,vs,netty,12242035,3.8%,plaintext
+officefloor-spring_data,95047,vs,spring-webflux-mongo,2512829,3.8%,plaintext
+slim,89588,vs,php-workerman,2389569,3.7%,plaintext
+rocket,1033427,vs,firenio-http-lite,27755180,3.7%,plaintext
+lumen-swoole,118845,vs,swoole,3519409,3.4%,plaintext
+rage,898008,vs,firenio-http-lite,27755180,3.2%,plaintext
+symfony-roadrunner,73900,vs,php-workerman,2389569,3.1%,plaintext
+laravel-laravel-s,108184,vs,swoole,3519409,3.1%,plaintext
+blacksheep,807348,vs,firenio-http-lite,27755180,2.9%,plaintext
+pippo-tomcat,806287,vs,firenio-http-lite,27755180,2.9%,plaintext
+http4k-graalvm,119207,vs,servlet,4322921,2.8%,plaintext
+laravel-octane [frankenphp],64569,vs,php-workerman,2389569,2.7%,plaintext
+fastapi [socketify.py asgi pypy3],746602,vs,firenio-http-lite,27755180,2.7%,plaintext
+symfony,64053,vs,php-workerman,2389569,2.7%,plaintext
+laravel-swoole,90306,vs,swoole,3519409,2.6%,plaintext
+reactphp [libevent],61248,vs,php-workerman,2389569,2.6%,plaintext
+apidaora-core,688809,vs,firenio-http-lite,27755180,2.5%,plaintext
+grails,106813,vs,servlet,4322921,2.5%,plaintext
+falcon [pypy3],41779,vs,wsgi,1778998,2.3%,plaintext
+panther,650760,vs,firenio-http-lite,27755180,2.3%,plaintext
+sanic,613796,vs,firenio-http-lite,27755180,2.2%,plaintext
+robyn [const],613683,vs,firenio-http-lite,27755180,2.2%,plaintext
+suave,594338,vs,firenio-http-lite,27755180,2.1%,plaintext
+elixir-plug-ecto,570759,vs,firenio-http-lite,27755180,2.1%,plaintext
+kit,549696,vs,firenio-http-lite,27755180,2.0%,plaintext
+jewelia,539019,vs,firenio-http-lite,27755180,1.9%,plaintext
+play2-java-netty,227053,vs,netty,12242035,1.9%,plaintext
+starlite,509037,vs,firenio-http-lite,27755180,1.8%,plaintext
+apidaora,501163,vs,firenio-http-lite,27755180,1.8%,plaintext
+lumen,40572,vs,php-workerman,2389569,1.7%,plaintext
+robyn,446396,vs,firenio-http-lite,27755180,1.6%,plaintext
+nette,37253,vs,php-workerman,2389569,1.6%,plaintext
+spiral,36780,vs,php-workerman,2389569,1.5%,plaintext
+curacao,61103,vs,servlet,4322921,1.4%,plaintext
+cfml-adobe,365550,vs,firenio-http-lite,27755180,1.3%,plaintext
+fastapi [socketify.py asgi],348823,vs,firenio-http-lite,27755180,1.3%,plaintext
+fastapi,338364,vs,firenio-http-lite,27755180,1.2%,plaintext
+webmachine,326656,vs,firenio-http-lite,27755180,1.2%,plaintext
+laravel,26657,vs,php-workerman,2389569,1.1%,plaintext
+fastapi-uvicorn,309561,vs,firenio-http-lite,27755180,1.1%,plaintext
+async-worker,4031,vs,aiohttp,362738,1.1%,plaintext
+zend,25789,vs,php-workerman,2389569,1.1%,plaintext
+vapor,279488,vs,firenio-http-lite,27755180,1.0%,plaintext
+today,273617,vs,firenio-http-lite,27755180,1.0%,plaintext
+microdot-raw,264777,vs,firenio-http-lite,27755180,1.0%,plaintext
+microdot,263654,vs,firenio-http-lite,27755180,0.9%,plaintext
+duct,240570,vs,firenio-http-lite,27755180,0.9%,plaintext
+codeigniter,20628,vs,php-workerman,2389569,0.9%,plaintext
+pippo-undertow,228784,vs,firenio-http-lite,27755180,0.8%,plaintext
+cakephp,19040,vs,php-workerman,2389569,0.8%,plaintext
+onyx,215745,vs,firenio-http-lite,27755180,0.8%,plaintext
+duct-aleph,199836,vs,firenio-http-lite,27755180,0.7%,plaintext
+ktor-jetty,31117,vs,servlet,4322921,0.7%,plaintext
+hapi-nginx,10291,vs,nodejs,1460301,0.7%,plaintext
+cfml-lucee,168571,vs,firenio-http-lite,27755180,0.6%,plaintext
+ninja-standalone,13768,vs,jetty,2340938,0.6%,plaintext
+heaven,152569,vs,firenio-http-lite,27755180,0.5%,plaintext
+duct-httpkit,117754,vs,firenio-http-lite,27755180,0.4%,plaintext
+fastapi-hypercorn,108508,vs,firenio-http-lite,27755180,0.4%,plaintext
+bareasgi,99787,vs,firenio-http-lite,27755180,0.4%,plaintext
+angel3_postgresql,81420,vs,firenio-http-lite,27755180,0.3%,plaintext
+nancy,33708,vs,aspcore-mono,13266460,0.3%,plaintext
+play1,27057,vs,netty,12242035,0.2%,plaintext
+laravel-roadrunner,7659,vs,swoole,3519409,0.2%,plaintext
+zinc,47796,vs,firenio-http-lite,27755180,0.2%,plaintext
+next.js,1993,vs,nodejs,1460301,0.1%,plaintext
+cakephp-workerman,2715,vs,php-workerman,2389569,0.1%,plaintext
+dia,31189,vs,firenio-http-lite,27755180,0.1%,plaintext
+falcon [waitress],1180,vs,wsgi,1778998,0.1%,plaintext
+falcon [bjoern],1090,vs,wsgi,1778998,0.1%,plaintext
+integrated haskell platfrom (ihp),8059,vs,firenio-http-lite,27755180,0.0%,plaintext
+fortran.io,4571,vs,firenio-http-lite,27755180,0.0%,plaintext
+prologue,1090,vs,httpbeast,17955351,0.0%,plaintext
+kooby,248,vs,undertow,5659809,0.0%,plaintext
+lwan,1090,vs,firenio-http-lite,27755180,0.0%,plaintext
+lwan-lua,1090,vs,firenio-http-lite,27755180,0.0%,plaintext
+paozhu,1090,vs,firenio-http-lite,27755180,0.0%,plaintext
+httpaf,928,vs,firenio-http-lite,27755180,0.0%,plaintext
+ohkami,2,vs,firenio-http-lite,27755180,0.0%,plaintext
+hug,0,vs,wsgi,1778998,0.0%,plaintext
+mormot [orm],0,vs,firenio-http-lite,27755180,0.0%,plaintext
+http-kit-raw,25739,vs,http-kit,999,2576.5%,queries
+tornado-py3-uvloop,28273,vs,tornado,1843,1534.1%,queries
+officefloor-undertow,60679,vs,undertow-postgresql,37749,160.7%,queries
+tornado-py3,2899,vs,tornado,1843,157.3%,queries
+uwebsockets.js,81365,vs,nodejs-postgresjs-raw,53494,152.1%,queries
+salvo [postgres],89194,vs,fasthttp-prefork,58670,152.0%,queries
+viz [postgresql],88468,vs,fasthttp-prefork,58670,150.8%,queries
+hyperexpress-postgres,80315,vs,nodejs-postgresjs-raw,53494,150.1%,queries
+inverno,87919,vs,fasthttp-prefork,58670,149.9%,queries
+axum [postgresql],87231,vs,fasthttp-prefork,58670,148.7%,queries
+ultimate-express-postgres,79399,vs,nodejs-postgresjs-raw,53494,148.4%,queries
+greenlightning,85912,vs,fasthttp-prefork,58670,146.4%,queries
+micronaut,85904,vs,fasthttp-prefork,58670,146.4%,queries
+mormot [direct],84260,vs,fasthttp-prefork,58670,143.6%,queries
+fastify-postgres,76157,vs,nodejs-postgresjs-raw,53494,142.4%,queries
+userver,83404,vs,fasthttp-prefork,58670,142.2%,queries
+ditsmod v3.0 [postgres],74481,vs,nodejs-postgresjs-raw,53494,139.2%,queries
+micronaut vertx pg client graalvm,81351,vs,fasthttp-prefork,58670,138.7%,queries
+workerman [pgsql],55928,vs,php-workerman,40635,137.6%,queries
+php-ngx-pgsql,55898,vs,php-workerman,40635,137.6%,queries
+swoole-sync-postgres,55866,vs,php-workerman,40635,137.5%,queries
+workerman-pgsql,55496,vs,php-workerman,40635,136.6%,queries
+mormot [async],79928,vs,fasthttp-prefork,58670,136.2%,queries
+hono,72501,vs,nodejs-postgresjs-raw,53494,135.5%,queries
+slim-workerman-pgsql,54046,vs,php-workerman,40635,133.0%,queries
+elysia [compiled],68857,vs,nodejs-postgresjs-raw,53494,128.7%,queries
+elysia [postgresql],68695,vs,nodejs-postgresjs-raw,53494,128.4%,queries
+elysia [smol] [postgresql],68401,vs,nodejs-postgresjs-raw,53494,127.9%,queries
+openswoole postgres,49956,vs,php-workerman,40635,122.9%,queries
+express-postgresjs,62036,vs,nodejs-postgresjs-raw,53494,116.0%,queries
+sinatra-sequel-postgres-passenger-mri,20908,vs,rack-sequel-postgres-passenger-mri,18777,111.3%,queries
+drogon-core,65211,vs,fasthttp-prefork,58670,111.1%,queries
+php-ngx-mysql,44489,vs,php-workerman,40635,109.5%,queries
+"workerman [jit, mysql]",44239,vs,php-workerman,40635,108.9%,queries
+drogon,63138,vs,fasthttp-prefork,58670,107.6%,queries
+ubiquity-workerman-mysql,43449,vs,php-workerman,40635,106.9%,queries
+vertx-web-kotlin-dsljson-postgresql,89289,vs,vertx-web-postgres,85364,104.6%,queries
+act-hibernate-pgsql,38902,vs,undertow-postgresql,37749,103.1%,queries
+kumbiaphp-workerman,57278,vs,workerman [pgsql],55928,102.4%,queries
+mormot [orm],60069,vs,fasthttp-prefork,58670,102.4%,queries
+crystal-radix,18299,vs,crystal,17897,102.2%,queries
+kemal-concurrent-queries,18154,vs,crystal,17897,101.4%,queries
+act-eclipselink-pgsql,38255,vs,undertow-postgresql,37749,101.3%,queries
+webman-pgsql,56632,vs,workerman [pgsql],55928,101.3%,queries
+comet,56410,vs,workerman [pgsql],55928,100.9%,queries
+vertx-web-kotlin-coroutines-postgres,85625,vs,vertx-web-postgres,85364,100.3%,queries
+vertx-web-scala,85445,vs,vertx-web-postgres,85364,100.1%,queries
+ubiquity-workerman-raw,55958,vs,workerman [pgsql],55928,100.1%,queries
+granian [asgi],38279,vs,uvicorn,38385,99.7%,queries
+axum [postgresql - deadpool],58304,vs,fasthttp-prefork,58670,99.4%,queries
+granian [rsgi],38132,vs,uvicorn,38385,99.3%,queries
+slim-workerman,40272,vs,php-workerman,40635,99.1%,queries
+mixphp-workerman-pgsql,55384,vs,workerman [pgsql],55928,99.0%,queries
+php-unit,40204,vs,php-workerman,40635,98.9%,queries
+php-pgsql-raw,40187,vs,php-workerman,40635,98.9%,queries
+"appmpower [aot-no-reflection,pg,odbc]",57769,vs,"asp.net core [minimal apis, pg, dapper]",58972,98.0%,queries
+kemal,17512,vs,crystal,17897,97.8%,queries
+openswoole no-async,39760,vs,php-workerman,40635,97.8%,queries
+kit,57143,vs,fasthttp-prefork,58670,97.4%,queries
+vertx-web-kotlinx-postgresql,86393,vs,vertx-web-kotlin-dsljson-postgresql,89289,96.8%,queries
+emmett55,37123,vs,uvicorn,38385,96.7%,queries
+fastwsgi [asgi],36999,vs,uvicorn,38385,96.4%,queries
+swoole-async-postgres,39130,vs,php-workerman,40635,96.3%,queries
+ubiquity-workerman,53805,vs,workerman [pgsql],55928,96.2%,queries
+micronaut r2dbc,55787,vs,fasthttp-prefork,58670,95.1%,queries
+roda-sequel-postgres-unicorn-mri,24355,vs,rack-sequel-postgres-unicorn-mri,26323,92.5%,queries
+sinatra-sequel-postgres-unicorn-mri,24018,vs,rack-sequel-postgres-unicorn-mri,26323,91.2%,queries
+officefloor,47389,vs,officefloor-micro,52095,91.0%,queries
+openswoole,36631,vs,php-workerman,40635,90.1%,queries
+lithium-postgres,52239,vs,fasthttp-prefork,58670,89.0%,queries
+lithium-postgres-beta,51702,vs,fasthttp-prefork,58670,88.1%,queries
+phalcon-micro,35362,vs,php-workerman,40635,87.0%,queries
+vibed-dmd-pgsql,2696,vs,vibed-ldc-pgsql,3104,86.9%,queries
+ktor-netty-exposed-dsl,30522,vs,ktor,35189,86.7%,queries
+php-frankenphp,35040,vs,php-workerman,40635,86.2%,queries
+mixphp,34779,vs,php-workerman,40635,85.6%,queries
+"workerman [jit, mysql, swow, async]",34759,vs,php-workerman,40635,85.5%,queries
+ubiquity-swoole,47782,vs,swoole-sync-postgres,55866,85.5%,queries
+php-raw7-tcp,34538,vs,php-workerman,40635,85.0%,queries
+kumbiaphp-raw,34493,vs,php-workerman,40635,84.9%,queries
+"workerman [jit, mysql, swoole, async]",34389,vs,php-workerman,40635,84.6%,queries
+php-pools,34345,vs,php-workerman,40635,84.5%,queries
+php,34217,vs,php-workerman,40635,84.2%,queries
+micronaut jdbc,49161,vs,fasthttp-prefork,58670,83.8%,queries
+rack-sequel-unicorn-mri,22481,vs,rack-unicorn-mri-sequel-raw,26840,83.8%,queries
+php-h2o,33991,vs,php-workerman,40635,83.6%,queries
+yii2-raw,33864,vs,php-workerman,40635,83.3%,queries
+php-caddyserver,33843,vs,php-workerman,40635,83.3%,queries
+slim,33820,vs,php-workerman,40635,83.2%,queries
+flight,33593,vs,php-workerman,40635,82.7%,queries
+fat-free-raw,33383,vs,php-workerman,40635,82.2%,queries
+kumbiaphp,33304,vs,php-workerman,40635,82.0%,queries
+swoole-no-async,33278,vs,php-workerman,40635,81.9%,queries
+duckphp,33229,vs,php-workerman,40635,81.8%,queries
+micronaut data jdbc,47547,vs,fasthttp-prefork,58670,81.0%,queries
+comet-mysql,44664,vs,workerman [pgsql],55928,79.9%,queries
+one,44239,vs,swoole-sync-postgres,55866,79.2%,queries
+ubiquity,32026,vs,php-workerman,40635,78.8%,queries
+ripple,31825,vs,php-workerman,40635,78.3%,queries
+lithium,44675,vs,fasthttp-prefork,58670,76.1%,queries
+swoole,30689,vs,php-workerman,40635,75.5%,queries
+micronaut jdbc graalvm,43769,vs,fasthttp-prefork,58670,74.6%,queries
+lapis,26510,vs,openresty,35962,73.7%,queries
+es4x,38441,vs,nodejs-postgresjs-raw,53494,71.9%,queries
+ubiquity-swoole-mysql,39076,vs,swoole-sync-postgres,55866,69.9%,queries
+oxpecker,59686,vs,aspnetcore,85516,69.8%,queries
+"asp.net core [minimal apis, pg, dapper]",58972,vs,aspnetcore,85516,69.0%,queries
+micronaut data jdbc graalvm,40250,vs,fasthttp-prefork,58670,68.6%,queries
+javalin-postgres,39525,vs,fasthttp-prefork,58670,67.4%,queries
+spring-webflux,20928,vs,spring,31592,66.2%,queries
+blacksheep,38449,vs,fasthttp-prefork,58670,65.5%,queries
+panther,38297,vs,fasthttp-prefork,58670,65.3%,queries
+pippo-undertow-postgres,38072,vs,fasthttp-prefork,58670,64.9%,queries
+one-no-coroutine,36123,vs,swoole-sync-postgres,55866,64.7%,queries
+fastapi-gunicorn-orjson,37606,vs,fasthttp-prefork,58670,64.1%,queries
+mixphp-swoole-mysql,35648,vs,swoole-sync-postgres,55866,63.8%,queries
+mixphp-workerman-mysql,35678,vs,workerman [pgsql],55928,63.8%,queries
+fastapi,37254,vs,fasthttp-prefork,58670,63.5%,queries
+starlite,37202,vs,fasthttp-prefork,58670,63.4%,queries
+simps,35317,vs,swoole-sync-postgres,55866,63.2%,queries
+pippo-jetty-postgres,36704,vs,fasthttp-prefork,58670,62.6%,queries
+salvo [postgres-deadpool],36242,vs,fasthttp-prefork,58670,61.8%,queries
+fastapi-uvicorn-orjson,36234,vs,fasthttp-prefork,58670,61.8%,queries
+kumbiaphp-workerman-mysql,34496,vs,workerman [pgsql],55928,61.7%,queries
+fastapi-uvicorn,36041,vs,fasthttp-prefork,58670,61.4%,queries
+pippo-tomcat-postgres,35488,vs,fasthttp-prefork,58670,60.5%,queries
+symfony-workerman,24377,vs,php-workerman,40635,60.0%,queries
+hyperexpress-mysql,32067,vs,nodejs-postgresjs-raw,53494,59.9%,queries
+ultimate-express-mysql,31850,vs,nodejs-postgresjs-raw,53494,59.5%,queries
+cfml-lucee,34774,vs,fasthttp-prefork,58670,59.3%,queries
+apidaora-core,34724,vs,fasthttp-prefork,58670,59.2%,queries
+apidaora,34386,vs,fasthttp-prefork,58670,58.6%,queries
+fat-free,23627,vs,php-workerman,40635,58.1%,queries
+microdot-raw,33812,vs,fasthttp-prefork,58670,57.6%,queries
+sanic,33671,vs,fasthttp-prefork,58670,57.4%,queries
+play2-java-jpa-hikaricp,12605,vs,akka-http,22062,57.1%,queries
+treefrog-mongodb,24620,vs,treefrog,43503,56.6%,queries
+"asp.net core [mvc, pg, ef]",46497,vs,aspnetcore,85516,54.4%,queries
+symfony-frankenphp,22061,vs,php-workerman,40635,54.3%,queries
+micronaut r2dbc graalvm,31599,vs,fasthttp-prefork,58670,53.9%,queries
+ubiquity-workerman-mongo,21854,vs,php-workerman,40635,53.8%,queries
+heaven,31458,vs,fasthttp-prefork,58670,53.6%,queries
+symfony-raw,21785,vs,php-workerman,40635,53.6%,queries
+wolff,21489,vs,php-workerman,40635,52.9%,queries
+coldbox-adobe,14912,vs,cfml-adobe,28918,51.6%,queries
+toro,9092,vs,crystal,17897,50.8%,queries
+play2-scala-anorm,11185,vs,akka-http,22062,50.7%,queries
+spliffy,26920,vs,nodejs-postgresjs-raw,53494,50.3%,queries
+phpixie,20226,vs,php-workerman,40635,49.8%,queries
+cfml-adobe,28918,vs,fasthttp-prefork,58670,49.3%,queries
+rage-sequel,28381,vs,fasthttp-prefork,58670,48.4%,queries
+pippo-undertow-mysql,26850,vs,fasthttp-prefork,58670,45.8%,queries
+bareasgi,26611,vs,fasthttp-prefork,58670,45.4%,queries
+pippo-jetty-mysql,26549,vs,fasthttp-prefork,58670,45.3%,queries
+pippo-tomcat-mysql,26294,vs,fasthttp-prefork,58670,44.8%,queries
+yii2,18209,vs,php-workerman,40635,44.8%,queries
+officefloor-vertx,39668,vs,vertx-postgres,88708,44.7%,queries
+nodejs-mongodb-raw,22872,vs,nodejs-postgresjs-raw,53494,42.8%,queries
+mako,16848,vs,php-workerman,40635,41.5%,queries
+simps-micro,22999,vs,swoole-sync-postgres,55866,41.2%,queries
+php-laravel-query-builder,16624,vs,php-workerman,40635,40.9%,queries
+yii2-workerman,22637,vs,workerman [pgsql],55928,40.5%,queries
+symfony-swoole,21893,vs,swoole-sync-postgres,55866,39.2%,queries
+play2-java-ebean-hikaricp,8544,vs,akka-http,22062,38.7%,queries
+coldbox-lucee,12781,vs,cfml-lucee,34774,36.8%,queries
+nestjs-fastify-mongo,19212,vs,nodejs-postgresjs-raw,53494,35.9%,queries
+symfony,14427,vs,php-workerman,40635,35.5%,queries
+spliffy,18627,vs,nodejs-postgresjs-raw,53494,34.8%,queries
+symfony [mysql],14103,vs,php-workerman,40635,34.7%,queries
+salvo [mongodb],20187,vs,fasthttp-prefork,58670,34.4%,queries
+salvo [mongodb-raw],20125,vs,fasthttp-prefork,58670,34.3%,queries
+nodejs-mysql-raw,18306,vs,nodejs-postgresjs-raw,53494,34.2%,queries
+axum [mongodb raw],19981,vs,fasthttp-prefork,58670,34.1%,queries
+lucky,19966,vs,fasthttp-prefork,58670,34.0%,queries
+axum [mongodb],19823,vs,fasthttp-prefork,58670,33.8%,queries
+nestjs-mongo,17555,vs,nodejs-postgresjs-raw,53494,32.8%,queries
+rage,19026,vs,fasthttp-prefork,58670,32.4%,queries
+codeigniter,12828,vs,php-workerman,40635,31.6%,queries
+fuel,12660,vs,php-workerman,40635,31.2%,queries
+php-eloquent,12082,vs,php-workerman,40635,29.7%,queries
+play2-java-jooq-hikaricp,6513,vs,akka-http,22062,29.5%,queries
+mesh,15524,vs,nodejs-postgresjs-raw,53494,29.0%,queries
+jewelia,16777,vs,fasthttp-prefork,58670,28.6%,queries
+"appmpower [aot-no-reflection,my,odbc]",16398,vs,"asp.net core [minimal apis, pg, dapper]",58972,27.8%,queries
+zend,11268,vs,php-workerman,40635,27.7%,queries
+fastify-mysql,14390,vs,nodejs-postgresjs-raw,53494,26.9%,queries
+phalcon-mongodb,10890,vs,php-workerman,40635,26.8%,queries
+nestjs-fastify-mysql,14021,vs,nodejs-postgresjs-raw,53494,26.2%,queries
+laravel-workerman,10586,vs,php-workerman,40635,26.1%,queries
+nodejs-mongodb,13874,vs,nodejs-postgresjs-raw,53494,25.9%,queries
+mesh,13866,vs,nodejs-postgresjs-raw,53494,25.9%,queries
+vapor,15073,vs,fasthttp-prefork,58670,25.7%,queries
+rocket,14784,vs,fasthttp-prefork,58670,25.2%,queries
+koa-postgres,13295,vs,nodejs-postgresjs-raw,53494,24.9%,queries
+spliffy,12818,vs,nodejs-postgresjs-raw,53494,24.0%,queries
+nestjs-mysql,12492,vs,nodejs-postgresjs-raw,53494,23.4%,queries
+hummingbird,13500,vs,fasthttp-prefork,58670,23.0%,queries
+nette,9293,vs,php-workerman,40635,22.9%,queries
+ditsmod v3.0 [mysql],12202,vs,nodejs-postgresjs-raw,53494,22.8%,queries
+nodejs-mysql,12072,vs,nodejs-postgresjs-raw,53494,22.6%,queries
+nestjs-fastify,12047,vs,nodejs-postgresjs-raw,53494,22.5%,queries
+laravel-octane [frankenphp],9109,vs,php-workerman,40635,22.4%,queries
+vapor,12988,vs,fasthttp-prefork,58670,22.1%,queries
+koa,11475,vs,nodejs-postgresjs-raw,53494,21.5%,queries
+hapi-postgres,11208,vs,nodejs-postgresjs-raw,53494,21.0%,queries
+nestjs,11070,vs,nodejs-postgresjs-raw,53494,20.7%,queries
+phalcon,8387,vs,php-workerman,40635,20.6%,queries
+lumen-workerman,11272,vs,workerman [pgsql],55928,20.2%,queries
+koa-mysql,10710,vs,nodejs-postgresjs-raw,53494,20.0%,queries
+lumen,7751,vs,php-workerman,40635,19.1%,queries
+webmachine,10232,vs,fasthttp-prefork,58670,17.4%,queries
+fastapi-hypercorn-orjson,10221,vs,fasthttp-prefork,58670,17.4%,queries
+hapi-mysql,9163,vs,nodejs-postgresjs-raw,53494,17.1%,queries
+laravel,6949,vs,php-workerman,40635,17.1%,queries
+lumen-swoole,9482,vs,swoole-sync-postgres,55866,17.0%,queries
+fastapi-hypercorn,9760,vs,fasthttp-prefork,58670,16.6%,queries
+feathersjs,8866,vs,nodejs-postgresjs-raw,53494,16.6%,queries
+express-mysql,8763,vs,nodejs-postgresjs-raw,53494,16.4%,queries
+postgrest,9519,vs,fasthttp-prefork,58670,16.2%,queries
+emmett,6183,vs,uvicorn,38385,16.1%,queries
+laravel-swoole,8718,vs,swoole-sync-postgres,55866,15.6%,queries
+falcon [asgi/tortoise],5634,vs,uvicorn,38385,14.7%,queries
+padrino-unicorn,3939,vs,rack-unicorn-mri-sequel-raw,26840,14.7%,queries
+spiral,5785,vs,php-workerman,40635,14.2%,queries
+amp,5704,vs,php-workerman,40635,14.0%,queries
+pellet,8176,vs,fasthttp-prefork,58670,13.9%,queries
+express-mongodb,7451,vs,nodejs-postgresjs-raw,53494,13.9%,queries
+peachpie,4844,vs,php-workerman,40635,11.9%,queries
+micronaut data mongodb,6446,vs,fasthttp-prefork,58670,11.0%,queries
+symfony-roadrunner,4399,vs,php-workerman,40635,10.8%,queries
+micronaut data mongodb graalvm,5737,vs,fasthttp-prefork,58670,9.8%,queries
+spring-webflux-mongo,2951,vs,spring,31592,9.3%,queries
+ringojs-convenient,1333,vs,ringojs,14536,9.2%,queries
+cakephp,3648,vs,php-workerman,40635,9.0%,queries
+fastapi-gunicorn-orm,4932,vs,fasthttp-prefork,58670,8.4%,queries
+viz [postgresql - sqlx],4912,vs,fasthttp-prefork,58670,8.4%,queries
+cakephp-workerman,3325,vs,php-workerman,40635,8.2%,queries
+hapi,4307,vs,nodejs-postgresjs-raw,53494,8.1%,queries
+laravel-roadrunner,4440,vs,swoole-sync-postgres,55866,7.9%,queries
+viz [postgresql - diesel],4478,vs,fasthttp-prefork,58670,7.6%,queries
+vapor,4455,vs,fasthttp-prefork,58670,7.6%,queries
+microdot,3837,vs,fasthttp-prefork,58670,6.5%,queries
+lwan,3594,vs,fasthttp-prefork,58670,6.1%,queries
+angel3_postgresql,2841,vs,fasthttp-prefork,58670,4.8%,queries
+onyx,2750,vs,fasthttp-prefork,58670,4.7%,queries
+hapi-nginx,2242,vs,nodejs-postgresjs-raw,53494,4.2%,queries
+salvo [postgres-diesel],2380,vs,fasthttp-prefork,58670,4.1%,queries
+play2-scala-slick,770,vs,akka-http,22062,3.5%,queries
+ohkami,2031,vs,fasthttp-prefork,58670,3.5%,queries
+spring-mongo,859,vs,spring,31592,2.7%,queries
+duct-aleph,1283,vs,fasthttp-prefork,58670,2.2%,queries
+duct,1184,vs,fasthttp-prefork,58670,2.0%,queries
+laravel-laravel-s,937,vs,swoole-sync-postgres,55866,1.7%,queries
+lumen-laravel-s,917,vs,swoole-sync-postgres,55866,1.6%,queries
+trillium [tokio],740,vs,fasthttp-prefork,58670,1.3%,queries
+officefloor-spring_data,339,vs,spring,31592,1.1%,queries
+trillium [async-std],592,vs,fasthttp-prefork,58670,1.0%,queries
+trillium [smol],570,vs,fasthttp-prefork,58670,1.0%,queries
+integrated haskell platfrom (ihp),557,vs,fasthttp-prefork,58670,0.9%,queries
+vapor,533,vs,fasthttp-prefork,58670,0.9%,queries
+today,496,vs,fasthttp-prefork,58670,0.8%,queries
+elixir-plug-ecto,421,vs,fasthttp-prefork,58670,0.7%,queries
+pippo-jetty-mongodb,376,vs,fasthttp-prefork,58670,0.6%,queries
+pippo-tomcat-mongodb,360,vs,fasthttp-prefork,58670,0.6%,queries
+cyberphp,333,vs,workerman [pgsql],55928,0.6%,queries
+pippo-undertow-mongodb,335,vs,fasthttp-prefork,58670,0.6%,queries
+duct-httpkit,268,vs,fasthttp-prefork,58670,0.5%,queries
+next.js,240,vs,nodejs-postgresjs-raw,53494,0.4%,queries
+angel3_mysql,139,vs,fasthttp-prefork,58670,0.2%,queries
+akka-http-slick-postgres,0,vs,akka-http,22062,0.0%,queries
+tornado-py3-uvloop,12789,vs,tornado,1708,748.8%,updates
+http-kit-raw,2907,vs,http-kit,689,421.9%,updates
+php-ngx-pgsql,36801,vs,php-pgsql-raw,11887,309.6%,updates
+workerman [pgsql],36261,vs,php-pgsql-raw,11887,305.0%,updates
+slim-workerman-pgsql,33994,vs,php-pgsql-raw,11887,286.0%,updates
+swoole-sync-postgres,31642,vs,php-pgsql-raw,11887,266.2%,updates
+viz [postgresql],59374,vs,undertow-postgresql,30696,193.4%,updates
+"appmpower [aot-no-reflection,pg,odbc]",26383,vs,"asp.net core [minimal apis, pg, dapper]",13664,193.1%,updates
+inverno,59146,vs,undertow-postgresql,30696,192.7%,updates
+salvo [postgres],58340,vs,undertow-postgresql,30696,190.1%,updates
+axum [postgresql],55708,vs,undertow-postgresql,30696,181.5%,updates
+userver,45783,vs,undertow-postgresql,30696,149.1%,updates
+oxpecker,19751,vs,aspnetcore,13854,142.6%,updates
+mormot [async],43476,vs,undertow-postgresql,30696,141.6%,updates
+micronaut,43322,vs,undertow-postgresql,30696,141.1%,updates
+workerman-pgsql,16763,vs,php-pgsql-raw,11887,141.0%,updates
+micronaut vertx pg client graalvm,40870,vs,undertow-postgresql,30696,133.1%,updates
+drogon-core,39418,vs,undertow-postgresql,30696,128.4%,updates
+hyperexpress-postgres,58070,vs,nodejs-postgresjs-raw,45595,127.4%,updates
+uwebsockets.js,57875,vs,nodejs-postgresjs-raw,45595,126.9%,updates
+vertx-web-kotlin-dsljson-postgresql,58138,vs,vertx-web-postgres,45893,126.7%,updates
+ultimate-express-postgres,57569,vs,nodejs-postgresjs-raw,45595,126.3%,updates
+play2-java-ebean-hikaricp,4968,vs,akka-http,3980,124.8%,updates
+fastify-postgres,56770,vs,nodejs-postgresjs-raw,45595,124.5%,updates
+ditsmod v3.0 [postgres],56308,vs,nodejs-postgresjs-raw,45595,123.5%,updates
+openswoole postgres,14650,vs,php-pgsql-raw,11887,123.2%,updates
+hono,55713,vs,nodejs-postgresjs-raw,45595,122.2%,updates
+play2-java-jpa-hikaricp,4854,vs,akka-http,3980,122.0%,updates
+lithium-postgres,37229,vs,undertow-postgresql,30696,121.3%,updates
+lithium-postgres-beta,36598,vs,undertow-postgresql,30696,119.2%,updates
+ubiquity-swoole,35832,vs,swoole-sync-postgres,31642,113.2%,updates
+express-postgresjs,50818,vs,nodejs-postgresjs-raw,45595,111.5%,updates
+mormot [orm],33334,vs,undertow-postgresql,30696,108.6%,updates
+axum [postgresql - deadpool],32685,vs,undertow-postgresql,30696,106.5%,updates
+micronaut jdbc,31724,vs,undertow-postgresql,30696,103.3%,updates
+pippo-tomcat-postgres,31503,vs,undertow-postgresql,30696,102.6%,updates
+pippo-jetty-postgres,31473,vs,undertow-postgresql,30696,102.5%,updates
+micronaut data jdbc,31257,vs,undertow-postgresql,30696,101.8%,updates
+pippo-undertow-postgres,31233,vs,undertow-postgresql,30696,101.7%,updates
+crystal-radix,6416,vs,crystal,6332,101.3%,updates
+ubiquity-workerman-raw,36723,vs,workerman [pgsql],36261,101.3%,updates
+sinatra-sequel-postgres-passenger-mri,17661,vs,rack-sequel-postgres-passenger-mri,17538,100.7%,updates
+webman-pgsql,36095,vs,workerman [pgsql],36261,99.5%,updates
+kumbiaphp-workerman,36061,vs,workerman [pgsql],36261,99.4%,updates
+vertx-web-kotlin-coroutines-postgres,45501,vs,vertx-web-postgres,45893,99.1%,updates
+"asp.net core [minimal apis, pg, dapper]",13664,vs,aspnetcore,13854,98.6%,updates
+kemal,6216,vs,crystal,6332,98.2%,updates
+ubiquity-workerman,35039,vs,workerman [pgsql],36261,96.6%,updates
+officefloor,11493,vs,officefloor-micro,12153,94.6%,updates
+elysia [compiled],42772,vs,nodejs-postgresjs-raw,45595,93.8%,updates
+elysia [smol] [postgresql],42760,vs,nodejs-postgresjs-raw,45595,93.8%,updates
+micronaut jdbc graalvm,28761,vs,undertow-postgresql,30696,93.7%,updates
+elysia [postgresql],42650,vs,nodejs-postgresjs-raw,45595,93.5%,updates
+vertx-web-scala,42714,vs,vertx-web-postgres,45893,93.1%,updates
+mormot [direct],28502,vs,undertow-postgresql,30696,92.9%,updates
+ubiquity-workerman-mysql,10960,vs,php-pgsql-raw,11887,92.2%,updates
+micronaut data jdbc graalvm,28266,vs,undertow-postgresql,30696,92.1%,updates
+tornado-py3,1496,vs,tornado,1708,87.6%,updates
+symfony-workerman,10408,vs,php-pgsql-raw,11887,87.6%,updates
+roda-sequel-postgres-unicorn-mri,20276,vs,rack-sequel-postgres-unicorn-mri,23534,86.2%,updates
+sinatra-sequel-postgres-unicorn-mri,20029,vs,rack-sequel-postgres-unicorn-mri,23534,85.1%,updates
+symfony-frankenphp,9888,vs,php-pgsql-raw,11887,83.2%,updates
+vibed-dmd-pgsql,1614,vs,vibed-ldc-pgsql,1942,83.1%,updates
+greenlightning,24914,vs,undertow-postgresql,30696,81.2%,updates
+vertx-web-kotlinx-postgresql,46364,vs,vertx-web-kotlin-dsljson-postgresql,58138,79.7%,updates
+coldbox-adobe,8634,vs,cfml-adobe,10894,79.3%,updates
+drogon,24033,vs,undertow-postgresql,30696,78.3%,updates
+play2-java-jooq-hikaricp,3108,vs,akka-http,3980,78.1%,updates
+ubiquity,8887,vs,php-pgsql-raw,11887,74.8%,updates
+ubiquity-workerman-mongo,8855,vs,php-pgsql-raw,11887,74.5%,updates
+symfony-raw,8566,vs,php-pgsql-raw,11887,72.1%,updates
+symfony [mysql],8454,vs,php-pgsql-raw,11887,71.1%,updates
+toro,4495,vs,crystal,6332,71.0%,updates
+play2-scala-anorm,2555,vs,akka-http,3980,64.2%,updates
+symfony,7420,vs,php-pgsql-raw,11887,62.4%,updates
+es4x,27474,vs,nodejs-postgresjs-raw,45595,60.3%,updates
+salvo [postgres-deadpool],15710,vs,undertow-postgresql,30696,51.2%,updates
+rage,15473,vs,undertow-postgresql,30696,50.4%,updates
+spring-webflux,14679,vs,spring,29320,50.1%,updates
+kit,15163,vs,undertow-postgresql,30696,49.4%,updates
+rocket,15074,vs,undertow-postgresql,30696,49.1%,updates
+micronaut r2dbc,14987,vs,undertow-postgresql,30696,48.8%,updates
+mixphp-workerman-pgsql,17316,vs,workerman [pgsql],36261,47.8%,updates
+javalin-postgres,14578,vs,undertow-postgresql,30696,47.5%,updates
+bareasgi,14565,vs,undertow-postgresql,30696,47.4%,updates
+comet,17103,vs,workerman [pgsql],36261,47.2%,updates
+micronaut r2dbc graalvm,13660,vs,undertow-postgresql,30696,44.5%,updates
+panther,13657,vs,undertow-postgresql,30696,44.5%,updates
+php-workerman,5203,vs,php-pgsql-raw,11887,43.8%,updates
+fastapi,13297,vs,undertow-postgresql,30696,43.3%,updates
+fastapi-uvicorn,13055,vs,undertow-postgresql,30696,42.5%,updates
+slim-workerman,5030,vs,php-pgsql-raw,11887,42.3%,updates
+fastapi-gunicorn-orjson,12951,vs,undertow-postgresql,30696,42.2%,updates
+act-eclipselink-pgsql,12939,vs,undertow-postgresql,30696,42.2%,updates
+php-h2o,4981,vs,php-pgsql-raw,11887,41.9%,updates
+apidaora,12801,vs,undertow-postgresql,30696,41.7%,updates
+apidaora-core,12788,vs,undertow-postgresql,30696,41.7%,updates
+fastapi-uvicorn-orjson,12666,vs,undertow-postgresql,30696,41.3%,updates
+codeigniter,4815,vs,php-pgsql-raw,11887,40.5%,updates
+php-raw7-tcp,4762,vs,php-pgsql-raw,11887,40.1%,updates
+php-ngx-mysql,4752,vs,php-pgsql-raw,11887,40.0%,updates
+sanic,12252,vs,undertow-postgresql,30696,39.9%,updates
+cfml-lucee,12071,vs,undertow-postgresql,30696,39.3%,updates
+kumbiaphp-raw,4668,vs,php-pgsql-raw,11887,39.3%,updates
+php-unit,4626,vs,php-pgsql-raw,11887,38.9%,updates
+"workerman [jit, mysql]",4584,vs,php-pgsql-raw,11887,38.6%,updates
+php,4565,vs,php-pgsql-raw,11887,38.4%,updates
+heaven,11755,vs,undertow-postgresql,30696,38.3%,updates
+php-frankenphp,4543,vs,php-pgsql-raw,11887,38.2%,updates
+zend,4534,vs,php-pgsql-raw,11887,38.1%,updates
+microdot-raw,11697,vs,undertow-postgresql,30696,38.1%,updates
+"workerman [jit, mysql, swow, async]",4508,vs,php-pgsql-raw,11887,37.9%,updates
+openswoole,4472,vs,php-pgsql-raw,11887,37.6%,updates
+kumbiaphp,4468,vs,php-pgsql-raw,11887,37.6%,updates
+yii2-raw,4455,vs,php-pgsql-raw,11887,37.5%,updates
+"workerman [jit, mysql, swoole, async]",4400,vs,php-pgsql-raw,11887,37.0%,updates
+fat-free-raw,4385,vs,php-pgsql-raw,11887,36.9%,updates
+nette,4384,vs,php-pgsql-raw,11887,36.9%,updates
+blacksheep,11249,vs,undertow-postgresql,30696,36.6%,updates
+php-caddyserver,4329,vs,php-pgsql-raw,11887,36.4%,updates
+duckphp,4325,vs,php-pgsql-raw,11887,36.4%,updates
+wolff,4309,vs,php-pgsql-raw,11887,36.2%,updates
+flight,4307,vs,php-pgsql-raw,11887,36.2%,updates
+swoole-no-async,4303,vs,php-pgsql-raw,11887,36.2%,updates
+ubiquity-swoole-mysql,11342,vs,swoole-sync-postgres,31642,35.8%,updates
+php-pools,4235,vs,php-pgsql-raw,11887,35.6%,updates
+cfml-adobe,10894,vs,undertow-postgresql,30696,35.5%,updates
+phpixie,4175,vs,php-pgsql-raw,11887,35.1%,updates
+treefrog-mongodb,7848,vs,treefrog-epoll,22515,34.9%,updates
+openswoole no-async,4125,vs,php-pgsql-raw,11887,34.7%,updates
+yii2,4109,vs,php-pgsql-raw,11887,34.6%,updates
+phalcon,4050,vs,php-pgsql-raw,11887,34.1%,updates
+fat-free,3937,vs,php-pgsql-raw,11887,33.1%,updates
+slim,3906,vs,php-pgsql-raw,11887,32.9%,updates
+mixphp,3873,vs,php-pgsql-raw,11887,32.6%,updates
+lithium,9970,vs,undertow-postgresql,30696,32.5%,updates
+officefloor-undertow,9941,vs,undertow-postgresql,30696,32.4%,updates
+fastapi-hypercorn,9935,vs,undertow-postgresql,30696,32.4%,updates
+fastapi-hypercorn-orjson,9830,vs,undertow-postgresql,30696,32.0%,updates
+micronaut data mongodb,9801,vs,undertow-postgresql,30696,31.9%,updates
+symfony-swoole,9802,vs,swoole-sync-postgres,31642,31.0%,updates
+mako,3604,vs,php-pgsql-raw,11887,30.3%,updates
+laravel-octane [frankenphp],3484,vs,php-pgsql-raw,11887,29.3%,updates
+laravel-workerman,3398,vs,php-pgsql-raw,11887,28.6%,updates
+php-eloquent,3352,vs,php-pgsql-raw,11887,28.2%,updates
+lumen,3309,vs,php-pgsql-raw,11887,27.8%,updates
+laravel,3192,vs,php-pgsql-raw,11887,26.9%,updates
+pippo-tomcat-mysql,8010,vs,undertow-postgresql,30696,26.1%,updates
+pippo-undertow-mysql,7981,vs,undertow-postgresql,30696,26.0%,updates
+pippo-jetty-mysql,7877,vs,undertow-postgresql,30696,25.7%,updates
+vapor,7671,vs,undertow-postgresql,30696,25.0%,updates
+micronaut data mongodb graalvm,7522,vs,undertow-postgresql,30696,24.5%,updates
+"appmpower [aot-no-reflection,my,odbc]",3197,vs,"asp.net core [minimal apis, pg, dapper]",13664,23.4%,updates
+salvo [mongodb-raw],6977,vs,undertow-postgresql,30696,22.7%,updates
+salvo [mongodb],6847,vs,undertow-postgresql,30696,22.3%,updates
+axum [mongodb],6844,vs,undertow-postgresql,30696,22.3%,updates
+axum [mongodb raw],6778,vs,undertow-postgresql,30696,22.1%,updates
+hummingbird,6776,vs,undertow-postgresql,30696,22.1%,updates
+spliffy,9285,vs,nodejs-postgresjs-raw,45595,20.4%,updates
+cakephp-workerman,2346,vs,php-pgsql-raw,11887,19.7%,updates
+coldbox-lucee,2352,vs,cfml-lucee,12071,19.5%,updates
+lucky,5972,vs,undertow-postgresql,30696,19.5%,updates
+nestjs-fastify-mongo,8664,vs,nodejs-postgresjs-raw,45595,19.0%,updates
+nestjs-mongo,8658,vs,nodejs-postgresjs-raw,45595,19.0%,updates
+officefloor-vertx,9771,vs,vertx-postgres,58300,16.8%,updates
+nodejs-mongodb-raw,7496,vs,nodejs-postgresjs-raw,45595,16.4%,updates
+play2-scala-slick,631,vs,akka-http,3980,15.9%,updates
+mesh,7115,vs,nodejs-postgresjs-raw,45595,15.6%,updates
+spliffy,7111,vs,nodejs-postgresjs-raw,45595,15.6%,updates
+cakephp,1794,vs,php-pgsql-raw,11887,15.1%,updates
+nodejs-mongodb,6629,vs,nodejs-postgresjs-raw,45595,14.5%,updates
+ktor-netty-exposed-dsl,1748,vs,ktor-netty-r2dbc,12467,14.0%,updates
+simps,4427,vs,swoole-sync-postgres,31642,14.0%,updates
+mixphp-swoole-mysql,4349,vs,swoole-sync-postgres,31642,13.7%,updates
+simps-micro,4214,vs,swoole-sync-postgres,31642,13.3%,updates
+symfony-roadrunner,1562,vs,php-pgsql-raw,11887,13.1%,updates
+comet-mysql,4528,vs,workerman [pgsql],36261,12.5%,updates
+pellet,3718,vs,undertow-postgresql,30696,12.1%,updates
+kumbiaphp-workerman-mysql,4379,vs,workerman [pgsql],36261,12.1%,updates
+nestjs-fastify,5482,vs,nodejs-postgresjs-raw,45595,12.0%,updates
+mixphp-workerman-mysql,4347,vs,workerman [pgsql],36261,12.0%,updates
+yii2-workerman,4345,vs,workerman [pgsql],36261,12.0%,updates
+jewelia,3663,vs,undertow-postgresql,30696,11.9%,updates
+nestjs,5384,vs,nodejs-postgresjs-raw,45595,11.8%,updates
+mesh,5201,vs,nodejs-postgresjs-raw,45595,11.4%,updates
+lumen-swoole,3477,vs,swoole-sync-postgres,31642,11.0%,updates
+laravel-swoole,3472,vs,swoole-sync-postgres,31642,11.0%,updates
+spliffy,4534,vs,nodejs-postgresjs-raw,45595,9.9%,updates
+ripple,1147,vs,php-pgsql-raw,11887,9.6%,updates
+lumen-workerman,3431,vs,workerman [pgsql],36261,9.5%,updates
+peachpie,1108,vs,php-pgsql-raw,11887,9.3%,updates
+swoole,1045,vs,php-pgsql-raw,11887,8.8%,updates
+hapi-postgres,3887,vs,nodejs-postgresjs-raw,45595,8.5%,updates
+vapor,2434,vs,undertow-postgresql,30696,7.9%,updates
+koa-mysql,3569,vs,nodejs-postgresjs-raw,45595,7.8%,updates
+express-mongodb,3532,vs,nodejs-postgresjs-raw,45595,7.7%,updates
+viz [postgresql - sqlx],2239,vs,undertow-postgresql,30696,7.3%,updates
+hapi-nginx,3296,vs,nodejs-postgresjs-raw,45595,7.2%,updates
+ringojs-convenient,259,vs,ringojs,3895,6.6%,updates
+laravel-roadrunner,2099,vs,swoole-sync-postgres,31642,6.6%,updates
+feathersjs,2998,vs,nodejs-postgresjs-raw,45595,6.6%,updates
+express-mysql,2917,vs,nodejs-postgresjs-raw,45595,6.4%,updates
+nestjs-fastify-mysql,2901,vs,nodejs-postgresjs-raw,45595,6.4%,updates
+nestjs-mysql,2891,vs,nodejs-postgresjs-raw,45595,6.3%,updates
+hyperexpress-mysql,2711,vs,nodejs-postgresjs-raw,45595,5.9%,updates
+ultimate-express-mysql,2670,vs,nodejs-postgresjs-raw,45595,5.9%,updates
+hapi,2413,vs,nodejs-postgresjs-raw,45595,5.3%,updates
+rack-sequel-unicorn-mri,1228,vs,rack-unicorn-mri-sequel-raw,23916,5.1%,updates
+hapi-mysql,2315,vs,nodejs-postgresjs-raw,45595,5.1%,updates
+onyx,1479,vs,undertow-postgresql,30696,4.8%,updates
+fastify-mysql,2155,vs,nodejs-postgresjs-raw,45595,4.7%,updates
+ditsmod v3.0 [mysql],2152,vs,nodejs-postgresjs-raw,45595,4.7%,updates
+fastapi-gunicorn-orm,1439,vs,undertow-postgresql,30696,4.7%,updates
+nodejs-mysql,2038,vs,nodejs-postgresjs-raw,45595,4.5%,updates
+padrino-unicorn,1022,vs,rack-unicorn-mri-sequel-raw,23916,4.3%,updates
+microdot,1301,vs,undertow-postgresql,30696,4.2%,updates
+one-no-coroutine,1071,vs,swoole-sync-postgres,31642,3.4%,updates
+ohkami,976,vs,undertow-postgresql,30696,3.2%,updates
+angel3_postgresql,924,vs,undertow-postgresql,30696,3.0%,updates
+spring-mongo,814,vs,spring,29320,2.8%,updates
+nodejs-mysql-raw,1025,vs,nodejs-postgresjs-raw,45595,2.2%,updates
+salvo [postgres-diesel],634,vs,undertow-postgresql,30696,2.1%,updates
+lumen-laravel-s,456,vs,swoole-sync-postgres,31642,1.4%,updates
+laravel-laravel-s,429,vs,swoole-sync-postgres,31642,1.4%,updates
+pippo-jetty-mongodb,367,vs,undertow-postgresql,30696,1.2%,updates
+pippo-tomcat-mongodb,346,vs,undertow-postgresql,30696,1.1%,updates
+act-hibernate-pgsql,332,vs,undertow-postgresql,30696,1.1%,updates
+pippo-undertow-mongodb,328,vs,undertow-postgresql,30696,1.1%,updates
+today,244,vs,undertow-postgresql,30696,0.8%,updates
+cyberphp,288,vs,workerman [pgsql],36261,0.8%,updates
+rage-sequel,241,vs,undertow-postgresql,30696,0.8%,updates
+integrated haskell platfrom (ihp),235,vs,undertow-postgresql,30696,0.8%,updates
+elixir-plug-ecto,201,vs,undertow-postgresql,30696,0.7%,updates
+next.js,227,vs,nodejs-postgresjs-raw,45595,0.5%,updates
+officefloor-spring_data,128,vs,spring,29320,0.4%,updates
+trillium [tokio],134,vs,undertow-postgresql,30696,0.4%,updates
+trillium [smol],100,vs,undertow-postgresql,30696,0.3%,updates
+trillium [async-std],100,vs,undertow-postgresql,30696,0.3%,updates
+viz [postgresql - diesel],37,vs,undertow-postgresql,30696,0.1%,updates
+swoole-async-postgres,3,vs,php-pgsql-raw,11887,0.0%,updates
