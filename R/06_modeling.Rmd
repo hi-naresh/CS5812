@@ -1,0 +1,502 @@
+---
+title: "06_modeling"
+output: html_document
+author: "Naresh Jhawar"
+---
+
+**Purpose of Modeling**: The goal is to predict the efficiency of a tech stack under extreme loads using supervised machine learning models. The dataset has been preprocessed and PCA-transformed to reduce dimensionality and improve model performance.
+
+Supervised machine learning models predict the efficiency score, enabling accurate forecasting of system performance under extreme loads. This phase trains and evaluates regression models in R (Linear Regression, Decision Tree, Random Forest, SVR, kNN) on the PCA‑transformed dataset, comparing performance (MAE, RMSE, R²), training time, and ease of use. Deep learning models (e.g., MLP) will be implemented in Python in a separate file due to language requirements.
+
+
+## 1. Loading Libraries and Data
+
+```{r setup, message=FALSE, warning=FALSE}
+# knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+# Load libraries
+library(tidyverse)
+library(caret)
+library(e1071)        # For SVM
+library(rpart)        # For Decision Tree
+library(randomForest) # For Random Forest
+library(xgboost)      # For XGBoost
+library(knitr)
+# library(ggplot2)
+# library(skimr)
+
+# Load PCA-transformed datasets
+load("../data/processed/red/train_data_pca.RData")
+load("../data/processed/red/test_data_pca.RData")
+X_test_set <- read_csv("../data/processed/eng/cleaned_data.csv")
+
+# Quick glimpse of the training data
+glimpse(train_data_pca)
+```
+
+# Split Dataset
+<!--
+Why Needed: Split the dataset into training (80%) and test (20%) sets for model evaluation.
+How It Helps: Ensures models are evaluated on unseen data, preventing overfitting. Stratification by test_type or framework maintains representativeness.
+Insights Provided: Confirms the dataset is ready for modeling with balanced training and test sets.
+-->
+
+```{r}
+# Set seed for reproducibility
+set.seed(123)
+
+# Stratify split by test_type (if still present) or random split
+if ("test_type" %in% names(dataset_eng)) {
+  train_index <- createDataPartition(dataset_eng$test_type, p = 0.8, list = FALSE)
+} else {
+  train_index <- sample(1:nrow(dataset_eng), 0.8 * nrow(dataset_eng))
+}
+
+# Create training and test sets
+train_data <- dataset_eng[train_index, ]
+test_data <- dataset_eng[-train_index, ]
+
+# Verify split
+cat("Training set rows:", nrow(train_data), "\n")
+cat("Test set rows:", nrow(test_data), "\n")
+```
+
+
+## 2. Prepare Data
+
+```{r prepare-data}
+# Define features (exclude efficiency, kmeans_cluster, hclust_cluster)
+feature_cols <- setdiff(names(train_data_pca), c("efficiency", "kmeans_cluster", "hclust_cluster"))
+
+# Training and test sets
+X_train <- train_data_pca[feature_cols]
+X_train <- X_train %>%
+  select(- c( "latency_std_ms",
+         "latency_p50", "latency_p75", "latency_p90", "latency_p99",
+          "total_tcp_sockets", "read_errors", "write_errors",
+         "timeout_requests", "response_time"))
+y_train <- train_data_pca$efficiency
+X_test  <- test_data_pca[feature_cols]
+
+X_test_exp <- X_test[1,]
+
+train_safe <- train_data_pca %>%
+  select(all_of(feature_cols), efficiency) %>%
+  rename_with(~ make.names(.x))
+
+test_safe  <- test_data_pca %>%
+  select(all_of(feature_cols)) %>%
+  rename_with(~ make.names(.x))
+
+X_test <- X_test %>%
+  select(- c( "latency_std_ms",
+         "latency_p50", "latency_p75", "latency_p90", "latency_p99",
+          "total_tcp_sockets", "read_errors", "write_errors",
+         "timeout_requests", "response_time"))
+y_test  <- test_data_pca$efficiency
+
+
+# Convert to matrix for XGBoost
+X_train_matrix <- as.matrix(X_train)
+X_test_matrix <- as.matrix(X_test)
+
+# check for corelation on training data
+correlation_matrix <- cor(X_train)
+
+# Check for multicollinearity
+# highly_correlated <- findCorrelation(correlation_matrix, cutoff = 0.75)
+
+# Verify dimensions
+cat("Training features:", nrow(X_train), "rows,", ncol(X_train), "columns\n")
+cat("Test features:",     nrow(X_test),  "rows,", ncol(X_test),  "columns\n")
+```
+
+## 3. Modelling
+
+### 3.1 Train and Evaluate Models
+
+```{r train-evaluate, message=FALSE, warning=FALSE}
+# Initialize empty results tibble
+defaults <- list(
+  Model = character(),  
+  MAE = double(),       
+  RMSE = double(),      
+  R2 = double(),        
+  Training_Time = numeric(),
+  Predicting_Time = numeric()
+)
+results <- as_tibble(defaults)
+
+# Evaluation function returns one-row tibble
+evaluate_model <- function(model_name, predictions, actual, train_time,predict_time) {
+  mae    <- mean(abs(predictions - actual), na.rm = TRUE)
+  rmse   <- sqrt(mean((predictions - actual)^2, na.rm = TRUE))
+  ss_tot <- sum((actual - mean(actual, na.rm = TRUE))^2, na.rm = TRUE)
+  ss_res <- sum((actual - predictions)^2, na.rm = TRUE)
+  r2     <- if (ss_tot > 0) 1 - ss_res/ss_tot else NA_real_
+
+  tibble(
+    Model         = model_name,
+    MAE           = mae,
+    RMSE          = rmse,
+    R2            = r2,
+    Training_Time = train_time,
+    Predicting_Time = predict_time
+  )
+}
+
+set.seed(123)
+# 
+# # 1. Linear Regression
+# start_time <- Sys.time()
+# lm_model <- lm(efficiency ~ ., data = train_data_pca[feature_cols] %>% mutate(efficiency = train_data_pca$efficiency))
+# lm_pred  <- predict(lm_model, newdata = X_test)
+# end_time <- Sys.time()
+# results <- bind_rows(
+#   results,
+#   evaluate_model("Linear Regression", lm_pred, y_test, as.numeric(end_time - start_time))
+# )
+# 
+# # 2. Decision Tree
+# start_time <- Sys.time()
+# dt_model <- rpart(efficiency ~ ., data = train_data_pca[feature_cols] %>% mutate(efficiency = train_data_pca$efficiency), method = "anova")
+# dt_pred  <- predict(dt_model, newdata = X_test)
+# end_time <- Sys.time()
+# results <- bind_rows(
+#   results,
+#   evaluate_model("Decision Tree", dt_pred, y_test, as.numeric(end_time - start_time))
+# )
+# 
+# # 3. Random Forest
+# start_time <- Sys.time()
+# 
+# # make a copy of your PCA data with safe names
+# train_safe <- train_data_pca %>%
+#   select(all_of(feature_cols), efficiency) %>%
+#   rename_with(~ make.names(.x))
+# 
+# # now the formula will work
+# rf_model <- randomForest(
+#   efficiency ~ .,
+#   data  = train_safe,
+#   ntree = 100
+# )
+# 
+# # rf_model <- randomForest(efficiency ~ ., data = train_data_pca[feature_cols] %>% mutate(efficiency = train_data_pca$efficiency), ntree = 100)
+# train_safe <- train_data_pca %>% 
+#   select(all_of(feature_cols), efficiency) %>% 
+#   rename_with(~ make.names(.x))
+# 
+# test_safe  <- test_data_pca %>% 
+#   select(all_of(feature_cols)) %>% 
+#   rename_with(~ make.names(.x))
+# 
+# # then
+# # rf_model <- randomForest(
+# #   efficiency ~ .,
+# #   data  = train_safe,
+# #   ntree = 100
+# # )
+# 
+# rf_pred <- predict(rf_model, newdata = test_safe)
+# # rf_pred  <- predict(rf_model, newdata = X_test)
+# end_time  <- Sys.time()
+# results <- bind_rows(
+#   results,
+#   evaluate_model("Random Forest", rf_pred, y_test, as.numeric(end_time - start_time))
+# )
+# 
+# # 4. Support Vector Regression (SVR)
+# start_time <- Sys.time()
+# svr_model <- svm(efficiency ~ ., data = train_data_pca[feature_cols] %>% mutate(efficiency = train_data_pca$efficiency), kernel = "radial")
+# svr_pred  <- predict(svr_model, newdata = X_test)
+# end_time  <- Sys.time()
+# results <- bind_rows(
+#   results,
+#   evaluate_model("SVR", svr_pred, y_test, as.numeric(end_time - start_time))
+# )
+# 
+# # 5. k-Nearest Neighbors (kNN)
+# t0 <- Sys.time()
+# knn_model <- knnreg(X_train, y_train, k = 5)
+# t1 <- Sys.time()
+# p0 <- Sys.time()
+# knn_pred  <- predict(knn_model, newdata = X_test)
+# p1<- Sys.time()
+# end_time   <- Sys.time()
+# results <- bind_rows(
+#   results,
+#   evaluate_model("kNN", knn_pred, y_test, as.numeric(t1-t0), as.numeric(p1-p0))
+# )
+# 6. XGBoost
+# start_time <- Sys.time()
+# xgb_model <- xgboost(
+#   data = X_train_matrix,
+#   label = y_train,
+#   nrounds = 100,
+#   objective = "reg:squarederror",
+#   verbose = 0
+# )
+# xgb_pred <- predict(xgb_model, X_test_matrix)
+# end_time <- Sys.time()
+# results <- rbind(results, evaluate_model("XGBoost", xgb_pred, y_test, 
+#                                         as.numeric(end_time - start_time)))
+
+
+model_training <- function(
+    model_name,
+    model_to_train,
+    test_data
+    ){
+  t0<- Sys.time()
+  model<- model_to_train
+  t1<- Sys.time()
+  cat("Model training done in", t1 -t0, "seconds!")
+  p0<- Sys.time()
+  predict_model <- predict(model, newdata = test_data)
+  p1 <- Sys.time()
+  cat("Predicted in", p1 - p0, "seconds!")
+  results <<- bind_rows(
+    results,
+    evaluate_model(model_name, predict_model,y_test,
+                   as.numeric(difftime(t1,t0,units = "secs")),
+                   as.numeric(difftime(p1,p0,units = "secs"))
+                   )
+  )
+}
+
+
+
+model_training(
+  model_name = "Linear Regression",
+  model_to_train = lm_model <- lm(train_data_pca$efficiency ~ ., data = X_train),
+  test_data = X_test
+)
+
+# 2. Decision Tree
+model_training(
+  model_name = "Decision Tree",
+  model_to_train = dt_model <- rpart(train_data_pca$efficiency ~ ., data = X_train, method = "anova"),
+  test_data = X_test
+)
+
+# 3. Random Forest
+
+model_training(
+  model_name = "Random Forest",
+  model_to_train = rf_model <- randomForest(
+                                  efficiency ~ .,
+                                  data  = train_safe,
+                                  ntree = 100),
+  test_data = test_safe
+)
+
+model_training(
+  model_name = "SVR",
+  model_to_train =  svr_model <- svm(train_data_pca$efficiency ~ ., data = X_train , kernel = "radial"),
+  test_data = X_test
+)
+
+model_training(
+  model_name = "kNN",
+  model_to_train = knn_model <- knnreg(X_train, y_train, k = 5),
+  test_data = X_test
+)
+
+model_training(
+  model_name = "XGBoost",
+  model_to_train = xgb_model<- xgboost(
+    data = X_train_matrix,
+    label = y_train,
+    nrounds = 100,
+    objective = "reg:squarederror",
+    verbose = 0
+  ),
+  test_data = X_test_matrix
+)
+
+
+
+# Display results
+kable(results, caption = "Model Performance Metrics", digits = 4)
+```
+
+
+### 3.2 Visualize Results
+
+```{r visualize, message=FALSE, warning=FALSE}
+# Ensure RMSE is numeric and pick best model
+tmp <- results %>% mutate(RMSE = as.numeric(RMSE))
+idx <- which.min(tmp$RMSE)
+best_model <- tmp$Model[idx]
+
+lm_pred <- predict(lm_model, newdata = X_test)
+dt_pred <- predict(dt_model, newdata = X_test)
+rf_pred <- predict(rf_model, newdata = test_safe)
+svr_pred <- predict(svr_model, newdata = X_test)
+knn_pred <- predict(knn_model, newdata = X_test)
+xgb_pred <- predict(xgb_model, X_test_matrix)
+
+# Map to prediction vector
+best_pred <- switch(
+  best_model,
+  "Linear Regression" = lm_pred,
+  "Decision Tree"     = dt_pred,
+  "Random Forest"     = rf_pred,
+  "SVR"               = svr_pred,
+  "kNN"               = knn_pred,
+  "XGBoost"           = xgb_pred,
+  stop("No prediction for model: ", best_model)
+)
+
+# y_test_table <- data.frame(y_test)
+# CFM <- X_test %>%
+#   mutate(pred= as.numeric(predict(xgb_model, X_test_matrix)))
+# CFM <- CFM %>%
+#   mutate(difference = CFM$thr - CFM$pred)
+
+# Predicted vs. Actual
+p1 <- ggplot(data.frame(Actual = y_test, Predicted = best_pred), aes(x = Actual, y = Predicted)) +
+  geom_point(alpha = 0.5) +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed") +
+  theme_minimal() +
+  labs(
+    title = paste("Predicted vs Actual Efficiency (", best_model, ")"),
+    x = "Actual Efficiency", y = "Predicted Efficiency"
+  )
+
+# Residuals vs Predicted
+residuals <- y_test - best_pred
+p2 <- ggplot(data.frame(Predicted = best_pred, Residuals = residuals), aes(x = Predicted, y = Residuals)) +
+  geom_point(alpha = 0.5) +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  theme_minimal() +
+  labs(
+    title = paste("Residuals vs Predicted (", best_model, ")"),
+    x = "Predicted Efficiency", y = "Residuals"
+  )
+
+print(p1)
+print(p2)
+```
+
+### 3.3 Model Accuracy
+```{r}
+compute_accuracy <- function(model_pred){
+  test_data_pca <- test_data_pca %>%
+  mutate(predicted = model_pred )%>%
+  select(predicted,everything())
+  
+  
+  # 2. compute errors
+  results_metrics <- test_data_pca %>%
+    mutate(
+      error       = abs(efficiency - predicted),
+      perc_error  = error / abs(efficiency), # avoid sign issues
+      accuracy_i  = 1 - perc_error # per‐row “accuracy”
+    )
+  
+  # 3. overall metrics
+  metrics <- results_metrics %>%
+    summarise(
+      MAPE            = mean(perc_error, na.rm = TRUE) * 100,
+      Overall_Accuracy = mean(accuracy_i, na.rm = TRUE) * 100
+    )
+  
+  return(metrics)
+}
+
+# add accuracy for each model to results
+results <- results %>%
+  mutate(Overall_Accuracy = NA_real_)
+
+for (i in 1:nrow(results)) {
+  model_name <- results$Model[i]
+  if (model_name == "Linear Regression") {
+    model_pred <- lm_pred
+  } else if (model_name == "Decision Tree") {
+    model_pred <- dt_pred
+  } else if (model_name == "Random Forest") {
+    model_pred <- rf_pred
+  } else if (model_name == "SVR") {
+    model_pred <- svr_pred
+  } else if (model_name == "kNN") {
+    model_pred <- knn_pred
+  } else if (model_name == "XGBoost") {
+    model_pred <- xgb_pred
+  }
+  
+  accuracy_metrics <- compute_accuracy(model_pred)
+  results$Overall_Accuracy[i] <- accuracy_metrics$Overall_Accuracy
+}
+
+```
+
+-   **Linear Regression**: Simple to implement, interpretable, but assumes linearity. Fast training.
+-   **Decision Tree**: Easy to interpret, handles non-linear relationships, but prone to overfitting. Moderate training time.
+-   **Random Forest**: Robust, handles non-linearity and interactions, but less interpretable and slower to train.
+-   **SVR**: Effective for non-linear data, but sensitive to hyperparameter tuning and slower for large datasets.
+-   **kNN**: Simple, non-parametric, but computationally expensive during prediction and sensitive to feature scaling.
+
+
+<!--
+Why Needed: Evaluate models' practical usability and alignment with industry needs.
+How It Helps: Guides model selection for deployment based on interpretability, scalability, and maintenance.
+Insights Provided: Identifies which model best meets industry expectations for production environments.
+-->
+
+- **Linear Regression**: Simple, interpretable, fast, but assumes linearity. Limited for complex, non-linear industry data.
+- **Decision Tree**: Intuitive, handles non-linearity, but prone to overfitting. Moderate industry use due to instability.
+- **Random Forest**: Robust, handles non-linearity, but slower and less interpretable. Widely used in industry for balanced performance.
+- **SVR**: Effective for non-linear data, but computationally intensive and sensitive to tuning. Less common in large-scale industry settings.
+- **kNN**: Simple, non-parametric, but slow for predictions and sensitive to scaling. Rarely used in industry for real-time tasks.
+- **XGBoost**: High accuracy, scalable, handles non-linearity, and optimized for large datasets. Industry-standard for performance-critical applications (e.g., cloud optimization, fintech).
+
+The best model (e.g., XGBoost if it has lowest RMSE) stands out in industry due to its ability to handle complex, high-dimensional data, deliver accurate predictions under extreme loads, and scale for production environments, reducing the need for costly benchmarking.
+
+
+## 4. Save Model Results
+
+```{r save-results}
+model_path <- "../data/processed/model/"
+if (!dir.exists(model_path)) dir.create(model_path, recursive = TRUE)
+
+# Save RData files
+save(results, file = paste0(model_path, "model_results.RData"))
+save(lm_model, dt_model, 
+     rf_model,
+     svr_model, knn_model,
+     xgb_model,
+     file = paste0(model_path, "models.RData"))
+
+cat("Model results saved successfully!\n")
+glimpse(dataset_eng)
+
+```
+
+
+**Note** : 
+Deep learning models (e.g., Multi-Layer Perceptron) will be implemented in Python due to language requirements. A separate file (e.g., `07_deep_learning.py`) will train an MLP using the PCA-transformed dataset, evaluating MAE, RMSE, R², and training time. Results will be compared with R models to identify the top performer.
+
+## 5. Feature Importance
+
+For the best model (assuming tree-based, e.g., XGBoost or RF), extract feature importance to confirm key drivers.
+
+```{r feature_importance}
+# Check if best model supports importance
+if (best_model_name %in% c("Random_Forest", "XGBoost")) {
+  if (best_model_name == "Random_Forest") {
+    importance <- importance(best_model$finalModel)
+    importance_df <- as.data.frame(importance) %>%
+      rownames_to_column("Feature") %>%
+      arrange(desc(`%IncMSE`))
+  } else if (best_model_name == "XGBoost") {
+    importance <- xgb.importance(model = best_model$finalModel)
+    importance_df <- as.data.frame(importance) %>%
+      rename(Feature = Feature, `%IncMSE` = Gain)
+  }
+  
+  kable(importance_df, caption = paste("Feature Importance:", best_model_name))
+} else {
+  cat("Feature importance not available for", best_model_name)
+}
+```

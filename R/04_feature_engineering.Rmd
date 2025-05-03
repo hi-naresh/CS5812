@@ -1,0 +1,254 @@
+---
+title: "04_feature_engineering"
+output: html_document
+author: "Naresh Jhawar"
+---
+
+**Purpose** :
+Feature engineering transforms raw data into a format suitable for machine learning models, improving predictive performance. This phase calculates the efficiency score, encodes categorical variables, normalizes numerical features to address skewness (e.g., throughput, latency), and removes irrelevant columns. These steps ensure models like kNN, SVM, and neural networks perform optimally and provide accurate efficiency predictions.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+library(tidyverse)
+library(skimr)
+library(knitr)
+library(caret)
+set.seed(123)
+```
+
+## 1. Load Dataset
+
+Load the raw dataset to begin feature engineering, focusing on efficiency and tech stack components.
+
+```{r load_data}
+# Load dataset
+load("../data/processed/prep/dataset_prep.RData")
+cat("Loaded dataset_prep with", nrow(dataset_prep), "rows and", ncol(dataset_prep), "columns.\n")
+
+data <- dataset_prep
+
+# Quick check
+skim(data)
+```
+
+**Why**: The dataset has 17,568 rows and 63 columns, including `throughput`, `latency_avg_ms`, tech stack components (`framework`, `language`, `platform`, `webserver`, `database`, `classification`), and configurations (`scale_factor`, `connections`). Loading ensures all variables are available for engineering the efficiency score and supporting features.  
+**Helps**: Provides a starting point for creating the target (`efficiency`) and preparing features for ML/DL models.  
+**Insights**: 
+- **EDA**: `throughput` and `latency_avg_ms` are skewed; `framework` (e.g., `vertx-web-postgres`) embeds tech stack (`java`, `vert.x`, `postgres`, `micro`); `scale_factor` > 20 reduces efficiency.
+
+## 2. Calculate Efficiency Score
+
+Create the target variable `efficiency` as specified.
+
+```{r}
+compute_efficiency <- function(df, alpha=0.5, beta=1) {
+  df %>%
+    mutate(
+      total_errors = connect_errors + read_errors + write_errors + timeout_requests,
+      error_rate     = pmin(1, total_errors / (total_requests + 1e-6)), # Avoid 0 division 
+      # Goodput
+      goodput = pmax(0, throughput * (1 - error_rate)^beta),
+      # Denominator: Apdex-inspired latency penalty
+      lat_penalty = latency_avg_ms + alpha * (latency_max_ms - latency_avg_ms),
+      # efficiency score
+      efficiency    = ifelse(throughput > 0 & lat_penalty > 0, goodput / lat_penalty, 0)
+    )
+}
+
+# add efficiency score
+data <- compute_efficiency(data)
+
+# Check for NA values in efficiency
+cat("Efficiency score NA count:", sum(is.na(data$efficiency)), "\n")
+
+p1<- hist(data$efficiency, breaks = 100, main = "Efficiency Score Distribution", xlab = "Efficiency Score", col = "lightblue")
+
+# since efficiency is right skewed, we can use log1p to transform it
+data <- data %>%
+  mutate(efficiency_log = log1p(efficiency))
+
+p2 <- hist(data$efficiency_log, breaks = 100, main = "Log1p Efficiency Score Distribution", xlab = "Log1p Efficiency Score", col = "lightblue")
+
+# (p1 + p2) + plot_layout(ncol = 2)
+
+```
+
+## 3. Create System Load
+
+Create `system_load` as a categorical variable based on `test_type` and `scale_factor`. This variable indicates the system load during testing.
+
+```{r system_load}
+data <- data %>%
+  mutate(
+    system_load = case_when(
+      test_type %in% c("query", "update") & scale_factor == 1 ~ "Very Low",
+      test_type %in% c("query", "update") & scale_factor == 5 ~ "Low",
+      test_type %in% c("query", "update") & scale_factor == 10 ~ "Medium",
+      test_type %in% c("query", "update") & scale_factor == 15 ~ "High",
+      test_type %in% c("query", "update") & scale_factor == 20 ~ "Very High",
+      
+      test_type == "cached-query" & scale_factor == 1 ~ "Very Low",
+      test_type == "cached-query" & scale_factor == 10 ~ "Low",
+      test_type == "cached-query" & scale_factor == 20 ~ "Medium",
+      test_type == "cached-query" & scale_factor == 50 ~ "High",
+      test_type == "cached-query" & scale_factor == 100 ~ "Very High",
+      
+      test_type %in% c("fortune", "json", "db") & scale_factor == 16 ~ "Very Low",
+      test_type %in% c("fortune", "json", "db") & scale_factor == 32 ~ "Low",
+      test_type %in% c("fortune", "json", "db") & scale_factor == 64 ~ "Medium Low",
+      test_type %in% c("fortune", "json", "db") & scale_factor == 128 ~ "Medium",
+      test_type %in% c("fortune", "json", "db") & scale_factor == 256 ~ "High",
+      test_type %in% c("fortune", "json", "db") & scale_factor == 512 ~ "Very High",
+      
+      TRUE ~ NA_character_
+    )
+  ) %>%
+  mutate(system_load = factor(
+    system_load,
+    levels = c("Very Low", "Low", "Medium Low", "Medium", "High", "Very High")
+  ))
+
+data <- data %>%
+  select(-c(goodput, lat_penalty))
+
+skim(data)
+
+# boxplot
+p3 <- ggplot(data, aes(x = system_load, y = efficiency_log)) +
+  geom_boxplot() +
+  theme_minimal() +
+  labs(title = "Efficiency by System Load", x = "System Load", y = "Efficiency")
+
+p3
+
+# identify outliers
+# outliers <- data %>%
+#   group_by(system_load) %>%
+#   filter(efficiency_log > quantile(efficiency_log, 0.95)) %>%
+#   select(system_load, efficiency_log)
+# 
+# outliers
+
+```
+
+**Why**: The efficiency score combines `throughput` (system output) and a weighted latency term (`latency_avg_ms + 0.2 * latency_max_ms`), with `log1p` to handle skewness. This metric captures system performance under load, critical for extreme scenarios like Black Friday.  
+**Helps**: Provides a single, continuous target for regression, balancing high throughput and low latency.  
+**Insights**: 
+- **EDA**: `throughput` is right-skewed (max ~470,000); `latency_avg_ms` and `latency_max_ms` negatively correlate with efficiency, justifying their inclusion in the formula.
+
+## 4. One-Hot Encode Categorical Features
+
+Encode categorical features (`test_type`, `framework`, `language`, `platform`, `webserver`, `database`, `classification`, `os`, `database_os`, `system_cores`) for modeling.
+
+```{r encode_categorical}
+# Select categorical columns
+cat_cols <- c("test_type", "framework", "language", "platform", "webserver", 
+              "database","orm", "classification","system_load")
+
+selected_test_types <- c("query", "update", "cached-query", "fortune", "db")
+
+# Filter data for selected test types
+data_encoded <- data %>%
+  filter(test_type %in% selected_test_types)
+
+# One-hot encode using model.matrix
+encoded_data <- model.matrix(~ . - 1, data = data_encoded %>% select(all_of(cat_cols))) %>%
+  as.data.frame()
+
+# Combine with non-categorical columns
+data_encoded <- data_encoded %>%
+  select(-all_of(cat_cols)) %>%
+  bind_cols(encoded_data)
+
+# Verify
+colnames(data_encoded) %>% kable(caption = "Columns After Encoding")
+```
+
+**Why**: Categorical features (`test_type`, `framework`, etc.) must be numerical for ML/DL models. One-hot encoding creates binary columns (e.g., `test_type_update`, `test_type_db`) suitable for tree-based models (Random Forest, XGBoost) and neural networks.  
+**Helps**: Enables modeling of tech stack components (`language` = `java`, `platform` = `vert.x`) and configurations (`test_type`), capturing their impact on efficiency.  
+**Insights**: 
+- **EDA**: `framework` (`vertx-web-postgres`) and `test_type` (`update`, `db`) showed efficiency differences; tech stack components are constant but define `framework`.
+
+## 5. Normalize Numerical Features
+
+<!--
+Why Needed: Normalize numerical features (e.g., throughput, latency_avg_ms) to address right-skewness and ensure compatibility with models like kNN, SVM, and neural networks.
+How It Helps: Log-transformation reduces skewness in throughput and latency, while standardization ensures all features are on the same scale, improving model convergence.
+Insights Provided: Confirms that features are properly scaled and ready for dimensionality reduction (e.g., PCA) and modeling.
+-->
+
+```{r normalize_numerical}
+
+# # Select numerical features for normalization
+# numerical_cols <- c("scale_factor", "connections", "threads", "transfer_sec", 
+#                     "throughput", "latency_avg_ms", "latency_max_ms")
+
+# Select numerical columns (excluding efficiency for now)
+num_cols <- data_encoded %>%
+  select_if(is.numeric) %>%
+  select(-efficiency) %>%
+  names()
+
+# Standardize (mean = 0, sd = 1)
+preprocess_params <- preProcess(data_encoded[, num_cols], method = c("center", "scale"))
+data_normalized <- predict(preprocess_params, data_encoded)
+
+# Add efficiency back (unnormalized, as target)
+data_normalized$efficiency <- data_encoded$efficiency
+
+# Summary
+summary(data_normalized %>% select(all_of(num_cols))) %>% kable(caption = "Normalized Numerical Features")
+```
+
+**Why**: Numerical features (`scale_factor`, `connections`, `threads`, `latency_avg_ms`, etc.) have different scales (e.g., `scale_factor` 1–512, `latency_avg_ms` ~1–10 ms), which can bias PCA, kNN, SVM, and neural networks. Standardization (mean = 0, sd = 1) ensures equal contribution.  
+**Helps**: Improves model performance and PCA visualization by normalizing features like `scale_factor` and `connections`, critical for extreme load scenarios.  
+**Insights**: 
+- **EDA**: `scale_factor` and `connections` showed wide ranges, impacting efficiency; standardization prepares them for dimensionality reduction and modeling.
+
+## 5. Verify and Save Engineered Dataset
+
+Summarize and save the engineered dataset for feature reduction and modeling.
+
+```{r verify_save}
+# Summary of key features
+# skim(data_normalized %>% select(efficiency, scale_factor, connections, threads, 
+#                                 transfer_sec, response_time)) %>%
+#   kable(caption = "Key Engineered Features Summary")
+
+
+# Create directory for engineered data
+eng_path <- "../data/processed/eng/"
+if (!dir.exists(eng_path)) {
+  dir.create(eng_path)
+}
+
+# Save training and test datasets
+save(data, file = paste0(eng_path, "dataset_engineered.RData"))
+save(data_encoded, file = paste0(eng_path, "dataset_encoded.RData"))
+# save(preprocess_params, file = "../data/processed/eng/preprocess_params.RData")
+
+cat("Engineered data saved successfully!\n")
+
+# clean up - remove full environment and clear console
+rm(list = ls())
+cat("\014")
+
+# Save
+# write.csv(data_normalized, "engineered_dataset.csv", row.names = FALSE)
+```
+
+**Why**: Summarizing verifies the target (`efficiency`) and key features (`scale_factor`, `connections`, tech stack encodings). Saving ensures the dataset is ready for PCA, clustering, and modeling.  
+**Helps**: Provides a clean, encoded, and normalized dataset (increased columns due to one-hot encoding) for predicting efficiency without test-time benchmarking metrics.  
+**Insights**: 
+- **EDA**: `scale_factor`, `connections`, `framework`, `test_type` drive efficiency; benchmarking metrics (`latency_*`) excluded from test-time prediction.
+
+**Outcomes**: 
+
+1. **Efficiency Score**: Combines `throughput` and weighted latency, capturing system performance (EDA: skewed distributions).
+2. **Dropped Columns**: Removed 27 non-informative/redundant columns (e.g., `uuid`, `requests_sec`, `orm`), reducing to 36 before encoding (EDA: constants, redundancies).
+3. **Categorical Encoding**: One-hot encoded `test_type`, `framework`, `language`, `platform`, `webserver`, `database`, `classification`, adding binary columns for tech stack (EDA: `framework` variability).
+4. **Normalization**: Standardized numerical features (`scale_factor`, `connections`, etc.) for PCA, kNN, SVM, and neural networks (EDA: wide ranges).
+5. **Retained Features**:
+   - **Test-Time (Non-Benchmarking)**: `framework`, `language`, `platform`, `webserver`, `database`, `classification`, `test_type`, `scale_factor`, `scale_factor_bin`, `connections`, `threads`, `response_time`, `transfer_sec`.
+   - **Training-Only (Benchmarking)**: `latency_*`, `total_requests`, `total_tcp_sockets`, `connect_errors`, etc., for training and separate prediction.
+6. **Black Friday Readiness**: `scale_factor_bin`, `connections`, `framework` target extreme loads; `efficiency` balances throughput and latency.

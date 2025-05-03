@@ -1,0 +1,47 @@
+---
+title: "01_load_data"
+output: html_document
+author: "Naresh Jhawar"
+---
+
+**Purpose**: Inspect dataset and comprehend structure and basic information.
+
+**Question**: 
+Can predictive ML/DL models accurately forecast system efficiency under extreme loads—replacing traditional benchmarking and saving millions in infrastructure costs?\*
+
+## 1.Loading
+
+```{r}
+library(tidyverse)
+ 
+dataset <- read.csv("../data/raw/dataset.csv")
+```
+
+## 2.Basic info
+
+```{r}
+cat("\nDataset dimensions:\n")
+print(dim(dataset))
+
+cat("\nColumn names:\n")
+print(colnames(dataset))
+
+cat("\nData structure:\n")
+str(dataset)
+```
+
+## 3.Save
+
+```{r}
+load_path <- "../data/processed/load/"
+if (!dir.exists(load_path)) {
+  dir.create(load_path)
+}
+
+save(dataset, file = "../data/processed/load/dataset.RData")
+cat("Loaded data saved successfully!")
+
+# clean up - remove full environment and clear console
+rm(list = ls())
+cat("\014")
+```

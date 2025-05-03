@@ -1,0 +1,87 @@
+---
+title: "data_visulisation"
+output: html_document
+---
+
+```{r}
+# data <- data %>%
+#   filter(test_type != "plaintext" & test_type != "json")
+# 
+# data <- data %>%
+#   select(-c(goodput, lat_penalty,
+#              os, wrk_duration_sec, environment, system,
+#              system_cpu, system_cores, system_memory,
+#              system_max_turbo_frequency, system_base_frequency,
+#              system_cache, network_bandwidth,
+#              connect_errors, verify,
+#              uuid, completed_time, start_time, end_time,
+#              test_start_time, test_completion_time,
+#              notes, versus, tags,
+#              sloc_count,
+#              duration,
+#             orm,
+#             approach,
+#             database_os
+#              ))
+
+data <- data %>%
+  mutate(
+    system_load = case_when(
+      test_type %in% c("query", "update") & scale_factor == 1 ~ "Very Low",
+      test_type %in% c("query", "update") & scale_factor == 5 ~ "Low",
+      test_type %in% c("query", "update") & scale_factor == 10 ~ "Medium",
+      test_type %in% c("query", "update") & scale_factor == 15 ~ "High",
+      test_type %in% c("query", "update") & scale_factor == 20 ~ "Very High",
+      
+      test_type == "cached-query" & scale_factor == 1 ~ "Very Low",
+      test_type == "cached-query" & scale_factor == 10 ~ "Low",
+      test_type == "cached-query" & scale_factor == 20 ~ "Medium",
+      test_type == "cached-query" & scale_factor == 50 ~ "High",
+      test_type == "cached-query" & scale_factor == 100 ~ "Very High",
+      
+      test_type %in% c("fortune", "json", "db") & scale_factor == 16 ~ "Very Low",
+      test_type %in% c("fortune", "json", "db") & scale_factor == 32 ~ "Low",
+      test_type %in% c("fortune", "json", "db") & scale_factor == 64 ~ "Medium Low",
+      test_type %in% c("fortune", "json", "db") & scale_factor == 128 ~ "Medium",
+      test_type %in% c("fortune", "json", "db") & scale_factor == 256 ~ "High",
+      test_type %in% c("fortune", "json", "db") & scale_factor == 512 ~ "Very High",
+      
+      TRUE ~ NA_character_
+    )
+  ) %>%
+  mutate(system_load = factor(
+    system_load,
+    levels = c("Very Low", "Low", "Medium Low", "Medium", "High", "Very High")
+  ))
+
+data <- data %>%
+  select(-c(goodput, lat_penalty))
+
+# try_data <- data %>%
+#   group_by(test_type) %>%
+#   mutate(
+#     scale_factor_standardized = scale(scale_factor, center = TRUE, scale = TRUE)
+#   ) %>%
+#   ungroup()
+
+v_data <- data %>%
+  filter(test_type == "fortune") %>%
+  select(-c(test_type))
+
+str(v_data)
+
+data <- data %>%
+  rename(benchmarktime = benchmarking_time_s,
+         buildtime = build_time_s,
+         dbstarttime = time_starting_database_s,
+         readytime = time_until_accepting_requests_s,
+         verifytime = verify_time_s,
+         totaltime = total_test_time_s)
+
+# Remove columns with all NA values
+colnames(data) %>% kable(caption = "Columns After Cleaning")
+
+write_csv(data, "../data/processed/eng/preprocessed_data.csv")
+write_csv(v_data, "../data/processed/eng/preprocessed_fortune_data.csv")
+```
+

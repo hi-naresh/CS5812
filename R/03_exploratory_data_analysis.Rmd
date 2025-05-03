@@ -1,0 +1,1205 @@
+---
+title: "03_exploratory_data_analysis.Rmd"
+author: "Naresh Jhawar"
+date: "2025-04-22"
+output: html_document
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+# EDA
+
+**Purpose**: Conduct an in-depth Exploratory Data Analysis (EDA) on a
+dataset with 17,568 rows and 58 columns to predict `efficiency` of each
+framework with having multiple performance metrics such as `throughput`,
+`latency`, `error rate`. Analyze all features comprehensively, covering
+univariate, bivariate, and multivariate relationships with `efficiency`.
+Formulate single feature having multiple metrics together and justify
+deriving `efficiency`, retaining, or dropping each feature based on
+statistical insights and domain relevance.
+
+**Question**: *Can predictive ML models accurately forecast system
+efficiency under extreme loads—replacing traditional benchmarking and
+saving millions in downtime, testing, and infrastructure costs?*
+
+**Dataset**: - **Rows**: 17,568 - **Columns**: 58
+
+-**Target**: `efficiency` (derived from `throughput`, `latency`, `errors` if not
+present) 
+
+-**Feature Groups**:
+
+  - **Categorical**: `test_type`, `framework`, `language`, `platform`,
+    `webserver`, `database`, `orm`, `classification`, `approach`, `os`,
+    `database_os`, `verify`, `environment`, `system`, `system_cpu`
+  - **Numerical**: `sloc_count`, `total_requests`, `scale_factor`,
+        `throughput`, `latency_avg_ms`, `latency_std_ms`,
+        `latency_max_ms`, `connections`, `threads`, `wrk_duration_sec`,
+        `latency_p50`, `latency_p75`, `latency_p90`, `latency_p99`,
+        `requests_sec`, `transfer_sec`, `total_tcp_sockets`,
+        `connect_errors`, `read_errors`, `write_errors`,
+        `timeout_requests`, `benchmarking_time_s`, `build_time_s`,
+        `time_starting_database_s`, `time_until_accepting_requests_s`,
+        `verify_time_s`, `total_test_time_s`, `duration`,
+        `system_cores`, `system_memory`, `system_max_turbo_frequency`,
+        `system_base_frequency`, `system_cache`, `network_bandwidth`
+  - **Temporal**: `completed_time`, `start_time`, `end_time`,
+        `test_start_time`, `test_completion_time`
+  - **Text**: `uuid`,`verify`, `notes`, `versus`, `tags`
+
+1\. **Performance Metrics**: `throughput`, `total_requests`,
+`requests_sec`, `transfer_sec`, `latency_avg_ms`, `latency_std_ms`,
+`latency_max_ms`, `latency_p50`, `latency_p75`, `latency_p90`,
+`latency_p99`
+
+2\. **Test Configurations**: `test_type`, `framework`, `language`,
+`platform`, `webserver`, `database`, `orm`, `classification`, `approach`
+
+3\. **Test Parameters**: `scale_factor`, `connections`, `threads`
+
+4\. **System Specifications**: `system`, `system_cpu`, `system_cores`,
+`system_memory`, `system_max_turbo_frequency`, `system_base_frequency`,
+`system_cache`, `network_bandwidth`, `environment`
+
+5\. **Errors**: , `connect_errors`, `read_errors`, `write_errors`,
+`timeout_requests`
+
+6\. **Socket Metrics**: `total_tcp_sockets`
+
+7\. **Timing Metrics**: `benchmarking_time_s`, `build_time_s`,
+`time_starting_database_s`, `time_until_accepting_requests_s`,
+`verify_time_s`, `total_test_time_s`, `wrk_duration_sec`, `duration`,
+`test_duration_s` (derived), `test_total_duration_s` (derived)
+
+8\. **Temporal Features**: `completed_time`, `start_time`, `end_time`,
+`test_start_time`, `test_completion_time`
+
+9\. **Code Metrics**: `sloc_count`
+
+10\. **Metadata**: `uuid`,`verify`, `notes`, `versus`, `tags`
+
+**Approach**: -
+
+**Data Loading and Cleaning**: Validate structure, derive `efficiency`,
+handle missing values, and correct types.
+
+\- **Univariate Analysis**: Distributions, missingness, variance, and
+outliers for all features.
+
+\- **Bivariate Analysis**: Correlations, scatter plots, boxplots, and
+ANOVA for `efficiency` vs. each feature.
+
+\- **Multivariate Analysis**: Interactions, redundancies, and PCA for
+feature synergies.
+
+\- **Feature Importance**: Random forest and correlation-based ranking.
+
+\- **Feature Selection**: Justify dropping features based on
+missingness, variance, predictive power, or redundancy.
+
+\- **Statistical Tests**: ANOVA, t-tests, and correlation tests for
+significance.
+
+\- **Visualizations**: Extensive plots saved for stakeholder review.
+
+\- **Output**: Cleaned dataset, summaries, and visualizations.
+
+**Reasoning**: A comprehensive EDA ensures all features are thoroughly
+analyzed, identifying key predictors of `efficiency` and removing
+irrelevant features to optimize modeling. Organized sections and
+justifications enhance transparency and reproducibility.
+
+## 1. Load and setup
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+library(tidyverse)
+library(skimr)
+library(knitr)
+library(ggplot2)
+library(corrplot)
+library(patchwork)
+library(plotly)
+library(forcats)
+library(factoextra)
+library(randomForest)
+library(ranger)
+
+set.seed(123)
+
+dir.create("../data/processed/eda", recursive = TRUE, showWarnings = FALSE)
+
+# Load dataset
+load("../data/processed/prep/dataset_prep.RData")
+data <- dataset_prep
+
+cat("R libraries, data loaded and output directory created.\n")
+```
+
+## 2. Inspect Data
+
+**Reasoning**: Verify the dataset’s structure (17,568 rows, 58 columns)
+and summarize its properties to identify initial issues (e.g., missing
+values, incorrect types). This ensures data integrity before analysis.
+
+```{r load_data}
+# Verify dimensions
+cat("Dataset dimensions:", dim(data), "\n")
+
+# Summarize structure
+str(data, give.attr = FALSE)
+
+# Detailed summary with skimr
+skim_data <- skimr::skim(data)
+
+# write_csv(skim_data, "../data/processed/eda/data_summary.csv")
+print(skim_data)
+
+num_cols <- names(data)[sapply(data, is.numeric)]
+cat_cols <- names(data)[sapply(data, is.factor) | sapply(data, is.character)]
+
+cat("Data summary saved to ../data/processed/eda/data_summary.csv\n")
+```
+
+## 3. Check Values
+
+### 3.1 Missing Values
+
+**Reasoning**: Identify missing values in each feature to assess data quality and inform imputation strategies. Features with excessive missingness may be dropped or require special handling.
+
+```{r check_missing}
+# function to find missing values
+missing_values <- function(data) {
+  missing <- colSums(is.na(data))
+  missing <- missing[missing > 0]
+  cat("Missing values in features:\n")
+  print(missing)
+  cat("Number of features with missing values:", length(missing), "\n")
+  # Check for percentage of missing values
+  missing_percentage <- (missing / nrow(data)) * 100
+  cat("Percentage of missing values:\n")
+  print(missing_percentage)
+  return(missing)
+}
+
+missing_values_summary <- missing_values(data)
+```
+
+### 3.2 Constant Features
+
+**Reasoning**: Identify constant features (e.g., `environment` = "citrine", `wrk_duration_s`=15) that provide no predictive power. These features can be dropped to simplify the dataset and improve model performance.
+
+```{r check_constants}
+# Check for constant features
+constant_features <- sapply(data, function(x) length(unique(x)) == 1)
+constant_cols <- names(data)[constant_features]
+cat("Constant features:\n")
+print(constant_cols)
+cat("Number of constant features:", length(constant_cols), "\n")
+# Drop these features later since no variance in those features
+```
+
+## 4. Target
+
+### 4.1 Candidate Target Variables
+**Reasoning**: Analyze all target variables and form `efficiency` to understand its distribution, missingness, and variance. This informs the modeling approach and helps identify potential transformations.
+```{r target}
+# Checking current target variables
+plot_target <- function(data, log1p = FALSE) {
+  if (log1p) {
+    log_data <- data %>%
+      mutate(
+        throughput = log1p(throughput),
+        latency_avg_ms = log10(latency_avg_ms),
+        error_rate = log10(connect_errors + read_errors + write_errors + timeout_requests)
+      )
+  } else {
+    log_data <- data %>%
+      mutate(
+        error_rate = connect_errors + read_errors + write_errors + timeout_requests
+      )
+  }
+  
+  p1 <- ggplot(log_data, aes(x = throughput)) +
+    geom_histogram(fill = "blue", bins = 50, alpha = 0.6) +
+    theme_minimal() +
+    labs(title = "Throughput Distribution", x = "Throughput", y = "Count")
+  
+  p2 <- ggplot(log_data, aes(x = latency_avg_ms)) +
+    geom_histogram(fill = "green", bins = 50, alpha = 0.6) +
+    theme_minimal() +
+    labs(title = "Average Latency Distribution", x = "Latency (ms)", y = "Count")
+  
+  p3 <- ggplot(log_data, aes(x = error_rate)) +
+    geom_histogram(fill = "purple", bins = 50, alpha = 0.6) +
+    theme_minimal() +
+    labs(title = "Error Rate Distribution", x = "Errors", y = "Count")
+  
+  (p1 + p2 + p3) + plot_layout(ncol = 2)
+}
+
+plot_target(data, log1p = FALSE)
+plot_target(data, log1p = TRUE)
+
+```
+
+### 4.2 Deriving Efficiency
+```{r derive_efficiency}
+# Function to derive efficiency
+
+
+
+# Check efficiency calculation
+cat("Efficiency calculation completed.\n")
+cat("Efficiency summary:\n")
+# print(summary(result$efficiency))
+# print efficient values all , if any NA values
+cat("Efficiency summary:\n")
+print(summary(result$efficiency[!is.na(result$efficiency)]))
+cat("Efficiency distribution:\n")
+print(ggplot(result, aes(x = efficiency)) +
+  geom_histogram(fill = "orange", bins = 50, alpha = 0.6) +
+  theme_minimal() +
+  labs(title = "Efficiency Distribution", x = "Efficiency", y = "Count"))
+
+# log transform efficiency
+result$efficiency_log <- log2(result$efficiency)
+
+# plot log transformed efficiency
+p <- ggplot(result, aes(x = efficiency_log)) +
+  geom_histogram(fill = "orange", bins = 50, alpha = 0.6) +
+  theme_minimal() +
+  labs(title = "Log-Transformed Efficiency Distribution", x = "Log(Efficiency)", y = "Count")
+ggsave("../data/processed/eda/hist_efficiency_log.png", p, width = 8, height = 6)
+print(p)
+
+missing_values_summary <- missing_values(result)
+
+```
+
+## 5. Univariate Analysis
+
+**Reasoning**: Analyze each feature’s distribution, missingness,
+variance, and outliers to understand its properties and potential
+issues. This informs preprocessing (e.g., transformation) and feature
+selection (e.g., low-variance features).
+
+<!-- **Reasoning**: Univariate analysis reveals the distribution, range, and variability of each feature, helping identify outliers, skewness, or low-variance features that may not contribute to modeling `efficiency`. This informs feature selection and preprocessing (e.g., log-transformation for skewed data). -->
+
+<!-- ```{r} -->
+<!-- # Numerical features -->
+<!-- for (col in num_cols) { -->
+<!--   p <- ggplot(data, aes_string(x = col)) + -->
+<!--     geom_histogram(bins = 50, fill = "green", alpha = 0.7) + -->
+<!--     labs(title = paste("Distribution of", col), x = col, y = "Count") + -->
+<!--     theme_minimal() -->
+<!--   print(p) -->
+<!--   ggsave(paste0("../data/processed/eda/hist_", col, ".png"), p, width = 8, height = 6) -->
+<!-- } -->
+
+<!-- # Categorical features -->
+<!-- for (col in cat_cols) { -->
+<!--   p <- ggplot(data, aes_string(x = col)) + -->
+<!--     geom_bar(fill = "purple", alpha = 0.7) + -->
+<!--     labs(title = paste("Counts of", col), x = col, y = "Count") + -->
+<!--     theme_minimal() + -->
+<!--     theme(axis.text.x = element_text(angle = 45, hjust = 1)) -->
+<!--   print(p) -->
+<!--   ggsave(paste0("../data/processed/eda/bar_", col, ".png"), p, width = 10, height = 6) -->
+<!-- } -->
+
+<!-- # Summarize variance for numerical features -->
+<!-- variance_summary <- data.frame( -->
+<!--   Column = num_cols, -->
+<!--   Variance = sapply(data[num_cols], var, na.rm = TRUE) -->
+<!-- ) %>% -->
+<!--   arrange(Variance) -->
+<!-- write_csv(variance_summary, "../data/processed/eda/variance_summary.csv") -->
+<!-- cat("Variance summary saved.\n") -->
+
+<!-- # Identify low-variance numerical features (< 0.01) -->
+<!-- low_variance <- variance_summary$Column[variance_summary$Variance < 0.01] -->
+<!-- if (length(low_variance) > 0) { -->
+<!--   cat("Low-variance numerical features:", paste(low_variance, collapse = ", "), "\n") -->
+<!-- } -->
+<!-- ``` -->
+
+### 5.1 Performance Metrics
+
+```{r perf_metrics_univariate}
+perf_cols <- c("throughput", "total_requests", "requests_sec", "transfer_sec", 
+               "latency_avg_ms", "latency_std_ms", "latency_max_ms", 
+               "latency_p50", "latency_p75", "latency_p90", "latency_p99")
+
+# function to plot with custom log transform for every metric
+plot_perf_metrics <- function(data, col, log_tranform=F, log_function = log1p) {
+  if (log_tranform) {
+    data[[col]] <- log_function(data[[col]])
+  }
+  
+  p <- ggplot(data, aes_string(x = col)) +
+    geom_histogram(bins = 20, 
+                   # green if log transform, else blue
+                   fill = ifelse(log_tranform, "green", "blue"),
+                   alpha = 0.7) +
+    labs(title = paste("Distribution of", col), x = col, y = "Count") +
+    theme_minimal()
+  # Display graph
+  print(p)
+  ggsave(paste0("../data/processed/eda/hist_", col, "_log.png"), p, width = 8, height = 6)
+  
+  # Summary
+  cat("\nSummary of", col, ":\n")
+  print(summary(data[[col]]))
+  
+  # Variance
+  cat("Variance:", var(data[[col]], na.rm = TRUE), "\n")
+  
+  # Outliers (IQR method)
+  q <- quantile(data[[col]], c(0.25, 0.75), na.rm = TRUE)
+  iqr <- q[2] - q[1]
+  outliers <- sum(data[[col]] < q[1] - 1.5 * iqr | data[[col]] > q[2] + 1.5 * iqr, na.rm = TRUE)
+  cat("Outliers:", outliers, "\n")
+}
+
+# Apply log transformation to all performance metrics
+for (col in perf_cols) {
+  plot_perf_metrics(data, col, log_tranform = F, log_function = log10)
+  plot_perf_metrics(data, col, log_tranform = TRUE, log_function = log1p)
+}
+
+```
+
+**Reasoning**: Performance metrics are critical for `efficiency`.
+`throughput` and `requests_sec` are likely redundant (high correlation
+expected). Latency metrics (`latency_avg_ms`, etc.) may be skewed,
+requiring transformation. Outliers indicate extreme performance
+scenarios.
+
+### 5.2 Test Configurations
+
+```{r config_univariate}
+config_cols <- c("test_type", "framework", "language", "platform", "webserver", 
+                 "database", "orm", "classification", "approach")
+
+for (col in config_cols) {
+  data_plot <- data %>%
+    filter(!is.na(.data[[col]])) %>%
+    mutate(!!sym(col) := fct_lump_n(.data[[col]], n = 10)) # Keep top 10, group others into 'Other'
+  
+  p <- ggplot(data_plot, aes_string(x = col, fill = col)) +
+    geom_bar(alpha = 0.7) +
+    labs(title = paste("Counts of", col), x = col, y = "Count") +
+    theme_minimal() +
+    theme(
+      axis.text.x = element_text(angle = 45, hjust = 1),
+      legend.position = "none" # Hide legend if needed
+    )
+  print(ggplotly(p))
+  
+
+  
+
+  ggsave(paste0("../data/processed/eda/bar_", col, ".png"), p, width = 10, height = 6)
+  
+  # Summary
+  cat("\nSummary of", col, ":\n")
+  print(table(data[[col]]))
+  
+  cat("Unique levels:", length(unique(data[[col]])), "\n")
+}
+
+```
+
+
+<!-- ### 5.2.1 Count Plots for Tech Stack Components -->
+
+<!-- Visualize the distribution of tech stack components (`language`, `platform`, `webserver`, `database`, `classification`). -->
+
+<!-- ```{r count_plots} -->
+<!-- p1 <- ggplot(data, aes(x = language, fill = language)) + -->
+<!--   geom_bar() + -->
+<!--   theme_minimal() + -->
+<!--   labs(title = "Count of Language", x = "Language", y = "Count") + -->
+<!--   guides(fill = FALSE) -->
+
+<!-- p2 <- ggplot(data, aes(x = platform, fill = platform)) + -->
+<!--   geom_bar() + -->
+<!--   theme_minimal() + -->
+<!--   labs(title = "Count of Platform", x = "Platform", y = "Count") + -->
+<!--   guides(fill = FALSE) -->
+
+<!-- p3 <- ggplot(data, aes(x = webserver, fill = webserver)) + -->
+<!--   geom_bar() + -->
+<!--   theme_minimal() + -->
+<!--   labs(title = "Count of Webserver", x = "Webserver", y = "Count") + -->
+<!--   guides(fill = FALSE) -->
+
+<!-- p4 <- ggplot(data, aes(x = database, fill = database)) + -->
+<!--   geom_bar() + -->
+<!--   theme_minimal() + -->
+<!--   labs(title = "Count of Database", x = "Database", y = "Count") + -->
+<!--   guides(fill = FALSE) -->
+
+<!-- p5 <- ggplot(data, aes(x = classification, fill = classification)) + -->
+<!--   geom_bar() + -->
+<!--   theme_minimal() + -->
+<!--   labs(title = "Count of Classification", x = "Classification", y = "Count") + -->
+<!--   guides(fill = FALSE) -->
+
+<!-- (p1 + p2 + p3) / (p4 + p5) -->
+<!-- ``` -->
+
+**Reasoning**: Categorical features define test setups. High-cardinality
+features (e.g., `framework`, `platform`) may require grouping or
+encoding. Low-variability features (e.g., `approach` = `realistic`) may
+be dropped.
+
+### 5.3 Test Parameters
+
+```{r param_univariate}
+param_cols <- c("scale_factor", "connections", "threads")
+
+for (col in param_cols) {
+  # Bar plot for discrete values
+  p <- ggplot(data, aes_string(
+    x = paste0("factor(", col, ")"), fill=col)) +
+  geom_bar( alpha = 0.7) +
+  labs(title = paste("Distribution of", col), x = col, y = "Count") +
+  theme_minimal()
+
+  print(p)
+  ggsave(paste0("../data/processed/eda/bar_", col, ".png"), p, width = 8, height = 6)
+  
+  # Summary
+  cat("\nSummary of", col, ":\n")
+  print(summary(data[[col]]))
+  
+  # Unique values (discrete check)
+  cat("Unique values:", unique(data[[col]]), "\n")
+}
+
+```
+
+**Reasoning**: `scale_factor`, `connections`, and `threads` are discrete
+test parameters critical for `efficiency`. Their discrete nature (e.g.,
+`scale_factor`: 1, 5, 10, …) suggests they’re controlled test inputs.
+
+### 5.4 System Specifications
+
+```{r sys_univariate}
+sys_cols <- c("environment","system", "system_cpu", "system_cores", "system_memory", "network_bandwidth",
+              "system_max_turbo_frequency", "system_base_frequency", "system_cache")
+
+for (col in sys_cols) {
+  if (col %in% cat_cols) {
+    # Bar plot
+    p <- ggplot(data, aes_string(x = col, fill=col)) +
+      geom_bar( alpha = 0.7) +
+      labs(title = paste("Counts of", col), x = col, y = "Count") +
+      theme_minimal() +
+      theme(axis.text.x = element_text(angle = 45, hjust = 1))
+    print(p)
+    ggsave(paste0("../data/processed/eda/bar_", col, ".png"), p, width = 1, height = 6)
+  } else {
+    # Histogram
+    p <- ggplot(data, aes_string(x = col)) +
+      geom_histogram(bins = 50, fill = "orange", alpha = 0.7) +
+      labs(title = paste("Distribution of", col), x = col, y = "Count") +
+      theme_minimal()
+    print(p)
+    ggsave(paste0("../data/processed/eda/hist_", col, ".png"), p, width = 8, height = 6)
+  }
+  
+  # Summary
+  cat("\nSummary of", col, ":\n")
+  if (col %in% cat_cols) {
+    print(table(data[[col]]))
+  } else {
+    print(summary(data[[col]]))
+  }
+}
+```
+
+**Reasoning**: System specs (e.g., `system_cores`, `system_memory`) are
+likely constant (e.g., 28 cores, 64GB), reducing their predictive power.
+They’ll be evaluated for variance.
+
+### 5.5 Errors
+
+```{r net_err_univariate}
+err_cols <- c("connect_errors", "read_errors", 
+                  "write_errors", "timeout_requests")
+
+# make function to log transform graph with T or F 
+plot_log_transform <- function(data, col, log_transform = FALSE) {
+  if (log_transform) {
+    data[[col]] <- log10(data[[col]])
+  }
+  
+  p <- ggplot(data, aes_string(x = col)) +
+    geom_histogram(bins = 20, 
+                   fill = ifelse(log_transform, "green", "blue"),
+                   alpha = 0.7, color = "black") +
+    labs(title = paste("Log-Transformed Distribution of", col), x = col, y = "Count") +
+    theme_minimal()
+  
+  print(p)
+  ggsave(paste0("../data/processed/eda/hist_log_", col, ".png"), p, width = 8, height = 6)
+  
+  # Summary
+  cat("\nSummary of", col, ":\n")
+  print(summary(data[[col]]))
+}
+
+for (col in err_cols) {
+  plot_log_transform(data, col, log_transform = FALSE)
+  plot_log_transform(data, col, log_transform = TRUE)
+}
+
+```
+
+**Reasoning**: Error metrics (`connect_errors`, etc.) are likely zero,
+indicating robust testing but no predictive value. `network_bandwidth`
+may be constant (40Gbps).
+
+### 5.6 Socket Metrics
+
+```{r socket_univariate}
+# function to log transform graph with T or F
+plot_log_transform <- function(data, col, log_transform = FALSE) {
+  if (log_transform) {
+    data[[col]] <- log10(data[[col]])
+  }
+  
+  p <- ggplot(data, aes_string(x = col)) +
+    geom_histogram(bins = 20, 
+                   fill = ifelse(log_transform, "green", "blue"),
+                   alpha = 0.7, color = "black") +
+    labs(title = paste("Log-Transformed Distribution of", col), x = col, y = "Count") +
+    theme_minimal()
+  
+  print(p)
+  ggsave(paste0("../data/processed/eda/hist_log_", col, ".png"), p, width = 8, height = 6)
+  
+  # Summary
+  cat("\nSummary of total_tcp_sockets:\n")
+  print(summary(data$total_tcp_sockets))
+}
+
+plot_log_transform(data, "total_tcp_sockets", log_transform = FALSE)
+plot_log_transform(data, "total_tcp_sockets", log_transform = TRUE)
+
+```
+
+**Reasoning**: `total_tcp_sockets` (constant at 69) is unlikely to
+predict `efficiency`.
+
+### 5.7 Timing Metrics
+
+```{r timing_univariate}
+# Derive timing metrics
+data$test_duration_s <- as.numeric(difftime(data$end_time, data$start_time, units = "secs"))
+data$test_total_duration_s <- as.numeric(difftime(data$test_completion_time, data$test_start_time, units = "secs"))
+
+timing_cols <- c("benchmarking_time_s", "build_time_s", "time_starting_database_s", 
+                 "time_until_accepting_requests_s", "verify_time_s", "total_test_time_s", 
+                 "wrk_duration_sec", "duration", "test_duration_s", "test_total_duration_s")
+
+for (col in timing_cols) {
+  # Histogram
+  p <- ggplot(data, aes_string(x = col,fill=col)) +
+    geom_histogram(bins = 50, alpha = 0.7) +
+    labs(title = paste("Distribution of", col), x = col, y = "Count") +
+    theme_minimal()
+  print(p)
+  ggsave(paste0("../data/processed/eda/hist_", col, ".png"), p, width = 8, height = 6)
+  
+  # Summary
+  cat("\nSummary of", col, ":\n")
+  print(summary(data[[col]]))
+}
+```
+
+**Reasoning**: Timing metrics (e.g., `wrk_duration_sec` = 15s) are
+likely constant, reducing their predictive power. Derived metrics
+(`test_duration_s`) may reveal test-specific variations.
+
+### 5.8 Temporal Features
+
+```{r temporal_univariate}
+temporal_cols <- c("completed_time", "start_time", "end_time", 
+                   "test_start_time", "test_completion_time")
+
+for (col in temporal_cols) {
+  # Plot range
+  cat("\nRange of", col, ":\n")
+  print(range(data[[col]], na.rm = TRUE))
+}
+```
+
+**Reasoning**: Temporal features are unlikely to predict `efficiency`
+unless time-based patterns exist (e.g., performance degradation over
+time).
+
+### 5.9 Code Metrics
+
+```{r code_univariate}
+# SLOC Count
+cat("\nSummary of sloc_count:\n")
+print(summary(data$sloc_count))
+
+# Histogram
+p <- ggplot(data, aes(x = sloc_count)) +
+  geom_histogram(bins = 50, fill = "purple", alpha = 0.7) +
+  labs(title = "Distribution of SLOC Count", x = "SLOC Count", y = "Count") +
+  theme_minimal()
+print(p)
+
+# Missingness
+cat("Missing sloc_count:", mean(is.na(data$sloc_count)) * 100, "%\n")
+```
+
+**Reasoning**: `sloc_count` is likely 100% missing, making it unusable.
+
+### 5.10 Metadata
+
+```{r id_univariate}
+id_cols <- c("uuid", "notes", "versus", "tags")
+
+for (col in id_cols) {
+  # Unique values
+  cat("\nUnique", col, ":", length(unique(data[[col]])), "\n")
+}
+```
+
+**Reasoning**: ID-like features (`uuid`) and metadata (`notes`,
+`versus`, `tags`) are irrelevant for modeling.
+
+<!-- ### 5.11 Dropping Features -->
+<!-- ```{r drop_features} -->
+<!-- # Drop features with high missingness, low variance, or irrelevant -->
+<!-- drop_cols <- c("uuid", "notes", "versus", "tags", "wrk_duration_sec",  -->
+<!--                 "total_tcp_sockets", "environment", "system_cpu",  -->
+<!--                 "system_max_turbo_frequency", "system_base_frequency", -->
+<!--                 "system_cache", "network_bandwidth") -->
+
+<!-- # Drop features -->
+<!-- data <- data %>% -->
+<!--   select(-all_of(drop_cols)) -->
+<!-- ``` -->
+
+## 6. Bivariate Analysis: Efficiency vs. Features
+
+**Reasoning**: Analyze how each feature relates to `efficiency` to
+identify strong predictors. Use correlations, scatter plots, boxplots,
+and statistical tests (ANOVA, t-tests) to quantify relationships.
+
+
+<!-- **Reasoning**: Bivariate analysis explores how each feature correlates with `efficiency`, identifying strong predictors. Numerical features are analyzed with correlations and scatter plots, while categorical features use boxplots to compare `efficiency` distributions across categories. This helps prioritize features for modeling. -->
+
+<!-- ```{r} -->
+<!-- # Numerical features vs. efficiency -->
+<!-- correlations <- cor(data[num_cols], data$efficiency, use = "pairwise.complete.obs") -->
+<!-- correlation_df <- data.frame( -->
+<!--   Feature = num_cols, -->
+<!--   Correlation = correlations[, 1] -->
+<!-- ) %>% -->
+<!--   arrange(desc(abs(Correlation))) -->
+<!-- write_csv(correlation_df, "../data/processed/eda/correlation_efficiency.csv") -->
+<!-- cat("Correlation with efficiency saved.\n") -->
+
+<!-- # Correlation heatmap -->
+<!-- corr_matrix <- cor(data[num_cols], use = "pairwise.complete.obs") -->
+<!-- corrplot(corr_matrix, method = "color", type = "upper", tl.cex = 0.7) -->
+<!-- png("../data/processed/eda/correlation_heatmap.png", width = 800, height = 800) -->
+<!-- corrplot(corr_matrix, method = "color", type = "upper", tl.cex = 0.7) -->
+<!-- dev.off() -->
+
+<!-- # Scatter plots for top 5 correlated numerical features -->
+<!-- top_correlated <- head(correlation_df$Feature, 5) -->
+<!-- for (col in top_correlated) { -->
+<!--   p <- ggplot(result, aes_string(x = col, y = result$efficiency)) + -->
+<!--     geom_point(alpha = 0.5, color = "blue") + -->
+<!--     geom_smooth(method = "lm", color = "red") + -->
+<!--     labs(title = paste("Efficiency vs.", col), x = col, y = "Efficiency") + -->
+<!--     theme_minimal() -->
+<!--   print(p) -->
+<!--   ggsave(paste0("../data/processed/eda/scatter_", col, ".png"), p, width = 8, height = 6) -->
+<!-- } -->
+
+<!-- # Categorical features vs. efficiency -->
+<!-- for (col in cat_cols) { -->
+<!--   p <- ggplot(result, aes_string(x = col, y = "efficiency")) + -->
+<!--     geom_boxplot(fill = "orange", alpha = 0.7) + -->
+<!--     labs(title = paste("Efficiency by", col), x = col, y = "Efficiency") + -->
+<!--     theme_minimal() + -->
+<!--     theme(axis.text.x = element_text(angle = 45, hjust = 1)) -->
+<!--   print(p) -->
+<!--   ggsave(paste0("../data/processed/eda/boxplot_", col, ".png"), p, width = 10, height = 6) -->
+<!-- } -->
+<!-- ``` -->
+
+### 6.1 Performance Metrics
+
+```{r perf_bivariate}
+for (col in perf_cols) {
+  # Scatter plot
+  p <- ggplot(result, aes_string(x = col, y =result$efficiency)) +
+    geom_point(alpha = 0.3, color = "blue") +
+    geom_smooth(method = "loess", color = "red") +
+    labs(title = paste("Efficiency vs.", col), x = col, y = "Efficiency") +
+    theme_minimal()
+  print(p)
+  ggsave(paste0("../data/processed/eda/scatter_", col, ".png"), p, width = 8, height = 6)
+  
+  # Correlation
+  # corr <- cor.test(data[[col]], data$efficiency, method = "pearson")
+  # cat("\nCorrelation of", col, "with efficiency:", corr$estimate, "(p =", corr$p.value, ")\n")
+}
+```
+
+**Reasoning**: `throughput` should have a strong positive correlation
+with `efficiency` (since it’s the numerator). Latency metrics are
+expected to have negative correlations, as higher latency reduces
+efficiency.
+
+### 6.2 Test Configurations
+
+```{r config_bivariate}
+for (col in config_cols) {
+  # Boxplot
+  p <- ggplot(result, aes_string(x = col, y = result$efficiency)) +
+    geom_boxplot(fill = "purple", alpha = 0.7) +
+    labs(title = paste("Efficiency by", col), x = col, y = "Efficiency") +
+    theme_minimal() +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  ggsave(paste0("../data/processed/eda/boxplot_", col, ".png"), p, width = 10, height = 6)
+  
+  # ANOVA
+  # anova_result <- aov(as.formula(paste(`result$efficiency ~`, col)), data = result)
+  anova_result <- aov(efficiency ~ get(col), data = result)
+  cat("\nANOVA for", col, ":\n")
+  print(summary(anova_result))
+}
+```
+
+**Reasoning**: Categorical features like `test_type` and `framework`
+likely have significant effects on `efficiency` (p \< 0.05 in ANOVA),
+reflecting different test scenarios.
+
+### 6.3 Test Parameters
+
+```{r param_bivariate}
+for (col in param_cols) {
+  # Scatter plot
+  p <- ggplot(result, aes_string(x = col, y = "efficiency", color = "test_type")) +
+    geom_point(alpha = 0.5) +
+    geom_smooth(method = "loess") +
+    labs(title = paste("Efficiency vs.", col, "by Test Type"), x = col, y = "Efficiency") +
+    theme_minimal()
+  print(p)
+  ggsave(paste0("../data/processed/eda/scatter_", col, "_test_type.png"), p, width = 10, height = 6)
+  
+  # Boxplot
+  p <- ggplot(result, aes_string(x = col, y = "efficiency", fill = "test_type")) +
+    geom_boxplot(alpha = 0.7) +
+    labs(title = paste("Efficiency by", col, "and Test Type"), x = col, y = "Efficiency") +
+    theme_minimal() +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  print(p)
+  ggsave(paste0("../data/processed/eda/boxplot_", col, "_test_type.png"), p, width = 10, height = 6)
+  
+  
+  # Correlation
+  # corr <- cor.test(data[[col]], data$efficiency, method = "pearson")
+  # cat("\nCorrelation of", col, "with efficiency:", corr$estimate, "(p =", corr$p.value, ")\n")
+}
+```
+
+**Reasoning**: `scale_factor` is inversely related to `efficiency`
+(denominator). `connections` and `threads` optimize concurrency,
+affecting efficiency non-linearly.
+
+### 6.4 System Specifications
+
+```{r sys_bivariate}
+for (col in sys_cols) {
+  if (col %in% cat_cols) {
+    # Boxplot
+    p <- ggplot(result, aes_string(x = col, y = "efficiency")) +
+      geom_boxplot(fill = "orange", alpha = 0.7) +
+      labs(title = paste("Efficiency by", col), x = col, y = "Efficiency") +
+      theme_minimal()
+    print(p)
+    ggsave(paste0("../data/processed/eda/boxplot_", col, ".png"), p, width = 10, height = 6)
+  } else {
+    # Scatter plot
+    p <- ggplot(result, aes_string(x = col, y = "efficiency")) +
+      geom_point(alpha = 0.3, color = "orange") +
+      geom_smooth(method = "loess", color = "red") +
+      labs(title = paste("Efficiency vs.", col), x = col, y = "Efficiency") +
+      theme_minimal()
+    print(p)
+    ggsave(paste0("../data/processed/eda/scatter_", col, ".png"), p, width = 8, height = 6)
+  }
+}
+```
+
+**Reasoning**: System specs are likely constant, showing no variation in
+`efficiency`.
+
+### 6.5 Errors
+
+```{r net_err_bivariate}
+for (col in err_cols) {
+  # Scatter plot
+  p <- ggplot(result, aes_string(x = col, y = "efficiency")) +
+    geom_point(alpha = 0.3, color = "pink") +
+    geom_smooth(method = "loess", color = "red") +
+    labs(title = paste("Efficiency vs.", col), x = col, y = "Efficiency") +
+    theme_minimal()
+  print(p)
+  ggsave(paste0("../data/processed/eda/scatter_", col, ".png"), p, width = 8, height = 6)
+}
+```
+
+**Reasoning**: Zero errors indicate robust testing but no predictive
+power.
+
+### 6.6 Socket Metrics
+
+```{r socket_bivariate}
+p <- ggplot(result, aes(x = total_tcp_sockets, y = efficiency)) +
+  geom_point(alpha = 0.3, color = "brown") +
+  geom_smooth(method = "loess", color = "red") +
+  labs(title = "Efficiency vs. Total TCP Sockets", x = "Total TCP Sockets", y = "Efficiency") +
+  theme_minimal()
+print(p)
+ggsave("../data/processed/eda/scatter_total_tcp_sockets.png", p, width = 8, height = 6)
+```
+
+**Reasoning**: Constant `total_tcp_sockets` offers no predictive value.
+
+### 6.7 Timing Metrics
+
+`{2i{bi} for (col in timing_cols) {   p <- ggplot(data, aes_string(x = col, y = "efficiency")) +     geom_point(alpha = 0.3, color = "grey") +     geom_smooth(method = "loess", color = "red") +     labs(title = paste("Efficiency vs.", col), x = col, y = "Efficiency") +     theme_minimal()   ggsave(paste0("../data/processed/eda/scatter_", col, ".png"), p, width = 8, height = 6) }`
+
+**Reasoning**: Constant timing metrics (e.g., `wrk_duration_sec`) are
+not predictive.
+
+### 6.8 Temporal Features
+
+```{r temporal_bivariate}
+# No direct bivariate analysis, as temporal features are unlikely to predict efficiency
+cat("Temporal features not analyzed for efficiency due to lack of predictive relevance.\n")
+```
+
+**Reasoning**: Temporal features are metadata, not performance-related.
+
+### 6.9 Code Metrics
+
+```{r code_bivariate}
+# No analysis due to 64% missingness
+cat("sloc_count not analyzed due to 64% missing values.\n")
+```
+
+**Reasoning**: Missing data makes `sloc_count` unusable.
+
+### 6.10 Metadata
+
+```{r id_bivariate}
+# No analysis due to irrelevance
+cat("Metadata (uuid,verify, notes, versus, tags) not analyzed due to irrelevance.\n")
+```
+
+**Reasoning**: ID-like features are not predictive.
+
+## 7. Multivariate Analysis
+
+**Reasoning**: Explore interactions and redundancies among key features
+to understand complex relationships with `efficiency`.
+
+### 7.1 Correlation Heatmap
+
+```{r corr_heatmap}
+num_cols_all <- c("efficiency", perf_cols, param_cols, err_cols, timing_cols, 
+                  "system_cores", "system_memory", "system_max_turbo_frequency", 
+                  "system_base_frequency", "system_cache", "total_tcp_sockets")
+
+# Check which columns actually exist
+existing_cols <- intersect(num_cols_all, colnames(result))
+
+# Now safe to calculate correlation
+corr_matrix <- cor(result[existing_cols], use = "pairwise.complete.obs")
+corrplot(corr_matrix, method = "color", type = "upper", tl.cex = 0.7)
+png("../data/processed/eda/correlation_heatmap.png", width = 1200, height = 1200)
+corrplot(corr_matrix, method = "color", type = "upper", tl.cex = 0.7)
+dev.off()
+```
+
+**Reasoning**: Identifies redundancies (e.g., `requests_sec` ≈
+`throughput`) and key predictors.
+
+### 7.2 Pair Plot
+
+```{r pair_plot}
+key_features <- c("efficiency", "throughput", "scale_factor", "connections", "threads", "test_type")
+pair_data <- result[key_features]
+pairs(pair_data[, -which(names(pair_data) == "test_type")], col = as.numeric(result$test_type))
+png("../data/processed/eda/pair_plot.png", width = 1000, height = 1000)
+pairs(pair_data[, -which(names(pair_data) == "test_type")], col = as.numeric(result$test_type))
+dev.off()
+```
+
+**Reasoning**: Visualizes interactions among top features, colored by
+`test_type`.
+
+### 7.3 PCA Analysis
+
+```{r pca}
+# pca_data <- result[existing_cols]
+# Step 1: Select only numeric columns that exist
+pca_data <- result[existing_cols]
+
+# Step 2: Remove constant columns (zero variance)
+pca_data <- pca_data[, sapply(pca_data, function(x) sd(x, na.rm = TRUE) != 0)]
+
+# Step 3: Remove rows with NA or infinite values
+pca_data <- pca_data %>%
+  filter(if_all(everything(), ~ !is.na(.) & is.finite(.)))
+
+# Step 4: Now safe to run PCA
+pca_result <- prcomp(pca_data, scale. = TRUE)
+
+# Now safe to run PCA
+pca_result <- prcomp(pca_data, scale. = TRUE)
+p <- fviz_pca_var(pca_result, col.var = "cos2", gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"), repel = TRUE)
+p <- p + labs(title = "PCA of Performance Metrics", x = "PC1", y = "PC2") +
+  theme_minimal()
+print(p)
+ggsave("../data/processed/eda/pca_plot.png", p, width = 10, height = 8)
+cat("PCA variance explained:", summary(pca_result)$importance[2, 1:2], "\n")
+```
+
+**Reasoning**: PCA reveals feature contributions to variance, aiding
+dimensionality reduction.
+
+## 8. Feature Importance
+
+**Reasoning**: Use random forest to quantify feature importance,
+capturing non-linear relationships.
+
+```{r feature_importance}
+model_data <- result[c(existing_cols, config_cols)]
+for (col in config_cols) {
+  model_data[[col]] <- as.factor(model_data[[col]])
+}
+# set.seed(42)
+# Remove rows with NA
+model_data <- na.omit(model_data)
+
+# Now fit the model
+set.seed(42)
+# rf_model <- randomForest(efficiency ~ ., data = model_data, ntree = 100, importance = TRUE)
+rf_model <- ranger(
+  efficiency ~ ., 
+  data = model_data, 
+  num.trees = 100, 
+  importance = "impurity",
+  respect.unordered.factors = "order"
+)
+# rf_model <- randomForest(efficiency ~ ., data = model_data, ntree = 100, importance = TRUE)
+# importance_df <- data.frame(
+#   Feature = rownames(rf_model$importance),
+#   Importance = rf_model$importance[, "%IncMSE"]
+# ) %>%
+#   arrange(desc(Importance))
+importance_df <- data.frame(
+  Feature = names(rf_model$variable.importance),
+  Importance = rf_model$variable.importance
+) %>%
+  arrange(desc(Importance))
+# importance_df$Feature <- factor(importance_df$Feature, levels = importance_df$Feature[order(importance_df$Importance, decreasing = TRUE)])
+# importance_df$Importance <- importance_df$Importance / sum(importance_df$Importance) * 100 # Convert to percentage
+# importance_df$Importance <- round(importance_df$Importance, 2) # Round to 2 decimal places
+# importance_df$Feature <- gsub("test_type", "Test Type", importance_df$Feature)
+# importance_df$Feature <- gsub("framework", "Framework", importance_df$Feature)
+# importance_df$Feature <- gsub("scale_factor", "Scale Factor", importance_df$Feature)
+# importance_df$Feature <- gsub("connections", "Connections", importance_df$Feature)
+# importance_df$Feature <- gsub("threads", "Threads", importance_df$Feature)
+# importance_df$Feature <- gsub("latency_avg_ms", "Latency Avg (ms)", importance_df$Feature)
+# importance_df$Feature <- gsub("latency_std_ms", "Latency Std (ms)", importance_df$Feature)
+# importance_df$Feature <- gsub("latency_max_ms", "Latency Max (ms)", importance_df$Feature)
+ggplot(importance_df[1:20, ], aes(x = reorder(Feature, Importance), y = Importance)) +
+  geom_col(fill = "steelblue") +
+  coord_flip() +
+  theme_minimal() +
+  labs(title = "Top 20 Variable Importances (Ranger)", x = "Features", y = "Importance")
+write_csv(importance_df, "../data/processed/eda/feature_importance_rf.csv")
+
+p <- ggplot(importance_df, aes(x = reorder(Feature, Importance), y = Importance)) +
+  geom_bar(stat = "identity", fill = "darkgreen") +
+  coord_flip() +
+  labs(title = "Feature Importance (Random Forest)", x = "Feature", y = "%IncMSE") +
+  theme_minimal()
+print(p)
+ggsave("../data/processed/eda/feature_importance_rf.png", p, width = 12, height = 10)
+```
+
+**Reasoning**: Prioritizes features like `test_type`, `framework`,
+`scale_factor` for modeling.
+
+## 9. Feature Selection and Dropping
+
+**Reasoning**: Drop features with low predictive power, high
+missingness, or redundancy to streamline modeling.
+
+```{r feature_selection}
+features_to_drop <- c()
+
+# High missingness
+features_to_drop <- c(features_to_drop)
+cat("Dropping due to high missingness (>50%):", paste( collapse = ", "), "\n")
+
+# Low variance
+low_variance <- c()
+for (col in existing_cols) {
+  if (var(result[[col]], na.rm = TRUE) < 0.01) {
+    low_variance <- c(low_variance, col)
+  }
+}
+for (col in c(config_cols)) {
+  if (length(unique(result[[col]])) == 1) {
+    low_variance <- c(low_variance, col)
+  }
+}
+features_to_drop <- c(features_to_drop, low_variance)
+cat("Dropping due to low variance:", paste(low_variance, collapse = ", "), "\n")
+
+# Low importance (<1% IncMSE)
+low_importance <- importance_df$Feature[importance_df$Importance < 1]
+features_to_drop <- c(features_to_drop, low_importance)
+cat("Dropping due to low importance:", paste(low_importance, collapse = ", "), "\n")
+
+# Redundant features
+redundant <- c("requests_sec") # Highly correlated with throughput
+features_to_drop <- c(features_to_drop, redundant)
+cat("Dropping redundant features:", paste(redundant, collapse = ", "), "\n")
+
+# Irrelevant features
+irrelevant <- c("uuid", "notes", "versus", "tags", temporal_cols)
+features_to_drop <- c(features_to_drop, irrelevant)
+cat("Dropping irrelevant features:", paste(irrelevant, collapse = ", "), "\n")
+
+# Unique features to drop
+features_to_drop <- unique(features_to_drop)
+
+# Retained features
+retained_features <- setdiff(colnames(data), features_to_drop)
+cat("\nRetained features:", paste(retained_features, collapse = ", "), "\n")
+
+# Clean dataset
+data_cleaned <- data[, retained_features]
+write_csv(data_cleaned, "../data/processed/eda/cleaned_data_robust.csv")
+cat("Cleaned dataset dimensions:", dim(data_cleaned), "\n")
+```
+
+<!-- **Reasoning**: Based on missingness, variance, correlations, and feature importance, we select features that contribute to predicting `efficiency` and drop those that don’t. Dropping irrelevant features reduces model complexity, prevents overfitting, and improves interpretability. -->
+
+<!-- ```{r} -->
+<!-- # Initialize features to drop -->
+<!-- features_to_drop <- c() -->
+
+<!-- # 1. High missingness (>50%) -->
+<!-- features_to_drop <- c(features_to_drop, high_missing) -->
+<!-- cat("Dropping due to high missingness:", paste(high_missing, collapse = ", "), "\n") -->
+
+<!-- # 2. Low variance numerical features -->
+<!-- features_to_drop <- c(features_to_drop, low_variance) -->
+<!-- cat("Dropping due to low variance:", paste(low_variance, collapse = ", "), "\n") -->
+
+<!-- # 3. Low correlation with efficiency (< 0.1) -->
+<!-- low_correlation <- correlation_df$Feature[abs(correlation_df$Correlation) < 0.1] -->
+<!-- features_to_drop <- c(features_to_drop, low_correlation) -->
+<!-- cat("Dropping due to low correlation:", paste(low_correlation, collapse = ", "), "\n") -->
+
+<!-- # 4. Low importance from random forest (< 1% IncMSE) -->
+<!-- low_importance <- importance_df$Feature[importance_df$Importance < 1] -->
+<!-- features_to_drop <- c(features_to_drop, low_importance) -->
+<!-- cat("Dropping due to low RF importance:", paste(low_importance, collapse = ", "), "\n") -->
+
+<!-- # 5. Redundant or ID-like features -->
+<!-- id_like <- c("uuid", "notes", "versus", "tags") -->
+<!-- features_to_drop <- c(features_to_drop, id_like) -->
+<!-- cat("Dropping ID-like features:", paste(id_like, collapse = ", "), "\n") -->
+
+<!-- # 6. Temporal features (unless time-based analysis is needed) -->
+<!-- temporal_cols <- c("completed_time", "start_time", "end_time", "test_start_time", "test_completion_time") -->
+<!-- features_to_drop <- c(features_to_drop, temporal_cols) -->
+<!-- cat("Dropping temporal features:", paste(temporal_cols, collapse = ", "), "\n") -->
+
+<!-- # Remove duplicates -->
+<!-- features_to_drop <- unique(features_to_drop) -->
+
+<!-- # Justify keeping key features -->
+<!-- key_features <- c("test_type", "framework", "language", "platform", "webserver", "database", "classification", -->
+<!--                   "scale_factor", "connections", "threads", "throughput") -->
+<!-- cat("\nKey features retained:\n") -->
+<!-- for (f in key_features) { -->
+<!--   if (f %in% importance_df$Feature) { -->
+<!--     imp <- importance_df$Importance[importance_df$Feature == f] -->
+<!--     cat(sprintf("- %s: High RF importance (%.2f%% IncMSE)\n", f, imp)) -->
+<!--   } else if (f %in% correlation_df$Feature) { -->
+<!--     corr <- correlation_df$Correlation[correlation_df$Feature == f] -->
+<!--     cat(sprintf("- %s: High correlation with efficiency (%.2f)\n", f, corr)) -->
+<!--   } else { -->
+<!--     cat(sprintf("- %s: Domain relevance (e.g., test configuration)\n", f)) -->
+<!--   } -->
+<!-- } -->
+
+<!-- # Drop features -->
+<!-- data_cleaned <- data[, !names(data) %in% features_to_drop] -->
+<!-- cat("Features dropped:", length(features_to_drop), "\n") -->
+<!-- cat("Cleaned dataset dimensions:", dim(data_cleaned), "\n") -->
+
+<!-- # Save cleaned dataset -->
+<!-- write_csv(data_cleaned, "../data/processed/eda/cleaned_data_eda.csv") -->
+<!-- cat("Cleaned dataset saved.\n") -->
+<!-- ``` -->
+
+
+**Justifications**: - **High Missingness**: `sloc_count` (100% missing)
+provides no information. - **Low Variance**: Constant features (e.g.,
+`wrk_duration_sec`, `environment`) don’t differentiate observations. -
+**Low Importance**: Features with \<1% IncMSE (e.g., `connect_errors`)
+have minimal impact. - **Redundant**: `requests_sec` ≈ `throughput`,
+adding no unique information. - **Irrelevant**: IDs (`uuid`) and
+temporal features are not performance-related.
+
+## 10. Summary and Next Steps
+
+**Reasoning**: Summarize findings and outline modeling steps, ensuring
+insights guide predictive tasks.
+
+```{r summary}
+cat("\nEDA Summary:\n")
+cat("- Dataset: 17,568 rows, 58 columns initially\n")
+cat("- Target: Efficiency (throughput / scale_factor)\n")
+cat("- Retained features:", length(retained_features), "\n")
+cat("- Dropped features:", length(features_to_drop), "\n")
+cat("- Key predictors: test_type, framework, scale_factor, connections, threads\n")
+cat("- Outputs saved in ../data/processed/eda/\n")
+
+cat("\nNext Steps:\n")
+cat("- Use cleaned_data_robust.csv for modeling (e.g., XGBoost, Random Forest).\n")
+cat("- Address test-type-specific scale factors in models.\n")
+cat("- Validate feature importance with SHAP analysis.\n")
+cat("- Develop stakeholder report with EDA insights.\n")
+cat("- Revisit 12.1_discover_new_framework.Rmd with cleaned dataset to fix test_type error.\n")
+
+# clean up - remove full environment and clear console
+rm(list = ls())
+cat("\014")
+```

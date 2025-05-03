@@ -1,0 +1,159 @@
+---
+title: "02_prepare_data"
+output: html_document
+author: "Naresh Jhawar"
+---
+**Purpose**: Prepare data for analysis,inspect further and convert into correct datatypes.
+
+
+##1.Loading
+```{r}
+library(tidyverse)
+
+load("../data/processed/load/dataset.RData")
+cat("Loaded Dataset sucessfully")
+```
+
+##2.Check
+
+```{r}
+# glimpse has better structure format display
+glimpse(dataset)
+
+## unique values in dataset
+sapply(dataset, function(x) length(unique(x)))
+
+## skip the plaintext test since all websites / apps are dynamic - no importance for this analysis
+dataset <- dataset %>% filter(test_type != "plaintext" & test_type != "json")
+```
+
+## 3.Data conversion
+
+```{r}
+# to convert data into proper datatypes of their perspective column
+convert_data <- function(df) {
+  # Function to convert latency strings to milliseconds
+  convert_latency_to_ms <- function(latency_str) {
+    sapply(latency_str, function(x) {
+      if (is.na(x) || x == "" || x == "X") return(NA)
+      tryCatch({
+        if (grepl("us$", x)) {
+          return(as.numeric(gsub("us$", "", x)) / 1000)
+        } else if (grepl("ms$", x)) {
+          return(as.numeric(gsub("ms$", "", x)))
+        } else if (grepl("s$", x) & !grepl("us$", x) & !grepl("ms$", x)) {
+          return(as.numeric(gsub("s$", "", x)) * 1000)
+        } else {
+          # Assume microseconds if no unit and convert to ms
+          return(as.numeric(x) / 1000)
+        }
+      }, error = function(e) {
+        return(NA)  # Return NA instead of "X" for R consistency
+      })
+    })
+  }
+  
+  # Function to convert transfer_sec to megabytes
+  convert_transfer_to_mb <- function(transfer_str, digits = 6) {
+    sapply(transfer_str, function(x) {
+      if (is.na(x) || x == "" || x == "X") return(NA)
+      
+      x <- trimws(tolower(x))  # Normalize input
+      
+      # Match pattern: number with optional decimal + optional unit
+      match <- regmatches(x, regexec("^([0-9.]+)\\s*(b|kb|mb|gb)?$", x))[[1]]
+      
+      if (length(match) == 3) {
+        value <- as.numeric(match[2])
+        unit <- match[3]
+        
+        multiplier <- switch(unit,
+          "b" = 1 / 1024^2,
+          "kb" = 1 / 1024,
+          "mb" = 1,
+          "gb" = 1024,
+          # "" = 1,  # default to MB
+          NA
+        )
+        
+        result <- value * multiplier
+        
+        # Round and format to avoid scientific notation
+        formatted <- format(round(result, digits), scientific = FALSE, trim = TRUE)
+        return(as.numeric(formatted))
+      }
+  
+      return(NA)
+    })
+  }
+
+
+  
+  # Apply latency conversion to all latency columns
+  latency_cols <- c("latency_avg_ms", "latency_std_ms", "latency_max_ms", "latency_p50", "latency_p75", "latency_p90", "latency_p99")
+  df[latency_cols] <- lapply(df[latency_cols], convert_latency_to_ms)
+  
+  # Apply transfer conversion
+  df$transfer_sec <- convert_transfer_to_mb(df$transfer_sec)
+  
+  # Convert other numeric columns (without units)
+  numeric_cols_no_units <- c("benchmarking_time_s", "build_time_s", 
+                            "time_starting_database_s", "time_until_accepting_requests_s",
+                            "verify_time_s", "total_test_time_s", "total_tcp_sockets")
+  df[numeric_cols_no_units] <- lapply(df[numeric_cols_no_units], as.numeric)
+  
+  # Convert categorical variables to factors
+  categorical_cols <- c("environment", "test_type", "framework", "language", 
+                       "platform", "webserver", "database", "orm", "classification","approach", "os", "database_os", "verify", "system","system_cpu")
+  df[categorical_cols] <- lapply(df[categorical_cols], as.factor)
+  
+  # Handle sloc_count
+  df$sloc_count <- as.numeric(gsub("X", NA, df$sloc_count))
+  
+  # Convert system specs
+  df$system_cores <- as.numeric(gsub("[^0-9]", "", df$system_cores))
+  df$system_memory <- as.numeric(gsub("[^0-9]", "", df$system_memory))
+  df$system_max_turbo_frequency <- as.numeric(gsub("[^0-9.]", "", df$system_max_turbo_frequency))
+  df$system_base_frequency <- as.numeric(gsub("[^0-9.]", "", df$system_base_frequency))
+  df$system_cache <- as.numeric(gsub("[^0-9]", "", df$system_cache))
+  df$network_bandwidth <- as.numeric(gsub("[^0-9]", "", df$network_bandwidth))
+  
+  # Ensure datetime columns remain as POSIXct
+  datetime_cols <- c("test_start_time", "test_completion_time", "completed_time",
+                    "start_time", "end_time")
+  df[datetime_cols] <- lapply(df[datetime_cols], as.POSIXct)
+  
+  # Ensure numeric columns are properly typed
+  numeric_cols <- c("duration", "total_requests", "scale_factor", "throughput",
+                   "connect_errors", "read_errors", "write_errors", 
+                   "timeout_requests", "connections", "threads", "wrk_duration_sec",
+                   "requests_sec")
+  df[numeric_cols] <- lapply(df[numeric_cols], as.numeric)
+  
+  return(df)
+}
+
+# call function
+dataset_prep <- convert_data(dataset)
+glimpse(dataset_prep)
+```
+
+## 4.Save
+
+```{r}
+data_path <- "../data/processed/prep/"
+if(!dir.exists(paths = data_path)){
+  dir.create(data_path)
+}
+
+save(dataset_prep,file="../data/processed/prep/dataset_prep.RData")
+# Save the dataset as a CSV file
+write.csv(dataset_prep, file = "../data/processed/prep/dataset_prep.csv", row.names = FALSE)
+cat("Prepared data saved successfully!")
+
+# clean up - remove full environment and clear console
+rm(list = ls())
+cat("\014")
+
+```
+

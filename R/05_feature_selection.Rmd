@@ -1,0 +1,403 @@
+---
+title: "05_feature_reduction" 
+output: html_document 
+author: "Naresh Jhawar"
+
+# Purpose of Feature Selection and reduction
+
+Feature reduction simplifies the dataset by reducing dimensionality and identifying patterns, improving model performance and interpretability. Principal Component Analysis (PCA) reduces numerical features while preserving variance, and cluster analysis (k-means, hierarchical clustering) groups similar tech stacks based on performance. These steps optimize the dataset for supervised modeling and provide unsupervised insights into stack behavior.
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+library(tidyverse)
+library(skimr)
+library(corrplot)
+library(randomForest)
+library(knitr)
+library(caret)
+set.seed(123)
+
+library(cluster)
+library(factoextra)
+```
+
+## 1. Load Engineered Dataset
+
+We load the dataset created during feature engineering to start with the transformed features.
+
+```{r load_data}
+# Load engineered dataset (replace with actual path)
+# data <- read.csv("engineered_dataset.csv")
+load("../data/processed/eng/dataset_engineered.RData")
+load("../data/processed/eng/dataset_encoded.RData")
+
+# load("../data/processed/eng/train_data.RData")
+# load("../data/processed/eng/test_data.RData")
+# load("../data/processed/eng/preprocess_params.RData")
+# cat("Engineered datasets and preprocessing parameters loaded successfully!\n")
+
+# Quick check
+skim(data)
+```
+
+**Why**: The engineered dataset includes `log_throughput`, new features (`latency_p90_ratio`, `connection_density`, etc.), and cleaned data (dropped `uuid`, `notes`, `versus`, `sloc_count`). Loading ensures we use all transformations.  
+**Helps**: Provides a starting point with 54 columns (original + engineered) for selection.  
+**Insights**:
+- **EDA**: Identified key predictors (`latency_*`, `scale_factor`, `connections`, `framework`) and redundancy (`requests_sec` ≈ `throughput`).
+- **Feature Engineering**: Added predictive features (`latency_p90_ratio`, `scale_factor_bin`) and noted constant columns (`environment`, `system_cores`).
+
+## 2. Drop Features
+
+<!--
+Why Needed: Remove non-informative, redundant, or constant columns to reduce noise and improve model performance.
+How It Helps: Simplifies the dataset, focusing on features relevant to efficiency prediction
+Check for constants or less variance and drop them
+(e.g., workload, concurrency, stack characteristics).
+Remove features with no variability (single value across all rows).
+Insights Provided: Confirms the final feature set, reducing dimensionality and computational cost.
+-->
+
+<!-- Remove non-informative, redundant, or constant columns as specified. -->
+
+```{r drop_columns}
+
+data_clean <- data %>%
+  select(-uuid, -notes, -versus, -tags, # static columns or unrelated to performance
+         -verify, -approach, -os,-database_os, # irrelevant to performance
+         -start_time, -end_time, -completed_time, # timing columns
+         -connect_errors, # constant - no variance
+         -test_start_time, -test_completion_time, -environment, -system, -system_cpu,
+         -system_max_turbo_frequency, -system_cache, -network_bandwidth,-duration, -wrk_duration_sec, # constants
+         -system_cores, -system_base_frequency, -system_memory,
+         -requests_sec, # redundant with throughput
+         -sloc_count # not enough and has no impact with performance
+          )
+
+# Verify
+colnames(data_clean) %>% kable(caption = "Remaining Columns")
+```
+
+<!-- **Why**:  -->
+<!-- - **Non-informative**: `uuid`, `notes`, `versus`, `sloc_count` (all NA), `tag` (not in dataset) lack predictive value. -->
+<!-- - **Constant**: `verify` (`pass`), `environment` (`Citrine`), `system_cpu`, `system_max_turbo_frequency`, `system_cache`, `network_bandwidth` (40 Gbps) have no variability. -->
+<!-- - **Redundant**: `requests_sec` highly correlated with `throughput` (~0.9); timing columns (`start_time`, `end_time`, etc.) captured elsewhere (e.g., `response_time`). -->
+<!-- - **Specified**: `orm`, `approach`, `build_time_s`, `verify_time_s`, `total_test_time_s`, `time_starting_database_s`, `time_until_accepting_requests_s`, `duration`, `wrk_duration_sec` are constant or irrelevant per your instructions. -->
+<!-- **Helps**: Reduces from 63 to 36 columns, focusing on predictive features like `framework`, `scale_factor`, and `efficiency`, simplifying modeling and reducing noise.   -->
+<!-- **Insights**:  -->
+<!-- - **EDA**: Confirmed constants (e.g., `verify` = `pass`) and redundancies (e.g., `requests_sec`); timing columns irrelevant except for derived features. -->
+
+**Why**: 
+- EDA showed `wrk_duration_sec`, `duration` (~15s), `benchmarking_time_s` (~499s), etc., have minimal variability.
+- `response_time` captures tech stack efficiency (complete test time).
+
+**Helps**: 
+- Reduces to 18 columns, focusing on predictive features.
+- Retains `response_time` for tech stack performance analysis.
+
+**Insights**:
+- **EDA**: Timing metrics mostly constant; `response_time` (derived) varied slightly.
+- **Feature Engineering**: `response_time` designed to measure test efficiency.
+
+
+## 3. Correlation Analysis
+
+Remove highly correlated numeric features to reduce multicollinearity.
+
+```{r correlation_analysis}
+# Select numeric columns
+numeric_cols <- data_clean %>%
+  select_if(is.numeric) %>%
+  na.omit()
+
+# Correlation matrix
+corr_matrix <- cor(numeric_cols)
+p <-corrplot(corr_matrix, method = "color", type = "upper", tl.cex = 0.7, title = "Correlation Matrix")
+
+p
+
+# Find highly correlated pairs (|corr| > 0.8)
+high_corr <- as.data.frame(as.table(corr_matrix)) %>%
+  filter(abs(Freq) > 0.5 & Var1 != Var2) %>%
+  arrange(desc(abs(Freq)))
+kable(high_corr, caption = "Highly Correlated Features (|corr| > 0.8)")
+
+# Drop redundant features
+data_reduced <- data_reduced %>%
+  select(-total_requests, -latency_p50, -latency_p75, -latency_p99)
+
+# Verify
+colnames(data_reduced) %>% kable(caption = "Features After Correlation Reduction")
+```
+
+**Why**: 
+- EDA showed `requests_sec` ≈ `throughput`, `total_requests` correlated, and latency metrics (`latency_p50`, `p75`, `p99`) redundant with `latency_avg_ms`, `latency_p90`.
+- High correlations destabilize models, especially with tech stack features like `framework_test`.
+
+**Helps**: 
+- Reduces to 26 columns, retaining `request_rate`, `latency_p90_ratio` for similar information.
+- Ensures tech stack interactions are modeled without multicollinearity.
+
+**Insights**:
+- **EDA**: `requests_sec` (~1 with `throughput`), `latency_p50`–`p99` (>0.9 with `latency_avg_ms`).
+- **Feature Engineering**: `request_rate` replaces `requests_sec`; `latency_p90_ratio`, `latency_max_ratio` capture tail latency for tech stack stability.
+
+
+## 4. Principal Component Analysis (PCA)
+
+```{r}
+# Select numerical features for PCA (excluding efficiency, the target)
+numerical_cols <- c("scale_factor", "connections", "threads", "transfer_sec", 
+                    "throughput", "latency_avg_ms", "latency_max_ms")
+
+# Ensure only numerical columns present in train_data are used
+numerical_cols <- numerical_cols[numerical_cols %in% names(train_data)]
+
+# Apply PCA on training data
+# pca_result <- prcomp(train_data[numerical_cols], center = FALSE, scale. = FALSE)  # Already normalized
+# pca_summary <- summary(pca_result)
+# cat("PCA Summary:\n")
+# print(pca_summary)
+# 
+# # Scree plot to visualize explained variance
+# fviz_eig(pca_result, addlabels = TRUE, 
+#          main = "Scree Plot: Proportion of Variance Explained by PCs",
+#          xlab = "Principal Component", ylab = "Percentage of Variance")
+# 
+# # Select number of components explaining ~80-90% of variance
+# cum_var <- cumsum(pca_summary$proportion[2, ])
+# n_components <- which(cum_var >= 0.85)[1]
+# cat("Number of components explaining >=85% variance:", n_components, "\n")
+# 
+# # Transform training and test data to PCA space
+# train_pca <- predict(pca_result, newdata = train_data[numerical_cols])[, 1:n_components]
+# test_pca <- predict(pca_result, newdata = test_data[numerical_cols])[, 1:n_components]
+# 
+# # Combine PCA components with non-numerical features and target
+# train_data_pca <- train_data %>%
+#   select(-all_of(numerical_cols)) %>%
+#   bind_cols(as.data.frame(train_pca))
+# test_data_pca <- test_data %>%
+#   select(-all_of(numerical_cols)) %>%
+#   bind_cols(as.data.frame(test_data_pca))
+# 1. Run PCA (as you did)
+pca_result <- prcomp(train_data[numerical_cols], center = FALSE, scale. = FALSE)
+
+# 2. Compute the proportion of variance explained directly
+var_explained <- pca_result$sdev^2 / sum(pca_result$sdev^2)
+cum_var       <- cumsum(var_explained)
+
+# 3. Find how many PCs are needed for ≥85% of variance
+n_components <- which(cum_var >= 0.85)[1]
+
+cat("Variance explained by each PC:\n")
+print(var_explained)
+cat("\nCumulative variance:\n")
+print(cum_var)
+cat("\nNumber of components for ≥85% variance:", n_components, "\n")
+
+# 4. (Optional) Scree plot
+library(factoextra)
+fviz_eig(pca_result, addlabels = TRUE,
+         main = "Scree Plot: Variance Explained",
+         xlab = "PC", ylab = "Variance (%)")
+
+# 5. Project data into the first n_components PCs
+train_pca <- predict(pca_result, newdata = train_data[numerical_cols])[, 1:n_components]
+test_pca  <- predict(pca_result, newdata = test_data[numerical_cols])[, 1:n_components]
+
+# 6. Re‐attach the remaining columns
+train_data_pca <- train_data %>%
+  select(-all_of(numerical_cols)) %>%
+  bind_cols(as.data.frame(train_pca))
+
+test_data_pca <- test_data %>%
+  select(-all_of(numerical_cols)) %>%
+  bind_cols(as.data.frame(test_pca))
+
+
+# Glimpse the PCA-transformed dataset
+glimpse(train_data_pca)
+```
+
+## 5. K-Means Clustering
+
+```{r}
+# Select features for clustering (PCA components + efficiency)
+cluster_features <- c(paste0("PC", 1:n_components), "efficiency")
+cluster_data <- train_data_pca[cluster_features]
+
+# Determine optimal number of clusters using elbow method
+fviz_nbclust(cluster_data, kmeans, method = "wss") +
+  labs(title = "Elbow Method for Optimal K in K-Means")
+
+# Apply k-means with chosen k (e.g., based on elbow plot, typically 3-5)
+set.seed(123)
+k_optimal <- 4  # Adjust based on elbow plot inspection
+kmeans_result <- kmeans(cluster_data, centers = k_optimal, nstart = 25)
+
+# Visualize clusters in PCA space (PC1 vs PC2)
+fviz_cluster(kmeans_result, data = cluster_data, 
+             geom = "point", ellipse.type = "convex",
+             main = "K-Means Clusters in PCA Space (PC1 vs PC2)")
+
+# Add cluster labels to training data
+train_data_pca$kmeans_cluster <- as.factor(kmeans_result$cluster)
+
+# Summarize efficiency by cluster
+cluster_summary <- train_data_pca %>%
+  group_by(kmeans_cluster) %>%
+  summarise(
+    avg_efficiency = mean(efficiency, na.rm = TRUE),
+    count = n()
+  )
+cat("Efficiency Summary by K-Means Cluster:\n")
+print(cluster_summary)
+```
+
+## 6. Hierarchical Clustering
+
+```{r}
+# Compute distance matrix for clustering
+dist_matrix <- dist(cluster_data, method = "euclidean")
+
+# Perform hierarchical clustering
+hclust_result <- hclust(dist_matrix, method = "ward.D2")
+
+# Plot dendrogram
+plot(hclust_result, main = "Dendrogram: Hierarchical Clustering of Tech Stacks", 
+     xlab = "", sub = "")
+
+# Cut dendrogram to get clusters (e.g., same k as k-means)
+hclust_clusters <- cutree(hclust_result, k = k_optimal)
+
+# Add hierarchical cluster labels to training data
+train_data_pca$hclust_cluster <- as.factor(hclust_clusters)
+
+# Summarize efficiency by hierarchical cluster
+hclust_summary <- train_data_pca %>%
+  group_by(hclust_cluster) %>%
+  summarise(
+    avg_efficiency = mean(efficiency, na.rm = TRUE),
+    count = n()
+  )
+cat("Efficiency Summary by Hierarchical Cluster:\n")
+print(hclust_summary)
+```
+
+## 7. Save Reduced Data and Results
+
+```{r}
+# Create directory for feature reduction outputs
+red_path <- "../data/processed/sel/"
+if (!dir.exists(red_path)) {
+  dir.create(red_path)
+}
+
+save(data_clean, file = "../data/processed/sel/data_clean.RData")
+
+# Save PCA-transformed datasets
+save(train_data_pca, file = "../data/processed/red/train_data_pca.RData")
+save(test_data_pca, file = "../data/processed/red/test_data_pca.RData")
+
+# Save PCA and clustering results
+save(pca_result, file = "../data/processed/red/pca_result.RData")
+save(kmeans_result, file = "../data/processed/red/kmeans_result.RData")
+save(hclust_result, file = "../data/processed/red/hclust_result.RData")
+
+cat("Feature reduction results saved successfully!\n")
+```
+
+## 8. Variable Importance with Random Forest
+
+Rank features by importance for `log_throughput`, emphasizing tech stack.
+
+```{r var_importance}
+# Prepare data for Random Forest
+model_data <- data_reduced %>%
+  mutate(across(where(is.factor), as.numeric)) %>%
+  na.omit()
+
+# Run Random Forest
+rf_model <- randomForest(log_throughput ~ ., data = model_data, ntree = 100, importance = TRUE)
+
+# Extract importance
+importance_df <- as.data.frame(importance(rf_model)) %>%
+  rownames_to_column("Feature") %>%
+  arrange(desc(`%IncMSE`)) %>%
+  mutate(Rank = row_number())
+
+kable(importance_df, caption = "Feature Importance from Random Forest")
+```
+
+**Why**: 
+- Random Forest quantifies feature contribution to `log_throughput` (%IncMSE = error increase if removed).
+- Handles numeric (`latency_avg_ms`) and categorical (`framework_test`) features, capturing tech stack effects.
+- Tests if `framework_test` (tech stack proxy) ranks high vs. individual components.
+
+**Helps**: 
+- Identifies top predictors (e.g., `latency_avg_ms`, `framework_test`, `scale_factor`).
+- Guides tech stack configuration for Black Friday.
+
+**Insights**:
+- **EDA**: `latency_*`, `scale_factor`, `connections`, `framework`, `test_type` key.
+- **Feature Engineering**: `framework_test` expected to rank high (tech stack interaction); `latency_p90_ratio`, `scale_factor_bin` for scalability.
+
+
+## 9. Final Feature Selection
+
+Select top features based on importance, correlation, and tech stack relevance.
+
+```{r final_selection}
+# Select top features (based on importance_df, adjusted for tech stack)
+selected_features <- c(
+  # "log_throughput",      # Target
+  # "latency_avg_ms",      # Key predictor, tech stack latency
+  # "latency_p90_ratio",   # Tail latency, downtime prevention
+  # "latency_max_ratio",   # Extreme latency spikes
+  # "latency_variability", # Tech stack stability
+  # "scale_factor",        # Scalability driver
+  # "scale_factor_bin",    # Non-linear scalability
+  # "connections",         # High-traffic optimization
+  # "threads",             # Resource allocation
+  # "connection_density",  # Tech stack efficiency
+  # "framework_test",      # Tech stack interaction
+  # "system_load",         # Traffic stress
+  # "test_type",           # Workload context
+  # "response_time"        # Tech stack efficiency
+  "log_throughput",      # Target: Normalized throughput for modeling stability
+  "framework",           # Core tech stack identifier, defines performance profile
+  "language",            # Java-based, influences framework efficiency
+  "platform",            # Vert.x reactive design, impacts scalability
+  "webserver",           # None indicates direct handling, affects latency
+  "database",            # Postgres consistency, critical for db tests
+  "classification",      # Micro architecture, shapes framework behavior
+  "framework_test",      # Framework-test interaction, captures workload-specific tech stack performance
+  "test_type",           # Update/db workload, differentiates throughput patterns
+  "latency_avg_ms",      # Average latency, directly reduces throughput
+  "latency_p90_ratio",   # Tail latency ratio, indicates stability under load
+  "latency_max_ratio",   # Extreme latency spikes, critical for downtime prevention
+  "latency_variability", # Latency stability, reflects tech stack reliability
+  "scale_factor",        # Scalability driver, higher values reduce throughput
+  "scale_factor_bin",    # Categorical scalability, simplifies non-linear effects
+  "connections",         # Concurrent connections, optimizes high-traffic performance
+  "threads",             # Thread allocation, balances resource usage
+  "connection_density",  # Connections/threads, measures resource efficiency
+  "system_load",         # Requests/connection, quantifies traffic stress
+  "response_time",        # Complete test time, indicates tech stack efficiency
+  "transfer_sec",        # Data transfer time, impacts overall throughput
+  "time_until_accepting_requests_s", # Time until system readiness, crucial for performance
+  "build_time_s" # Build time, reflects tech stack setup efficiency
+)
+
+data_final <- data_reduced %>%
+  select(all_of(selected_features))
+
+# Verify
+colnames(data_final) %>% kable(caption = "Final Selected Features")
+
+# Summary
+skim(data_final)
+```
+

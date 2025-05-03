@@ -1,0 +1,61 @@
+test_type,framework,language,platform,webserver,database,classification,connections,threads,scale_factor,predicted_efficiency
+fortune,787,0,netty,actix-server,mysql,platform,32,16,128,32.934364318847656
+fortune,787,0,netty,actix-server,mysql,platform,32,16,64,27.830068588256836
+db,778,0,fpm/fastcgi,passenger,mongodb,platform,16,16,128,25.976665496826172
+json,785,0,deno,caddy,mongodb,none,512,56,256,23.169530868530273
+fortune,783,0,archttp,tornado,mysql,platform,256,32,128,22.401214599609375
+db,780,0,racket,h2o,postgres,fullstack,256,32,256,20.058164596557617
+db,780,0,racket,h2o,postgres,fullstack,256,32,64,19.587383270263672
+fortune,779,0,just-js,nginx,mysql,platform,128,16,128,19.14501190185547
+fortune,783,0,archttp,tornado,mysql,platform,256,32,64,18.8682861328125
+cached-query,786,0,just-js,hyper,postgres,none,16,56,1,16.62797737121582
+db,788,0,microhttp,jetty,postgres,none,16,56,512,16.01799774169922
+db,789,0,bayou,vertx,mysql,micro,16,16,64,14.694604873657227
+fortune,779,0,just-js,nginx,mysql,platform,128,16,64,14.552266120910645
+cached-query,786,0,just-js,hyper,postgres,none,16,56,10,14.2900390625
+cached-query,786,0,just-js,hyper,postgres,none,16,56,20,13.685786247253418
+db,789,0,bayou,vertx,mysql,micro,16,16,256,12.846830368041992
+json,775,0,httpserver,jetty,mongodb,micro,256,32,128,11.514155387878418
+json,785,0,deno,caddy,mongodb,none,512,56,512,10.707152366638184
+db,789,0,bayou,vertx,mysql,micro,16,16,512,10.6783447265625
+fortune,783,0,archttp,tornado,mysql,platform,256,32,512,9.242135047912598
+update,776,0,http/af,woof,postgres,none,32,32,10,8.640106201171875
+update,776,0,http/af,woof,postgres,none,32,32,15,8.611397743225098
+update,774,0,microhttp,ffead-cpp,postgres,none,128,56,1,8.58279037475586
+update,776,0,http/af,woof,postgres,none,32,32,5,8.401363372802734
+query,793,0,none,twiggy,postgres,micro,128,16,5,8.114744186401367
+query,793,0,none,twiggy,postgres,micro,128,16,15,7.925406455993652
+db,778,0,fpm/fastcgi,passenger,mongodb,platform,16,16,32,7.721582412719727
+query,793,0,none,twiggy,postgres,micro,128,16,20,7.642599582672119
+update,774,0,microhttp,ffead-cpp,postgres,none,128,56,15,7.336341857910156
+json,785,0,deno,caddy,mongodb,none,512,56,16,7.1566853523254395
+json,775,0,httpserver,jetty,mongodb,micro,256,32,512,7.066061019897461
+update,774,0,microhttp,ffead-cpp,postgres,none,128,56,20,6.923970699310303
+fortune,787,0,netty,actix-server,mysql,platform,32,16,32,6.698091506958008
+db,780,0,racket,h2o,postgres,fullstack,256,32,32,6.652623653411865
+db,788,0,microhttp,jetty,postgres,none,16,56,16,6.122464179992676
+db,778,0,fpm/fastcgi,passenger,mongodb,platform,16,16,16,6.077400207519531
+update,782,0,akka,nginx,mysql,micro,128,32,1,5.797399520874023
+update,784,0,reactphp,netty,mysql,fullstack,128,16,1,5.623225212097168
+update,782,0,akka,nginx,mysql,micro,128,32,5,5.371910095214844
+update,782,0,akka,nginx,mysql,micro,128,32,10,5.2830915451049805
+update,784,0,reactphp,netty,mysql,fullstack,128,16,15,4.7730712890625
+query,790,0,nio2,puma,mongodb,micro,512,32,1,4.531334400177002
+update,784,0,reactphp,netty,mysql,fullstack,128,16,20,4.360700607299805
+db,781,0,unit nginx,uvicorn,mongodb,micro,512,16,512,4.011203289031982
+fortune,779,0,just-js,nginx,mysql,platform,128,16,512,3.991699695587158
+db,781,0,unit nginx,uvicorn,mongodb,micro,512,16,256,2.7723374366760254
+update,791,0,resteasy reactive,cowboy,none,none,32,16,1,2.7195329666137695
+db,788,0,microhttp,jetty,postgres,none,16,56,32,2.3994672298431396
+update,791,0,resteasy reactive,cowboy,none,none,32,16,5,2.06939435005188
+update,791,0,resteasy reactive,cowboy,none,none,32,16,20,1.6235346794128418
+query,790,0,nio2,puma,mongodb,micro,512,32,5,1.3608561754226685
+json,775,0,httpserver,jetty,mongodb,micro,256,32,16,1.0667264461517334
+update,777,0,rapidoid,passenger,mongodb,fullstack,512,56,1,0.4862076938152313
+update,792,0,solon,socketify.py,mongodb,micro,512,16,5,-0.024268588051199913
+update,792,0,solon,socketify.py,mongodb,micro,512,16,10,-0.09780200570821762
+query,790,0,nio2,puma,mongodb,micro,512,32,20,-0.8245116472244263
+update,792,0,solon,socketify.py,mongodb,micro,512,16,15,-0.825023889541626
+update,777,0,rapidoid,passenger,mongodb,fullstack,512,56,10,-1.3520787954330444
+update,777,0,rapidoid,passenger,mongodb,fullstack,512,56,15,-1.9235721826553345
+db,781,0,unit nginx,uvicorn,mongodb,micro,512,16,16,-2.333782196044922

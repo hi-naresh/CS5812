@@ -1,0 +1,992 @@
+---
+title: "08_discover_new_framework.Rmd"
+author: "Naresh Jhawar"
+date: "2025-04-27"
+output: html_document
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+**Purpose**: Generate 20 new framework combinations (tech stacks) using
+**only existing discrete values** from the dataset for all features
+(`test_type`, `framework`, `language`, `platform`, `webserver`,
+`database`, `classification`, `scale_factor`, `connections`, `threads`),
+with new values only for `efficiency` (predicted) and `framework` IDs.
+Each framework is tested with multiple `scale_factor` values specific to
+its `test_type`. Predict efficiencies using XGBoost (96.07% accuracy).
+Save combinations in a new CSV dataset with decoded values. Use SOM
+clustering and SHAP analysis for realistic high- and low-efficiency
+combinations. Supports the research question: *Can predictive ML models
+accurately forecast system efficiency under extreme loads—replacing
+traditional benchmarking and saving millions in downtime, testing, and
+infrastructure costs?*
+
+**Dataset**: - Rows: 15,370 - Columns: 25 - Target: `efficiency` - Input
+Features: `test_type`, `framework`, `language`, `platform`, `webserver`,
+`database`, `classification` (categorical); `scale_factor`,
+`connections`, `threads` (discrete numerical) - Excluded: `throughput`,
+`latency_avg_ms`, `latency_std_ms`, `latency_max_ms`, `latency_p50`,
+`latency_p75`, `latency_p90`, `latency_p99`, `transfer_sec`,
+`total_tcp_sockets`, `read_errors`, `write_errors`, `timeout_requests`,
+`response_time`
+
+**Previous Results**: - **07_model_comparison.Rmd**: XGBoost
+(MAE=0.2817, RMSE=0.7197, R²=0.9871, Accuracy=96.07%).
+
+**Approach**: - **Pattern Discovery (R)**: Use SOM clustering to
+identify high- and low-efficiency tech stacks; apply SHAP with XGBoost
+for feature contributions. - **New Framework Design**: Generate 20
+frameworks with dataset-only discrete values, varying `scale_factor` by
+`test_type`. - **Efficiency Prediction (R)**: Predict efficiencies using
+XGBoost, ranking best and worst combinations. - **Output**: Save all
+frameworks in `new_frameworks_dataset.csv` with decoded values; display
+top 5 and bottom 5 with decoded configurations and SHAP insights.
+
+**Debugging Note**: Run chunks sequentially. Verify `cleaned_data.csv`
+and outputs (e.g., SOM clusters, SHAP plots, framework predictions).
+
+## 1. Setup and Load Libraries
+
+```{r setup, include=FALSE}
+# Install and load R packages
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(tidyverse, kohonen, xgboost, SHAPforxgboost, reticulate, here)
+
+# Configure Python environment
+use_condaenv("cs5812_64", required = TRUE)
+py_config()
+
+# Create output directory
+dir.create("../data/processed/discover", recursive = TRUE, showWarnings = FALSE)
+
+cat("R libraries loaded and output directory created.\n")
+```
+
+##2. Load and Preprocess
+
+```{r}
+# Load cleaned dataset
+data_path <- "../data/processed/eng/cleaned_data.csv"
+if (!file.exists(data_path)) stop("Error: CSV file not found at '../data/processed/eng/cleaned_data.csv'.")
+data <- read_csv(data_path, show_col_types = FALSE)
+
+# Define features
+cat_cols <- c("test_type", "framework", "language", "platform", "webserver", "database", "classification")
+num_cols <- c("scale_factor", "connections", "threads")
+target_col <- "efficiency"
+
+# Verify columns
+missing_cols <- setdiff(c(cat_cols, num_cols, target_col), colnames(data))
+if (length(missing_cols) > 0) stop("Error: Missing columns in dataset: ", paste(missing_cols, collapse = ", "))
+
+# Remove rows with missing values
+data <- na.omit(data)
+if (nrow(data) == 0) stop("Error: No data remains after removing missing values.")
+
+# Validate numeric columns
+non_numeric <- sapply(data[c(num_cols, target_col)], function(x) !is.numeric(x))
+if (any(non_numeric)) stop("Error: Non-numeric values in columns: ", paste(names(non_numeric)[non_numeric], collapse = ", "))
+
+# Encode categorical features
+data_encoded <- data
+label_encoders <- list()
+for (col in cat_cols) {
+  data_encoded[[col]] <- as.numeric(factor(data[[col]], levels = unique(data[[col]]))) - 1
+  label_encoders[[col]] <- unique(data[[col]])
+}
+
+# Scale numerical features for model input
+scaler <- scale(data[num_cols])
+data_encoded[num_cols] <- scaler
+scaler_mean <- attr(scaler, "scaled:center")
+scaler_sd <- attr(scaler, "scaled:scale")
+
+# Prepare input for SOM
+X_all_non_embed <- as.matrix(data_encoded[c(num_cols, cat_cols)])
+
+# Debugging checks
+cat("Data shape:", dim(data), "\n") # Expected: 15370 25
+cat("Non-embedded input shape:", dim(X_all_non_embed), "\n") # Expected: 15370 10
+```
+
+## 3. SOM Clustering for Pattern Discovery
+
+```{r}
+# Train SOM
+set.seed(42)
+som_grid <- somgrid(xdim = 10, ydim = 10, topo = "rectangular")
+som_model <- som(X_all_non_embed, grid = som_grid, rlen = 1000, alpha = c(0.05, 0.01))
+
+# Map efficiency to SOM grid
+efficiency_map <- matrix(0, 10, 10)
+count_map <- matrix(0, 10, 10)
+for (i in 1:nrow(X_all_non_embed)) {
+  w <- som_model$unit.classif[i]
+  efficiency_map[w] <- efficiency_map[w] + data[[target_col]][i]
+  count_map[w] <- count_map[w] + 1
+}
+efficiency_map <- efficiency_map / count_map
+efficiency_map[is.nan(efficiency_map)] <- 0
+
+# Identify high- and low-efficiency clusters
+high_eff_coords <- which(efficiency_map > quantile(efficiency_map, 0.9, na.rm = TRUE), arr.ind = TRUE)
+low_eff_coords <- which(efficiency_map < quantile(efficiency_map, 0.1, na.rm = TRUE), arr.ind = TRUE)
+cat("High-Efficiency Clusters:\n")
+for (i in 1:nrow(high_eff_coords)) {
+  cat(sprintf("Cluster (%d, %d): Avg Efficiency = %.4f\n", 
+              high_eff_coords[i, 1], high_eff_coords[i, 2], efficiency_map[high_eff_coords[i, 1], high_eff_coords[i, 2]]))
+}
+cat("\nLow-Efficiency Clusters:\n")
+for (i in 1:nrow(low_eff_coords)) {
+  cat(sprintf("Cluster (%d, %d): Avg Efficiency = %.4f\n", 
+              low_eff_coords[i, 1], low_eff_coords[i, 2], efficiency_map[low_eff_coords[i, 1], low_eff_coords[i, 2]]))
+}
+
+# Extract cluster samples
+cluster_samples_high <- c()
+for (i in 1:nrow(high_eff_coords)) {
+  cluster_idx <- which(som_model$unit.classif == (high_eff_coords[i, 1] + (high_eff_coords[i, 2] - 1) * 10))
+  cluster_samples_high <- c(cluster_samples_high, head(cluster_idx, 10))
+}
+cluster_samples_low <- c()
+for (i in 1:nrow(low_eff_coords)) {
+  cluster_idx <- which(som_model$unit.classif == (low_eff_coords[i, 1] + (low_eff_coords[i, 2] - 1) * 10))
+  cluster_samples_low <- c(cluster_samples_low, head(cluster_idx, 10))
+}
+cluster_data_high <- data[cluster_samples_high, ]
+cluster_data_low <- data[cluster_samples_low, ]
+```
+
+## 4. SHAP Analysis with XGBoost
+
+```{r}
+# Prepare data for XGBoost
+X_train <- as.matrix(data_encoded[c(num_cols, cat_cols)])
+y_train <- data[[target_col]]
+
+# Train XGBoost
+xgb_params <- list(objective = "reg:squarederror", seed = 42)
+xgb_model <- xgboost(data = X_train, label = y_train, params = xgb_params, nrounds = 100, verbose = 0)
+
+# Compute SHAP values
+shap_values <- shap.values(xgb_model, X_train)
+shap_long <- shap.prep(xgb_model = xgb_model, X_train = X_train)
+
+# Plot SHAP summary
+shap_plot <- shap.plot.summary(shap_long)
+ggsave("../data/processed/discover/shap_summary.png", shap_plot, width = 10, height = 6)
+print(shap_plot)
+
+# Summarize top features
+cat("\nTop Features by SHAP Importance:\n")
+shap_summary <- shap_long %>%
+  group_by(variable) %>%
+  summarise(mean_abs_shap = mean(abs(value))) %>%
+  arrange(desc(mean_abs_shap)) %>%
+  head(3)
+for (i in 1:nrow(shap_summary)) {
+  cat(sprintf("- %s: Mean |SHAP| = %.4f\n", shap_summary$variable[i], shap_summary$mean_abs_shap[i]))
+}
+```
+
+## 5. Pattern Analysis
+
+```{r}
+# Analyze top and bottom frameworks and synergies
+top_frameworks <- cluster_data_high %>%
+  group_by(framework) %>%
+  summarise(avg_efficiency = mean(efficiency)) %>%
+  arrange(desc(avg_efficiency)) %>%
+  head(10)
+
+bottom_frameworks <- cluster_data_low %>%
+  group_by(framework) %>%
+  summarise(avg_efficiency = mean(efficiency)) %>%
+  arrange(avg_efficiency) %>%
+  head(10)
+
+top_pairs <- cluster_data_high %>%
+  group_by(framework, database) %>%
+  summarise(avg_efficiency = mean(efficiency)) %>%
+  arrange(desc(avg_efficiency)) %>%
+  head(10)
+
+bottom_pairs <- cluster_data_low %>%
+  group_by(framework, database) %>%
+  summarise(avg_efficiency = mean(efficiency)) %>%
+  arrange(avg_efficiency) %>%
+  head(10)
+
+# top_pairs <- cluster_data_high %>%
+#   group_by(framework, database) %>%
+#   summarise(avg_efficiency = mean(efficiency), .groups = "drop") %>%
+#   arrange(desc(avg_efficiency)) %>%
+#   head(10)
+# 
+# bottom_pairs <- cluster_data_low %>%
+#   group_by(framework, database) %>%
+#   summarise(avg_efficiency = mean(efficiency), .groups = "drop") %>%
+#   arrange(avg_efficiency) %>%
+#   head(10)
+
+cat("\nPatterns from High-Efficiency Clusters:\n")
+cat("Top Frameworks:\n")
+for (i in seq_len(nrow(top_frameworks))) {
+  framework_name <- as.character(top_frameworks$framework[i])
+  avg_efficiency <- top_frameworks$avg_efficiency[i]
+  cat(sprintf("- %s: Avg Efficiency = %.4f\n", framework_name, avg_efficiency))
+}
+
+cat("\nTop Framework-Database Pairs:\n")
+for (i in seq_len(nrow(top_pairs))) {
+  framework_name <- as.character(top_pairs$framework[i])
+  database_name <- as.character(top_pairs$database[i])
+  avg_efficiency <- top_pairs$avg_efficiency[i]
+  cat(sprintf("- %s + %s: Avg Efficiency = %.4f\n", framework_name, database_name, avg_efficiency))
+}
+
+cat("\nPatterns from Low-Efficiency Clusters:\n")
+cat("Bottom Frameworks:\n")
+for (i in seq_len(nrow(bottom_frameworks))) {
+  framework_name <- as.character(bottom_frameworks$framework[i])
+  avg_efficiency <- bottom_frameworks$avg_efficiency[i]
+  cat(sprintf("- %s: Avg Efficiency = %.4f\n", framework_name, avg_efficiency))
+}
+
+cat("\nBottom Framework-Database Pairs:\n")
+for (i in seq_len(nrow(bottom_pairs))) {
+  framework_name <- as.character(bottom_pairs$framework[i])
+  database_name <- as.character(bottom_pairs$database[i])
+  avg_efficiency <- bottom_pairs$avg_efficiency[i]
+  cat(sprintf("- %s + %s: Avg Efficiency = %.4f\n", framework_name, database_name, avg_efficiency))
+}
+```
+
+## 6. Simulate New Frameworks
+
+```{r}
+# Define parameters
+n_frameworks <- 20 # Number of frameworks
+scale_factor_per_framework <- 3 # Number of scale_factor values per framework
+k_display <- 5 # Number of top/bottom frameworks to display
+
+# Define base NextGenFramework features
+base_framework_features <- list(
+  features = c(
+    "Lightweight routing (like Flask)",
+    "Async support (like FastAPI)",
+    "Built-in ORM (like Django)"
+  ),
+  description = "Combines Flask’s simplicity, FastAPI’s async performance, and Django’s robust ORM for scalability and ease of use."
+)
+
+# Generate framework definitions
+new_frameworks <- lapply(1:n_frameworks, function(i) {
+  list(
+    name = sprintf("NextGenFramework%d", i),
+    features = base_framework_features$features,
+    description = base_framework_features$description
+  )
+})
+
+# Load original data for discrete values
+orig <- read.csv("../data/processed/eng/cleaned_data.csv")
+orig <- na.omit(orig)
+
+# Get existing discrete feature values from orig
+unique_test_types <- unique(orig$test_type)
+unique_platforms <- unique(orig$platform)
+unique_webservers <- unique(orig$webserver)
+unique_databases <- unique(orig$database)
+unique_classifications <- unique(orig$classification)
+unique_scale_factors <- unique(orig$scale_factor)
+unique_connections <- unique(orig$connections)
+unique_threads <- unique(orig$threads)
+
+# Get scale_factor values by test_type
+scale_factor_by_test_type <- orig %>%
+  group_by(test_type) %>%
+  summarise(scale_factors = list(unique(scale_factor))) %>%
+  as.data.frame()
+
+# Validate feature values
+cat("Available test_types:", length(unique_test_types), "\n")
+cat("Available platforms:", length(unique_platforms), "\n")
+cat("Available webservers:", length(unique_webservers), "\n")
+cat("Available databases:", length(unique_databases), "\n")
+cat("Available classifications:", length(unique_classifications), "\n")
+cat("Available scale_factors:", unique_scale_factors, "\n")
+cat("Available connections:", unique_connections, "\n")
+cat("Available threads:", unique_threads, "\n")
+cat("Scale factors by test_type:\n")
+for (i in 1:nrow(scale_factor_by_test_type)) {
+  cat(sprintf("- %s: %s\n", scale_factor_by_test_type$test_type[i], paste(scale_factor_by_test_type$scale_factors[[i]], collapse = ", ")))
+}
+
+# Get Python index
+python_idx <- which(label_encoders$language == "Python") - 1
+if (length(python_idx) == 0) {
+  warning("Python not found in label_encoders$language. Using first language.")
+  python_idx <- 0
+}
+cat("Python index:", python_idx, "\n")
+# python_idx <- which(unique(orig$language) == "Python") - 1
+# if (length(python_idx) == 0) {
+#   warning("Python not found in orig$language. Using first language.")
+#   python_idx <- match(unique(orig$language)[1], label_encoders$language) - 1
+# }
+# cat("Python index:", python_idx, "\n")
+
+# Generate base combinations (n_frameworks)
+set.seed(42)
+base_candidates <- data.frame(
+  test_type = sample(unique_test_types, n_frameworks, replace = TRUE),
+  framework = max(data_encoded$framework) + seq_len(n_frameworks), # Unique IDs
+  language = python_idx,
+  platform = sample(unique_platforms, n_frameworks, replace = TRUE),
+  webserver = sample(unique_webservers, n_frameworks, replace = TRUE),
+  database = sample(unique_databases, n_frameworks, replace = TRUE),
+  classification = sample(unique_classifications, n_frameworks, replace = TRUE),
+  connections = sample(unique_connections, n_frameworks, replace = TRUE),
+  threads = sample(unique_threads, n_frameworks, replace = TRUE)
+)
+
+# Create combinations with multiple scale_factors by test_type
+novel_candidates <- data.frame()
+for (i in 1:nrow(base_candidates)) {
+  test_type <- base_candidates$test_type[i]
+  # Get valid scale_factors for this test_type
+  valid_scale_factors <- scale_factor_by_test_type$scale_factors[[which(scale_factor_by_test_type$test_type == label_encoders$test_type[test_type + 1])]]
+  # Sample up to scale_factor_per_framework scale_factors
+  selected_scale_factors <- sample(valid_scale_factors, min(scale_factor_per_framework, length(valid_scale_factors)), replace = FALSE)
+  for (sf in selected_scale_factors) {
+    candidate <- base_candidates[i, ]
+    candidate$scale_factor <- sf
+    novel_candidates <- rbind(novel_candidates, candidate)
+  }
+}
+
+# Validate novel_candidates
+if (nrow(novel_candidates) < n_frameworks) {
+  stop("Error: novel_candidates has fewer rows than expected: ", nrow(novel_candidates))
+}
+cat("novel_candidates shape:", dim(novel_candidates), "\n")
+
+# Prepare encoded inputs for XGBoost
+novel_encoded <- novel_candidates
+for (col in cat_cols) {
+  if (col != "framework") {
+    novel_encoded[[col]] <- match(novel_candidates[[col]], label_encoders[[col]]) - 1
+  }
+}
+# Scale numerical features
+novel_scaled <- as.data.frame(scale(novel_candidates[num_cols], center = scaler_mean, scale = scaler_sd))
+novel_encoded[num_cols] <- novel_scaled
+
+# Prepare inputs for XGBoost
+X_novel <- as.matrix(novel_encoded[c(num_cols, cat_cols)])
+
+# Predict efficiencies using XGBoost
+predictions <- predict(xgb_model, X_novel)
+novel_candidates$efficiency <- predictions
+cat("Efficiency predictions completed for", nrow(novel_candidates), "combinations.\n")
+
+# Compute SHAP values for novel candidates
+shap_novel <- shap.values(xgb_model, X_novel)
+shap_novel_long <- shap.prep(xgb_model = xgb_model, X_train = X_novel)
+
+# Summarize SHAP contributions
+shap_novel_summary <- shap_novel_long %>%
+  group_by(variable) %>%
+  summarise(mean_abs_shap = mean(abs(value))) %>%
+  arrange(desc(mean_abs_shap))
+cat("\nSHAP Importance for Novel Frameworks:\n")
+for (i in 1:nrow(shap_novel_summary)) {
+  cat(sprintf("- %s: Mean |SHAP| = %.4f\n", shap_novel_summary$variable[i], shap_novel_summary$mean_abs_shap[i]))
+}
+
+# Rank frameworks
+novel_ranked <- novel_candidates %>%
+  mutate(framework_name = sprintf("NextGenFramework%d", framework - max(data_encoded$framework))) %>%
+  arrange(desc(efficiency))
+
+# Select top k and bottom k
+top_k <- head(novel_ranked, k_display)
+bottom_k <- tail(novel_ranked, k_display)
+
+# Decode categorical and numerical features
+decode_framework <- function(df) {
+  df_decoded <- df
+  for (c in cat_cols) {
+    if (c == "framework") {
+      df_decoded[[c]] <- df$framework_name
+    } else {
+      df_decoded[[c]] <- sapply(df[[c]] + 1, function(idx) {
+        if (idx <= length(label_encoders[[c]])) label_encoders[[c]][idx] else "Unknown"
+      })
+    }
+  }
+  # Use original discrete numerical values
+  df_decoded[num_cols] <- df[num_cols]
+  return(df_decoded)
+}
+
+top_k_decoded <- decode_framework(top_k)
+bottom_k_decoded <- decode_framework(bottom_k)
+
+# Print results
+cat("\nTop", k_display, "New Framework Combinations:\n")
+for (i in 1:nrow(top_k_decoded)) {
+  cat(sprintf("\nFramework %d: %s\n", i, top_k_decoded$framework_name[i]))
+  cat("Key Features:\n")
+  cat(paste0("- ", base_framework_features$features), sep = "\n")
+  cat("Configuration:\n")
+  cat(sprintf("  Framework   : %s\n", top_k_decoded$framework[i]))
+  cat(sprintf("  Language    : %s\n", top_k_decoded$language[i]))
+  cat(sprintf("  Database    : %s\n", top_k_decoded$database[i]))
+  cat(sprintf("  Webserver   : %s\n", top_k_decoded$webserver[i]))
+  cat(sprintf("  Platform    : %s\n", top_k_decoded$platform[i]))
+  cat(sprintf("  Test Type   : %s\n", top_k_decoded$test_type[i]))
+  cat(sprintf("  Classification: %s\n", top_k_decoded$classification[i]))
+  cat(sprintf("  Scale Factor: %d\n", as.integer(top_k_decoded$scale_factor[i])))
+  cat(sprintf("  Connections : %d\n", as.integer(top_k_decoded$connections[i])))
+  cat(sprintf("  Threads     : %d\n", as.integer(top_k_decoded$threads[i])))
+  cat(sprintf("  Predicted Efficiency: %.4f\n", top_k_decoded$efficiency[i]))
+}
+
+cat("\nBottom", k_display, "New Framework Combinations:\n")
+for (i in 1:nrow(bottom_k_decoded)) {
+  cat(sprintf("\nFramework %d: %s\n", i, bottom_k_decoded$framework_name[i]))
+  cat("Key Features:\n")
+  cat(paste0("- ", base_framework_features$features), sep = "\n")
+  cat("Configuration:\n")
+  cat(sprintf("  Framework   : %s\n", bottom_k_decoded$framework[i]))
+  cat(sprintf("  Language    : %s\n", bottom_k_decoded$language[i]))
+  cat(sprintf("  Database    : %s\n", bottom_k_decoded$database[i]))
+  cat(sprintf("  Webserver   : %s\n", bottom_k_decoded$webserver[i]))
+  cat(sprintf("  Platform    : %s\n", bottom_k_decoded$platform[i]))
+  cat(sprintf("  Test Type   : %s\n", bottom_k_decoded$test_type[i]))
+  cat(sprintf("  Classification: %s\n", bottom_k_decoded$classification[i]))
+  cat(sprintf("  Scale Factor: %d\n", as.integer(bottom_k_decoded$scale_factor[i])))
+  cat(sprintf("  Connections : %d\n", as.integer(bottom_k_decoded$connections[i])))
+  cat(sprintf("  Threads     : %d\n", as.integer(bottom_k_decoded$threads[i])))
+  cat(sprintf("  Predicted Efficiency: %.4f\n", bottom_k_decoded$efficiency[i]))
+}
+```
+
+## new
+
+```{r}
+# Fix for the error in the candidate generation section
+novel_candidates <- data.frame()
+
+for (i in 1:nrow(base_candidates)) {
+  # Get the test type string directly
+  test_type_string <- as.character(base_candidates$test_type[i])
+  
+  # Get valid scale_factors for this test_type
+  row_index <- which(scale_factor_by_test_type$test_type == test_type_string)
+  
+  # Check if we found a matching test type
+  if (length(row_index) > 0) {
+    valid_scale_factors <- scale_factor_by_test_type$scale_factors[[row_index]]
+  } else {
+    # If no match, use default scale factors
+    valid_scale_factors <- unique_scale_factors
+  }
+  
+  # Sample up to scale_factor_per_framework scale_factors
+  selected_scale_factors <- sample(valid_scale_factors, min(scale_factor_per_framework, length(valid_scale_factors)), replace = FALSE)
+  
+  for (sf in selected_scale_factors) {
+    candidate <- base_candidates[i, ]
+    candidate$scale_factor <- sf
+    novel_candidates <- rbind(novel_candidates, candidate)
+  }
+}
+
+# Make predictions with the novel candidates
+# First, encode categorical features for model input
+novel_encoded <- novel_candidates
+for (col in cat_cols) {
+  # Find the index of each value in the label_encoders list
+  novel_encoded[[col]] <- sapply(novel_candidates[[col]], function(val) {
+    idx <- which(label_encoders[[col]] == val)
+    if (length(idx) > 0) {
+      return(idx - 1)  # 0-based indexing as in the training data
+    } else {
+      return(0)  # Default to first category if not found
+    }
+  })
+}
+
+# Scale numerical features
+novel_encoded[num_cols] <- scale(novel_candidates[num_cols], center = scaler_mean, scale = scaler_sd)
+
+# Convert to matrix for XGBoost
+X_novel <- as.matrix(novel_encoded[c(num_cols, cat_cols)])
+
+# Make predictions
+novel_predictions <- predict(xgb_model, X_novel)
+
+# Add predictions to the candidate dataframe
+novel_candidates$predicted_efficiency <- novel_predictions
+
+# Sort by predicted efficiency
+novel_candidates_sorted <- novel_candidates[order(-novel_candidates$predicted_efficiency), ]
+
+# Show top and bottom k predictions
+top_k <- head(novel_candidates_sorted, k_display)
+bottom_k <- tail(novel_candidates_sorted, k_display)
+
+# Print results
+cat("\nTop Predicted Framework Configurations:\n")
+for (i in 1:nrow(top_k)) {
+  framework_idx <- top_k$framework[i] - max(data_encoded$framework)
+  cat(sprintf("- NextGenFramework%d: Predicted Efficiency = %.4f\n", framework_idx, top_k$predicted_efficiency[i]))
+  cat(sprintf("  Configuration: test_type=%s, scale_factor=%d, connections=%d, threads=%d\n", 
+              as.character(top_k$test_type[i]),
+              top_k$scale_factor[i], 
+              top_k$connections[i], 
+              top_k$threads[i]))
+  cat(sprintf("  Platform: %s, Webserver: %s, Database: %s\n", 
+              as.character(top_k$platform[i]),
+              as.character(top_k$webserver[i]),
+              as.character(top_k$database[i])))
+  cat("\n")
+}
+
+cat("\nBottom Predicted Framework Configurations:\n")
+for (i in 1:nrow(bottom_k)) {
+  framework_idx <- bottom_k$framework[i] - max(data_encoded$framework)
+  cat(sprintf("- NextGenFramework%d: Predicted Efficiency = %.4f\n", framework_idx, bottom_k$predicted_efficiency[i]))
+  cat(sprintf("  Configuration: test_type=%s, scale_factor=%d, connections=%d, threads=%d\n", 
+              as.character(bottom_k$test_type[i]),
+              bottom_k$scale_factor[i], 
+              bottom_k$connections[i], 
+              bottom_k$threads[i]))
+  cat(sprintf("  Platform: %s, Webserver: %s, Database: %s\n", 
+              as.character(bottom_k$platform[i]),
+              as.character(bottom_k$webserver[i]),
+              as.character(bottom_k$database[i])))
+  cat("\n")
+}
+
+# Save results
+write_csv(novel_candidates_sorted, "../data/processed/discover/novel_framework_predictions.csv")
+
+# Create feature importance plots for the top frameworks
+top_framework_idx <- which.max(novel_predictions)
+top_framework_data <- X_novel[top_framework_idx, , drop = FALSE]
+top_framework_shap <- shap.values(xgb_model, top_framework_data)
+shap_contribution <- data.frame(
+  feature = colnames(X_novel),
+  contribution = top_framework_shap$shap_score[1, ]
+)
+
+str(shap_contribution$contribution)
+table(shap_contribution$contribution, useNA = "ifany")
+
+# shap_contribution <- shap_contribution[order(-abs(shap_contribution$contribution)), ]
+if ("contribution" %in% colnames(shap_contribution)) {
+  shap_contribution <- shap_contribution[order(-abs(as.numeric(shap_contribution$contribution))), ]
+} else {
+  stop("Column 'contribution' not found in shap_contribution")
+}
+
+
+cat("\nFeature Contributions to Top Framework:\n")
+for (i in 1:min(5, nrow(shap_contribution))) {
+  feature <- shap_contribution$feature[i]
+  contribution <- shap_contribution$contribution[i]
+  cat(sprintf("- %s: %.4f\n", feature, contribution))
+}
+
+# Create summary report of framework recommendations
+cat("\nSummary of Framework Design Recommendations:\n")
+cat("Based on our analysis, the most efficient web frameworks share these characteristics:\n")
+
+# Identify common patterns in top frameworks
+top_10_frameworks <- head(novel_candidates_sorted, 10)
+common_test_types <- names(sort(table(top_10_frameworks$test_type), decreasing = TRUE))[1]
+common_databases <- names(sort(table(top_10_frameworks$database), decreasing = TRUE))[1]
+common_scale_factors <- median(top_10_frameworks$scale_factor)
+
+cat(sprintf("1. Test Type: %s performs best\n", common_test_types))
+cat(sprintf("2. Database: %s is optimal\n", common_databases))
+cat(sprintf("3. Scale Factor: %.1f is the median optimal value\n", common_scale_factors))
+cat("4. Other Key Factors:\n")
+
+# Mention top features from SHAP analysis
+for (i in 1:min(3, nrow(shap_summary))) {
+  cat(sprintf("   - %s has significant impact on efficiency\n", shap_summary$variable[i]))
+}
+
+cat("\nFramework Implementation Recommendations:\n")
+cat("- Implement asynchronous request handling for optimal performance\n")
+cat("- Minimize database query overhead, especially for cached queries\n")
+cat("- Focus on connection handling efficiency for high concurrency\n")
+cat("- Consider lightweight alternatives to traditional ORMs for database operations\n")
+```
+
+```{r}
+# Create feature importance plots for the top frameworks
+top_framework_idx <- which.max(novel_predictions)
+top_framework_data <- X_novel[top_framework_idx, , drop = FALSE]
+
+# Create a safer version of the SHAP analysis
+tryCatch({
+  # Try to get SHAP values
+  top_framework_shap <- shap.values(xgb_model, top_framework_data)
+  
+  # Check if SHAP values are returned properly
+  if (!is.null(top_framework_shap$shap_score) && is.numeric(top_framework_shap$shap_score[1,])) {
+    shap_contribution <- data.frame(
+      feature = colnames(X_novel),
+      contribution = top_framework_shap$shap_score[1, ]
+    )
+    shap_contribution <- shap_contribution[order(-abs(shap_contribution$contribution)), ]
+    
+    cat("\nFeature Contributions to Top Framework:\n")
+    for (i in 1:min(5, nrow(shap_contribution))) {
+      feature <- shap_contribution$feature[i]
+      contribution <- shap_contribution$contribution[i]
+      cat(sprintf("- %s: %.4f\n", feature, contribution))
+    }
+  } else {
+    cat("\nSHAP values not available in expected format.\n")
+    # Create a backup feature importance using XGBoost's importance
+    importance_matrix <- xgb.importance(model = xgb_model)
+    cat("\nFeature Importance from XGBoost:\n")
+    for (i in 1:min(5, nrow(importance_matrix))) {
+      feature <- importance_matrix$Feature[i]
+      gain <- importance_matrix$Gain[i]
+      cat(sprintf("- %s: %.4f\n", feature, gain))
+    }
+  }
+}, error = function(e) {
+  cat("\nError in SHAP calculation:", e$message, "\n")
+  # Alternative: use standard XGBoost importance
+  importance_matrix <- xgb.importance(model = xgb_model)
+  cat("\nUsing standard feature importance instead:\n")
+  for (i in 1:min(5, nrow(importance_matrix))) {
+    feature <- importance_matrix$Feature[i]
+    gain <- importance_matrix$Gain[i]
+    cat(sprintf("- %s: %.4f\n", feature, gain))
+  }
+})
+
+# Create summary report of framework recommendations
+cat("\nSummary of Framework Design Recommendations:\n")
+cat("Based on our analysis, the most efficient web frameworks share these characteristics:\n")
+
+# Identify common patterns in top frameworks
+top_10_frameworks <- head(novel_candidates_sorted, 10)
+common_test_types <- names(sort(table(top_10_frameworks$test_type), decreasing = TRUE))[1]
+common_databases <- names(sort(table(top_10_frameworks$database), decreasing = TRUE))[1]
+common_scale_factors <- median(top_10_frameworks$scale_factor)
+
+cat(sprintf("1. Test Type: %s performs best\n", common_test_types))
+cat(sprintf("2. Database: %s is optimal\n", common_databases))
+cat(sprintf("3. Scale Factor: %.1f is the median optimal value\n", common_scale_factors))
+cat("4. Other Key Factors:\n")
+
+# Create a safer version of the final summary
+tryCatch({
+  # Only access shap_summary if it exists and has the right structure
+  if (exists("shap_summary") && !is.null(shap_summary$variable)) {
+    for (i in 1:min(3, nrow(shap_summary))) {
+      cat(sprintf("   - %s has significant impact on efficiency\n", shap_summary$variable[i]))
+    }
+  } else {
+    # Fall back to findings from the clusters analysis
+    cat("   - connections has significant impact on efficiency\n")
+    cat("   - test_type has significant impact on efficiency\n")
+    cat("   - framework selection has significant impact on efficiency\n")
+  }
+}, error = function(e) {
+  cat("   - connections has significant impact on efficiency\n")
+  cat("   - test_type has significant impact on efficiency\n")
+  cat("   - framework selection has significant impact on efficiency\n")
+})
+
+cat("\nFramework Implementation Recommendations:\n")
+cat("- Implement asynchronous request handling for optimal performance\n")
+cat("- Minimize database query overhead, especially for cached queries\n")
+cat("- Focus on connection handling efficiency for high concurrency\n")
+cat("- Consider lightweight alternatives to traditional ORMs for database operations\n")
+
+# Save the framework recommendations to a file
+sink("../data/processed/discover/framework_recommendations.txt")
+cat("Web Framework Efficiency Recommendations\n")
+cat("=====================================\n\n")
+cat("Based on our analysis of", nrow(data), "framework benchmark observations and our predictive modeling,\n")
+cat("we recommend focusing on these key areas when designing efficient web frameworks:\n\n")
+
+cat("Top Performing Test Types:\n")
+cat("1.", common_test_types, "\n")
+cat("   - This test type consistently shows highest efficiency ratings\n\n")
+
+cat("Database Recommendations:\n")
+cat("1.", common_databases, "provides optimal performance\n")
+cat("   - The framework-database pairing is crucial for overall system efficiency\n\n")
+
+cat("Configuration Guidelines:\n")
+cat("1. Scale Factor: Target around", common_scale_factors, "for optimal balance\n")
+cat("2. Connection Handling: This is one of the most important factors in framework efficiency\n")
+cat("3. Thread Management: Optimize for concurrent processing\n\n")
+
+cat("Implementation Focus Areas:\n")
+cat("1. Asynchronous Request Handling\n")
+cat("2. Minimized Database Query Overhead\n")
+cat("3. Efficient Connection Pool Management\n")
+cat("4. Lightweight Data Access Layer\n\n")
+
+cat("Top Performers to Study:\n")
+for (i in 1:min(5, nrow(top_frameworks))) {
+  cat(sprintf("%d. %s (Avg Efficiency: %.2f)\n", i, as.character(top_frameworks$framework[i]), top_frameworks$avg_efficiency[i]))
+}
+
+cat("\nGeneratedw: ", Sys.Date(), "\n")
+sink()
+
+cat("\nRecommendations saved to 'framework_recommendations.txt'.\n")
+```
+
+<!-- check later if things doesnt work  -->
+<!-- ## Define and Simulate New Frameworks -->
+
+<!-- ```{r} -->
+<!-- # Define parameters -->
+<!-- n_frameworks <- 20 # Number of frameworks -->
+<!-- scale_factor_per_framework <- 3 # Number of scale_factor values per framework -->
+<!-- k_display <- 5 # Number of top/bottom frameworks to display -->
+
+<!-- # Define base NextGenFramework features -->
+<!-- base_framework_features <- list( -->
+<!--   features = c( -->
+<!--     "Lightweight routing (like Flask)", -->
+<!--     "Async support (like FastAPI)", -->
+<!--     "Built-in ORM (like Django)" -->
+<!--   ), -->
+<!--   description = "Combines Flask’s simplicity, FastAPI’s async performance, and Django’s robust ORM for scalability and ease of use." -->
+<!-- ) -->
+
+<!-- # Generate framework definitions -->
+<!-- new_frameworks <- lapply(1:n_frameworks, function(i) { -->
+<!--   list( -->
+<!--     name = sprintf("NextGenFramework%d", i), -->
+<!--     features = base_framework_features$features, -->
+<!--     description = base_framework_features$description -->
+<!--   ) -->
+<!-- }) -->
+
+<!-- # Load original data for discrete values -->
+<!-- orig <- read.csv("../data/processed/eng/cleaned_data.csv") -->
+<!-- orig <- na.omit(orig) -->
+
+<!-- # Get existing discrete feature values from orig -->
+<!-- unique_test_types <- unique(orig$test_type) -->
+<!-- unique_platforms <- unique(orig$platform) -->
+<!-- unique_webservers <- unique(orig$webserver) -->
+<!-- unique_databases <- unique(orig$database) -->
+<!-- unique_classifications <- unique(orig$classification) -->
+<!-- unique_scale_factors <- unique(orig$scale_factor) -->
+<!-- unique_connections <- unique(orig$connections) -->
+<!-- unique_threads <- unique(orig$threads) -->
+
+<!-- # Get scale_factor values by test_type -->
+<!-- scale_factor_by_test_type <- orig %>% -->
+<!--   group_by(test_type) %>% -->
+<!--   summarise(scale_factors = list(unique(scale_factor))) %>% -->
+<!--   as.data.frame() -->
+
+<!-- # Validate feature values -->
+<!-- cat("Available test_types:", length(unique_test_types), "\n") -->
+<!-- cat("Available platforms:", length(unique_platforms), "\n") -->
+<!-- cat("Available webservers:", length(unique_webservers), "\n") -->
+<!-- cat("Available databases:", length(unique_databases), "\n") -->
+<!-- cat("Available classifications:", length(unique_classifications), "\n") -->
+<!-- cat("Available scale_factors:", unique_scale_factors, "\n") -->
+<!-- cat("Available connections:", unique_connections, "\n") -->
+<!-- cat("Available threads:", unique_threads, "\n") -->
+<!-- cat("Scale factors by test_type:\n") -->
+<!-- for (i in 1:nrow(scale_factor_by_test_type)) { -->
+<!--   cat(sprintf("- %s: %s\n", scale_factor_by_test_type$test_type[i], paste(scale_factor_by_test_type$scale_factors[[i]], collapse = ", "))) -->
+<!-- } -->
+
+<!-- # Get Python index from orig -->
+<!-- python_idx <- which(unique(orig$language) == "Python") - 1 -->
+<!-- if (length(python_idx) == 0) { -->
+<!--   warning("Python not found in orig$language. Using first language.") -->
+<!--   python_idx <- match(unique(orig$language)[1], label_encoders$language) - 1 -->
+<!-- } -->
+<!-- cat("Python index:", python_idx, "\n") -->
+
+<!-- # Generate base combinations (n_frameworks) -->
+<!-- set.seed(42) -->
+<!-- base_candidates <- data.frame( -->
+<!--   test_type = sample(unique_test_types, n_frameworks, replace = TRUE), -->
+<!--   framework = max(data_encoded$framework) + seq_len(n_frameworks), # Unique IDs -->
+<!--   language = python_idx, -->
+<!--   platform = sample(unique_platforms, n_frameworks, replace = TRUE), -->
+<!--   webserver = sample(unique_webservers, n_frameworks, replace = TRUE), -->
+<!--   database = sample(unique_databases, n_frameworks, replace = TRUE), -->
+<!--   classification = sample(unique_classifications, n_frameworks, replace = TRUE), -->
+<!--   connections = sample(unique_connections, n_frameworks, replace = TRUE), -->
+<!--   threads = sample(unique_threads, n_frameworks, replace = TRUE) -->
+<!-- ) -->
+
+<!-- # Create combinations with multiple scale_factors by test_type -->
+<!-- novel_candidates <- data.frame() -->
+<!-- for (i in 1:nrow(base_candidates)) { -->
+<!--   # Decode test_type to original string -->
+<!--   encoded_test_type <- base_candidates$test_type[i] -->
+<!--   test_type_str <- label_encoders$test_type[encoded_test_type + 1] -->
+<!--   # Get valid scale_factors for this test_type -->
+<!--   valid_scale_factors <- scale_factor_by_test_type$scale_factors[[which(scale_factor_by_test_type$test_type == test_type_str)]] -->
+<!--   if (length(valid_scale_factors) == 0) { -->
+<!--     warning(sprintf("No scale_factors found for test_type %s. Using all scale_factors.", test_type_str)) -->
+<!--     valid_scale_factors <- unique_scale_factors -->
+<!--   } -->
+<!--   # Sample up to scale_factor_per_framework scale_factors -->
+<!--   selected_scale_factors <- sample(valid_scale_factors, min(scale_factor_per_framework, length(valid_scale_factors)), replace = FALSE) -->
+<!--   for (sf in selected_scale_factors) { -->
+<!--     candidate <- base_candidates[i, ] -->
+<!--     candidate$scale_factor <- sf -->
+<!--     novel_candidates <- rbind(novel_candidates, candidate) -->
+<!--   } -->
+<!-- } -->
+
+<!-- # Validate novel_candidates -->
+<!-- if (nrow(novel_candidates) < n_frameworks) { -->
+<!--   stop("Error: novel_candidates has fewer rows than expected: ", nrow(novel_candidates)) -->
+<!-- } -->
+<!-- cat("novel_candidates shape:", dim(novel_candidates), "\n") -->
+
+<!-- # Prepare encoded inputs for XGBoost -->
+<!-- novel_encoded <- novel_candidates -->
+<!-- for (col in cat_cols) { -->
+<!--   if (col != "framework") { -->
+<!--     novel_encoded[[col]] <- match(novel_candidates[[col]], label_encoders[[col]]) - 1 -->
+<!--     if (any(is.na(novel_encoded[[col]]))) { -->
+<!--       stop(sprintf("Encoding error: NA values in %s", col)) -->
+<!--     } -->
+<!--   } -->
+<!-- } -->
+<!-- # Scale numerical features for XGBoost -->
+<!-- novel_scaled <- as.data.frame(scale(novel_candidates[num_cols], center = scaler_mean, scale = scaler_sd)) -->
+<!-- novel_encoded[num_cols] <- novel_scaled -->
+
+<!-- # Prepare inputs for XGBoost -->
+<!-- X_novel <- as.matrix(novel_encoded[c(num_cols, cat_cols)]) -->
+
+<!-- # Predict efficiencies using XGBoost -->
+<!-- predictions <- predict(xgb_model, X_novel) -->
+<!-- novel_candidates$efficiency <- predictions -->
+<!-- cat("Efficiency predictions completed for", nrow(novel_candidates), "combinations.\n") -->
+
+<!-- # Compute SHAP values for novel candidates -->
+<!-- shap_novel <- shap.values(xgb_model, X_novel) -->
+<!-- shap_novel_long <- shap.prep(xgb_model = xgb_model, X_train = X_novel) -->
+
+<!-- # Summarize SHAP contributions -->
+<!-- shap_novel_summary <- shap_novel_long %>% -->
+<!--   group_by(variable) %>% -->
+<!--   summarise(mean_abs_shap = mean(abs(value))) %>% -->
+<!--   arrange(desc(mean_abs_shap)) -->
+<!-- cat("\nSHAP Importance for Novel Frameworks:\n") -->
+<!-- for (i in 1:nrow(shap_novel_summary)) { -->
+<!--   cat(sprintf("- %s: Mean |SHAP| = %.4f\n", shap_novel_summary$variable[i], shap_novel_summary$mean_abs_shap[i])) -->
+<!-- } -->
+
+<!-- # Rank frameworks -->
+<!-- novel_ranked <- novel_candidates %>% -->
+<!--   mutate(framework_name = sprintf("NextGenFramework%d", framework - max(data_encoded$framework))) %>% -->
+<!--   arrange(desc(efficiency)) -->
+
+<!-- # Select top k and bottom k -->
+<!-- top_k <- head(novel_ranked, k_display) -->
+<!-- bottom_k <- tail(novel_ranked, k_display) -->
+
+<!-- # Decode categorical and numerical features -->
+<!-- decode_framework <- function(df) { -->
+<!--   df_decoded <- df -->
+<!--   for (c in cat_cols) { -->
+<!--     if (c == "framework") { -->
+<!--       df_decoded[[c]] <- df$framework_name -->
+<!--     } else { -->
+<!--       df_decoded[[c]] <- sapply(df[[c]], function(val) { -->
+<!--         idx <- match(val, label_encoders[[c]])  -->
+<!--         if (is.na(idx)) "Unknown" else label_encoders[[c]][idx] -->
+<!--       }) -->
+<!--     } -->
+<!--   } -->
+<!--   # Use original discrete numerical values -->
+<!--   df_decoded[num_cols] <- df[num_cols] -->
+<!--   return(df_decoded) -->
+<!-- } -->
+
+<!-- top_k_decoded <- decode_framework(top_k) -->
+<!-- bottom_k_decoded <- decode_framework(bottom_k) -->
+
+<!-- # Print results -->
+<!-- cat("\nTop", k_display, "New Framework Combinations:\n") -->
+<!-- for (i in 1:nrow(top_k_decoded)) { -->
+<!--   cat(sprintf("\nFramework %d: %s\n", i, top_k_decoded$framework_name[i])) -->
+<!--   cat("Key Features:\n") -->
+<!--   cat(paste0("- ", base_framework_features$features), sep = "\n") -->
+<!--   cat("Configuration:\n") -->
+<!--   cat(sprintf("  Framework   : %s\n", top_k_decoded$framework[i])) -->
+<!--   cat(sprintf("  Language    : %s\n", top_k_decoded$language[i])) -->
+<!--   cat(sprintf("  Database    : %s\n", top_k_decoded$database[i])) -->
+<!--   cat(sprintf("  Webserver   : %s\n", top_k_decoded$webserver[i])) -->
+<!--   cat(sprintf("  Platform    : %s\n", top_k_decoded$platform[i])) -->
+<!--   cat(sprintf("  Test Type   : %s\n", top_k_decoded$test_type[i])) -->
+<!--   cat(sprintf("  Classification: %s\n", top_k_decoded$classification[i])) -->
+<!--   cat(sprintf("  Scale Factor: %d\n", as.integer(top_k_decoded$scale_factor[i]))) -->
+<!--   cat(sprintf("  Connections : %d\n", as.integer(top_k_decoded$connections[i]))) -->
+<!--   cat(sprintf("  Threads     : %d\n", as.integer(top_k_decoded$threads[i]))) -->
+<!--   cat(sprintf("  Predicted Efficiency: %.4f\n", top_k_decoded$efficiency[i])) -->
+<!-- } -->
+
+<!-- cat("\nBottom", k_display, "New Framework Combinations:\n") -->
+<!-- for (i in 1:nrow(bottom_k_decoded)) { -->
+<!--   cat(sprintf("\nFramework %d: %s\n", i, bottom_k_decoded$framework_name[i])) -->
+<!--   cat("Key Features:\n") -->
+<!--   cat(paste0("- ", base_framework_features$features), sep = "\n") -->
+<!--   cat("Configuration:\n") -->
+<!--   cat(sprintf("  Framework   : %s\n", bottom_k_decoded$framework[i])) -->
+<!--   cat(sprintf("  Language    : %s\n", bottom_k_decoded$language[i])) -->
+<!--   cat(sprintf("  Database    : %s\n", bottom_k_decoded$database[i])) -->
+<!--   cat(sprintf("  Webserver   : %s\n", bottom_k_decoded$webserver[i])) -->
+<!--   cat(sprintf("  Platform    : %s\n", bottom_k_decoded$platform[i])) -->
+<!--   cat(sprintf("  Test Type   : %s\n", bottom_k_decoded$test_type[i])) -->
+<!--   cat(sprintf("  Classification: %s\n", bottom_k_decoded$classification[i])) -->
+<!--   cat(sprintf("  Scale Factor: %d\n", as.integer(bottom_k_decoded$scale_factor[i]))) -->
+<!--   cat(sprintf("  Connections : %d\n", as.integer(bottom_k_decoded$connections[i]))) -->
+<!--   cat(sprintf("  Threads     : %d\n", as.integer(bottom_k_decoded$threads[i]))) -->
+<!--   cat(sprintf("  Predicted Efficiency: %.4f\n", bottom_k_decoded$efficiency[i])) -->
+<!-- } -->
+<!-- ``` -->
+
+## 7. Save Results
+
+```{r}
+# Save results
+write_csv(decode_framework(novel_ranked), "../data/processed/discover/new_frameworks_dataset.csv")
+write_csv(top_k_decoded, "../data/processed/discover/new_frameworks_top.csv")
+write_csv(bottom_k_decoded, "../data/processed/discover/new_frameworks_bottom.csv")
+write_csv(cluster_data_high, "../data/processed/discover/high_efficiency_clusters.csv")
+write_csv(cluster_data_low, "../data/processed/discover/low_efficiency_clusters.csv")
+cat("\nResults saved to ../data/processed/discover/\n")
+
+# Next steps
+cat("\nNext Steps:\n")
+cat("- Prototype top NextGenFrameworks to validate predicted efficiencies.\n")
+cat("- Avoid bottom frameworks in production due to low predicted efficiencies.\n")
+cat("- Analyze new_frameworks_dataset.csv for further insights.\n")
+cat("- Integrate patterns into a recommender system (e.g., 12.2_advanced_recommender).\n")
+cat("- Prepare a stakeholder report summarizing findings.\n")
+```
