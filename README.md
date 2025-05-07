@@ -1,127 +1,186 @@
-# Framework Benchmark Performance Analysis
+# Predictive Benchmarking: ML/DL Models as Alternatives to Traditional Performance Testing
+
+## Research Question
+
+**Can predictive ML/DL models accurately forecast system efficiency under extreme loads—replacing traditional benchmarking and saving millions in infrastructure costs?**
+
+## Why This Matters
+
+Traditional performance benchmarking is essential but extremely resource-intensive, requiring:
+- Dedicated hardware infrastructure
+- Complex environment setup and configuration
+- Hundreds to thousands of compute-hours per benchmarking cycle
+- Significant operational costs
+
+By developing predictive models that can forecast performance without actual testing, organizations can:
+- Reduce benchmarking costs by 80-85%
+- Accelerate technology evaluation cycles by 90-95%
+- Make informed infrastructure decisions without extensive physical testing
+- Optimize resource allocation for performance testing
+
+## Dataset
 
 This repository contains an R-based data analysis project that compares and evaluates web frameworks benchmarked by [TechEmpower](https://www.techempower.com/benchmarks). The data is scraped from TechEmpower’s public results and stored in CSV files, which serve as the foundation for exploring performance, concurrency overhead, and latency characteristics of various frameworks.
 
----
+The project utilizes a comprehensive web framework performance dataset containing:
 
-## Data Source
+- **Size**: 17,568 observations across 58 features
+- **Technology diversity**: 580 frameworks, 35 programming languages, 66 platforms
+- **Test types**: cached-query, db, fortune, query, update
+- **Performance metrics**: throughput, latency (avg, max, p50, p75, p90, p99), error rates
+- **Configuration parameters**: scale_factor, connections, threads
+- **System specifications**: CPU, memory, cores, cache
 
-All benchmark data originates from **TechEmpower’s** public benchmark results. For convenience and reproducibility, we have:
-- **Scraped** the relevant performance metrics from the TechEmpower site.
-- Consolidated them into **four CSV files**:
-  1. `benchmark_best_performance.csv`
-  2. `benchmark_data_table.csv`
-  3. `benchmark_framework_overhead.csv`
-  4. `benchmark_latency.csv`
-  
-These raw CSVs are stored in the `data/raw/` directory within the project.
+## Project Timeline
 
----
+1. **Week 1-2**: Problem definition and data exploration
+   - Research question formulation
+   - Initial EDA and data cleaning
+   - Feature selection strategy
 
-## Motive
+2. **Week 3-4**: Data preprocessing and transformation
+   - Categorical encoding implementation
+   - Feature engineering
+   - Correlation analysis and dimension reduction
 
-The primary motivation behind this project is to:
-- **Practice professional data analysis** in R, following best practices for folder structure, modular code design, and reproducibility.
-- **Examine framework performance** based on TechEmpower’s extensive benchmarks.
-- **Identify trends and insights** regarding throughput, latency, and overhead across different frameworks and concurrency levels.
+3. **Week 5-7**: ML model development (R)
+   - Baseline model implementation
+   - Advanced ML model training
+   - Cross-validation and hyperparameter tuning
 
----
+4. **Week 8-10**: DL model development (Python)
+   - Architecture design and implementation
+   - Model training and optimization
+   - Feature engineering refinement
 
-## Project Goals
+5. **Week 11-12**: Comparative analysis and reporting
+   - Performance evaluation across models
+   - Findings documentation
+   - Recommendations formulation
 
-1. **Data Cleaning & Exploration**  
-   - Ingest the raw CSVs and standardize columns (e.g., converting data types, renaming inconsistent fields).  
-   - Examine the distribution of throughput, concurrency levels, and framework overhead.
+## Data Transformations
 
-2. **Performance Comparison**  
-   - Identify top-performing frameworks based on throughput, overhead ratios, and latency across different concurrency levels.  
-   - Compare frameworks by language, platform, and other key factors documented in the CSVs.
+### Preprocessing Pipeline
 
-3. **Visualization & Reporting**  
-   - Use R (primarily `tidyverse` and `ggplot2`) to generate histograms, box plots, and other charts illustrating performance trends.  
-   - Compile results into R Markdown reports, highlighting major findings for each metric (e.g., best performance, lowest latency).
+1. **Feature selection**
+   - Removed irrelevant columns (uuid, notes, versus, tags, sloc_count)
+   - Eliminated constant features (os, approach, database_os)
+   - Resolved multicollinearity (scale_factor vs. connections)
 
-4. **Reproducibility & Professional Workflow**  
-   - Employ a clear folder structure with `data/`, `code/`, `reports/`, and `figures/`.  
-   - Document functions and processes for easy collaboration and course assessment.
+2. **Categorical processing**
+   - Target encoding for high-cardinality variables (framework, language, platform)
+   - Feature reduction for low-information categories
 
----
+3. **Feature engineering**
+   - Efficiency metric calculation incorporating throughput, latency, and error rates
+   - Interaction terms for related configuration parameters
 
-## Project Outputs
+4. **Dataset partitioning**
+   - Stratified sampling based on performance clusters
+   - 80/20 train-test split with cross-validation
 
-- **Cleaned Data**: After running our data-cleaning scripts, processed CSV files will be saved to `data/processed/`.
-- **Figures**: All plots and visualizations produced during exploration and final reporting can be found in the `figures/` directory.
-- **Reports**: 
-  - **Exploratory Data Analysis** (`reports/EDA_report.Rmd`), which includes initial summary statistics and basic plots.
-  - **Final Analysis** (`reports/Final_Report.Rmd`), providing a comprehensive narrative on performance rankings, latency comparisons, and overhead insights.
+## Models & Implementation
 
-These outputs serve as demonstrations of analytical methods for coursework evaluation.
+### Machine Learning (R)
 
----
+- **Linear Regression**: Baseline with Ridge regularization (α=0.1)
+- **Random Forest**: 100 estimators, optimized depth and leaf parameters
+- **XGBoost**: Gradient boosting with tuned learning rate and tree depth
+- **SVR**: Support Vector Regression with RBF kernel and grid-searched parameters
 
-## Coursework Context
+### Deep Learning (Python)
 
-This project is developed as part of a Artificial Intelligence coursework module focusing on **real-world data pipeline practices**, from data scraping and ingestion to final reporting. By examining **TechEmpower’s real world framework benchmarks**, students gain hands-on experience with:
-- Handling multiple CSVs containing interrelated performance statistics.
-- Conducting exploratory data analysis and building clear results for technical and non-technical audiences.
-- Employing advanced RStudio project structures and best practices (version control, environment management, markdown reporting).
+- **RNN**: Recurrent Neural Network with GRU units, dropout and batch normalization
+- **LSTM**: Long Short-Term Memory network for sequence modeling
+- **MLP**: Multi-layer Perceptron with optimized hidden layers
+- **CNN**: Convolutional architecture with 1D convolutions
 
-## Project dir structure:
+## Key Findings
 
-```ADSOS
-├── .DS_Store
-├── ADSOS.Rproj
-├── README.md
-├── code
-│   ├── README.md
-│   ├── data_cleaning.R
-│   ├── helpers
-│   └── main.R
-├── data
-│   ├── .DS_Store
-│   ├── README.md
-│   ├── processed
-│   └── raw
-│       ├── cached_queries
-│       │   ├── benchmark_best_performance.csv
-│       │   ├── benchmark_data_table.csv
-│       │   ├── benchmark_framework_overhead.csv
-│       │   └── benchmark_latency.csv
-│       ├── database
-│       │   ├── benchmark_best_performance.csv
-│       │   ├── benchmark_data_table.csv
-│       │   ├── benchmark_framework_overhead.csv
-│       │   └── benchmark_latency.csv
-│       ├── fortune
-│       │   ├── benchmark_best_performance.csv
-│       │   ├── benchmark_data_table.csv
-│       │   ├── benchmark_framework_overhead.csv
-│       │   └── benchmark_latency.csv
-│       ├── json_serialization
-│       │   ├── benchmark_best_performance.csv
-│       │   ├── benchmark_data_table.csv
-│       │   ├── benchmark_framework_overhead.csv
-│       │   └── benchmark_latency.csv
-│       ├── plaintext
-│       │   ├── benchmark_best_performance.csv
-│       │   ├── benchmark_data_table.csv
-│       │   ├── benchmark_framework_overhead.csv
-│       │   └── benchmark_latency.csv
-│       ├── queries
-│       │   ├── benchmark_best_performance.csv
-│       │   ├── benchmark_data_table.csv
-│       │   ├── benchmark_framework_overhead.csv
-│       │   └── benchmark_latency.csv
-│       └── updates
-│           ├── benchmark_best_performance.csv
-│           ├── benchmark_data_table.csv
-│           ├── benchmark_framework_overhead.csv
-│           └── benchmark_latency.csv
-├── docs
-├── figures
-├── reports
-│   ├── EDA_report.Rmd
-│   └── Final_report.RMD
-└── results
-    └── README.md
-```
+1. **Model Performance**
+   - XGBoost achieved exceptional accuracy (R²=0.99, MAE=0.28)
+   - Traditional ML models outperformed deep learning approaches
+   - RNNs showed the best DL performance (R²=0.79, Accuracy=75.8%)
+
+2. **Feature Importance**
+   - scale_factor (23.7%) and threads (19.2%) were the most predictive
+   - Technical stack (framework, language) contributed significantly
+   - Database choice influenced performance for data-intensive operations
+
+3. **Performance Patterns**
+   - Models predicted cached-query and update operations more accurately
+   - Database-intensive operations showed higher prediction variability
+   - Accuracy decreased for extreme load conditions
+
+## Recommendations
+
+1. **Hybrid Approach**: Use predictive models for routine scenarios and targeted benchmarking for validation and edge cases
+
+2. **Technology Stack Selection**:
+   - XGBoost provides the best balance of accuracy and computational efficiency
+   - Implementation in R offers optimal performance for this use case
+   - Python deep learning models can supplement for specific pattern recognition
+
+3. **Framework Discovery**:
+   - Identified previously unknown high-efficiency combinations of frameworks and configurations
+   - Detected optimal scale_factor to threads ratios across framework categories
+   - Discovered emerging frameworks with exceptional efficiency profiles
+
+## Future Work
+
+1. **Transfer Learning**: Extending prediction capabilities across hardware configurations
+2. **Temporal Modeling**: Incorporating version history to track performance evolution
+3. **Uncertainty Quantification**: Implementing confidence intervals for predictions
+4. **Hybrid Benchmarking System**: Developing an integrated predictive-traditional system
+
+## Usage Instructions
+
+### Prerequisites
+
+- R 4.2.0+ with packages:
+  - caret
+  - randomForest
+  - xgboost
+  - e1071
+  - ggplot2
+
+- Python 3.9+ with packages:
+  - TensorFlow 2.9+
+  - PyTorch 1.12+
+  - scikit-learn
+  - pandas
+  - numpy
+  - matplotlib
+
+### Running the Analysis
+
+1. **Data Preparation**:
+   ```R
+   # In R
+   source("scripts/data_prep.R")
+   preprocessed_data <- preprocess_benchmark_data("data/raw/benchmark_results.csv")
+   ```
+
+2. **ML Model Training**:
+   ```R
+   # In R
+   source("scripts/ml_models.R")
+   model_results <- train_ml_models(preprocessed_data)
+   ```
+
+3. **DL Model Training**:
+   ```bash
+   # In terminal
+   python scripts/dl_models.py --data_path data/processed/preprocessed_data.csv --model rnn
+   ```
+
+4. **Evaluation and Visualization**:
+   ```R
+   # In R
+   source("scripts/evaluation.R")
+   generate_comparison_report(model_results, "reports/model_comparison.html")
+   ```
+
+## Acknowledgments
+
+- Performance benchmarking data derived from TechEmpower Framework Benchmarks
